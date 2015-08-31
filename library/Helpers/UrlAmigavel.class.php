@@ -1,8 +1,8 @@
 <?php
 /**
  * UrlAmigavel.class [ HELPER ]
- * RealizaÃ§Ã£o a gestÃ£o da dos controladores e metodos a serem executados
- * e pega os ParÃ¢metos via GET!
+ * Realização a gestão da dos controladores e metodos a serem executados
+ * e pega os Parâmetos via GET!
  * @copyright (c) 2014, Leo Bessa
  */
   class UrlAmigavel{
@@ -21,8 +21,8 @@
       
         
        /**
-        * RealizaÃ§Ã£o a gestÃ£o da dos controladores e metodos a serem executados
-        * e pega os ParÃ¢metos via GET!       
+        * Realização a gestão da dos controladores e metodos a serem executados
+        * e pega os Parâmetos via GET!       
         */
         public function  __construct(){
             self::setUrl();
@@ -34,9 +34,9 @@
         }
         
         /**
-        * <b>PegaParametro:</b> Pega todos os parÃªmetros passados pela URL
+        * <b>PegaParametro:</b> Pega todos os parêmetros passados pela URL
         * @param STRING $name = Passando o nome do parametro a ser retornado.        
-        * @return ARRAY Retorna um array de parÃ¢metros ou caso mensione o parÃ¢metro a ser pesquisado
+        * @return ARRAY Retorna um array de parâmetros ou caso mensione o parâmetro a ser pesquisado
         * retorno com o valor de uma variavel solicitada
         */
         public static function PegaParametro( $name = null ){
@@ -51,13 +51,20 @@
         
         /**
         * <b>pegaControllerAction:</b> Gerencia e inicia o controlador e metodo a ser executado      
-        * @return INCLUDE Retorna a inclusÃ£o do arquivo solicitado.
-        * @return Valor padÃ£o para Controller (INDEX) e metodo (INDEX)
-        * @return Realiza a InclusÃ£o da View com o mesmo nome da action dentro da Pasta View.
+        * @return INCLUDE Retorna a inclusão do arquivo solicitado.
+        * @return Valor padão para Controller (INDEX) e metodo (INDEX)
+        * @return Realiza a Inclusão da View com o mesmo nome da action dentro da Pasta View.
         * Ex.: <br>Nome do Arquivo <b>cadastro.View.php</b>
         */
         public function pegaControllerAction(){
             $erro_404 = false;  
+            
+            if(self::$modulo != SITE && self::$modulo != ADMIN):
+                self::$modulo = "web";
+                self::$controller = "index";
+                self::$action = "index";     
+                $erro_404 = true;
+            endif;
                         
             if(self::$controller == ""):
                     self::$controller = "index";
@@ -78,6 +85,7 @@
             if(!file_exists($controller_path)):
                 $controller_path = "Controller/" . self::$controller . '.Controller.php';
             endif;
+            
             require_once($controller_path);
             $app = new self::$controller();
 
@@ -102,7 +110,7 @@
            elseif (file_exists(self::$modulo."/".$arquivo_include) && !is_dir(self::$modulo."/".$arquivo_include)):
                include self::$modulo."/".$arquivo_include;
            else:
-               Valida::Mensagem("A View <b>".$action.".View.php</b> no Módulo <b>".self::$modulo."</b> não foi encontrada!", 3);
+               Valida::Mensagem("A View <b>".$action.".View.php</b> no M�dulo <b>".self::$modulo."</b> n�o foi encontrada!", 3);
            endif;            
         }
         
