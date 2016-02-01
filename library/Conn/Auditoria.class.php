@@ -29,8 +29,12 @@ class Auditoria extends Conn {
     public function Auditar($tabela, array $dados = null, $operacao, $id_item = null, $termos = null, $valores = null) {
         $this->tabela = TABELA_AUDITORIA;
         
-        $us = $_SESSION[SESSION_USER];                                                                    
-        $user = $us->getUser();
+        if(isset($_SESSION[SESSION_USER])):
+            $us = $_SESSION[SESSION_USER];                                                                    
+            $user = $us->getUser();
+        else:
+            $user = array();
+        endif;
         $item_atual     = "";
         $item_anterior  = "";
         switch($operacao){
@@ -107,32 +111,39 @@ class Auditoria extends Conn {
                 
                 $pesquisa->Pesquisar($tabela, $termos, $valores);
                 $result2 = $pesquisa->getResult();
-                $id_item = "";
-                foreach ($result2[0] as $key => $value) {
-                    if(in_array($key, $chaves))
-                    $id_item .= $value.",";
-                }
-                $tamanho  = strlen($id_item);        
-                $id_item  = substr($id_item,0,$tamanho-1);
+                if($result2):
+                    $id_item = "";
+                    foreach ($result2[0] as $key => $value) {
+                        if(in_array($key, $chaves))
+                        $id_item .= $value.",";
+                    }
+                    $tamanho  = strlen($id_item);        
+                    $id_item  = substr($id_item,0,$tamanho-1);
 
-                foreach ($result2[0] as $key => $value) {
-                    $item_anterior .= $key."==".$value.";/";
-                }
-                $tamanho        = strlen($item_anterior);        
-                $item_anterior  = substr($item_anterior,0,$tamanho-2);                  
+                    foreach ($result2[0] as $key => $value) {
+                        $item_anterior .= $key."==".$value.";/";
+                    }
+                    $tamanho        = strlen($item_anterior);        
+                    $item_anterior  = substr($item_anterior,0,$tamanho-2);                  
+                endif;
               
            break;
            default : echo "Operação Inválida";
            break;
         }
         $dados = array();
-        $dados['item_atual']        = $item_atual;
-        $dados['item_anterior']     = $item_anterior;
-        $dados['tabela']            = $tabela;
-        $dados['operacao']          = $operacao;
-        $dados['id_item']           = $id_item;
-        $dados['id_user']           = $user[md5(CAMPO_ID)];
-        $dados['realizado']         = Valida::DataDB(Valida::DataAtual('d/m/Y H:i:s'));       
+        $dados['ds_item_atual']             = $item_atual;
+        $dados['ds_item_anterior']          = $item_anterior;
+        $dados['no_tabela']                 = $tabela;
+        $dados['no_operacao']               = $operacao;
+        $dados['co_registro']               = $id_item;
+        if(!empty($user)):
+            $dados['co_usuario']            = $user[md5(CAMPO_ID)];
+        endif;
+        if(!empty($user)):
+            $dados['ds_perfil_usuario']     = $user[md5(CAMPO_PERFIL)];
+        endif;
+        $dados['dt_realizado']              = Valida::DataDB(Valida::DataAtual('d/m/Y H:i:s'));       
       
         $this->dados = $dados;
 

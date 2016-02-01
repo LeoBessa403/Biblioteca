@@ -1,8 +1,10 @@
 $(function() { 
     
     //VARIÁVEIS GLOBAIS
-    var home    = servidor_inicial();
-    var inativo = inatividade();
+    var dados    = constantes();
+    
+    var home    = dados['HOME'];
+    var inativo = dados['INATIVO'];
     var urlValida = home + 'library/Helpers/Valida.Controller.php';
     
     // DESLOGA USUÁRIO INATIVO
@@ -170,7 +172,7 @@ $(function() {
         
         // MASCARAS
         
-        // Somente letras maiúsculas, minúsculas, numeros, espaço e acentos
+        // Somente letras maiúsculas, minúsculas, espaço e acentos
         $(".nome").keyup(function() {
 		var valor = $(this).val().replace(/[^a-zA-Z à-úÀ-Ú]+/g,'');
 		$(this).val(valor);
@@ -300,12 +302,10 @@ $(function() {
 
             if (obrigatorios == true) {
                 if (validacao == "error") {                   
-//                  $(".row:last").before('<div class="alert alert-danger"><button data-dismiss="alert" class="close">&times;</button><i class="fa fa-exclamation-triangle"></i> <b> ALERTA: </b>Existe(em) campo(s) com erro, favor verificar!</div>');
                     Funcoes.Alerta("Existe(em) campo(s) com erro, favor verificar!"); 
                     return false;
                 } 
             } else {
-//              $(".row:last").before('<div class="alert alert-info"><button data-dismiss="alert" class="close">&times;</button><i class="fa fa-info-circle"></i> <b> INFORMATIVO: </b>Existe(em) campo(s) obrigatório(s) em branco, favor verificar!</div>');
                 Funcoes.Informativo("Existe(em) campo(s) obrigatório(s) em branco, favor verificar!");
                 return false;
             }
@@ -318,14 +318,27 @@ $(function() {
                 var valor = $(this).val();
                 var id = $(this).attr("id");
                 var tem = id.search("s2id_");                
+                var valida = false;                
                 
                 if(tem != 0){
                     if (valor == "") {
                         campos = "teste";
                         validaErro(id,"Campo Obrigatório"); 
-                        $(".ob:first").focus();
+                    }
+                }else{
+                    $("#"+id+" ul li").each(function() {
+                        if($(this).hasClass("select2-search-choice")){
+                            valida = true;
+                        }
+                    });
+                    if(!$("#"+id).hasClass("multipla")){
+                         valida = true;
+                    }
+                    if(!valida){
+                        validaErro(id,"Campo Obrigatório"); 
                     }
                 }
+                
                 if(valor != ""){
                     if($(this).hasClass("senha")){
                        validaSenha(id,valor);
@@ -336,6 +349,7 @@ $(function() {
                 }
             });
             if (campos != "") { 
+                $(".ob:first").focus();
                 return false;                
             } else {
                 return true;                
@@ -351,22 +365,11 @@ $(function() {
                     $("#carregando .cancelar").click(); 
                      
                     if(retorno == true){
-                        $("#registro-"+id).fadeOut("fast");
-                        $(".confirmacao .modal-header").removeClass("btn-bricky").addClass("btn-success");
-                        $(".confirmacao .modal-header .modal-title").text("CONFIRMAÇÃO");
-                        $(".confirmacao #confirmacao_msg b").html("A exclusão do registro Foi realizada com Sucesso!");
-                        $("#confirmacao").click();
+                        Funcoes.Sucesso("A exclusão do registro Foi realizada com Sucesso!");
                     }else if(retorno != ""){
-                         $(".deletando").css("background","#fdfdfd").removeClass("deletando");
-                         $(".confirmacao .modal-header").removeClass("btn-success").addClass("btn-bricky");
-                         $(".confirmacao .modal-header .modal-title").text("Erro ao Excluir");
-                         $(".confirmacao #confirmacao_msg b").html(retorno);
-                         $("#confirmacao").click();
-                    }else{            
-                        $(".deletando").css("background","#fdfdfd").removeClass("deletando");
-                        $(".confirmacao .modal-header").removeClass("btn-success").addClass("btn-bricky");
-                        $(".confirmacao .modal-header .modal-title").text("Erro ao Excluir");
-                        $(".confirmacao #confirmacao_msg b").html("Foi identificado um Erro<br>Favor entrar em contato com o Administrador do Sistema<br>Informando o erro ocorrido.");
+                        Funcoes.Alerta(retorno);
+                    }else{          
+                        Funcoes.Erro("Foi identificado um Erro<br>Favor entrar em contato com o Administrador do Sistema<br>Informando o erro ocorrido.");
                     }
              });
         })                

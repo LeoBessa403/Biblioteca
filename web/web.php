@@ -1,5 +1,10 @@
 <?php
     require_once 'library/Config.inc.php'; 
+    $back = new Backup();
+    
+//    $ip = "200.130.2.5"; 
+//    $query = @unserialize(file_get_contents(IP_LOCALIZACAO.$ip));
+//    debug($query,1);
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Frontend | Build with Twitter Bootstrap 3 | Version: 1.0 | Author: ClipTheme -->
@@ -59,6 +64,20 @@
 		<script src="<?php echo PASTASITE; ?><?php echo PASTASITE; ?>plugins/html5shiv.js"></script>
 		<![endif]-->
 		<!-- end: HTML5SHIV FOR IE8 -->
+                <!-- GOOGLE ANALITCS -->
+                <?php if(ID_ANALITCS): ?>
+                    <script>
+                        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                        ga('create', '<?php echo ID_ANALITCS ; ?>', 'auto');
+                        ga('send', 'pageview');
+
+                    </script>
+                <?php endif; ?>
+               <!-- FIM / GOOGLE ANALITCS -->
 	</head>
 	<!-- end: HEAD -->
 	<body>
@@ -124,13 +143,23 @@
 									Página Inicial
 								</a>
 							</li>
-                                                        <li>
-                                                            <a href="<?php echo PASTASITE; ?>Index/Cadastro">
-									Cadastro
+                                                        <li class="dropdown">
+								<a class="dropdown-toggle" href="#" data-toggle="dropdown" data-hover="dropdown">
+									Cadastros <b class="caret"></b>
 								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="<?php echo PASTASITE; ?>Index/CadastroMembro">
+											Membro GEJ
+										</a>
+										<a href="<?php echo PASTASITE; ?>Index/CadastroRetiroCarnaval">
+											4º Retiro de Carnaval
+										</a>
+									</li>
+								</ul>
 							</li>
 							<li>
-                                                            <a target="_blank" href="<?php echo PASTAADMIN; ?>">
+                                                            <a target="_blank" href="<?php echo PASTAADMIN; ?>Index/Index/PrimeiroAcesso">
 									Área Administrativa
 								</a>
 							</li>
@@ -257,7 +286,7 @@
 					<div class="row">
 						<div class="col-md-3">
 							<a class="logo" href="#">
-								DESENVOLVIMENTO LEO BESSA
+								&copy; DESENVOLVIMENTO LEO BESSA <?php echo date("Y");?>
 							</a>
 						</div>
 						<div class="col-md-4">
@@ -300,22 +329,15 @@
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
                 <?php echo '<script type="text/javascript">
-                    
-                        function servidor_inicial(){    
-                                var home = "'.HOME.'";
-                                return home;
-                        }
-                        function inatividade(){    
-                                var inativo = "'.INATIVO.'";
-                                return inativo;
-                        }
-                        function pasta_upload(){    
-                                var pasta = "'.PASTAUPLOADS.'";
-                                return pasta;
+                        function constantes(){    
+                                var dados = {
+                                    "HOME" : "'.HOME.'",
+                                    "INATIVO" : "'.INATIVO.'",
+                                    "PASTAUPLOADS" : "'.PASTAUPLOADS.'"                                        
+                                    };
+                                return dados;
                         }
                 </script>'; ?>
-               
-		
 		<script src="<?php echo PASTASITE; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/jquery.transit/jquery.transit.js"></script>
 		<script src="<?php echo PASTASITE; ?>plugins/hover-dropdown/twitter-bootstrap-hover-dropdown.min.js"></script>

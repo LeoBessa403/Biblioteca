@@ -127,7 +127,7 @@ class Valida {
           $label = ($typo == 1 ? "SUCESSO" : ($typo == 2 ? "INFORMATIVO" : ($typo == 3 ? "ALERTA" : "ERRO")));
           $icon = ($typo == 1 ? "check-circle" : ($typo == 2 ? "info-circle" : ($typo == 3 ? "exclamation-triangle" : "times-circle")));
                                                                            
-          echo '<div class="alert alert-'.$class.'" style="padding-left: 40px;">
+          echo '<div id="sumir" class="alert alert-'.$class.'" style="padding-left: 30px;">
                 <button data-dismiss="alert" class="close">
                         &times;
                 </button>
@@ -228,15 +228,15 @@ class Valida {
     /**
      * <b>Somatório ou Subtração de Datas:</b> 
      * @param STRING $data = Data em (d/m/Y)
-     * @param STRING $diferenca = Diferença de dias entre as Datas
+     * @param INT $diferenca = Diferença de dias entre as Datas
      * @param STRING $operacao = Operação de Soma (+) ou Subtração (-)
      */
     public static  function CalculaData($data,$diferenca,$operacao){
          self::$Data = explode('/',$data);
          if($operacao == "+"):
-             return date("d/m/Y",mktime(0, 0, 0, self::$Data[0], self::$Data[1] + $diferenca, self::$Data[2]));
+             return date("d/m/Y",mktime(0, 0, 0, self::$Data[1], self::$Data[0] + $diferenca, self::$Data[2]));
          else:
-             return date("d/m/Y",mktime(0, 0, 0, self::$Data[0], self::$Data[1] - $diferenca, self::$Data[2]));
+             return date("d/m/Y",mktime(0, 0, 0, self::$Data[1], self::$Data[0] - $diferenca, self::$Data[2]));
          endif;
     }
     /**
@@ -286,14 +286,14 @@ class Valida {
      * uploads. Se existir retorna a imagem redimensionada!
      * @return HTML = imagem redimencionada!
      */
-    public static function getMiniatura($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null) {
+    public static function getMiniatura($ImageUrl, $ImageDesc, $ImageW = null, $ImageH = null, $Classe = null) {
 
         self::$Data = 'uploads/' . $ImageUrl;
 
         if (file_exists(self::$Data) && !is_dir(self::$Data)):
             $patch = HOME;
             $imagem = self::$Data;
-            return "<img src=\"{$patch}library/Helpers/Timthumb.class.php?src={$patch}{$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\"/>";
+            return "<img src=\"{$patch}library/Helpers/Timthumb.class.php?src={$patch}{$imagem}&w={$ImageW}&h={$ImageH}\" alt=\"{$ImageDesc}\" title=\"{$ImageDesc}\" class=\"{$Classe}\"/>";
         else:
             return false;
         endif;
@@ -338,20 +338,32 @@ class Valida {
     public static function ValPerfil($action){
         if(Session::CheckSession(SESSION_USER)):
             if(Session::getSession(SESSION_USER, CAMPO_PERFIL)):
-                if($action == "index"):
+                if($action == "Index" || $action == "Logar"):
                     return true;
                 endif;
-                $Operfil = new PerfisAcesso();
+                $compara = strstr(UrlAmigavel::$action,'Exporta');
+                if($compara != null):
+                    return true;
+                endif;
                 $us = $_SESSION[SESSION_USER];                                                                    
                 $user = $us->getUser();
-                $perfis = $user[md5('perfil')]; 
+                $perfis = $user[md5(CAMPO_PERFIL)]; 
                 $perfis = explode(",", $perfis);
-                $perfil = explode(",", $Operfil->$action);
-                if(in_array($Operfil->SuperPerfil, $perfis)):
+                $funcionalidades = explode(",", $user[md5('funcionalidades')]);
+                
+                $pesquisa = new Pesquisa();
+                $pesquisa->Pesquisar(Constantes::FUNCIONALIDADE_TABELA,"where ds_rota like '%{$action}'", null, "co_funcionalidade");
+                $funcs = $pesquisa->getResult();
+                
+                if(in_array(1, $perfis)):
                     return true;
                 endif;
-                if(array_intersect(array_map("trim",$perfil), array_map("trim",$perfis))):
-                    return true;
+                if(!empty($funcionalidades)):
+                    if(in_array($funcs[0]['co_funcionalidade'], $funcionalidades)):
+                        return true;
+                    else:
+                        return false;
+                    endif;
                 else:
                     return false;
                 endif;

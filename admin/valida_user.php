@@ -8,8 +8,8 @@
                $session = new Session();              
               
                if(!$session->CheckSession(SESSION_USER)):
-                    if(!isset($_POST['logar_no_sigeplan'])):
-                        if(empty($explode[1])): 
+                    if(!isset($_POST['logar_sistema'])):
+                        if(isset($explode[3]) && $explode[3] == "PrimeiroAcesso"): 
                             Redireciona(ADMIN.LOGIN);
                             die;
                         else:
@@ -35,7 +35,13 @@
                             Redireciona(ADMIN.LOGIN."?o=deslogado");      
                             die();
                         else:
-                            $us->setUserUltimoAcesso(strtotime(Valida::DataDB(Valida::DataAtual())));                            
+                            $us->setUserUltimoAcesso(strtotime(Valida::DataDB(Valida::DataAtual()))); 
+                            if($session->CheckSession(CADASTRADO)):
+                                $session->FinalizaSession(CADASTRADO);
+                            endif;
+                            if($session->CheckSession(ATUALIZADO)):
+                                $session->FinalizaSession(ATUALIZADO);
+                            endif;
                         endif;
                     endif;                 
                endif;

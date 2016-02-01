@@ -70,22 +70,22 @@
             
             if(self::$modulo != SITE && self::$modulo != ADMIN):
                 self::$modulo = "web";
-                self::$controller = "index";
-                self::$action = "index";     
+                self::$controller = "Index";
+                self::$action = "Index";     
                 $erro_404 = true;
             endif;
                         
             if(self::$controller == ""):
-                    self::$controller = "index";
-                    self::$action = "index";               
+                    self::$controller = "Index";
+                    self::$action = "Index";               
              elseif(self::$action == ""):
-                    self::$action = "index";  
+                    self::$action = "Index";  
              endif;
             
              $controller_path = self::$modulo."/Controller/" . self::$controller . '.Controller.php';
              if((!file_exists($controller_path)) && (!file_exists("Controller/" . self::$controller . '.Controller.php'))):
-                    self::$controller = "index";
-                    self::$action = "index";
+                    self::$controller = "Index";
+                    self::$action = "Index";
                     $erro_404 = true;  
             endif;   
             
@@ -99,10 +99,19 @@
             $app = new self::$controller();
            
 
-                if( !method_exists($app, self::$action) ):                     
-                     self::$action = "index";
-                     $erro_404 = true;
-                endif;
+            if( !method_exists($app, self::$action) ):                     
+                 self::$action = "Index";
+                 $erro_404 = true;
+            endif;
+            
+            if(self::$modulo == ADMIN):
+                if(!Valida::ValPerfil(self::$action)):
+                    self::$action = "Index";
+                    $erro_404 = true;
+                endif;    
+            endif;
+                
+            
             $action = self::$action;
             $app->$action();
             
@@ -129,7 +138,7 @@
         /*************************/
         
          private static function setUrl(){
-            $url = (isset($_GET['url']) && $_GET['url'] != "" ? $_GET['url'] : "web/index/index");
+            $url = (isset($_GET['url']) && $_GET['url'] != "" ? $_GET['url'] : "web/Index/Index");
             $url = $url;
             self::$url = $url.'/';
         }
@@ -147,7 +156,7 @@
         }    
         
         private static function setAction(){
-            $ac = (!isset(self::$explode[2]) || self::$explode[2] == null || self::$explode[2] == 'index' ? 'index' : self::$explode[2]);
+            $ac = (!isset(self::$explode[2]) || self::$explode[2] == null || self::$explode[2] == 'Index' ? 'Index' : self::$explode[2]);
             self::$action = $ac;
         }
 

@@ -27,19 +27,35 @@ class Grid {
         return $this;
     }
     
-    public function criaBotaoExportacao($controller,$action) {
-        echo '<div class="row">
-                    <div class="col-md-12 space10">
-                        <a role="button" class="btn btn-success tooltips pull-right" id="excel" 
-                           href="'.PASTAADMIN.$controller.'/'.$action.'/'.Valida::GeraParametro('formato/excel').'" data-original-title="Exportar para Excel" data-placement="left">
-                             Excel <i class="clip-file-excel"></i>
-                        </a>
-                        <a role="button" class="btn btn-bricky tooltips pull-right" id="pdf" style="margin-right: 10px;" 
-                           href="'.PASTAADMIN.$controller.'/'.$action.'/'.Valida::GeraParametro('formato/pdf').'" data-original-title="Exportar para PDF" data-placement="left">
-                             PDF <i class="clip-file-pdf"></i>
-                        </a>
-                    </div>  
-            </div>';
+    private function pesquisaAvancada() {
+        $apps = new UrlAmigavel::$controller(); 
+        $pesquisa = false;
+        $exporta = false;
+        echo '<div class="row">';
+        if( method_exists($apps, UrlAmigavel::$action."PesquisaAvancada") ):
+            Modal::PesquisaAvancada();
+            $pesquisa = true;
+        endif;                    
+        if( method_exists($apps,"Exportar".UrlAmigavel::$action) ):    
+                if(!$pesquisa):  
+                    echo '<div class="col-md-12 space10">';
+                endif;
+         echo  '
+                <a role="button" class="btn btn-success tooltips pull-right" id="excel" 
+                   href="'.PASTAADMIN.UrlAmigavel::$controller.'/Exportar'.UrlAmigavel::$action.'/'.Valida::GeraParametro('formato/excel').'" data-original-title="Exportar para Excel" data-placement="left">
+                     Excel <i class="clip-file-excel"></i>
+                </a>
+                <a role="button" class="btn btn-bricky tooltips pull-right" id="pdf" style="margin-right: 10px;" 
+                   href="'.PASTAADMIN.UrlAmigavel::$controller.'/Exportar'.UrlAmigavel::$action.'/'.Valida::GeraParametro('formato/pdf').'" data-original-title="Exportar para PDF" data-placement="left">
+                     PDF <i class="clip-file-pdf"></i>
+                </a>
+                ';  
+            $exporta = true;
+        endif;     
+        if($pesquisa || $exporta):  
+            echo '</div>';
+        endif;
+        echo '</div>';    
     }
     
     
@@ -52,10 +68,12 @@ class Grid {
     }
     
     
-    public function criaGrid() {
-        echo '<table class="table table-striped table-bordered table-hover table-full-width" id="sample_1">
+    public function criaGrid($id = 1) {
+        $this->pesquisaAvancada();
+        echo '<div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover table-full-width" id="sample_'.$id.'">
                 <thead>
-                    <tr>';
+                    <tr style="background-color: #99ccff; color: #000;">';
                     if(is_array(self::$colunas)):
                         foreach (self::$colunas as $value) {
                             echo '<th>'.$value.'</th>';
@@ -67,7 +85,9 @@ class Grid {
     }
     
     public function finalizaGrid() {
-        echo '</tbody></table>';
+        echo '</tbody>
+            </table>
+        </div>';
     }
         
 

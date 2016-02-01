@@ -15,7 +15,6 @@ class Form {
     private static $lado;
     private static $type;
     private static $id;
-    private static $idForm;
     private static $values;
     private static $valor;
     private static $options;
@@ -24,14 +23,18 @@ class Form {
     private static $tamanhoForm;
     private static $tamanho;
     private static $action;
+    public static $idForm;
     public  static $form;
     public  static $botao;
     
 
     
     /**
-     * <b>setClasses:</b> ionicia o formulário e suas configurações
+     * <b>Form da Pesquisa Avançada:</b> ionicia o formulário e suas configurações
      * @param STRING $idform: atribui o ID para o Formulário
+     * @param STRING $action: Ação a realizar a pesquisa e carregar a GRID
+     * @param STRING $botao: Label do Botão
+     * @param STRING $tamanhoForm: Tamanho do Formulário
      */
     function __construct($idform, $action,$botao = "Salvar",$tamanhoForm = 6) {
         self::$idForm            = $idform;
@@ -357,6 +360,23 @@ class Form {
                                             </div>
                                     </div>
                             </div>';
+                 
+             //CAMPO TIPO SIMGLE FILE (SOMENTE PRA UM ARQUIVO)
+             elseif(self::$type == "singlefile"):
+                 self::$form  .=    '<div class="fileupload fileupload-new" data-provides="fileupload">
+                                            <div class="fileupload-new thumbnail" style="width: 150px; height: 150px;">'.(isset(self::$valor[self::$id]) ? Valida::getMiniatura(self::$valor[self::$id], "Pre Carregamento", 150, 150) : Valida::getMiniatura("sem-foto.jpg", "Pre Carregamento", 150, 150)).'
+                                            </div>
+                                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 150px; max-height: 150px; line-height: 20px;"></div>
+                                            <div class="user-edit-image-buttons">
+                                                    <span class="btn btn-dark-grey btn-file"><span class="fileupload-new"><i class="fa fa-folder-open-o"></i> Selecionar Arquivo</span>
+                                                    <span class="fileupload-exists"><i class="fa fa-folder-open-o"></i> Trocar</span>
+                                                            <input type="file" class="file-input '.self::$classes.'" id="'.self::$id.'" name="'.self::$id.'" />
+                                                    </span>
+                                                    <a href="#" class="btn fileupload-exists btn-bricky" data-dismiss="fileupload">
+                                                            <i class="fa fa-trash-o"></i> Remover
+                                                    </a>
+                                            </div>
+                                    </div>';
             
              // CAMPO TIPO RADIO OU CHECKBOX
              elseif(self::$type == "radio" || self::$type == "checkbox"):
@@ -467,7 +487,7 @@ class Form {
                             <form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario">                                                         
                             <div class="col-md-12">'.
                             self::$form
-                    .'<button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.self::$idForm.'" name="'.self::$idForm.'" style="margin-top: 10px;">
+                            .'<button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.self::$idForm.'" name="'.self::$idForm.'" style="margin-top: 10px;">
                                 <span class="ladda-label"> '.self::$botao.' </span>
                                 <i class="fa fa-save"></i>
                                 <span class="ladda-spinner"></span>
@@ -480,7 +500,69 @@ class Form {
                     </div>
                 </form>
              </div>
+             </div>
         </div>';
+           
+        return self::$form;
+    }
+    
+    /**
+     * <b>finalizaForm:</b> Fecha o formulário
+     * @return STRING com o fechamento do FORM.  
+     */
+    public function finalizaFormPesquisaAvancada() {
+        self::$form  =  '<form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario">                                                         
+                            <div class="col-md-12">'.
+                                    self::$form
+                            .'</div>
+                                <button data-style="zoom-out" class="btn btn-success ladda-button" type="submit" value="'.  Form::$idForm.'" name="'.Form::$idForm.'">
+                                    <span class="ladda-label"> Pesquisar </span>
+                                    <i class="fa fa-save"></i>
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                                <button data-style="expand-right" class="btn btn-danger ladda-button" type="reset">
+                                    <span class="ladda-label"> Limpar </span>
+                                    <i class="fa fa-ban"></i>
+                                    <span class="ladda-spinner"></span>
+                                </button>
+                                <button aria-hidden="true" data-dismiss="modal" class="btn btn-light-grey cancelar">
+                                        Fechar
+                                </button>
+                        </form>';
+           
+        return self::$form;
+    }
+    
+    /**
+     * <b>finalizaForm:</b> Fecha o formulário
+     * @return STRING com o fechamento do FORM.  
+     */
+    public function finalizaFormAgenda() {
+        self::$form  =  '<div id="event-management" class="modal fade in modal-overflow" tabindex="-1" role="dialog" aria-hidden="true">
+                            <form action="'.HOME.self::$action.'" role="form" id="'.self::$idForm.'" name="'.self::$idForm.'" method="post"  enctype="multipart/form-data" class="formulario"> 
+                                <div class="modal-header btn-light-grey">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                            &times;
+                                    </button>
+                                    <h4 class="modal-title">Gerenciador de Eventualidades</h4>
+                                </div>
+                                <div class="modal-body">'.
+                                        self::$form
+                                .'</div>
+                            <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success save-event" value="'.Form::$idForm.'" name="'.Form::$idForm.'">
+                                            <i class="fa fa-check"></i> Salvar
+                                    </button>
+                                    <button data-toggle="modal" role="button" class="btn btn-bricky remove-evento no-display" id="" 
+                                        href="#Agenda">
+                                         <i class="fa fa-trash-o"></i> Deletar
+                                     </button>
+                                    <button type="button" data-dismiss="modal" class="btn btn-light-grey">
+                                            Fechar
+                                    </button>
+                            </div>
+                        </form>
+                    </div>';
            
         return self::$form;
     }

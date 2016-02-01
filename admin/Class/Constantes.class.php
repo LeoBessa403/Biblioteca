@@ -8,53 +8,48 @@
  */
 class Constantes {
     
-    const CATEGORIA_TABELA                  = "tb_categoria";
-    const CATEGORIA_CAMPOS                  = "nome";
-    const CATEGORIA_CHAVE_PRIMARIA          = "id_categoria";
+    const USUARIO_TABELA                        = "tb_usuario";
+    const USUARIO_CHAVE_PRIMARIA                = "co_usuario";
     
-    const PROCEDIMENTO_TABELA               = "tb_procedimento";
-    const PROCEDIMENTO_CAMPOS               = "nome,carencia,periodicidade,codigo,id_categoria";
-    const PROCEDIMENTO_CHAVE_PRIMARIA       = "id_procedimento";
+    const USUARIO_PERFIL_TABELA                 = "tb_usuario_perfil";
     
-    const CLIENTE_TABELA                    = "tb_cliente";
-    const CLIENTE_CHAVE_PRIMARIA            = "id_cliente";
+    const PERFIL_TABELA                         = "tb_perfil";
+    const PERFIL_CHAVE_PRIMARIA                 = "co_perfil";
     
-    const RACA_TABELA                       = "tb_raca";
-    const RACA_CAMPOS                       = "raca";
-    const RACA_CHAVE_PRIMARIA               = "id_raca";
+    const PERFIL_FUNCIONALIDADE_TABELA          = "tb_perfil_funcionalidade";
     
-    const CREDENCIADO_TABELA                = "tb_credenciado";
-    const CREDENCIADO_CAMPOS                = "observacao,id_pessoa,id_regiao,horario_abertura,horario_fechamento,funcionamento_de,funcionamento_ate,id_veterinario";
-    const CREDENCIADO_CHAVE_PRIMARIA        = "id_credenciado";
+    const FUNCIONALIDADE_TABELA                 = "tb_funcionalidade";
+    const FUNCIONALIDADE_CHAVE_PRIMARIA         = "co_funcionalidade";
     
-    const PROCEDIMENTO_CREDENCIADO_TABELA   = "tb_procedimento_credenciado";
+    const AUDITORIA_TABELA                      = "tb_auditoria";
+    const AUDITORIA_CHAVE_PRIMARIA              = "co_auditoria";
     
-    const PESSOA_TABELA                     = "tb_pessoa";
-    const PESSOA_CAMPOS                     = "nome_razao,cpf_cnpj,tipo_pessoa,cliente,fantasia";
-    const PESSOA_CHAVE_PRIMARIA             = "id_pessoa";
+    //////////////////// EDITÁVEIS ///////////////////////////
     
-    const DADOS_TABELA                      = "tb_dados";
-    const DADOS_CAMPOS                      = "tel1,tel2,tel3,email,site,tel0800,id_pessoa";
-    const DADOS_CHAVE_PRIMARIA              = "id_dados";
+    const MEMBRO_TABELA                         = "tb_membro";
+    const MEMBRO_CHAVE_PRIMARIA                 = "co_membro";
     
-    const ENDERECO_TABELA                   = "tb_endereco";
-    const ENDERECO_CAMPOS                   = "endereco,complemento,cep,bairro,cidade,id_pessoa";
-    const ENDERECO_CHAVE_PRIMARIA           = "id_endereco";
+    const MEMBRO_RETIRO_TABELA                  = "tb_membro_retiro";
+    const MEMBRO_RETIRO_CHAVE_PRIMARIA          = "co_membro_retiro";
     
-    const FOTO_TABELA                       = "tb_foto";
-    const FOTO_CAMPOS                       = "id_cliente,caminho";
-    const FOTO_CHAVE_PRIMARIA               = "id_foto";
+    const FOTO_TABELA                           = "tb_foto";
+    const FOTO_CHAVE_PRIMARIA                   = "co_foto";
     
-    const PLANO_TABELA                      = "tb_plano";
-    const PLANO_CHAVE_PRIMARIA              = "id_plano";
+    const TAREFA_USUARIO_TABELA                  = "tb_tarefa_perfil";
+    const EVENTO_TABELA                         = "tb_evento";
+    const EVENTO_CHAVE_PRIMARIA                 = "co_evento";
     
-    CONST PROCEDIMENTO_PLANO_TABELA         = "tb_procedimento_plano";
+    const TAREFA_TABELA                         = "tb_tarefa";
+    const TAREFA_CHAVE_PRIMARIA                 = "co_tarefa";
     
-    const REGIAO_TABELA                     = "tb_regiao";
-    const REGIAO_CHAVE_PRIMARIA             = "id_regiao";
+    const CATEGORIA_TABELA                      = "tb_categoria";
+    const CATEGORIA_CHAVE_PRIMARIA              = "co_categoria";
     
-    const VETERINARIO_TABELA                = "tb_veterinario";
-    const VETERINARIO_CAMPOS                = "observacao,id_pessoa,id_regiao,crmv";
-    const VETERINARIO_CHAVE_PRIMARIA        = "id_veterinario";
+    const AGENDA_PERFIL_TABELA                  = "tb_agenda_perfil";
+    const AGENDA_TABELA                         = "tb_agenda";
+    const AGENDA_CHAVE_PRIMARIA                 = "co_agenda";
+    
+    
+    
     
 }

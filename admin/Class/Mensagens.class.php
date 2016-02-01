@@ -8,10 +8,12 @@
  */
 class Mensagens {
 
-    const OK_SALVO                      = "Cadastro Realizado Com Sucesso!";
-    const OK_ATUALIZADO                 = "Cadastro Atualizado Com Sucesso!";
-    const OK_ENVIO_EMAIL                = "Email(s) Enviado(s) Com Sucesso!";
+    const OK_SALVO                          = "Cadastro Realizado Com Sucesso!";
+    const OK_ATUALIZADO                     = "Cadastro Atualizado Com Sucesso!";
+    const OK_ENVIO_EMAIL                    = "Email(s) Enviado(s) Com Sucesso!";
     
-    const ERRO_DELETA_VETERINARIO       = "Não Foi possível a Exclusão!<br>O Veterinário está vincula a algum Credenciado.<br>Favor retirar a vinculação, para excluir esse Registro."; 
+    const MEMBRO_JA_CADASTRADO              = "Não Foi possível o cadastro! Membro Já cadastrado."; 
+    const OK_SALVO_MEMBRO_RETIRO_CARNAVAL   = "Cadastro Realizado com Sucesso! Porem a garantia da vaga somente mediante a PAGAMENTO da taxa de Inscrição. Para a realização do pagamento entrar em contato com (61) 9110-8830 / (61) 8228-6402 / (61) 8634-6115 (Whatsapp Todos)"; 
+    const OK_MEMBRO_RETIRO_LISTA_ESPERA     = "Cadastro Realizado com Sucesso! As vagas do retiro ja ultrapassou o limite,seu cadastro irá para uma lista de espera! Entraremos em contato caso surgir uma vaga."; 
 
 }

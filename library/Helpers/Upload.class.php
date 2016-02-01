@@ -10,7 +10,6 @@ class Upload {
 
     private $File;
     private $Name;
-    private $Send;
 
     /** IMAGE UPLOAD */
     private $Width;
@@ -22,14 +21,18 @@ class Upload {
 
     /** DIRETÓTIOS */
     private $Folder;
-    private static $BaseDir;
+    public static $BaseDir;
 
     /**
      * Verifica e cria o diretório padrão de uploads no sistema!<br>
      * <b>../uploads/</b>
      */
     function __construct() {
-        self::$BaseDir =  PASTAUPLOADS;
+        if(UrlAmigavel::$modulo == ADMIN):
+            self::$BaseDir = PASTAUPLOADS;
+        else:    
+            self::$BaseDir =  "../".PASTAUPLOADS;
+        endif;
         if (!file_exists(self::$BaseDir) && !is_dir(self::$BaseDir)):
             mkdir(self::$BaseDir, 0777);
         endif;
@@ -89,10 +92,10 @@ class Upload {
         $this->Folder = ( (string) $Folder ? $Folder : 'files' );
         $MaxFileSize = ( (int) $MaxFileSize ? $MaxFileSize : 2 );
 
-        $FileAccept = [
+        $FileAccept = array(
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'application/pdf'
-        ];
+        );
 
         if ($this->File['size'] > ($MaxFileSize * (1024 * 1024))):
             $this->Result = false;
@@ -121,10 +124,10 @@ class Upload {
         $this->Folder = ( (string) $Folder ? $Folder : 'medias' );
         $MaxFileSize = ( (int) $MaxFileSize ? $MaxFileSize : 40 );
 
-        $FileAccept = [
+        $FileAccept = array(
             'audio/mp3',
             'video/mp4'
-        ];
+        );
 
         if ($this->File['size'] > ($MaxFileSize * (1024 * 1024))):
             $this->Result = false;
@@ -155,6 +158,13 @@ class Upload {
     public function getError() {
         return $this->Error;
     }
+    /**
+     * <b>Obter Nome da Imagem:</b> 
+     * @return STRING nome da imagem
+     */
+    public function getNameImage() {
+        return $this->Name;
+    }
 
     /*
      * ***************************************
@@ -167,11 +177,12 @@ class Upload {
         $Folder = explode("/", $Folder);
         $pasta = "";
         foreach ($Folder as $value) {
-            $pasta .= "/".$value;
+            $pasta .= $value."/";
             if (!file_exists(self::$BaseDir . $pasta) && !is_dir(self::$BaseDir . $pasta)):
                 mkdir(self::$BaseDir . $pasta, 0777);
             endif;
         }
+        $this->Folder = $pasta;
     }
 
     //Verifica e monta o nome dos arquivos tratando a string!
@@ -212,19 +223,19 @@ class Upload {
                 case 'image/jpg':
                 case 'image/jpeg':
                 case 'image/pjpeg':
-                    imagejpeg($NewImage, self::$BaseDir . $this->Folder . $this->Send . $this->Name,100);
+                    imagejpeg($NewImage, self::$BaseDir . $this->Folder . $this->Name,100);
                     break;
                 case 'image/png':
                 case 'image/x-png':
-                    imagepng($NewImage, self::$BaseDir . $this->Folder . $this->Send . $this->Name);
+                    imagepng($NewImage, self::$BaseDir . $this->Folder . $this->Name);
                     break;
             endswitch;
-
+ 
             if (!$NewImage):
                 $this->Result = false;
                 $this->Error = 'Tipo de arquivo inválido, envie imagens JPG ou PNG!';
             else:
-                $this->Result = $this->Send . $this->Name;
+                $this->Result = $this->Folder . $this->Name;
                 $this->Error = null;
             endif;
 
@@ -235,7 +246,7 @@ class Upload {
 
     //Envia arquivos e mídias
     private function MoveFile() {
-        if (move_uploaded_file($this->File['tmp_name'], self::$BaseDir . $this->Folder. $this->Send . $this->Name)):
+        if (move_uploaded_file($this->File['tmp_name'], self::$BaseDir . $this->Folder. $this->Name)):
             $this->Result = $this->Name;
             $this->Error = null;
         else:

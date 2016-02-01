@@ -1,9 +1,11 @@
 <?php
     require_once 'valida_user.php'; 
-    $url2 = new UrlAmigavel();
+    $back = new Backup();
+    
+    $url = new UrlAmigavel();
     $compara = strstr(UrlAmigavel::$action,'Exporta');
     if($compara != null):
-        $url2->pegaControllerAction();
+        $url->pegaControllerAction();
         exit;
     endif;
 ?>
@@ -44,8 +46,11 @@
                 <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
                
 		<!-- end: MAIN CSS -->
-		<!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
+		<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 		<link rel="stylesheet" href="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+		<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
                 <!-- start: CSS REQUIRED FOR DATAPICKER -->
 		<link rel="stylesheet" href="<?php echo INCLUDES;?>Jcalendar.css">
                 <!-- start: CSS REQUIRED FOR SELECT -->
@@ -73,7 +78,7 @@
 					</button>
 					<!-- end: RESPONSIVE MENU TOGGLER -->
 					<!-- start: LOGO -->
-                                        <a class="navbar-brand" href="<?php echo PASTAADMIN;?>">
+                                        <a class="navbar-brand" href="<?php echo PASTAADMIN;?>Index/Index">
 						<?php echo DESC;?>
 					</a>
 					<!-- end: LOGO -->
@@ -84,18 +89,35 @@
 						<!-- start: USER DROPDOWN -->
 						<li class="dropdown current-user">
 							<a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
-								<i class="fa fa-user"></i>
+                                                            <?php 
+                                                                $us = $_SESSION[SESSION_USER];                                                                    
+                                                                $user = $us->getUser();
+                                                                $fotoPerfil = $user[md5('ds_foto')];
+                                                                if($fotoPerfil == ""):
+                                                                    $sexo = $user[md5('ds_sexo')];
+                                                                    if($sexo == "M"):
+                                                                       $fotoPerfil =  "avatar-homem.jpg";
+                                                                    else:
+                                                                       $fotoPerfil =  "avatar-mulher.jpg";
+                                                                    endif;
+                                                                endif;
+                                                                
+                                                                echo Valida::getMiniatura("usuarios/".$fotoPerfil, $user[md5('no_usuario')], 35, 35, "circle-img"); 
+                                                            ?>
                                                                 <span class="username">
-                                                                    <?php                                                                 
-                                                                           $us = $_SESSION[SESSION_USER];                                                                    
-                                                                           $user = $us->getUser();
-                                                                           echo $user[md5('nome')];                                                              
-
-                                                                      ?>
+                                                                    <?php      
+                                                                        echo $user[md5('no_usuario')];                                                              
+                                                                    ?>
                                                                 </span>
 								<i class="clip-chevron-down"></i>
 							</a>
 							<ul class="dropdown-menu">
+								<li>
+									<a href="<?php echo PASTAADMIN; ?>Usuario/MeuPerfilUsuario">
+										<i class="clip-user-3"></i>
+										&nbsp;Meu Usuário
+									</a>
+								</li>
 								<li>
 									<a href="<?php echo PASTAADMIN;?>login/deslogar/desloga/10">
 										<i class="clip-exit"></i>
@@ -125,7 +147,14 @@
 					<!-- end: MAIN MENU TOGGLER BUTTON -->
 					<!-- start: MAIN NAVIGATION MENU -->
                                         <?php
-                                            $menu = array("Membros"    => array("clip-tree","ListarMembros")
+                                            $menu = array("Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
+                                                          "Tarefa" => array("fa fa-tasks","CadastroTarefa","ListarTarefa"),
+                                                          "Evento" => array("fa fa-list","CadastroEvento","ListarEvento"),
+                                                          "Agenda" => array("fa fa-calendar","Calendario"),
+                                                          "Usuario" => array("fa fa-group","MeuPerfilUsuario","CadastroUsuario","ListarUsuario"),
+                                                          "Perfil" => array("clip-stack-empty","CadastroPerfil","ListarPerfil"),
+                                                          "Funcionalidade" => array("fa fa-outdent","CadastroFuncionalidade","ListarFuncionalidade"),
+                                                          "Auditoria" => array("fa fa-cogs","ListarAuditoria"),
                                                           );
                                             GeraMenu($menu);
                                         ?>
@@ -134,9 +163,7 @@
 				<!-- end: SIDEBAR -->
 			</div>
 			<!-- start: PAGE -->
-			
                                  <?php  
-                                    $url = new UrlAmigavel();
                                     $url->pegaControllerAction();
                                  ?>
 			<!-- end: PAGE -->
@@ -145,7 +172,7 @@
 		<!-- start: FOOTER -->
 		<div class="footer clearfix">
 			<div class="footer-inner">
-				2014 &copy; Leo Bessa Desenvolvimento.
+				<?php echo date("Y");?> &copy; Leo Bessa Desenvolvimento.
 			</div>
 			<div class="footer-items">
 				<span class="go-top"><i class="clip-chevron-up"></i></span>
@@ -168,17 +195,13 @@
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.mask.js"></script>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>jquery.maskMoney.js"></script>
                 <?php echo '<script type="text/javascript">
-                        function servidor_inicial(){    
-                                var home = "'.HOME.'";
-                                return home;
-                        }
-                        function inatividade(){    
-                                var inativo = "'.INATIVO.'";
-                                return inativo;
-                        }
-                        function pasta_upload(){    
-                                var pasta = "'.PASTAUPLOADS.'";
-                                return pasta;
+                        function constantes(){    
+                                var dados = {
+                                    "HOME" : "'.HOME.'",
+                                    "INATIVO" : "'.INATIVO.'",
+                                    "PASTAUPLOADS" : "'.PASTAUPLOADS.'"                                        
+                                    };
+                                return dados;
                         }
                 </script>'; ?>
                 <script type="text/javascript" src="<?php echo INCLUDES;?>validacoes.js"></script>               
@@ -203,6 +226,8 @@
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-easy-pie-chart/jquery.easy-pie-chart.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/fullcalendar/fullcalendar/fullcalendar.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/js/bootstrap-modal.js"></script>
+		<script src="<?php echo PASTAADMIN;?>plugins/bootstrap-modal/js/bootstrap-modalmanager.js"></script>
 		<script src="<?php echo PASTAADMIN;?>js/index.js"></script>
 		
                 <script src="<?php echo PASTAADMIN;?>plugins/select2/select2.min.js"></script>                 
@@ -211,14 +236,33 @@
                 <script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/jquery.dataTables.min.js"></script>
 		<script src="<?php echo PASTAADMIN;?>plugins/DataTables/media/js/DT_bootstrap.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/table-data.js"></script>
+                <script src="<?php echo PASTAADMIN;?>plugins/ckeditor/ckeditor.js"></script>
+		<script src="<?php echo PASTAADMIN;?>plugins/ckeditor/adapters/jquery.js"></script>
                 <script src="<?php echo PASTAADMIN;?>js/Funcoes.js"></script>
+                <script src="<?php echo PASTAADMIN;?>js/FullCalendar.js"></script>
 		<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 		<script>
 			jQuery(document).ready(function() {
                                 Funcoes.init();
-				Main.init();				
+                                <?php
+                                    $session = new Session();
+                                    if($session->CheckSession(ATUALIZADO)):
+                                ?>  
+                                      Funcoes.Sucesso("<?php echo Mensagens::OK_ATUALIZADO;?>");  
+                                <?php        
+                                    endif;
+                                ?>
+                                <?php
+                                    if($session->CheckSession(CADASTRADO)):
+                                ?>  
+                                      Funcoes.Sucesso("<?php echo Mensagens::OK_SALVO;?>");  
+                                <?php        
+                                    endif;
+                                ?>
+                                Main.init();				
                                 TableData.init();
-                                Index.init();                                
+                                Calendar.init();
+                                Index.init(); 
 			});
 		</script>                 
 	</body>
