@@ -8,7 +8,7 @@ function servidor_inicial(){
     if($servidor == "web"){
         $config = array('HOME'=>'http://gejdombosco.com.br/','HOST'=>'cpmy0025.servidorwebfacil.com','USER'=>'gejdombo_user','PASS'=>'Admin101$','DBSA'=>'gejdombo_db');
     }else{
-        $config = array('HOME'=>'http://localhost/gej/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'gej_bd');
+        $config = array('HOME'=>'http://localhost/BrCommerce/','HOST'=>'localhost','USER'=>'root','PASS'=>'','DBSA'=>'BrCommerce');
     }
 
     define('HOME', $config['HOME']);
@@ -23,7 +23,7 @@ function servidor_inicial(){
     //////////////////////////////////////////////
 
     // Título do Site
-    define('DESC', 'WEB GEJ');
+    define('DESC', 'Br Commerce');
     // Tabela de pesquisa de usuário para validação
     define('TABLE_USER', 'tb_usuario');
     // Campo de login na Tabela de pesquisa de usuário para validação
@@ -36,7 +36,7 @@ function servidor_inicial(){
     // (Ex.: cadastrante, administrador, pesquisador) Sepmre separados por (, )
     define('CAMPO_PERFIL', 'ds_perfil');
     // Atribui o nome da Sessão do usuario Logado no sitema
-    define('SESSION_USER', 'user_gej');
+    define('SESSION_USER', 'user_BrCommerce');
     // Tempo de Inativadade Máximo em Minutos, aceito para deslogar do Sistema.
     define('INATIVO', 20);
     // A frequencia em dias para realizar o BACKUP NO BANCO DE DADOS

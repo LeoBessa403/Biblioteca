@@ -7,9 +7,6 @@ class Index{
     public $result;
             
     function Index(){
-        $tarefa = TarefaModel::PesquisaTarefaDetalhada();
-
-        $this->resultTarefa = FuncoesSistema::ValidaTarefa($tarefa);
     }
     
     public static function Logar(){     
