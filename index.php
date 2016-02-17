@@ -1,3 +1,12 @@
 <?php  
-    include './admin/sistema.php';
+    $url = (isset($_GET['url']) && $_GET['url'] != "" ? $_GET['url'] : "web");
+  
+    $url = $url.'/';
+    $url = explode("/", $url);
+
+    if($url[0] == "admin"):
+        include './admin/sistema.php';
+    else:
+        include './web/web.php';
+    endif;
 ?>
