@@ -15,7 +15,7 @@
 	<!--<![endif]-->
 	<!-- start: HEAD -->
 	<head>
-		<title>SITE | GEJ Dom Bosco</title>
+		<title>SITE | <?php echo DESC; ?></title>
 		<!-- start: META -->
 		<!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
 		<meta charset="utf-8" />

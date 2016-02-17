@@ -23,7 +23,7 @@ class Index{
             $senha = base64_encode(base64_encode($senha));
             foreach ($acesso->getResult() as $result):
                 if (($result[CAMPO_USER] == $login) && ($result[CAMPO_PASS] == $senha)):
-                    if ($result["st_situacao"] == "I"):
+                    if ($result["st_status"] == "I"):
                         Redireciona(ADMIN.LOGIN."?o=alerta3");
                         exit();
                     endif;

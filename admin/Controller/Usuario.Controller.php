@@ -36,10 +36,10 @@ class Usuario{
             $dados['no_usuario']    = trim($dados['no_usuario']);
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
-            if(!empty($dados['st_situacao'])):
-                $dados['st_situacao']   = "A";
+            if(!empty($dados['st_status'])):
+                $dados['st_status']   = "A";
             else:
-                $dados['st_situacao']   = "I";
+                $dados['st_status']   = "I";
             endif;
             unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
             
@@ -185,7 +185,7 @@ class Usuario{
             endforeach;
             if($contPerfil):
                 $res[CAMPO_PERFIL] = $meuPerfil2;
-                $res['st_situacao'] = ($res['st_situacao'] == "A" ? "Ativo" : "Inativo");
+                $res['st_status'] = ($res['st_status'] == "A" ? "Ativo" : "Inativo");
             else:
                 $res[CAMPO_PERFIL] = $meuPerfil;
                 $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
@@ -275,7 +275,7 @@ class Usuario{
             
             $checked = "";
             if(!empty($res)):
-                if($res['st_situacao'] == "A"):
+                if($res['st_status'] == "A"):
                     $checked = "checked";
                 endif;
             endif;
@@ -284,7 +284,7 @@ class Usuario{
             $formulario
                 ->setLabel("Status do Usuário")
                 ->setClasses($checked)
-                ->setId("st_situacao")
+                ->setId("st_status")
                 ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
                 ->setType("checkbox")
                 ->setTamanhoInput(4)
@@ -292,7 +292,7 @@ class Usuario{
                 ->CriaInpunt();     
         else:
             $formulario
-                ->setId("st_situacao")
+                ->setId("st_status")
                 ->setClasses("disabilita")
                 ->setTamanhoInput(6)
                 ->setLabel("Status do Usuário")
