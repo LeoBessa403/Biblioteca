@@ -149,9 +149,9 @@ class Usuario{
                           ->setMensagem($Mensagem);
 
                     // Variável para validação de Emails Enviados com Sucesso.
-                    //$EmailEnviado = $email->Enviar();
+                    $EmailEnviado = $email->Enviar();
 
-                    $this->result = true;
+                    $this->result = $EmailEnviado;
                 endif;
             endif;
         endif;  
