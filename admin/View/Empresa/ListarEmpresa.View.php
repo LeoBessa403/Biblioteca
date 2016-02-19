@@ -7,7 +7,7 @@
 								<li>
 									<i class="clip-grid-6"></i>
 									<a href="#">
-										Membros
+										Empresas
 									</a>
 								</li>
 								<li class="active">
@@ -16,7 +16,7 @@
 								
 							</ol>
 							<div class="page-header">
-								<h1>Participantes <small>Listar membros</small></h1>
+								<h1>Empresas <small>Listar Empresas</small></h1>
 							</div>
 							<!-- end: PAGE TITLE & BREADCRUMB -->
 						</div>
@@ -26,33 +26,33 @@
                                                     <div class="panel panel-default">
                                                                 <div class="panel-heading">
 									<i class="fa fa-external-link-square"></i>
-									Membros
+									Empresas
 								</div>
 								<div class="panel-body">    
                                                                         <?php
                                                                             Modal::load(); 
-                                                                            Modal::deletaRegistro("Membros");
-                                                                            Modal::confirmacao("confirma_Membro");
+                                                                            Modal::deletaRegistro("Empresa");
+                                                                            Modal::confirmacao("confirma_Empresa");
                                                                             
-                                                                            $arrColunas = array('Nome','Nascimento','Telefone','Ações');
+                                                                            $arrColunas = array('Empresa','CNPJ / CPF','Responsável','Ações');
                                                                             $grid = new Grid();
                                                                             $grid->setColunasIndeces($arrColunas);
                                                                             $grid->criaGrid();
                                                                              
                                                                             foreach ($result as $res): 
-                                                                                $acao = '<a href="'.PASTAADMIN.'Membros/CadastroMembros/'.Valida::GeraParametro("memb/".$res['co_membro']).'" class="btn btn-primary tooltips" 
+                                                                                $acao = '<a href="'.PASTAADMIN.'Empresa/CadastroEmpresa/'.Valida::GeraParametro("emp/".$res['co_empresa']).'" class="btn btn-primary tooltips" 
                                                                                                data-original-title="Visualizar Registro" data-placement="top">
                                                                                                 <i class="fa fa-clipboard"></i>
                                                                                             </a>
-                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_membro'].'" 
-                                                                                               href="#Membros" data-original-title="Excluir Registro" data-placement="top">
+                                                                                            <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'.$res['co_empresa'].'" 
+                                                                                               href="#Empresa" data-original-title="Excluir Registro" data-placement="top">
                                                                                                 <i class="fa fa-trash-o"></i>
                                                                                             </a>';
-                                                                                $grid->setColunas(strtoupper($res['no_membro']));
-                                                                                $grid->setColunas(Valida::DataShow($res['dt_nascimento'], "d/m/Y"));
-                                                                                $grid->setColunas($res['nu_tel1']);
+                                                                                $grid->setColunas(strtoupper($res['no_empresa']));
+                                                                                $grid->setColunas((!empty($res['nu_cnpj'])? $res['nu_cnpj'] : $res['nu_cpf']));
+                                                                                $grid->setColunas($res['no_responsavel']);
                                                                                 $grid->setColunas($acao,2);
-                                                                                $grid->criaLinha($res['co_membro']);
+                                                                                $grid->criaLinha($res['co_empresa']);
                                                                             endforeach;
                                                                            
                                                                             $grid->finalizaGrid();
