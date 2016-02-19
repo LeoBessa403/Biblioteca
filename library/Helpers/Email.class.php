@@ -30,8 +30,7 @@ class Email {
     function Enviar() {
         
         $compara = strstr(HOME,'localhost');
-        if($compara != null):
-            debug("Aqui",1);
+        if($compara == null):
                 $control = TRUE;
                 $mail = new PHPMailer(true);
                 $mail->IsSMTP();

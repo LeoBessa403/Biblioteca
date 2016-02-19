@@ -118,10 +118,10 @@
             extract((array) $app);
             
            if($erro_404):
-                $arquivo_include = 'View/'.ERRO_404.'.View.php';                
+                $arquivo_include = 'View/Index/'.ERRO_404.'.View.php';                
                 $action = ERRO_404;
            else:
-                $arquivo_include = 'View/'.self::$action.'.View.php';
+                $arquivo_include = 'View/'. self::$controller ."/".self::$action.'.View.php';
                 $action = self::$action;
            endif;
            if (file_exists($arquivo_include) && !is_dir($arquivo_include)):
