@@ -26,14 +26,26 @@ class Constantes {
     
     //////////////////// EDITÁVEIS ///////////////////////////
     
-    const MEMBRO_TABELA                         = "tb_membro";
-    const MEMBRO_CHAVE_PRIMARIA                 = "co_membro";
+    const CONTATO_TABELA                        = "tb_contato";
+    const CONTATO_CHAVE_PRIMARIA                = "co_contato";
     
-    const MEMBRO_RETIRO_TABELA                  = "tb_membro_retiro";
-    const MEMBRO_RETIRO_CHAVE_PRIMARIA          = "co_membro_retiro";
+    const ENDERECO_TABELA                       = "tb_endereco";
+    const ENDERECO_CHAVE_PRIMARIA               = "co_endereco";
     
-    const FOTO_TABELA                           = "tb_foto";
-    const FOTO_CHAVE_PRIMARIA                   = "co_foto";
+    const EMPRESA_TABELA                        = "tb_empresa";
+    const EMPRESA_CHAVE_PRIMARIA                = "co_empresa";
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     const TAREFA_USUARIO_TABELA                  = "tb_tarefa_perfil";
     const EVENTO_TABELA                         = "tb_evento";

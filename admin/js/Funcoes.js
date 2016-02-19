@@ -1,95 +1,29 @@
 var Funcoes = function () {
     var inicio = function () {
 
-               $("#ds_pastoral_ativo").change(function(){
-                   disabilitaCamposRetiro();
-               })
-                
-                
-                // CADASTRO De Retiro de Carnaval
-                function disabilitaCamposRetiro(){ 
-                    if($("#ds_pastoral_ativo").prop('checked')){
-                        $("#ds_pastoral").parent(".form-group").slideDown("slow");
-                    }else{
-                        $("#ds_pastoral").parent(".form-group").slideUp("fast");
-                    }
+              // CADASTRO DE EMPRESA
+                function disabilitaCamposEmpresa(){
+                     if($("#tipo").prop('checked')){
+                         $("#nu_cnpj").attr("disabled",true).val("");
+                         $("#nu_cpf").attr("disabled",false);
+                     }else{
+                         $("#nu_cpf").attr("disabled",true).val("");
+                         $("#nu_cnpj").attr("disabled",false);
+                     }
                 }
 
-                disabilitaCamposRetiro();
-                
-                
-                
-               $("#st_status").change(function(){
-                   disabilitaDtTermino();
-               })
-                
-                // CADASTRO de Tarefa
-                function disabilitaDtTermino(){ 
-                    if($("#st_status").val() == "C"){
-                        $("#dt_conclusao").parent().parent(".form-group").slideDown("slow");
-                        $("#dt_conclusao").addClass("ob");
-                    }else if($("#st_status").val() == "I"){
-                        $("#dt_conclusao").parent().parent(".form-group").slideUp("fast").removeClass("has-error");
-                        $("#dt_conclusao").removeClass("ob");
-                    }else{
-                        $("#dt_conclusao").parent().parent(".form-group").slideUp("fast").removeClass("has-error");
-                        $("#dt_conclusao").val("").removeClass("ob");
-                    }
-                       
-                }
+                disabilitaCamposEmpresa();
 
-                disabilitaDtTermino();
-                
-                // Valida data Para Maiores de 14 Anos
-                $("#dt_nascimento").change(function(){
-                    var ano   = $(this).val().substring(6,10);
-                    var Hoje     = new Date();
-                    var AnoAtual = Hoje.getFullYear();
-                    var novoAno  = AnoAtual - 14;
-                    
-                    if(ano > novoAno){
-                        Funcoes.Alerta(Funcoes.MSG01);
-                        $(this).val("");
-                        $(".dt_nascimento").parent(".form-group").addClass('has-error').removeClass('has-success');
-                        $('span#dt_nascimento-info').text("Para maiores de 14 anos");
-                        return false;
-                    }
-               })
-               
-               function verificaTodas(){
-                    var todas = true;
-                    $(".funcionalidade").each(function() { 
-                        if(!$(this).prop('checked')){    
-                            todas = false;
-                        } 
-                    });
-                    if(todas){
-                        $(".todas").prop("checked",true);
-                    }else{
-                        $(".todas").prop("checked",false);
-                    }
-               }
-                
-                
-                // VINCULAÇÃO FUNCIONALIDADES AO PERFIL // BOTÃO TODOS FUNCIONALIDADES
-                $(".todas").change(function(){
-                    if($(this).prop('checked')){                 
-                        $(".funcionalidade").each(function() {
-                            $(this).prop("checked",true);
-                        }); 
-                    }else{
-                        $(".funcionalidade").each(function() {
-                            $(this).prop("checked",false);
-                        }); 
-                    }
-                });
-
-                // VINCULAÇÃO DA FUNCIONALIDADE AO PERFIL
-                $(".funcionalidade").change(function(){ 
-                    verificaTodas();
+                // CADASTRO DE EMPRESA
+                $("#tipo").change(function(){
+                    $('#nu_cpf,#nu_cnpj').parent(".form-group").removeClass('has-success has-error');
+                    $('span#nu_cpf-info').text("").append('<span class="help-block" id="cpf-info"><i class="fa fa-info-circle"></i> Caso seja Pessoa Física</span>');
+                    $('span#nu_cnpj-info').text("").append('<span class="help-block" id="cpf-info"><i class="fa fa-info-circle"></i> Caso seja Pessoa Jurídica</span>');
+                    disabilitaCamposEmpresa();
                 });
                 
-                verificaTodas();
+                
+                
     };
     return {
         init: function () {

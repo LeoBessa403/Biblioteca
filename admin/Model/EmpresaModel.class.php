@@ -4,14 +4,14 @@ class EmpresaModel{
     
     public static function CadastraEmpresa(array $dados){
         $cadastro = new Cadastra();
-        $cadastro->Cadastrar(Constantes::MEMBRO_TABELA, $dados);
+        $cadastro->Cadastrar(Constantes::EMPRESA_TABELA, $dados);
         return $cadastro->getUltimoIdInserido();
     }
     
     public static function PesquisaEmpresa(array $dados){
         $pesquisa = new Pesquisa();
         $where = $pesquisa->getClausula($dados);
-        $pesquisa->Pesquisar(Constantes::MEMBRO_TABELA,$where);
+        $pesquisa->Pesquisar(Constantes::EMPRESA_TABELA,$where);
         return $pesquisa->getResult();
     }
     

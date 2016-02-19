@@ -9,221 +9,247 @@ class Empresa{
     function Index(){
     }
     
-    function CadastroEmpresa(){
-       
-        $id = "cadastroMembro";
+    function ListarEmpresaPesquisaAvancada(){
         
-        if(!empty($_POST[$id])):
-             if(Valida::ValPerfil("EditarMembros")):
-                $dados = $_POST; 
-                $dados['dt_cadastro']   = Valida::DataAtualBanco();
-                $dados['dt_nascimento'] = explode(' ', Valida::DataDB($dados['dt_nascimento'])); 
-                $dados['dt_nascimento'] = $dados['dt_nascimento'][0]; 
-                $dados['st_trabalha']   = FuncoesSistema::retornoCheckbox((isset($dados['st_trabalha'])) ? $dados['st_trabalha'] : null); 
-                $dados['st_estuda']     = FuncoesSistema::retornoCheckbox((isset($dados['st_estuda'])) ? $dados['st_estuda'] : null); 
-                $dados['st_batizado']   = FuncoesSistema::retornoCheckbox((isset($dados['st_batizado'])) ? $dados['st_batizado'] : null); 
-                $dados['st_eucaristia'] = FuncoesSistema::retornoCheckbox((isset($dados['st_eucaristia'])) ? $dados['st_eucaristia'] : null); 
-                $dados['st_crisma']     = FuncoesSistema::retornoCheckbox((isset($dados['st_crisma'])) ? $dados['st_crisma'] : null); 
-                $dados['st_status']     = "N"; 
-                $dados['no_membro']     = trim($dados['no_membro']);
-
-//                debug($dados,1);
-                
-                $pesquisa['dt_nascimento'] = $dados['dt_nascimento'];
-                $pesquisa['no_membro']     = $dados['no_membro'];
-
-                $membro = CadastroModel::PesquisaMembroJaCadastrado($pesquisa);
-
-                if($membro):
-                    $this->resultAlt = true;
-                else:
-                    $session = new Session();
-                    $idMembro = $dados["co_membro"];
-                    unset($dados[$id],$dados["co_membro"]);                     
-                    $ok = MembrosModel::AtualizaMembros($dados,$idMembro);
-                    if($ok):
-                         $session->setSession(ATUALIZADO, "OK");
-                    endif;
-                endif;
-                $this->ListarMembros();
-                UrlAmigavel::$action = "ListarMembros";
-            endif;          
-        endif;  
+        $id = "pesquisaEmpresa";
+         
+        $formulario = new Form($id, "admin/Empresa/ListarEmpresa", "Pesquisa", 12);
         
-        $idMembro = UrlAmigavel::PegaParametro("memb");
-        $res = array();
-        if($idMembro && Valida::ValPerfil("EditarMembros")):
-            $res = MembrosModel::PesquisaUmMembro($idMembro);
-            $res = $res[0];
-            $res["dt_nascimento"] = Valida::DataShow($res["dt_nascimento"],"d/m/Y"); 
-        endif;   
-        
-        $formulario = new Form($id, "admin/Membros/CadastroMembros");
-        $formulario->setValor($res);
+            
+        $label_options = array("" => "Todos","S" => "Ativo","N" => "Inativo");
+        $formulario
+            ->setLabel("Status do Membro")
+            ->setId("st_status")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt(); 
         
         $formulario
             ->setId("no_membro")
-            ->setIcon("clip-user-6") 
-            ->setClasses("ob nome")
-            ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
-            ->setLabel("Nome Completo")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Membro")
+            ->setInfo("Pode ser Parte do nome")    
+            ->CriaInpunt();
+      
+        echo $formulario->finalizaFormPesquisaAvancada(); 
+
+    }
+    
+    function ListarEmpresa(){     
+        $dados = array();
+        if(!empty($_POST)):
+            $dados = array(
+                'st_status' => $_POST['st_status'][0],
+                'no_membro' => $_POST['no_membro']
+            );
+        endif;
+        $this->result = EmpresaModel::PesquisaEmpresa($dados);
+    }
+    
+    function CadastroEmpresa(){
+       
+        $id = "cadastroEmpresa";
+        
+        if(!empty($_POST[$id])):
+                $dados = $_POST; 
+        
+                $contato    = FuncoesSistema::GetDadosContato($dados);
+                $endereco   = FuncoesSistema::GetDadosEndereco($dados);
+                
+                $idContato = ContatoModel::CadastraContato($contato);
+                $idEndereco = EnderecoModel::CadastraEndereco($endereco);
+               
+                $empresa['no_empresa']                          = $dados['no_empresa'];
+                $empresa['no_fantasia']                         = $dados['no_fantasia'];
+                $empresa['nu_cpf']                              = (!empty($dados['nu_cpf'])? $dados['nu_cpf'] : '');
+                $empresa['nu_cnpj']                             = (!empty($dados['nu_cnpj'])? $dados['nu_cnpj'] : '');
+                $empresa['ds_observacao']                       = $dados['ds_observacao'];
+                $empresa['no_responsavel']                      = $dados['no_responsavel'];
+                $empresa['dt_cadastro']                         = Valida::DataAtualBanco('Y-m-d');
+                $empresa[Constantes::CONTATO_CHAVE_PRIMARIA]    = $idContato;
+                $empresa[Constantes::ENDERECO_CHAVE_PRIMARIA]   = $idEndereco;
+        
+                    $idEmpresa = EmpresaModel::CadastraEmpresa($empresa);
+                    if($idEmpresa):
+                        $session = new Session();
+                        $session->setSession(CADASTRADO, "OK");
+                    endif;
+                    
+                    
+                $this->ListarEmpresa();
+                UrlAmigavel::$action = "ListarEmpresa";
+        endif;  
+        
+        $idEmpresa = UrlAmigavel::PegaParametro("emp");
+        $res = array();
+        if($idEmpresa):
+            $res = EmpresaModel::PesquisaUmMembro($idEmpresa);
+            $res = $res[0];
+        endif;   
+        
+        $formulario = new Form($id, "admin/Empresa/CadastroEmpresa");
+        $formulario->setValor($res);
+        
+        
+        $checked = "";
+        if(!empty($res)):
+            $res["id_regiao"] = $res["estado"];
+            if($res['tipo_pessoa'] == "F"):
+                $checked = "checked";
+                $res['cpf'] = $res['cpf_cnpj'];
+                $res['cnpj'] = "";
+            else:
+                $checked = "";
+                $res['cnpj'] = $res['cpf_cnpj'];
+                $res['cpf'] = "";
+            endif;
+        endif;
+        
+        $label_options = array("Física","Jurídica","azul","verde");
+        $formulario
+            ->setClasses($checked)
+            ->setId("tipo")
+            ->setType("checkbox")
+            ->setLabel("Tipo de Pessoa")
+            ->setOptions($label_options)
+            ->CriaInpunt();      
+        
+        $formulario
+                ->setId("no_empresa")
+            ->setLabel("Nome ou Razão Social")
+            ->setIcon("clip-user-3")
+            ->setClasses("ob")
+            ->setInfo("Nome da pessoa ou Razão social da empresa")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("no_fantasia")
+            ->setLabel("Nome Fantasia")
+            ->setClasses("ob")
+            ->setInfo("Nome do Estabelecimento")
+            ->CriaInpunt();
+        
+        $formulario
+            ->setId("no_responsavel")
+            ->setLabel("Nome do Responsável")
+            ->setClasses("ob")
+            ->setInfo("Responsável do Estabelecimento")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("nu_cpf")
+            ->setLabel("CPF") 
+            ->setTamanhoInput(6)
+            ->setClasses("cpf")
+            ->setInfo("Caso seja Pessoa Física")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("nu_cnpj")
+            ->setLabel("CNPJ")  
+            ->setTamanhoInput(6)
+            ->setClasses("cnpj")
+            ->setInfo("Caso seja Pessoa Jurídica")
             ->CriaInpunt();
       
         $formulario
-            ->setId("ds_endereco")
+            ->setId("ds_endereco")  
+            ->setIcon("clip-home-2") 
             ->setClasses("ob")
             ->setLabel("Endereço")
             ->CriaInpunt();
-      
+
         $formulario
-            ->setId("ds_bairro")
+            ->setId("ds_complemento")
+            ->setLabel("Complemento") 
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("ds_bairro")  
             ->setLabel("Bairro")
             ->CriaInpunt();
-      
+
+        $formulario
+            ->setId("no_cidade")   
+            ->setLabel("Cidade")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("nu_cep")
+            ->setLabel("CEP")  
+            ->setTamanhoInput(4)
+            ->setClasses("cep")
+            ->CriaInpunt();
+
+        $options = array("DF"=>"Distrito Federal","AC"=>"Acre", "AL"=>"Alagoas", "AM"=>"Amazonas", "AP"=>"Amapá","BA"=>"Bahia","CE"=>"Ceará","ES"=>"Espírito Santo","GO"=>"Goiás","MA"=>"Maranhão","MT"=>"Mato Grosso","MS"=>"Mato Grosso do Sul","MG"=>"Minas Gerais","PA"=>"Pará","PB"=>"Paraíba","PR"=>"Paraná","PE"=>"Pernambuco","PI"=>"Piauí","RJ"=>"Rio de Janeiro","RN"=>"Rio Grande do Norte","RO"=>"Rondônia","RS"=>"Rio Grande do Sul","RR"=>"Roraima","SC"=>"Santa Catarina","SE"=>"Sergipe","SP"=>"São Paulo","TO"=>"Tocantins");
+        $formulario
+            ->setTamanhoInput(8)
+            ->setId("sg_uf")
+            ->setType("select") 
+            ->setClasses("ob")
+            ->setLabel("Estado")
+            ->setOptions($options)
+            ->CriaInpunt();
+
         $formulario
             ->setId("nu_tel1")
-            ->setTamanhoInput(6)
+            ->setTamanhoInput(4)   
+            ->setIcon("fa fa-phone")
+            ->setLabel("Telefone Comercial")
             ->setClasses("tel ob")
-            ->setIcon("fa-mobile fa")    
-            ->setLabel("Telefone Celular 1")
             ->CriaInpunt();
-      
+
         $formulario
             ->setId("nu_tel2")
-            ->setTamanhoInput(6)
-            ->setIcon("clip-phone-2")
+            ->setTamanhoInput(4) 
+            ->setIcon("fa fa-mobile-phone")
+            ->setLabel("Telefone Celular")
             ->setClasses("tel")
-            ->setLabel("Telefone Celular 2")
             ->CriaInpunt();
-      
+
         $formulario
             ->setId("nu_tel3")
-            ->setTamanhoInput(6)
-            ->setIcon("clip-phone-hang-up")
-            ->setClasses("tel")
+            ->setTamanhoInput(4) 
+            ->setIcon("fa fa-phone")
             ->setLabel("Telefone Residencial")
+            ->setClasses("tel")
             ->CriaInpunt();
-        
-        $formulario
-            ->setId("dt_nascimento")
-            ->setIcon("clip-calendar-3")
-            ->setTamanhoInput(6)
-            ->setClasses("data ob")
-            ->setLabel("Nascimento")
-            ->CriaInpunt();
-      
-      
-        $formulario
-            ->setId("no_responsavel") 
-            ->setClasses("nome")
-            ->setLabel("Nome do Respónsavel")
-            ->CriaInpunt();
-      
-        $formulario
-            ->setId("ds_email")
-            ->setIcon("fa-envelope fa")
-            ->setClasses("email")
-            ->setLabel("Email")
-            ->CriaInpunt();
-        
-        $checked = "";
-        if(!empty($res)):
-            if($res['st_trabalha'] == "S"):
-                $checked = "checked";
-            endif;
-        endif;
-        
-        $label_options = array("Sim","Não","azul","verde");
-        $formulario
-            ->setLabel("Trabalha?")
-            ->setClasses($checked)
-            ->setTamanhoInput(6)
-            ->setId("st_trabalha")
-            ->setType("checkbox")
-            ->setOptions($label_options)
-            ->CriaInpunt();  
-        
-        $checked = "";
-        if(!empty($res)):
-            if($res['st_estuda'] == "S"):
-                $checked = "checked";
-            endif;
-        endif;
-        
-        $label_options = array("Sim","Não","azul","verde");
-        $formulario
-            ->setLabel("Estuda?")
-            ->setClasses($checked)
-            ->setTamanhoInput(6)
-            ->setId("st_estuda")
-            ->setType("checkbox")
-            ->setOptions($label_options)
-            ->CriaInpunt();
-        
-        $checked = "";
-        if(!empty($res)):
-            if($res['st_batizado'] == "S"):
-                $checked = "checked";
-            endif;
-        endif;
-        
-        $label_options = array("Sim","Não","azul","verde");
-        $formulario
-            ->setLabel("Batizado?")
-            ->setClasses($checked)
-            ->setTamanhoInput(4)
-            ->setId("st_batizado")
-            ->setType("checkbox")
-            ->setOptions($label_options)
-            ->CriaInpunt();
-        
-        $checked = "";
-        if(!empty($res)):
-            if($res['st_eucaristia'] == "S"):
-                $checked = "checked";
-            endif;
-        endif;
-        
-        $label_options = array("Sim","Não","azul","verde");
-        $formulario
-            ->setLabel("Já fiz 1° Comunhão?")
-            ->setTamanhoInput(4)
-            ->setClasses($checked)
-            ->setId("st_eucaristia")
-            ->setType("checkbox")
-            ->setOptions($label_options)
-            ->CriaInpunt(); 
-        
-        $checked = "";
-        if(!empty($res)):
-            if($res['st_crisma'] == "S"):
-                $checked = "checked";
-            endif;
-        endif;
-        
-        $label_options = array("Sim","Não","azul","verde");
-        $formulario
-            ->setLabel("Crismado?")
-            ->setClasses($checked)
-            ->setTamanhoInput(4)
-            ->setId("st_crisma")
-            ->setType("checkbox")
-            ->setOptions($label_options)
-            ->CriaInpunt(); 
 
-      
         $formulario
+            ->setId("nu_tel_0800")
+            ->setTamanhoInput(4)
+            ->setIcon("fa fa-phone")
+            ->setLabel("0800 da Empresa")
+            ->setClasses("tel0800")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("ds_site")
+            ->setTamanhoInput(8) 
+            ->setIcon("clip-earth-2")
+            ->setLabel("Site")
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("ds_email")  
+            ->setIcon("clip-archive")
+            ->setLabel("E-mail")
+            ->setClasses("email")
+            ->CriaInpunt();
+         
+        $formulario
+            ->setId("ds_observacao")
+            ->setLabel("Conteúdo")
             ->setType("textarea")
-            ->setId("ds_conhecimento")
-            ->setLabel("Como Conheceu o GEJ")
+            ->setClasses("ckeditor")
             ->CriaInpunt();
       
               
-        if($idMembro):
+        if($idEmpresa):
             $formulario
                 ->setType("hidden")
-                ->setId("co_membro")
-                ->setValues($idMembro)
+                ->setId("co_empresa")
+                ->setValues($idEmpresa)
                 ->CriaInpunt();
           endif;
         
