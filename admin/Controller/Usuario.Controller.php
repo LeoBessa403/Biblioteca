@@ -28,6 +28,7 @@ class Usuario{
         $user = $us->getUser();
         $perfis = $user[md5(CAMPO_PERFIL)];
         $perfil = explode(",", $perfis);
+        $session = new Session();
          
         if(!empty($_POST[$id])):
 
@@ -36,10 +37,10 @@ class Usuario{
             $dados['no_usuario']    = trim($dados['no_usuario']);
             $dados['ds_code']       = base64_encode(base64_encode($dados['ds_senha']));
             $idCoUsuario            = (isset($dados['co_usuario']) ? $dados['co_usuario'] : null);
-            if(!empty($dados['st_status'])):
-                $dados['st_status']   = "A";
+            if(!empty($dados['st_situacao'])):
+                $dados['st_situacao']   = "A";
             else:
-                $dados['st_status']   = "I";
+                $dados['st_situacao']   = "I";
             endif;
             unset($dados[$id],$dados["ds_senha_confirma"],$dados['co_usuario']);  
             
@@ -120,6 +121,7 @@ class Usuario{
                         $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idCoUsuario;
                         $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
                         UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                         $session->setSession(ATUALIZADO, "OK");
                     endforeach;
                 else:
                     $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
@@ -132,6 +134,7 @@ class Usuario{
                         $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
                         $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis; 
                         UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+                        $session->setSession(CADASTRADO, "OK");
                     endforeach;
                 endif;
                 if($idUsuario):
@@ -148,10 +151,10 @@ class Usuario{
                           ->setTitulo("Email de  Teste Pra Todos")
                           ->setMensagem($Mensagem);
 
-                    // Variável para validação de Emails Enviados com Sucesso.
+                    //Variável para validação de Emails Enviados com Sucesso.
                     $EmailEnviado = $email->Enviar();
 
-                    $this->result = $EmailEnviado;
+                    $this->result = true;
                 endif;
             endif;
         endif;  
@@ -185,7 +188,7 @@ class Usuario{
             endforeach;
             if($contPerfil):
                 $res[CAMPO_PERFIL] = $meuPerfil2;
-                $res['st_status'] = ($res['st_status'] == "A" ? "Ativo" : "Inativo");
+                $res['st_situacao'] = ($res['st_situacao'] == "A" ? "Ativo" : "Inativo");
             else:
                 $res[CAMPO_PERFIL] = $meuPerfil;
                 $res[CAMPO_PERFIL] = explode(",",$res[CAMPO_PERFIL]);
@@ -275,7 +278,7 @@ class Usuario{
             
             $checked = "";
             if(!empty($res)):
-                if($res['st_status'] == "A"):
+                if($res['st_situacao'] == "A"):
                     $checked = "checked";
                 endif;
             endif;
@@ -284,7 +287,7 @@ class Usuario{
             $formulario
                 ->setLabel("Status do Usuário")
                 ->setClasses($checked)
-                ->setId("st_status")
+                ->setId("st_situacao")
                 ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
                 ->setType("checkbox")
                 ->setTamanhoInput(4)
@@ -292,7 +295,7 @@ class Usuario{
                 ->CriaInpunt();     
         else:
             $formulario
-                ->setId("st_status")
+                ->setId("st_situacao")
                 ->setClasses("disabilita")
                 ->setTamanhoInput(6)
                 ->setLabel("Status do Usuário")
