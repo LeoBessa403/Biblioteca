@@ -90,37 +90,37 @@ endif;
     <meta content="" name="author"/>
     <!-- end: META -->
     <!-- start: MAIN CSS -->
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>fonts/style.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/main-responsive.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/main.css">
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/iCheck/skins/all.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/iCheck/skins/all.css">
     <link rel="stylesheet"
-          href="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
+          href="<?= PASTAADMIN; ?>plugins/bootstrap-colorpalette/css/bootstrap-colorpalette.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/theme_navy.css" type="text/css" id="skin_color">
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/css3-animation/animations.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/css3-animation/animations.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/print.css" type="text/css" media="print"/>
     <!--[if IE 7]>
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/font-awesome/css/font-awesome-ie7.min.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 
     <!-- end: MAIN CSS -->
     <!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
     <!-- start: CSS REQUIRED FOR DATAPICKER -->
     <link rel="stylesheet" href="<?= INCLUDES; ?>Jcalendar.css">
     <!-- start: CSS REQUIRED FOR SELECT -->
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/select2/select2.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/select2/select2.css">
     <!-- start: CSS REQUIRED FOR UPLOAD -->
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
     <!-- start: CSS REQUIRED FOR CHECK -->
     <link rel="stylesheet"
-          href="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
+          href="<?= PASTAADMIN; ?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
     <!-- start: CSS REQUIRED FOR CHECK -->
-    <link rel="stylesheet" href="<?= INCLUDES_PLUGINS; ?>plugins/DataTables/media/css/DT_bootstrap.css">
+    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/DataTables/media/css/DT_bootstrap.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="shortcut icon" href="favicon.ico"/>
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
@@ -250,16 +250,16 @@ endif;
     <?php Modal::aviso("alerta"); ?>
     <!-- start: MAIN JAVASCRIPTS -->
     <!--[if lt IE 9]>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/respond.min.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/excanvas.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/respond.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/excanvas.min.js"></script>
     <script type="text/javascript" src="<?= INCLUDES;?>jquery-1.10.2.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
     <script src="<?= INCLUDES; ?>jquery-2.0.3.js"></script>
     <!--<![endif]-->
-    <!--<script src="<?= INCLUDES_PLUGINS; ?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
+    <!--<script src="<?= PASTAADMIN; ?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
     <script src="<?= INCLUDES; ?>jquery-ui.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?= INCLUDES; ?>gera-grafico.js"></script>
     <script type="text/javascript" src="<?= INCLUDES; ?>jquery.mask.js"></script>
     <script type="text/javascript" src="<?= INCLUDES; ?>jquery.maskMoney.js"></script>
@@ -274,23 +274,23 @@ endif;
                         }
                 </script>'; ?>
     <script type="text/javascript" src="<?= INCLUDES; ?>validacoes.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/blockUI/jquery.blockUI.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/iCheck/jquery.icheck.min.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-    <!--<script src="<?php //echo INCLUDES_PLUGINS; ?>plugins/less/less-1.5.0.min.js"></script>-->
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/jquery-cookie/jquery.cookie.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/blockUI/jquery.blockUI.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/iCheck/jquery.icheck.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
+    <!--<script src="<?php //echo PASTAADMIN; ?>plugins/less/less-1.5.0.min.js"></script>-->
+    <script src="<?= PASTAADMIN; ?>plugins/jquery-cookie/jquery.cookie.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
     <script src="<?= PASTAADMIN; ?>js/main.js"></script>
     <script src="<?= PASTAADMIN; ?>js/ui-animation.js"></script>
     <!-- end: MAIN JAVASCRIPTS -->
     <!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
 
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/select2/select2.min.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>
-    <script src="<?= INCLUDES_PLUGINS; ?>plugins/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/select2/select2.min.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.js"></script>
+    <script src="<?= PASTAADMIN; ?>plugins/bootstrap-switch/static/js/bootstrap-switch.min.js"></script>
     <script src="<?= PASTAADMIN; ?>js/Funcoes.js"></script>
     <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
     <script>
