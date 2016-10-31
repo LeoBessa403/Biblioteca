@@ -15,13 +15,16 @@ class Index{
         $senha = Valida::LimpaVariavel($_POST['senha']);
         
          if(($login != "") && ($senha != "")):
-            $acesso = new Pesquisa();
-         
-            $acesso->Pesquisar(TABLE_USER);
+
+             $usuarioModel = new UsuarioModel();
+             $result = $usuarioModel->PesquisaTodos();
+
+             debug($result,1);
+
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
-            foreach ($acesso->getResult() as $result):
+            foreach ($result->getResult() as $result):
                 if (($result[CAMPO_USER] == $login) && ($result[CAMPO_PASS] == $senha)):
                     if ($result["st_status"] == "I"):
                         Redireciona(ADMIN.LOGIN."?o=alerta3");

@@ -1,6 +1,14 @@
 <?php
 
-class UsuarioModel{
+class UsuarioModel extends AbstractModel{
+    
+    private $Tabela = Constantes::USUARIO_TABELA;
+    private $Entidade = Constantes::USUARIO_ENTIDADE;
+
+    public function __construct()
+    {
+        parent::__construct($this->Tabela,$this->Entidade);
+    }
     
     public static function CadastraUsuario(array $dados){
         $cadastro = new Cadastra();

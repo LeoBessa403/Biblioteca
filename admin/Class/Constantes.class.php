@@ -10,6 +10,7 @@ class Constantes {
     
     const USUARIO_TABELA                        = "tb_usuario";
     const USUARIO_CHAVE_PRIMARIA                = "co_usuario";
+    const USUARIO_ENTIDADE                      = "UsuarioEntidade";
     
     const USUARIO_PERFIL_TABELA                 = "tb_usuario_perfil";
     
