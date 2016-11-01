@@ -7,7 +7,9 @@
  */
 class UsuarioEntidade
 {
-
+    const TABELA = "tb_usuario";
+    const ENTIDADE = "UsuarioEntidade";
+    
     private $co_usuario;
     private $ds_login;
     private $ds_senha;
@@ -17,37 +19,24 @@ class UsuarioEntidade
     private $co_cliente_sistema;
     private $co_imagem;
 
-    public function __construct(array $Usuarios)
+    /**
+     * @return mixed
+     */
+    public static function getCampos()
     {
-        $obj = array();
-        if (!empty($Usuarios)) {
-            foreach ($Usuarios as $usuario) {
-                if($usuario['co_usuario']){
-                    $this->setCoUsuario($usuario['co_usuario']);
-                }
-                if($usuario['ds_login']){
-                    $this->setDsLogin($usuario['ds_login']);
-                }
-                if($usuario['ds_senha']){
-                    $this->setDsSenha($usuario['ds_senha']);
-                }
-                if($usuario['ds_code']){
-                    $this->setDsCode($usuario['ds_code']);
-                }
-                if($usuario['st_status']){
-                    $this->setStStatus($usuario['st_status']);
-                }
-                if($usuario['dt_cadastro']){
-                    $this->setDtCadastro($usuario['dt_cadastro']);
-                }
-                $obj[$this->getCoUsuario()] = $this;
-                debug($obj);
-            }
-            return $obj;
-        }
-        return $obj;
+        $campos= [
+            Constantes::CO_USUARIO,
+            Constantes::DS_LOGIN,
+            Constantes::DS_SENHA,
+            Constantes::DS_CODE,
+            Constantes::ST_STATUS,
+            Constantes::DT_CADASTRO,
+            Constantes::CO_CLIENTE_SISTEMA,
+            Constantes::CO_IMAGEM
+        ];
+        return $campos;
     }
-
+    
     /**
      * @return mixed
      */

@@ -17,20 +17,18 @@ class Index{
          if(($login != "") && ($senha != "")):
 
              $usuarioModel = new UsuarioModel();
-             $result = $usuarioModel->PesquisaTodos();
-
-             debug($result,1);
+             $resultado = $usuarioModel->PesquisaTodos();
 
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
-            foreach ($result->getResult() as $result):
-                if (($result[CAMPO_USER] == $login) && ($result[CAMPO_PASS] == $senha)):
-                    if ($result["st_status"] == "I"):
+            foreach ($resultado as $result):
+                if (($result->getDsLogin() == $login) && ($result->getDsCode() == $senha)):
+                    if ($result->getStStatus() == "I"):
                         Redireciona(ADMIN.LOGIN."?o=alerta3");
                         exit();
                     endif;
-                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result["co_usuario"]);
+                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result->getCoUsuario());
                     $cont = false;
                     $meuPerfil = "";
                     foreach ($perfis as $resUser):
@@ -40,8 +38,8 @@ class Index{
                         $meuPerfil .= $resUser["co_perfil"];
                         $cont = true;
                     endforeach;
-                    $result[CAMPO_PERFIL] = $meuPerfil;
-                    $user = $result; 
+//                    $result[CAMPO_PERFIL] = $meuPerfil;
+                    $user = $result;
                     break;
                 endif;
             endforeach;
