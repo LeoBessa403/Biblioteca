@@ -9,7 +9,7 @@ class UsuarioEntidade
 {
     const TABELA = "tb_usuario";
     const ENTIDADE = "UsuarioEntidade";
-    
+
     private $co_usuario;
     private $ds_login;
     private $ds_senha;
@@ -18,13 +18,14 @@ class UsuarioEntidade
     private $dt_cadastro;
     private $co_cliente_sistema;
     private $co_imagem;
+    private $co_pessoa;
 
     /**
      * @return mixed
      */
     public static function getCampos()
     {
-        $campos= [
+        $campos = [
             Constantes::CO_USUARIO,
             Constantes::DS_LOGIN,
             Constantes::DS_SENHA,
@@ -32,11 +33,23 @@ class UsuarioEntidade
             Constantes::ST_STATUS,
             Constantes::DT_CADASTRO,
             Constantes::CO_CLIENTE_SISTEMA,
-            Constantes::CO_IMAGEM
+            Constantes::CO_IMAGEM,
+            Constantes::CO_PESSOA
         ];
         return $campos;
     }
     
+    /**
+     * @return mixed
+     */
+    public static function getRelacionamentos()
+    {
+        $relacionamentos = [
+            PessoaEntidade::TABELA => 1
+        ];
+        return $relacionamentos;
+    }
+
     /**
      * @return mixed
      */
@@ -163,6 +176,22 @@ class UsuarioEntidade
     public function setCoImagem($co_imagem)
     {
         $this->co_imagem = $co_imagem;
+    }
+
+    /**
+     * @return PessoaEntidade
+     */
+    public function getCoPessoa()
+    {
+        return $this->co_pessoa;
+    }
+
+    /**
+     * @param PessoaEntidade $pessoa
+     */
+    public function setCoPessoa(PessoaEntidade $pessoa)
+    {
+        $this->co_pessoa = $pessoa;
     }
 
 
