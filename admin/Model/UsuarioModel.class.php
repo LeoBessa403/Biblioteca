@@ -4,7 +4,7 @@ class UsuarioModel extends AbstractModel
 {
     public function __construct()
     {
-        parent::__construct(UsuarioEntidade::TABELA, UsuarioEntidade::ENTIDADE);
+        parent::__construct(UsuarioEntidade::TABELA, UsuarioEntidade::ENTIDADE, UsuarioEntidade::CHAVE);
     }
 
     public static function CadastraUsuario(array $dados)

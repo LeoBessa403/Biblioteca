@@ -9,6 +9,7 @@ class UsuarioEntidade
 {
     const TABELA = "tb_usuario";
     const ENTIDADE = "UsuarioEntidade";
+    const CHAVE = Constantes::CO_USUARIO;
 
     private $co_usuario;
     private $ds_login;
@@ -38,14 +39,20 @@ class UsuarioEntidade
         ];
         return $campos;
     }
-    
+
     /**
      * @return mixed
      */
     public static function getRelacionamentos()
     {
         $relacionamentos = [
-            PessoaEntidade::TABELA => 1
+            Constantes::CO_PESSOA => array(
+                'Tabela' => PessoaEntidade::TABELA,
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Chave' => PessoaEntidade::CHAVE,
+                'Tipo' => 1,
+                'Campos' => PessoaEntidade::getCampos(),
+            )
         ];
         return $relacionamentos;
     }
@@ -179,7 +186,7 @@ class UsuarioEntidade
     }
 
     /**
-     * @return PessoaEntidade
+     * @return mixed
      */
     public function getCoPessoa()
     {
@@ -187,9 +194,9 @@ class UsuarioEntidade
     }
 
     /**
-     * @param PessoaEntidade $pessoa
+     * @param mixed $pessoa
      */
-    public function setCoPessoa(PessoaEntidade $pessoa)
+    public function setCoPessoa($pessoa)
     {
         $this->co_pessoa = $pessoa;
     }

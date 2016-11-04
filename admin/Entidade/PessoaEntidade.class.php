@@ -9,6 +9,7 @@ class PessoaEntidade
 {
     const TABELA = "tb_pessoa";
     const ENTIDADE = "PessoaEntidade";
+    const CHAVE = Constantes::CO_PESSOA;
 
     private $co_pessoa;
     private $nu_cpf;
