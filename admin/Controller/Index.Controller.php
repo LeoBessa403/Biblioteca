@@ -21,7 +21,6 @@ class Index
 
             $usuarioModel = new UsuarioModel();
             $resultado = $usuarioModel->PesquisaTodos();
-            debug($resultado);
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
@@ -31,22 +30,23 @@ class Index
                         Redireciona(ADMIN . LOGIN . "?o=alerta3");
                         exit();
                     endif;
-                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result->getCoUsuario());
-                    $cont = false;
-                    $meuPerfil = "";
-                    foreach ($perfis as $resUser):
-                        if ($cont):
-                            $meuPerfil .= ",";
-                        endif;
-                        $meuPerfil .= $resUser["co_perfil"];
-                        $cont = true;
-                    endforeach;
-//                    $result[CAMPO_PERFIL] = $meuPerfil;
-                    $user = $result;
+//                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result->getCoUsuario());
+//                    $cont = false;
+//                    $meuPerfil = "";
+//                    foreach ($perfis as $resUser):
+//                        if ($cont):
+//                            $meuPerfil .= ",";
+//                        endif;
+//                        $meuPerfil .= $resUser["co_perfil"];
+//                        $cont = true;
+//                    endforeach;
+////                    $result[CAMPO_PERFIL] = $meuPerfil;
+//                    $user = $result;
+                        debug($result);
                     break;
                 endif;
             endforeach;
-
+            debug("aqui");
             if ($user != ""):
                 $user["session_id"] = session_id();
                 $user["ultimo_acesso"] = strtotime(Valida::DataDB(Valida::DataAtual()));

@@ -13,8 +13,10 @@ class Constantes
     const CO_CONTATO = "co_contato";
     const CO_ENDERECO = "co_endereco";
     const CO_IMAGEM = "co_imagem";
+    const CO_PERFIL = "co_perfil";
     const CO_PESSOA = "co_pessoa";
     const CO_USUARIO = "co_usuario";
+    const CO_USUARIO_PERFIL = "co_usuario_perfil";
     const DS_BAIRRO = "ds_bairro";
     const DS_CODE = "ds_code";
     const DS_COMPLEMENTO = "ds_complemento";
