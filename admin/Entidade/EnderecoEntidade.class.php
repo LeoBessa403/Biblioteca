@@ -1,25 +1,23 @@
 <?php
 
 /**
- * Usuario.Entidade [ ENTIDADE ]
+ * Endereco.Entidade [ ENTIDADE ]
  *
  * @copyright (c) 2016, Leo Bessa
  */
-class UsuarioEntidade
+class EnderecoEntidade
 {
-    const TABELA = "tb_usuario";
-    const ENTIDADE = "UsuarioEntidade";
-    const CHAVE = Constantes::CO_USUARIO;
+    const TABELA = "tb_endereco";
+    const ENTIDADE = "EnderecoEntidade";
+    const CHAVE = Constantes::CO_ENDERECO;
 
-    private $co_usuario;
-    private $ds_login;
-    private $ds_senha;
-    private $ds_code;
-    private $st_status;
-    private $dt_cadastro;
-    private $co_cliente_sistema;
-    private $co_imagem;
-    private $co_pessoa;
+    private $co_endereco;
+    private $ds_endereco;
+    private $ds_complemento;
+    private $ds_bairro;
+    private $nu_cep;
+    private $no_cidade;
+    private $sg_uf;
 
     /**
      * @return mixed
@@ -27,15 +25,13 @@ class UsuarioEntidade
     public static function getCampos()
     {
         $campos = [
-            Constantes::CO_USUARIO,
-            Constantes::DS_LOGIN,
-            Constantes::DS_SENHA,
-            Constantes::DS_CODE,
-            Constantes::ST_STATUS,
-            Constantes::DT_CADASTRO,
-            Constantes::CO_CLIENTE_SISTEMA,
-            Constantes::CO_IMAGEM,
-            Constantes::CO_PESSOA
+            Constantes::CO_ENDERECO,
+            Constantes::DS_ENDERECO,
+            Constantes::DS_COMPLEMENTO,
+            Constantes::DS_BAIRRO,
+            Constantes::NU_CEP,
+            Constantes::NO_CIDADE,
+            Constantes::SG_UF
         ];
         return $campos;
     }
@@ -43,160 +39,115 @@ class UsuarioEntidade
     /**
      * @return mixed
      */
-    public static function getRelacionamentos()
+    public function getCoEndereco()
     {
-        $relacionamentos = [
-            Constantes::CO_PESSOA => array(
-                'Entidade' => PessoaEntidade::ENTIDADE,
-                'Tipo' => 1
-            )
-        ];
-        return $relacionamentos;
+        return $this->co_endereco;
+    }
+
+    /**
+     * @param mixed $co_endereco
+     */
+    public function setCoEndereco($co_endereco)
+    {
+        $this->co_endereco = $co_endereco;
     }
 
     /**
      * @return mixed
      */
-    public function getCoUsuario()
+    public function getDsEndereco()
     {
-        return $this->co_usuario;
+        return $this->ds_endereco;
     }
 
     /**
-     * @param mixed $co_usuario
+     * @param mixed $ds_endereco
      */
-    public function setCoUsuario($co_usuario)
+    public function setDsEndereco($ds_endereco)
     {
-        $this->co_usuario = $co_usuario;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDsLogin()
-    {
-        return $this->ds_login;
-    }
-
-    /**
-     * @param mixed $ds_login
-     */
-    public function setDsLogin($ds_login)
-    {
-        $this->ds_login = $ds_login;
+        $this->ds_endereco = $ds_endereco;
     }
 
     /**
      * @return mixed
      */
-    public function getDsSenha()
+    public function getDsComplemento()
     {
-        return $this->ds_senha;
+        return $this->ds_complemento;
     }
 
     /**
-     * @param mixed $ds_senha
+     * @param mixed $ds_complemento
      */
-    public function setDsSenha($ds_senha)
+    public function setDsComplemento($ds_complemento)
     {
-        $this->ds_senha = $ds_senha;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDsCode()
-    {
-        return $this->ds_code;
-    }
-
-    /**
-     * @param mixed $ds_code
-     */
-    public function setDsCode($ds_code)
-    {
-        $this->ds_code = $ds_code;
+        $this->ds_complemento = $ds_complemento;
     }
 
     /**
      * @return mixed
      */
-    public function getStStatus()
+    public function getDsBairro()
     {
-        return $this->st_status;
+        return $this->ds_bairro;
     }
 
     /**
-     * @param mixed $st_status
+     * @param mixed $ds_bairro
      */
-    public function setStStatus($st_status)
+    public function setDsBairro($ds_bairro)
     {
-        $this->st_status = $st_status;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDtCadastro()
-    {
-        return $this->dt_cadastro;
-    }
-
-    /**
-     * @param mixed $dt_cadastro
-     */
-    public function setDtCadastro($dt_cadastro)
-    {
-        $this->dt_cadastro = $dt_cadastro;
+        $this->ds_bairro = $ds_bairro;
     }
 
     /**
      * @return mixed
      */
-    public function getCoClienteSistema()
+    public function getNuCep()
     {
-        return $this->co_cliente_sistema;
+        return $this->nu_cep;
     }
 
     /**
-     * @param mixed $co_cliente_sistema
+     * @param mixed $nu_cep
      */
-    public function setCoClienteSistema($co_cliente_sistema)
+    public function setNuCep($nu_cep)
     {
-        $this->co_cliente_sistema = $co_cliente_sistema;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCoImagem()
-    {
-        return $this->co_imagem;
-    }
-
-    /**
-     * @param mixed $co_imagem
-     */
-    public function setCoImagem($co_imagem)
-    {
-        $this->co_imagem = $co_imagem;
+        $this->nu_cep = $nu_cep;
     }
 
     /**
      * @return mixed
      */
-    public function getCoPessoa()
+    public function getNoCidade()
     {
-        return $this->co_pessoa;
+        return $this->no_cidade;
     }
 
     /**
-     * @param mixed $pessoa
+     * @param mixed $no_cidade
      */
-    public function setCoPessoa($pessoa)
+    public function setNoCidade($no_cidade)
     {
-        $this->co_pessoa = $pessoa;
+        $this->no_cidade = $no_cidade;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getSgUf()
+    {
+        return $this->sg_uf;
+    }
+
+    /**
+     * @param mixed $sg_uf
+     */
+    public function setSgUf($sg_uf)
+    {
+        $this->sg_uf = $sg_uf;
+    }
+
+    
 
 }

@@ -51,6 +51,10 @@ class PessoaEntidade
             Constantes::CO_CONTATO => array(
                 'Entidade' => ContatoEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+            Constantes::CO_ENDERECO => array(
+                'Entidade' => EnderecoEntidade::ENTIDADE,
+                'Tipo' => 1,
             )
         ];
         return $relacionamentos;
