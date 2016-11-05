@@ -48,7 +48,7 @@ class UsuarioEntidade
         $relacionamentos = [
             Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 1
             )
         ];
         return $relacionamentos;

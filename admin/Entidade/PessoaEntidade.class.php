@@ -49,11 +49,8 @@ class PessoaEntidade
     {
         $relacionamentos = [
             Constantes::CO_CONTATO => array(
-                'Tabela' => ContatoEntidade::TABELA,
                 'Entidade' => ContatoEntidade::ENTIDADE,
-                'Chave' => ContatoEntidade::CHAVE,
                 'Tipo' => 1,
-                'Campos' => ContatoEntidade::getCampos(),
             )
         ];
         return $relacionamentos;
