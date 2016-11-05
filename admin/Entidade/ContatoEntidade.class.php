@@ -15,7 +15,7 @@ class ContatoEntidade
     private $nu_tel1;
     private $nu_tel2;
     private $nu_tel3;
-    private $nu_tel0800;
+    private $nu_tel4;
     private $ds_email;
     private $ds_site;
 
@@ -29,7 +29,7 @@ class ContatoEntidade
             Constantes::NU_TEL1,
             Constantes::NU_TEL2,
             Constantes::NU_TEL3,
-            Constantes::NU_TEL0800,
+            Constantes::NU_TEL4,
             Constantes::DS_EMAIL,
             Constantes::DS_SITE
         ];
@@ -111,17 +111,17 @@ class ContatoEntidade
     /**
      * @return mixed
      */
-    public function getNuTel0800()
+    public function getNuTel4()
     {
-        return $this->nu_tel0800;
+        return $this->nu_tel4;
     }
 
     /**
-     * @param mixed $nu_tel0800
+     * @param mixed $nu_tel4
      */
-    public function setNuTel0800($nu_tel0800)
+    public function setNuTel4($nu_tel4)
     {
-        $this->nu_tel0800 = $nu_tel0800;
+        $this->nu_tel4 = $nu_tel4;
     }
 
     /**

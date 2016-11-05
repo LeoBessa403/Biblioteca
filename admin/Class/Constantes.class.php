@@ -28,7 +28,7 @@ class Constantes
     const NU_TEL1 = "nu_tel1";
     const NU_TEL2 = "nu_tel2";
     const NU_TEL3 = "nu_tel3";
-    const NU_TEL0800 = "nu_tel0800";
+    const NU_TEL4 = "nu_tel4";
     const ST_SEXO = "st_sexo";
     const ST_ESTADO_CIVIL = "st_estado_civil";
     const ST_STATUS = "st_status";

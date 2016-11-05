@@ -29,6 +29,7 @@ class PessoaEntidade
     {
         $campos = [
             Constantes::CO_PESSOA,
+            Constantes::NO_PESSOA,
             Constantes::NU_CPF,
             Constantes::NU_RG,
             Constantes::DT_NASCIMENTO,
@@ -36,8 +37,7 @@ class PessoaEntidade
             Constantes::DT_CADASTRO,
             Constantes::ST_ESTADO_CIVIL,
             Constantes::CO_CONTATO,
-            Constantes::CO_ENDERECO,
-            Constantes::NO_PESSOA
+            Constantes::CO_ENDERECO
         ];
         return $campos;
     }
@@ -49,11 +49,11 @@ class PessoaEntidade
     {
         $relacionamentos = [
             Constantes::CO_CONTATO => array(
-                'Tabela' => PessoaEntidade::TABELA,
-                'Entidade' => PessoaEntidade::ENTIDADE,
-                'Chave' => PessoaEntidade::CHAVE,
+                'Tabela' => ContatoEntidade::TABELA,
+                'Entidade' => ContatoEntidade::ENTIDADE,
+                'Chave' => ContatoEntidade::CHAVE,
                 'Tipo' => 1,
-                'Campos' => PessoaEntidade::getCampos(),
+                'Campos' => ContatoEntidade::getCampos(),
             )
         ];
         return $relacionamentos;

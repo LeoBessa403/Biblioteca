@@ -1,5 +1,5 @@
 ﻿
-INSERT INTO `tb_contato` (`co_contato`, `nu_tel1`, `nu_tel2`, `nu_tel3`, `nu_tel_0800`, `ds_email`, `ds_site`) VALUES
+INSERT INTO `tb_contato` (`co_contato`, `nu_tel1`, `nu_tel2`, `nu_tel3`, `nu_tel4`, `ds_email`, `ds_site`) VALUES
 (1, '61993274991', '6130826060', NULL, NULL, 'leonardomcbessa@gmail.com', NULL);
 
 
