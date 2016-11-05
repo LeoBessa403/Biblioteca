@@ -45,6 +45,23 @@ class PessoaEntidade
     /**
      * @return mixed
      */
+    public static function getRelacionamentos()
+    {
+        $relacionamentos = [
+            Constantes::CO_CONTATO => array(
+                'Tabela' => PessoaEntidade::TABELA,
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Chave' => PessoaEntidade::CHAVE,
+                'Tipo' => 1,
+                'Campos' => PessoaEntidade::getCampos(),
+            )
+        ];
+        return $relacionamentos;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getCoPessoa()
     {
         return $this->co_pessoa;
