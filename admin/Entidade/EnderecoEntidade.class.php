@@ -39,6 +39,14 @@ class EnderecoEntidade
     /**
      * @return mixed
      */
+    public static function getRelacionamentos()
+    {
+        return array();
+    }
+
+    /**
+     * @return mixed
+     */
     public function getCoEndereco()
     {
         return $this->co_endereco;

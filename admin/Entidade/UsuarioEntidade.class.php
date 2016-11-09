@@ -49,6 +49,10 @@ class UsuarioEntidade
             Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+            Constantes::CO_USUARIO_PERFIL => array(
+                'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+                'Tipo' => "N",
             )
         ];
         return $relacionamentos;
