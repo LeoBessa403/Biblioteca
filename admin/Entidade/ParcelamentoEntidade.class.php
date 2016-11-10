@@ -23,6 +23,37 @@ class ParcelamentoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PARCELAMENTO,
+			Constantes::NU_PARCELA,
+			Constantes::NU_VALOR_PARCELA,
+			Constantes::NU_VALOR_PARCELA_PAGO,
+			Constantes::DT_VENCIMENTO,
+			Constantes::DT_VENCIMENTO_PAGO,
+			Constantes::DS_OBSERVACAO,
+			Constantes::CO_PAGAMENTO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_PAGAMENTO => array(
+                'Entidade' => PagamentoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_parcelamento
      */
 	public function getCoParcelamento()

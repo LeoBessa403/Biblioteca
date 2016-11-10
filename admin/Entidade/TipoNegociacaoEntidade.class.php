@@ -18,6 +18,28 @@ class TipoNegociacaoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_TIPO_NEGOCIACAO,
+			Constantes::NO_TIPO_NEGOCIACAO,
+			Constantes::SG_TIPO_NEGOCIACAO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_tipo_negociacao
      */
 	public function getCoTipoNegociacao()

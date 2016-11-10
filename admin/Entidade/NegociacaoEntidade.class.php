@@ -23,6 +23,53 @@ class NegociacaoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_NEGOCIACAO,
+			Constantes::DT_CADASTRO,
+			Constantes::DS_OBSERVACAO,
+			Constantes::CO_CLIENTE,
+			Constantes::CO_FORNECEDOR,
+			Constantes::CO_USUARIO,
+			Constantes::CO_TIPO_NEGOCIACAO,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CLIENTE => array(
+                'Entidade' => ClienteEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_FORNECEDOR => array(
+                'Entidade' => FornecedorEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_TIPO_NEGOCIACAO => array(
+                'Entidade' => TipoNegociacaoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_negociacao
      */
 	public function getCoNegociacao()

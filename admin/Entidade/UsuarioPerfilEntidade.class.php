@@ -18,6 +18,36 @@ class UsuarioPerfilEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_USUARIO_PERFIL,
+			Constantes::CO_USUARIO,
+			Constantes::CO_PERFIL,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PERFIL => array(
+                'Entidade' => PerfilEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_usuario_perfil
      */
 	public function getCoUsuarioPerfil()

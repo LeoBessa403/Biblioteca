@@ -20,6 +20,34 @@ class UnidadeVendaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_UNIDADE_VENDA,
+			Constantes::NO_UNIDADE_VENDA,
+			Constantes::SG_UNIDADE_VENDA,
+			Constantes::ST_STATUS,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_unidade_venda
      */
 	public function getCoUnidadeVenda()

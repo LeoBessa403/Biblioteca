@@ -20,6 +20,34 @@ class PacoteEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PACOTE,
+			Constantes::NO_PACOTE,
+			Constantes::NU_VALOR,
+			Constantes::ST_STATUS,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_pacote
      */
 	public function getCoPacote()

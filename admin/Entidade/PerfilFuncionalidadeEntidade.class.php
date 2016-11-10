@@ -18,6 +18,36 @@ class PerfilFuncionalidadeEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PERFIL_FUNCIONALIDADE,
+			Constantes::CO_PERFIL,
+			Constantes::CO_FUNCIONALIDADE,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_PERFIL => array(
+                'Entidade' => PerfilEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_FUNCIONALIDADE => array(
+                'Entidade' => FuncionalidadeEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_perfil_funcionalidade
      */
 	public function getCoPerfilFuncionalidade()

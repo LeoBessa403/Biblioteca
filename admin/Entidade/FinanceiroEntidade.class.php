@@ -23,6 +23,37 @@ class FinanceiroEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_FINANCEIRO,
+			Constantes::NU_PARCELA,
+			Constantes::NU_VALOR_PARCELA,
+			Constantes::NU_VALOR_PARCELA_PAGO,
+			Constantes::DT_VENCIMENTO,
+			Constantes::DT_VENCIMENTO_PAGO,
+			Constantes::DS_OBSERVACAO,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_financeiro
      */
 	public function getCoFinanceiro()

@@ -17,6 +17,27 @@ class TipoCategoriaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_TIPO_CATEGORIA,
+			Constantes::DS_TIPO_CATEGORIA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_tipo_categoria
      */
 	public function getCoTipoCategoria()

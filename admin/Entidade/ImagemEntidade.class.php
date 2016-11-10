@@ -17,6 +17,27 @@ class ImagemEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_IMAGEM,
+			Constantes::DS_CAMINHO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_imagem
      */
 	public function getCoImagem()

@@ -24,6 +24,46 @@ class UsuarioEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_USUARIO,
+			Constantes::DS_LOGIN,
+			Constantes::DS_SENHA,
+			Constantes::DS_CODE,
+			Constantes::ST_STATUS,
+			Constantes::DT_CADASTRO,
+			Constantes::CO_CLIENTE_SISTEMA,
+			Constantes::CO_IMAGEM,
+			Constantes::CO_PESSOA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_IMAGEM => array(
+                'Entidade' => ImagemEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_usuario
      */
 	public function getCoUsuario()

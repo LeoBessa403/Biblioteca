@@ -21,6 +21,39 @@ class CategoriaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_CATEGORIA,
+			Constantes::NO_CATEGORIA,
+			Constantes::NU_LUCRO,
+			Constantes::ST_STATUS,
+			Constantes::CO_TIPO_CATEGORIA,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_TIPO_CATEGORIA => array(
+                'Entidade' => TipoCategoriaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_categoria
      */
 	public function getCoCategoria()

@@ -22,6 +22,32 @@ class EnderecoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_ENDERECO,
+			Constantes::DS_ENDERECO,
+			Constantes::DS_COMPLEMENTO,
+			Constantes::DS_BAIRRO,
+			Constantes::NU_CEP,
+			Constantes::NO_CIDADE,
+			Constantes::SG_UF,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_endereco
      */
 	public function getCoEndereco()

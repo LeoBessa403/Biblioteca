@@ -26,6 +26,48 @@ class EmpresaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_EMPRESA,
+			Constantes::NO_EMPRESA,
+			Constantes::NO_FANTASIA,
+			Constantes::DT_CADASTRO,
+			Constantes::NU_CNPJ,
+			Constantes::NU_INSC_ESTADUAL,
+			Constantes::DS_OBSERVACAO,
+			Constantes::ST_STATUS,
+			Constantes::CO_CONTATO,
+			Constantes::CO_ENDERECO,
+			Constantes::CO_PESSOA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CONTATO => array(
+                'Entidade' => ContatoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_ENDERECO => array(
+                'Entidade' => EnderecoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_empresa
      */
 	public function getCoEmpresa()

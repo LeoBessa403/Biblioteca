@@ -25,6 +25,43 @@ class PessoaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PESSOA,
+			Constantes::NU_CPF,
+			Constantes::NO_PESSOA,
+			Constantes::NU_RG,
+			Constantes::DT_CADASTRO,
+			Constantes::DT_NASCIMENTO,
+			Constantes::ST_SEXO,
+			Constantes::ST_ESTADO_CIVIL,
+			Constantes::CO_ENDERECO,
+			Constantes::CO_CONTATO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_ENDERECO => array(
+                'Entidade' => EnderecoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CONTATO => array(
+                'Entidade' => ContatoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_pessoa
      */
 	public function getCoPessoa()

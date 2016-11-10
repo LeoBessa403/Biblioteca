@@ -25,6 +25,43 @@ class AuditoriaEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_AUDITORIA,
+			Constantes::NO_TABELA,
+			Constantes::DT_REALIZADO,
+			Constantes::NO_OPERACAO,
+			Constantes::DS_ITEM_ANTERIOR,
+			Constantes::DS_ITEM_ATUAL,
+			Constantes::CO_REGISTRO,
+			Constantes::DS_PERFIL_USUARIO,
+			Constantes::CO_USUARIO,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_auditoria
      */
 	public function getCoAuditoria()

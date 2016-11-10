@@ -27,6 +27,49 @@ class FuncionarioEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_FUNCIONARIO,
+			Constantes::DS_CARGO,
+			Constantes::DT_ADMISSAO,
+			Constantes::DT_DEMISSAO,
+			Constantes::DT_CADASTRO,
+			Constantes::NU_CARTEIRA,
+			Constantes::NU_SALARIO,
+			Constantes::NU_HORAS,
+			Constantes::ST_STATUS,
+			Constantes::CO_IMAGEM,
+			Constantes::CO_CLIENTE_SISTEMA,
+			Constantes::CO_PESSOA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_IMAGEM => array(
+                'Entidade' => ImagemEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_funcionario
      */
 	public function getCoFuncionario()

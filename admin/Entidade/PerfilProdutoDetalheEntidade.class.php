@@ -19,6 +19,37 @@ class PerfilProdutoDetalheEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PERFIL_PRODUTO_DETALHE,
+			Constantes::CO_PRODUTO_DETALHE,
+			Constantes::CO_PERFIL,
+			Constantes::NU_DESCONTO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_PRODUTO_DETALHE => array(
+                'Entidade' => ProdutoDetalheEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PERFIL => array(
+                'Entidade' => PerfilEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_perfil_produto_detalhe
      */
 	public function getCoPerfilProdutoDetalhe()

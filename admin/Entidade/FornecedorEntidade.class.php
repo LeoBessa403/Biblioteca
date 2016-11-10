@@ -23,6 +23,49 @@ class FornecedorEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_FORNECEDOR,
+			Constantes::DS_OBSERVACAO,
+			Constantes::DT_CADASTRO,
+			Constantes::ST_STATUS,
+			Constantes::CO_REPRESENTANTE,
+			Constantes::CO_CLIENTE_SISTEMA,
+			Constantes::CO_PESSOA,
+			Constantes::CO_EMPRESA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_REPRESENTANTE => array(
+                'Entidade' => RepresentanteEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_EMPRESA => array(
+                'Entidade' => EmpresaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_fornecedor
      */
 	public function getCoFornecedor()

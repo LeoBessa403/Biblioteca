@@ -23,6 +23,41 @@ class PagamentoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PAGAMENTO,
+			Constantes::NU_TOTAL,
+			Constantes::NU_VALOR_PAGO,
+			Constantes::NU_PARCELAS,
+			Constantes::TP_SITUACAO,
+			Constantes::DS_OBSERVACAO,
+			Constantes::CO_NEGOCIACAO,
+			Constantes::CO_TIPO_PAGAMENTO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_NEGOCIACAO => array(
+                'Entidade' => NegociacaoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_TIPO_PAGAMENTO => array(
+                'Entidade' => TipoPagamentoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_pagamento
      */
 	public function getCoPagamento()

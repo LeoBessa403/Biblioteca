@@ -18,6 +18,28 @@ class TipoPagamentoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_TIPO_PAGAMENTO,
+			Constantes::DS_TIPO_PAGAMENTO,
+			Constantes::SG_TIPO_PAGAMENTO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_tipo_pagamento
      */
 	public function getCoTipoPagamento()

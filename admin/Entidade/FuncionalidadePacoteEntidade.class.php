@@ -18,6 +18,36 @@ class FuncionalidadePacoteEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_FUNCIONALIDADE_PACOTE,
+			Constantes::CO_FUNCIONALIDADE,
+			Constantes::CO_PACOTE,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_FUNCIONALIDADE => array(
+                'Entidade' => FuncionalidadeEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_PACOTE => array(
+                'Entidade' => PacoteEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_funcionalidade_pacote
      */
 	public function getCoFuncionalidadePacote()

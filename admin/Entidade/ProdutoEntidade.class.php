@@ -26,6 +26,52 @@ class ProdutoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PRODUTO,
+			Constantes::NO_PRODUTO,
+			Constantes::NU_ESTOQUE,
+			Constantes::NU_CODIGO,
+			Constantes::DS_MARCA,
+			Constantes::DT_CADASTRO,
+			Constantes::ST_STATUS,
+			Constantes::CO_CATEGORIA,
+			Constantes::CO_UNIDADE_VENDA,
+			Constantes::CO_IMAGEM,
+			Constantes::CO_CLIENTE_SISTEMA,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_CATEGORIA => array(
+                'Entidade' => CategoriaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_UNIDADE_VENDA => array(
+                'Entidade' => UnidadeVendaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_IMAGEM => array(
+                'Entidade' => ImagemEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_produto
      */
 	public function getCoProduto()

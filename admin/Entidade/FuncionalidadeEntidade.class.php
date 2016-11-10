@@ -19,6 +19,29 @@ class FuncionalidadeEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_FUNCIONALIDADE,
+			Constantes::NO_FUNCIONALIDADE,
+			Constantes::DS_ROTA,
+			Constantes::ST_STATUS,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_funcionalidade
      */
 	public function getCoFuncionalidade()

@@ -22,6 +22,32 @@ class ContatoEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_CONTATO,
+			Constantes::NU_TEL1,
+			Constantes::NU_TEL2,
+			Constantes::NU_TEL3,
+			Constantes::NU_TEL4,
+			Constantes::DS_EMAIL,
+			Constantes::DS_SITE,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_contato
      */
 	public function getCoContato()

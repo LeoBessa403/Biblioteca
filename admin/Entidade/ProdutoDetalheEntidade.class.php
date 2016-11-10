@@ -23,6 +23,41 @@ class ProdutoDetalheEntidade
 
 
 	/**
+     * @return $campos
+     */
+	public static function getCampos() {
+    	$campos = [
+			Constantes::CO_PRODUTO_DETALHE,
+			Constantes::NU_ESTOQUE_BAIXO,
+			Constantes::NU_PRECO,
+			Constantes::NU_LUCRO,
+			Constantes::NU_DESCONTO_MAXIMO,
+			Constantes::DT_CADASTRO,
+			Constantes::CO_PRODUTO,
+			Constantes::CO_USUARIO,
+		];
+    	return $campos;
+    }
+
+	/**
+     * @return $relacionamentos
+     */
+	public static function getRelacionamentos() {
+    	$relacionamentos = [
+			Constantes::CO_PRODUTO => array(
+                'Entidade' => ProdutoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+		];
+    	return $relacionamentos;
+    }
+
+
+	/**
      * @return $co_produto_detalhe
      */
 	public function getCoProdutoDetalhe()
