@@ -23,6 +23,8 @@ class EmpresaEntidade
 	private $co_contato;
 	private $co_endereco;
 	private $co_pessoa;
+	private $co_fornecedor;
+	private $co_cliente_sistema;
 
 
 	/**
@@ -60,6 +62,14 @@ class EmpresaEntidade
             ),
 			Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_FORNECEDOR => array(
+                'Entidade' => FornecedorEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_CLIENTE_SISTEMA => array(
+                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -241,6 +251,38 @@ class EmpresaEntidade
 	public function setCoPessoa($co_pessoa)
     {
         return $this->co_pessoa = $co_pessoa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoFornecedor()
+    {
+        return $this->co_fornecedor;
+    }
+
+    /**
+     * @param mixed $co_fornecedor
+     */
+    public function setCoFornecedor($co_fornecedor)
+    {
+        $this->co_fornecedor = $co_fornecedor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoClienteSistema()
+    {
+        return $this->co_cliente_sistema;
+    }
+
+    /**
+     * @param mixed $co_cliente_sistema
+     */
+    public function setCoClienteSistema($co_cliente_sistema)
+    {
+        $this->co_cliente_sistema = $co_cliente_sistema;
     }
 
 }

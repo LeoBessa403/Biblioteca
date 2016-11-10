@@ -16,6 +16,8 @@ class FuncionalidadeEntidade
 	private $no_funcionalidade;
 	private $ds_rota;
 	private $st_status;
+	private $co_perfil_funcionalidade;
+	private $co_funcionalidade_pacote;
 
 
 	/**
@@ -36,6 +38,14 @@ class FuncionalidadeEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
+				'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
+			Constantes::CO_FUNCIONALIDADE_PACOTE => array(
+				'Entidade' => FuncionalidadePacoteEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }
@@ -104,5 +114,37 @@ class FuncionalidadeEntidade
     {
         return $this->st_status = $st_status;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoPerfilFuncionalidade()
+	{
+		return $this->co_perfil_funcionalidade;
+	}
+
+	/**
+	 * @param mixed $co_perfil_funcionalidade
+	 */
+	public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+	{
+		$this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoFuncionalidadePacote()
+	{
+		return $this->co_funcionalidade_pacote;
+	}
+
+	/**
+	 * @param mixed $co_funcionalidade_pacote
+	 */
+	public function setCoFuncionalidadePacote($co_funcionalidade_pacote)
+	{
+		$this->co_funcionalidade_pacote = $co_funcionalidade_pacote;
+	}
 
 }

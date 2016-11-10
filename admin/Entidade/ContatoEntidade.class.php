@@ -13,15 +13,17 @@ class ContatoEntidade
 	const CHAVE = Constantes::CO_CONTATO;
 
 	private $co_contato;
-	private $nu_tel1;
-	private $nu_tel2;
-	private $nu_tel3;
-	private $nu_tel4;
-	private $ds_email;
-	private $ds_site;
+    private $nu_tel1;
+    private $nu_tel2;
+    private $nu_tel3;
+    private $nu_tel4;
+    private $ds_email;
+    private $ds_site;
+    private $co_pessoa;
+    private $co_empresa;
 
 
-	/**
+    /**
      * @return $campos
      */
 	public static function getCampos() {
@@ -42,6 +44,14 @@ class ContatoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+            Constantes::CO_EMPRESA => array(
+                'Entidade' => EmpresaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+            Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
 		];
     	return $relacionamentos;
     }
@@ -157,6 +167,38 @@ class ContatoEntidade
 	public function setDsSite($ds_site)
     {
         return $this->ds_site = $ds_site;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoPessoa()
+    {
+        return $this->co_pessoa;
+    }
+
+    /**
+     * @param mixed $co_pessoa
+     */
+    public function setCoPessoa($co_pessoa)
+    {
+        $this->co_pessoa = $co_pessoa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoEmpresa()
+    {
+        return $this->co_empresa;
+    }
+
+    /**
+     * @param mixed $co_empresa
+     */
+    public function setCoEmpresa($co_empresa)
+    {
+        $this->co_empresa = $co_empresa;
     }
 
 }

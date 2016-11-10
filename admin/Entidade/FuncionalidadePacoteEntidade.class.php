@@ -29,22 +29,22 @@ class FuncionalidadePacoteEntidade
     	return $campos;
     }
 
-	/**
-     * @return $relacionamentos
-     */
-	public static function getRelacionamentos() {
-    	$relacionamentos = [
-			Constantes::CO_FUNCIONALIDADE => array(
-                'Entidade' => FuncionalidadeEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_PACOTE => array(
-                'Entidade' => PacoteEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-		];
-    	return $relacionamentos;
-    }
+/**
+ * @return $relacionamentos
+ */
+public static function getRelacionamentos() {
+	$relacionamentos = [
+		Constantes::CO_FUNCIONALIDADE => array(
+			'Entidade' => FuncionalidadeEntidade::ENTIDADE,
+			'Tipo' => 1,
+		),
+		Constantes::CO_PACOTE => array(
+			'Entidade' => PacoteEntidade::ENTIDADE,
+			'Tipo' => 1,
+		),
+	];
+	return $relacionamentos;
+}
 
 
 	/**

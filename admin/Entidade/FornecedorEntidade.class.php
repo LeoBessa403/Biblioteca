@@ -20,6 +20,7 @@ class FornecedorEntidade
 	private $co_cliente_sistema;
 	private $co_pessoa;
 	private $co_empresa;
+	private $co_negociacao;
 
 
 	/**
@@ -59,6 +60,10 @@ class FornecedorEntidade
 			Constantes::CO_EMPRESA => array(
                 'Entidade' => EmpresaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+			Constantes::CO_NEGOCIACAO => array(
+                'Entidade' => NegociacaoEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -191,6 +196,22 @@ class FornecedorEntidade
 	public function setCoEmpresa($co_empresa)
     {
         return $this->co_empresa = $co_empresa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param mixed $co_negociacao
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        $this->co_negociacao = $co_negociacao;
     }
 
 }

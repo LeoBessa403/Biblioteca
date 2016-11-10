@@ -42,6 +42,14 @@ class EnderecoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+            Constantes::CO_EMPRESA => array(
+                'Entidade' => EmpresaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+            Constantes::CO_PESSOA => array(
+                'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
 		];
     	return $relacionamentos;
     }

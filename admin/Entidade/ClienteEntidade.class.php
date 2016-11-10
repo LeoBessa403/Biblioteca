@@ -17,6 +17,7 @@ class ClienteEntidade
 	private $st_status;
 	private $co_cliente_sistema;
 	private $co_pessoa;
+	private $co_negociacao;
 
 
 	/**
@@ -45,6 +46,10 @@ class ClienteEntidade
 			Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+			Constantes::CO_NEGOCIACAO => array(
+                'Entidade' => NegociacaoEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -130,5 +135,23 @@ class ClienteEntidade
     {
         return $this->co_pessoa = $co_pessoa;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param mixed $co_negociacao
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        $this->co_negociacao = $co_negociacao;
+    }
+
+
 
 }
