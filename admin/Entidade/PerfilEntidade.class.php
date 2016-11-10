@@ -16,6 +16,7 @@ class PerfilEntidade
 	private $no_perfil;
 	private $st_status;
 	private $co_cliente_sistema;
+	private $co_usuario_perfil;
 
 
 	/**
@@ -40,6 +41,10 @@ class PerfilEntidade
                 'Entidade' => ClienteSistemaEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
+			Constantes::CO_USUARIO_PERFIL => array(
+				'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }
@@ -108,5 +113,21 @@ class PerfilEntidade
     {
         return $this->co_cliente_sistema = $co_cliente_sistema;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoUsuarioPerfil()
+	{
+		return $this->co_usuario_perfil;
+	}
+
+	/**
+	 * @param mixed $co_usuario_perfil
+	 */
+	public function setCoUsuarioPerfil($co_usuario_perfil)
+	{
+		$this->co_usuario_perfil = $co_usuario_perfil;
+	}
 
 }

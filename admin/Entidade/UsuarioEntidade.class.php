@@ -21,6 +21,7 @@ class UsuarioEntidade
 	private $co_cliente_sistema;
 	private $co_imagem;
 	private $co_pessoa;
+	private $co_usuario_perfil;
 
 
 	/**
@@ -57,6 +58,10 @@ class UsuarioEntidade
 			Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+			Constantes::CO_USUARIO_PERFIL => array(
+                'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -206,5 +211,23 @@ class UsuarioEntidade
     {
         return $this->co_pessoa = $co_pessoa;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCoUsuarioPerfil()
+    {
+        return $this->co_usuario_perfil;
+    }
+
+    /**
+     * @param mixed $co_usuario_perfil
+     */
+    public function setCoUsuarioPerfil($co_usuario_perfil)
+    {
+        $this->co_usuario_perfil = $co_usuario_perfil;
+    }
+
+
 
 }

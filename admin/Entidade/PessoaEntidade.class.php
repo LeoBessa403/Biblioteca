@@ -22,6 +22,7 @@ class PessoaEntidade
 	private $st_estado_civil;
 	private $co_endereco;
 	private $co_contato;
+    private $co_funcionario;
 
 
 	/**
@@ -54,6 +55,10 @@ class PessoaEntidade
             ),
 			Constantes::CO_CONTATO => array(
                 'Entidade' => ContatoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+            Constantes::CO_FUNCIONARIO => array(
+                'Entidade' => FuncionarioEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -219,6 +224,22 @@ class PessoaEntidade
 	public function setCoContato($co_contato)
     {
         return $this->co_contato = $co_contato;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoFuncionario()
+    {
+        return $this->co_funcionario;
+    }
+
+    /**
+     * @param mixed $co_funcionario
+     */
+    public function setCoFuncionario($co_funcionario)
+    {
+        $this->co_funcionario = $co_funcionario;
     }
 
 }
