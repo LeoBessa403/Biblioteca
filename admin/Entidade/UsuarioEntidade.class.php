@@ -20,6 +20,7 @@ class UsuarioEntidade
     private $co_cliente_sistema;
     private $co_imagem;
     private $co_pessoa;
+    private $co_usuario_perfil;
 
     /**
      * @return mixed
@@ -200,6 +201,22 @@ class UsuarioEntidade
     public function setCoPessoa($pessoa)
     {
         $this->co_pessoa = $pessoa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoUsuarioPerfil()
+    {
+        return $this->co_usuario_perfil;
+    }
+
+    /**
+     * @param mixed $co_usuario_perfil
+     */
+    public function setCoUsuarioPerfil($co_usuario_perfil)
+    {
+        $this->co_usuario_perfil = $co_usuario_perfil;
     }
 
 

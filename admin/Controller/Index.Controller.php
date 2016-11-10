@@ -21,6 +21,7 @@ class Index
 
             $usuarioModel = new UsuarioModel();
             $resultado = $usuarioModel->PesquisaTodos();
+            debug($resultado);
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));

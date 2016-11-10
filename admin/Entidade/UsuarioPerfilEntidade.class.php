@@ -34,8 +34,8 @@ class UsuarioPerfilEntidade
     public static function getRelacionamentos()
     {
         $relacionamentos = [
-            Constantes::CO_PESSOA => array(
-                'Entidade' => PessoaEntidade::ENTIDADE,
+            Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
             Constantes::CO_PERFIL => array(
