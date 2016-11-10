@@ -19,9 +19,14 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $usuarioModel = new UsuarioModel();
-            $resultado = $usuarioModel->PesquisaTodos();
+            $Model = new PerfilModel();
+            $resultado = $Model->PesquisaTodos();
+
             debug($resultado);
+
+
+
+
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
