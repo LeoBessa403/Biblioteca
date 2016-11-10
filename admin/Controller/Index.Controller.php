@@ -19,7 +19,7 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $Model = new PerfilModel();
+            $Model = new UsuarioPerfilModel();
             $resultado = $Model->PesquisaTodos();
 
             debug($resultado);
