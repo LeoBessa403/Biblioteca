@@ -1,7 +1,6 @@
 <?php
 require_once 'valida_user.php';
-$gerar = new GerarEntidades();
-debug('Gerou');
+//$gerar = new GerarEntidades();
 $back = new Backup();
 
 $url = new UrlAmigavel();
