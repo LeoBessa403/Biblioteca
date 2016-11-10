@@ -35,12 +35,16 @@ class Constantes
     const DT_CADASTRO = "dt_cadastro";
     const DT_NASCIMENTO = "dt_nascimento";
     const NO_CIDADE = "no_cidade";
+    const NO_EMPRESA = "no_empresa";
+    const NO_FANTASIA = "no_fantasia";
     const NO_FUNCIONALIDADE = "no_funcionalidade";
     const NO_PACOTE = "no_pacote";
     const NO_PERFIL = "no_perfil";
     const NO_PESSOA = "no_pessoa";
     const NU_CEP = "nu_cep";
+    const NU_CNPJ = "nu_cnpj";
     const NU_CPF = "nu_cpf";
+    const NU_INSC_ESTADUAL = "nu_insc_estadual";
     const NU_RG = "nu_rg";
     const NU_TEL1 = "nu_tel1";
     const NU_TEL2 = "nu_tel2";

@@ -22,4 +22,166 @@ class AuditoriaEntidade
 	private $ds_perfil_usuario;
 	private $co_usuario;
 	private $co_cliente_sistema;
+
+
+	/**
+     * @return $co_auditoria
+     */
+	public function getCoAuditoria()
+    {
+        return $this->co_auditoria;
+    }
+
+	/**
+     * @param mixed $co_auditoria
+     */
+	public function setCoAuditoria($co_auditoria)
+    {
+        return $this->co_auditoria = $co_auditoria;
+    }
+
+	/**
+     * @return $no_tabela
+     */
+	public function getNoTabela()
+    {
+        return $this->no_tabela;
+    }
+
+	/**
+     * @param mixed $no_tabela
+     */
+	public function setNoTabela($no_tabela)
+    {
+        return $this->no_tabela = $no_tabela;
+    }
+
+	/**
+     * @return $dt_realizado
+     */
+	public function getDtRealizado()
+    {
+        return $this->dt_realizado;
+    }
+
+	/**
+     * @param mixed $dt_realizado
+     */
+	public function setDtRealizado($dt_realizado)
+    {
+        return $this->dt_realizado = $dt_realizado;
+    }
+
+	/**
+     * @return $no_operacao
+     */
+	public function getNoOperacao()
+    {
+        return $this->no_operacao;
+    }
+
+	/**
+     * @param mixed $no_operacao
+     */
+	public function setNoOperacao($no_operacao)
+    {
+        return $this->no_operacao = $no_operacao;
+    }
+
+	/**
+     * @return $ds_item_anterior
+     */
+	public function getDsItemAnterior()
+    {
+        return $this->ds_item_anterior;
+    }
+
+	/**
+     * @param mixed $ds_item_anterior
+     */
+	public function setDsItemAnterior($ds_item_anterior)
+    {
+        return $this->ds_item_anterior = $ds_item_anterior;
+    }
+
+	/**
+     * @return $ds_item_atual
+     */
+	public function getDsItemAtual()
+    {
+        return $this->ds_item_atual;
+    }
+
+	/**
+     * @param mixed $ds_item_atual
+     */
+	public function setDsItemAtual($ds_item_atual)
+    {
+        return $this->ds_item_atual = $ds_item_atual;
+    }
+
+	/**
+     * @return $co_registro
+     */
+	public function getCoRegistro()
+    {
+        return $this->co_registro;
+    }
+
+	/**
+     * @param mixed $co_registro
+     */
+	public function setCoRegistro($co_registro)
+    {
+        return $this->co_registro = $co_registro;
+    }
+
+	/**
+     * @return $ds_perfil_usuario
+     */
+	public function getDsPerfilUsuario()
+    {
+        return $this->ds_perfil_usuario;
+    }
+
+	/**
+     * @param mixed $ds_perfil_usuario
+     */
+	public function setDsPerfilUsuario($ds_perfil_usuario)
+    {
+        return $this->ds_perfil_usuario = $ds_perfil_usuario;
+    }
+
+	/**
+     * @return $co_usuario
+     */
+	public function getCoUsuario()
+    {
+        return $this->co_usuario;
+    }
+
+	/**
+     * @param mixed $co_usuario
+     */
+	public function setCoUsuario($co_usuario)
+    {
+        return $this->co_usuario = $co_usuario;
+    }
+
+	/**
+     * @return $co_cliente_sistema
+     */
+	public function getCoClienteSistema()
+    {
+        return $this->co_cliente_sistema;
+    }
+
+	/**
+     * @param mixed $co_cliente_sistema
+     */
+	public function setCoClienteSistema($co_cliente_sistema)
+    {
+        return $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
 }

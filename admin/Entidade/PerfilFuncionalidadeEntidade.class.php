@@ -15,4 +15,54 @@ class PerfilFuncionalidadeEntidade
 	private $co_perfil_funcionalidade;
 	private $co_perfil;
 	private $co_funcionalidade;
+
+
+	/**
+     * @return $co_perfil_funcionalidade
+     */
+	public function getCoPerfilFuncionalidade()
+    {
+        return $this->co_perfil_funcionalidade;
+    }
+
+	/**
+     * @param mixed $co_perfil_funcionalidade
+     */
+	public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+    {
+        return $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
+    }
+
+	/**
+     * @return $co_perfil
+     */
+	public function getCoPerfil()
+    {
+        return $this->co_perfil;
+    }
+
+	/**
+     * @param mixed $co_perfil
+     */
+	public function setCoPerfil($co_perfil)
+    {
+        return $this->co_perfil = $co_perfil;
+    }
+
+	/**
+     * @return $co_funcionalidade
+     */
+	public function getCoFuncionalidade()
+    {
+        return $this->co_funcionalidade;
+    }
+
+	/**
+     * @param mixed $co_funcionalidade
+     */
+	public function setCoFuncionalidade($co_funcionalidade)
+    {
+        return $this->co_funcionalidade = $co_funcionalidade;
+    }
+
 }

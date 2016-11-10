@@ -14,4 +14,38 @@ class ImagemEntidade
 
 	private $co_imagem;
 	private $ds_caminho;
+
+
+	/**
+     * @return $co_imagem
+     */
+	public function getCoImagem()
+    {
+        return $this->co_imagem;
+    }
+
+	/**
+     * @param mixed $co_imagem
+     */
+	public function setCoImagem($co_imagem)
+    {
+        return $this->co_imagem = $co_imagem;
+    }
+
+	/**
+     * @return $ds_caminho
+     */
+	public function getDsCaminho()
+    {
+        return $this->ds_caminho;
+    }
+
+	/**
+     * @param mixed $ds_caminho
+     */
+	public function setDsCaminho($ds_caminho)
+    {
+        return $this->ds_caminho = $ds_caminho;
+    }
+
 }

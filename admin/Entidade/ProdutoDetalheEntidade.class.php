@@ -20,4 +20,134 @@ class ProdutoDetalheEntidade
 	private $dt_cadastro;
 	private $co_produto;
 	private $co_usuario;
+
+
+	/**
+     * @return $co_produto_detalhe
+     */
+	public function getCoProdutoDetalhe()
+    {
+        return $this->co_produto_detalhe;
+    }
+
+	/**
+     * @param mixed $co_produto_detalhe
+     */
+	public function setCoProdutoDetalhe($co_produto_detalhe)
+    {
+        return $this->co_produto_detalhe = $co_produto_detalhe;
+    }
+
+	/**
+     * @return $nu_estoque_baixo
+     */
+	public function getNuEstoqueBaixo()
+    {
+        return $this->nu_estoque_baixo;
+    }
+
+	/**
+     * @param mixed $nu_estoque_baixo
+     */
+	public function setNuEstoqueBaixo($nu_estoque_baixo)
+    {
+        return $this->nu_estoque_baixo = $nu_estoque_baixo;
+    }
+
+	/**
+     * @return $nu_preco
+     */
+	public function getNuPreco()
+    {
+        return $this->nu_preco;
+    }
+
+	/**
+     * @param mixed $nu_preco
+     */
+	public function setNuPreco($nu_preco)
+    {
+        return $this->nu_preco = $nu_preco;
+    }
+
+	/**
+     * @return $nu_lucro
+     */
+	public function getNuLucro()
+    {
+        return $this->nu_lucro;
+    }
+
+	/**
+     * @param mixed $nu_lucro
+     */
+	public function setNuLucro($nu_lucro)
+    {
+        return $this->nu_lucro = $nu_lucro;
+    }
+
+	/**
+     * @return $nu_desconto_maximo
+     */
+	public function getNuDescontoMaximo()
+    {
+        return $this->nu_desconto_maximo;
+    }
+
+	/**
+     * @param mixed $nu_desconto_maximo
+     */
+	public function setNuDescontoMaximo($nu_desconto_maximo)
+    {
+        return $this->nu_desconto_maximo = $nu_desconto_maximo;
+    }
+
+	/**
+     * @return $dt_cadastro
+     */
+	public function getDtCadastro()
+    {
+        return $this->dt_cadastro;
+    }
+
+	/**
+     * @param mixed $dt_cadastro
+     */
+	public function setDtCadastro($dt_cadastro)
+    {
+        return $this->dt_cadastro = $dt_cadastro;
+    }
+
+	/**
+     * @return $co_produto
+     */
+	public function getCoProduto()
+    {
+        return $this->co_produto;
+    }
+
+	/**
+     * @param mixed $co_produto
+     */
+	public function setCoProduto($co_produto)
+    {
+        return $this->co_produto = $co_produto;
+    }
+
+	/**
+     * @return $co_usuario
+     */
+	public function getCoUsuario()
+    {
+        return $this->co_usuario;
+    }
+
+	/**
+     * @param mixed $co_usuario
+     */
+	public function setCoUsuario($co_usuario)
+    {
+        return $this->co_usuario = $co_usuario;
+    }
+
 }

@@ -17,4 +17,86 @@ class PacoteEntidade
 	private $nu_valor;
 	private $st_status;
 	private $co_cliente_sistema;
+
+
+	/**
+     * @return $co_pacote
+     */
+	public function getCoPacote()
+    {
+        return $this->co_pacote;
+    }
+
+	/**
+     * @param mixed $co_pacote
+     */
+	public function setCoPacote($co_pacote)
+    {
+        return $this->co_pacote = $co_pacote;
+    }
+
+	/**
+     * @return $no_pacote
+     */
+	public function getNoPacote()
+    {
+        return $this->no_pacote;
+    }
+
+	/**
+     * @param mixed $no_pacote
+     */
+	public function setNoPacote($no_pacote)
+    {
+        return $this->no_pacote = $no_pacote;
+    }
+
+	/**
+     * @return $nu_valor
+     */
+	public function getNuValor()
+    {
+        return $this->nu_valor;
+    }
+
+	/**
+     * @param mixed $nu_valor
+     */
+	public function setNuValor($nu_valor)
+    {
+        return $this->nu_valor = $nu_valor;
+    }
+
+	/**
+     * @return $st_status
+     */
+	public function getStStatus()
+    {
+        return $this->st_status;
+    }
+
+	/**
+     * @param mixed $st_status
+     */
+	public function setStStatus($st_status)
+    {
+        return $this->st_status = $st_status;
+    }
+
+	/**
+     * @return $co_cliente_sistema
+     */
+	public function getCoClienteSistema()
+    {
+        return $this->co_cliente_sistema;
+    }
+
+	/**
+     * @param mixed $co_cliente_sistema
+     */
+	public function setCoClienteSistema($co_cliente_sistema)
+    {
+        return $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
 }

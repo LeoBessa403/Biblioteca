@@ -20,4 +20,134 @@ class PagamentoEntidade
 	private $ds_observacao;
 	private $co_negociacao;
 	private $co_tipo_pagamento;
+
+
+	/**
+     * @return $co_pagamento
+     */
+	public function getCoPagamento()
+    {
+        return $this->co_pagamento;
+    }
+
+	/**
+     * @param mixed $co_pagamento
+     */
+	public function setCoPagamento($co_pagamento)
+    {
+        return $this->co_pagamento = $co_pagamento;
+    }
+
+	/**
+     * @return $nu_total
+     */
+	public function getNuTotal()
+    {
+        return $this->nu_total;
+    }
+
+	/**
+     * @param mixed $nu_total
+     */
+	public function setNuTotal($nu_total)
+    {
+        return $this->nu_total = $nu_total;
+    }
+
+	/**
+     * @return $nu_valor_pago
+     */
+	public function getNuValorPago()
+    {
+        return $this->nu_valor_pago;
+    }
+
+	/**
+     * @param mixed $nu_valor_pago
+     */
+	public function setNuValorPago($nu_valor_pago)
+    {
+        return $this->nu_valor_pago = $nu_valor_pago;
+    }
+
+	/**
+     * @return $nu_parcelas
+     */
+	public function getNuParcelas()
+    {
+        return $this->nu_parcelas;
+    }
+
+	/**
+     * @param mixed $nu_parcelas
+     */
+	public function setNuParcelas($nu_parcelas)
+    {
+        return $this->nu_parcelas = $nu_parcelas;
+    }
+
+	/**
+     * @return $tp_situacao
+     */
+	public function getTpSituacao()
+    {
+        return $this->tp_situacao;
+    }
+
+	/**
+     * @param mixed $tp_situacao
+     */
+	public function setTpSituacao($tp_situacao)
+    {
+        return $this->tp_situacao = $tp_situacao;
+    }
+
+	/**
+     * @return $ds_observacao
+     */
+	public function getDsObservacao()
+    {
+        return $this->ds_observacao;
+    }
+
+	/**
+     * @param mixed $ds_observacao
+     */
+	public function setDsObservacao($ds_observacao)
+    {
+        return $this->ds_observacao = $ds_observacao;
+    }
+
+	/**
+     * @return $co_negociacao
+     */
+	public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+	/**
+     * @param mixed $co_negociacao
+     */
+	public function setCoNegociacao($co_negociacao)
+    {
+        return $this->co_negociacao = $co_negociacao;
+    }
+
+	/**
+     * @return $co_tipo_pagamento
+     */
+	public function getCoTipoPagamento()
+    {
+        return $this->co_tipo_pagamento;
+    }
+
+	/**
+     * @param mixed $co_tipo_pagamento
+     */
+	public function setCoTipoPagamento($co_tipo_pagamento)
+    {
+        return $this->co_tipo_pagamento = $co_tipo_pagamento;
+    }
+
 }
