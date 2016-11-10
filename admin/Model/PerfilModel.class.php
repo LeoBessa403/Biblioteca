@@ -1,6 +1,11 @@
 <?php
 
-class PerfilModel{
+class PerfilModel extends AbstractModel{
+
+    public function __construct()
+    {
+        parent::__construct(PerfilEntidade::ENTIDADE);
+    }
     
     public static function CadastraPerfil(array $dados){
         $cadastro = new Cadastra();

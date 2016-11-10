@@ -15,6 +15,8 @@ class FuncionalidadeEntidade
     private $no_funcionalidade;
     private $ds_rota;
     private $st_status;
+    private $co_funcionalidade_pacote;
+    private $co_perfil_funcionalidade;
 
     /**
      * @return mixed
@@ -22,9 +24,10 @@ class FuncionalidadeEntidade
     public static function getCampos()
     {
         $campos = [
-            Constantes::CO_USUARIO_PERFIL,
-            Constantes::CO_USUARIO,
-            Constantes::CO_PERFIL
+            Constantes::CO_FUNCIONALIDADE,
+            Constantes::NO_FUNCIONALIDADE,
+            Constantes::DS_ROTA,
+            Constantes::ST_STATUS
         ];
         return $campos;
     }
@@ -109,6 +112,38 @@ class FuncionalidadeEntidade
     public function setStStatus($st_status)
     {
         $this->st_status = $st_status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoFuncionalidadePacote()
+    {
+        return $this->co_funcionalidade_pacote;
+    }
+
+    /**
+     * @param mixed $co_funcionalidade_pacote
+     */
+    public function setCoFuncionalidadePacote($co_funcionalidade_pacote)
+    {
+        $this->co_funcionalidade_pacote = $co_funcionalidade_pacote;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoPerfilFuncionalidade()
+    {
+        return $this->co_perfil_funcionalidade;
+    }
+
+    /**
+     * @param mixed $co_perfil_funcionalidade
+     */
+    public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+    {
+        $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
     }
 
     

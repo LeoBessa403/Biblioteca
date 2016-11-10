@@ -15,6 +15,8 @@ class PerfilEntidade
     private $no_perfil;
     private $st_status;
     private $co_cliente_sistema;
+    private $co_perfil_funcionalidade;
+    private $co_usuario_perfil;
 
     /**
      * @return mixed
@@ -114,6 +116,38 @@ class PerfilEntidade
     public function setCoClienteSistema($co_cliente_sistema)
     {
         $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoPerfilFuncionalidade()
+    {
+        return $this->co_perfil_funcionalidade;
+    }
+
+    /**
+     * @param mixed $co_perfil_funcionalidade
+     */
+    public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+    {
+        $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoUsuarioPerfil()
+    {
+        return $this->co_usuario_perfil;
+    }
+
+    /**
+     * @param mixed $co_usuario_perfil
+     */
+    public function setCoUsuarioPerfil($co_usuario_perfil)
+    {
+        $this->co_usuario_perfil = $co_usuario_perfil;
     }
 
 

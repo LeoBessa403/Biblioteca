@@ -29,11 +29,13 @@ class Constantes
     const DS_ENDERECO = "ds_endereco";
     const DS_LOGIN = "ds_login";
     const DS_OBSERVACAO = "ds_observacao";
+    const DS_ROTA = "ds_rota";
     const DS_SENHA = "ds_senha";
     const DS_SITE = "ds_site";
     const DT_CADASTRO = "dt_cadastro";
     const DT_NASCIMENTO = "dt_nascimento";
     const NO_CIDADE = "no_cidade";
+    const NO_FUNCIONALIDADE = "no_funcionalidade";
     const NO_PACOTE = "no_pacote";
     const NO_PERFIL = "no_perfil";
     const NO_PESSOA = "no_pessoa";

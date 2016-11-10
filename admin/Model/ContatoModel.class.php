@@ -1,6 +1,11 @@
 <?php
 
-class ContatoModel{
+class ContatoModel  extends AbstractModel{
+
+    public function __construct()
+    {
+        parent::__construct(ContatoEntidade::ENTIDADE);
+    }
     
     public static function CadastraContato(array $dados){
         $cadastro = new Cadastra();
