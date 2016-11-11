@@ -2,7 +2,6 @@
 
 /**
  * TipoCategoria.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -14,6 +13,7 @@ class TipoCategoriaEntidade
 
 	private $co_tipo_categoria;
 	private $ds_tipo_categoria;
+	private $co_categoria;
 
 
 	/**
@@ -32,6 +32,10 @@ class TipoCategoriaEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_CATEGORIA => array(
+				'Entidade' => CategoriaEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }
@@ -68,5 +72,21 @@ class TipoCategoriaEntidade
     {
         return $this->ds_tipo_categoria = $ds_tipo_categoria;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoCategoria()
+	{
+		return $this->co_categoria;
+	}
+
+	/**
+	 * @param mixed $co_categoria
+	 */
+	public function setCoCategoria($co_categoria)
+	{
+		$this->co_categoria = $co_categoria;
+	}
 
 }

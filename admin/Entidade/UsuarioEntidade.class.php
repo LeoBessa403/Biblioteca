@@ -2,7 +2,6 @@
 
 /**
  * Usuario.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -22,6 +21,10 @@ class UsuarioEntidade
 	private $co_imagem;
 	private $co_pessoa;
 	private $co_usuario_perfil;
+	private $co_produto_detalhe;
+	private $co_produto_promocao;
+	private $co_negociacao;
+	private $co_auditoria;
 
 
 	/**
@@ -61,6 +64,22 @@ class UsuarioEntidade
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
                 'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_PRODUTO_PROMOCAO => array(
+                'Entidade' => ProdutoPromocaoEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_NEGOCIACAO => array(
+                'Entidade' => NegociacaoEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_PRODUTO_DETALHE => array(
+                'Entidade' => ProdutoDetalheEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_AUDITORIA => array(
+                'Entidade' => AuditoriaEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 		];
@@ -228,6 +247,68 @@ class UsuarioEntidade
         $this->co_usuario_perfil = $co_usuario_perfil;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCoProdutoDetalhe()
+    {
+        return $this->co_produto_detalhe;
+    }
 
+    /**
+     * @param mixed $co_produto_detalhe
+     */
+    public function setCoProdutoDetalhe($co_produto_detalhe)
+    {
+        $this->co_produto_detalhe = $co_produto_detalhe;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoProdutoPromocao()
+    {
+        return $this->co_produto_promocao;
+    }
+
+    /**
+     * @param mixed $co_produto_promocao
+     */
+    public function setCoProdutoPromocao($co_produto_promocao)
+    {
+        $this->co_produto_promocao = $co_produto_promocao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param mixed $co_negociacao
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        $this->co_negociacao = $co_negociacao;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoAuditoria()
+    {
+        return $this->co_auditoria;
+    }
+
+    /**
+     * @param mixed $co_auditoria
+     */
+    public function setCoAuditoria($co_auditoria)
+    {
+        $this->co_auditoria = $co_auditoria;
+    }
 
 }

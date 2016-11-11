@@ -2,7 +2,6 @@
 
 /**
  * Representante.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -17,6 +16,7 @@ class RepresentanteEntidade
 	private $st_status;
 	private $co_cliente_sistema;
 	private $co_pessoa;
+	private $co_fornecedor;
 
 
 	/**
@@ -44,6 +44,10 @@ class RepresentanteEntidade
             ),
 			Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_FORNECEDOR => array(
+                'Entidade' => FornecedorEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -129,6 +133,22 @@ class RepresentanteEntidade
 	public function setCoPessoa($co_pessoa)
     {
         return $this->co_pessoa = $co_pessoa;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoFornecedor()
+    {
+        return $this->co_fornecedor;
+    }
+
+    /**
+     * @param mixed $co_fornecedor
+     */
+    public function setCoFornecedor($co_fornecedor)
+    {
+        $this->co_fornecedor = $co_fornecedor;
     }
 
 }

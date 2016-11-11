@@ -2,7 +2,6 @@
 
 /**
  * TipoPagamento.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -15,6 +14,7 @@ class TipoPagamentoEntidade
 	private $co_tipo_pagamento;
 	private $ds_tipo_pagamento;
 	private $sg_tipo_pagamento;
+	private $co_pagamento;
 
 
 	/**
@@ -34,6 +34,10 @@ class TipoPagamentoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_PAGAMENTO => array(
+				'Entidade' => PagamentoEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }
@@ -86,5 +90,21 @@ class TipoPagamentoEntidade
     {
         return $this->sg_tipo_pagamento = $sg_tipo_pagamento;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoPagamento()
+	{
+		return $this->co_pagamento;
+	}
+
+	/**
+	 * @param mixed $co_pagamento
+	 */
+	public function setCoPagamento($co_pagamento)
+	{
+		$this->co_pagamento = $co_pagamento;
+	}
 
 }

@@ -2,7 +2,6 @@
 
 /**
  * UnidadeVenda.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -17,6 +16,7 @@ class UnidadeVendaEntidade
 	private $sg_unidade_venda;
 	private $st_status;
 	private $co_cliente_sistema;
+	private $co_produto;
 
 
 	/**
@@ -41,6 +41,10 @@ class UnidadeVendaEntidade
 			Constantes::CO_CLIENTE_SISTEMA => array(
                 'Entidade' => ClienteSistemaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+			Constantes::CO_PRODUTO => array(
+                'Entidade' => ProdutoEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -125,6 +129,22 @@ class UnidadeVendaEntidade
 	public function setCoClienteSistema($co_cliente_sistema)
     {
         return $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoProduto()
+    {
+        return $this->co_produto;
+    }
+
+    /**
+     * @param mixed $co_produto
+     */
+    public function setCoProduto($co_produto)
+    {
+        $this->co_produto = $co_produto;
     }
 
 }

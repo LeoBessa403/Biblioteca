@@ -2,7 +2,6 @@
 
 /**
  * Auditoria.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 

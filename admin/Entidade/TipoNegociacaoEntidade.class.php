@@ -2,7 +2,6 @@
 
 /**
  * TipoNegociacao.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -34,6 +33,10 @@ class TipoNegociacaoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_NEGOCIACAO => array(
+				'Entidade' => NegociacaoEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }
