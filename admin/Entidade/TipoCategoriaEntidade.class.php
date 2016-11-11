@@ -31,6 +31,10 @@ class TipoCategoriaEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_CATEGORIA => array(
+				'Entidade' => CategoriaEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
 		];
     	return $relacionamentos;
     }

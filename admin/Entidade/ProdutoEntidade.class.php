@@ -70,15 +70,15 @@ class ProdutoEntidade
             ),
 			Constantes::CO_NEGOCIACAO_PRODUTO => array(
                 'Entidade' => NegociacaoProdutoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO_DETALHE => array(
                 'Entidade' => ProdutoDetalheEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO_PROMOCAO => array(
                 'Entidade' => ProdutoPromocaoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

@@ -63,19 +63,19 @@ class UsuarioEntidade
             ),
 			Constantes::CO_NEGOCIACAO => array(
                 'Entidade' => NegociacaoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO_DETALHE => array(
                 'Entidade' => ProdutoDetalheEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO_PROMOCAO => array(
                 'Entidade' => ProdutoPromocaoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
                 'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

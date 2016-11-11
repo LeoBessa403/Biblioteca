@@ -36,7 +36,7 @@ class TipoNegociacaoEntidade
     	$relacionamentos = [
 			Constantes::CO_NEGOCIACAO => array(
                 'Entidade' => NegociacaoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

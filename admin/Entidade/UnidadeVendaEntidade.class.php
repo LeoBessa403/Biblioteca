@@ -44,7 +44,7 @@ class UnidadeVendaEntidade
             ),
 			Constantes::CO_PRODUTO => array(
                 'Entidade' => ProdutoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

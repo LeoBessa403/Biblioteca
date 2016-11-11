@@ -58,39 +58,39 @@ class ClienteSistemaEntidade
             ),
 			Constantes::CO_CLIENTE => array(
                 'Entidade' => ClienteEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_FINANCEIRO => array(
                 'Entidade' => FinanceiroEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_FORNECEDOR => array(
                 'Entidade' => FornecedorEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_FUNCIONARIO => array(
                 'Entidade' => FuncionarioEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_NEGOCIACAO => array(
                 'Entidade' => NegociacaoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PACOTE => array(
                 'Entidade' => PacoteEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO => array(
                 'Entidade' => ProdutoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_REPRESENTANTE => array(
                 'Entidade' => RepresentanteEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_UNIDADE_VENDA => array(
                 'Entidade' => UnidadeVendaEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

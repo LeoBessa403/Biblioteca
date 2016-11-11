@@ -54,7 +54,7 @@ class ProdutoDetalheEntidade
             ),
 			Constantes::CO_PERFIL_PRODUTO_DETALHE => array(
                 'Entidade' => PerfilProdutoDetalheEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

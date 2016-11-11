@@ -44,7 +44,7 @@ class PacoteEntidade
             ),
 			Constantes::CO_FUNCIONALIDADE_PACOTE => array(
                 'Entidade' => FuncionalidadePacoteEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;

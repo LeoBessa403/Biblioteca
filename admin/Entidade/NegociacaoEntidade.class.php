@@ -67,7 +67,7 @@ class NegociacaoEntidade
             ),
 			Constantes::CO_NEGOCIACAO_PRODUTO => array(
                 'Entidade' => NegociacaoProdutoEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PAGAMENTO => array(
                 'Entidade' => PagamentoEntidade::ENTIDADE,

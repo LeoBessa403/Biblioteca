@@ -44,15 +44,15 @@ class PerfilEntidade
             ),
 			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
                 'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_PERFIL_PRODUTO_DETALHE => array(
                 'Entidade' => PerfilProdutoDetalheEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
                 'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
-                'Tipo' => 1,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
