@@ -1,7 +1,7 @@
 <?php
-require_once 'valida_user.php';
+require_once 'library/Config.inc.php';
+$valida = new ValidaUsuario();
 $back = new Backup();
-
 $url = new UrlAmigavel();
 $compara = strstr(UrlAmigavel::$action, 'Exporta');
 if ($compara != null):
