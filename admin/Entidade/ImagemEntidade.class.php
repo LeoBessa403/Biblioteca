@@ -14,6 +14,9 @@ class ImagemEntidade
 
 	private $co_imagem;
 	private $ds_caminho;
+	private $co_produto;
+	private $co_usuario;
+	private $co_funcionario;
 
 
 	/**
@@ -32,6 +35,18 @@ class ImagemEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
+			Constantes::CO_USUARIO => array(
+				'Entidade' => UsuarioEntidade::ENTIDADE,
+				'Tipo' => 1,
+			),
+			Constantes::CO_PRODUTO => array(
+				'Entidade' => ProdutoEntidade::ENTIDADE,
+				'Tipo' => 1,
+			),
+			Constantes::CO_FUNCIONARIO => array(
+				'Entidade' => FuncionarioEntidade::ENTIDADE,
+				'Tipo' => 1,
+			),
 		];
     	return $relacionamentos;
     }
@@ -68,5 +83,53 @@ class ImagemEntidade
     {
         return $this->ds_caminho = $ds_caminho;
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoProduto()
+	{
+		return $this->co_produto;
+	}
+
+	/**
+	 * @param mixed $co_produto
+	 */
+	public function setCoProduto($co_produto)
+	{
+		$this->co_produto = $co_produto;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoUsuario()
+	{
+		return $this->co_usuario;
+	}
+
+	/**
+	 * @param mixed $co_usuario
+	 */
+	public function setCoUsuario($co_usuario)
+	{
+		$this->co_usuario = $co_usuario;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoFuncionario()
+	{
+		return $this->co_funcionario;
+	}
+
+	/**
+	 * @param mixed $co_funcionario
+	 */
+	public function setCoFuncionario($co_funcionario)
+	{
+		$this->co_funcionario = $co_funcionario;
+	}
 
 }

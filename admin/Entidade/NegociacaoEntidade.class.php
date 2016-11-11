@@ -20,6 +20,8 @@ class NegociacaoEntidade
 	private $co_usuario;
 	private $co_tipo_negociacao;
 	private $co_cliente_sistema;
+	private $co_negociacao_produto;
+	private $co_pagamente;
 
 
 	/**
@@ -62,6 +64,14 @@ class NegociacaoEntidade
             ),
 			Constantes::CO_CLIENTE_SISTEMA => array(
                 'Entidade' => ClienteSistemaEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_NEGOCIACAO_PRODUTO => array(
+                'Entidade' => NegociacaoProdutoEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_PAGAMENTO => array(
+                'Entidade' => PagamentoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -195,6 +205,38 @@ class NegociacaoEntidade
 	public function setCoClienteSistema($co_cliente_sistema)
     {
         return $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoNegociacaoProduto()
+    {
+        return $this->co_negociacao_produto;
+    }
+
+    /**
+     * @param mixed $co_negociacao_produto
+     */
+    public function setCoNegociacaoProduto($co_negociacao_produto)
+    {
+        $this->co_negociacao_produto = $co_negociacao_produto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoPagamente()
+    {
+        return $this->co_pagamente;
+    }
+
+    /**
+     * @param mixed $co_pagamente
+     */
+    public function setCoPagamente($co_pagamente)
+    {
+        $this->co_pagamente = $co_pagamente;
     }
 
 }

@@ -2,7 +2,6 @@
 
 /**
  * ProdutoDetalhe.Entidade [ ENTIDADE ]
- *
  * @copyright (c) 2016, Leo Bessa
  */
 
@@ -20,6 +19,7 @@ class ProdutoDetalheEntidade
 	private $dt_cadastro;
 	private $co_produto;
 	private $co_usuario;
+    private $co_perfil_produto_detalhe;
 
 
 	/**
@@ -51,6 +51,10 @@ class ProdutoDetalheEntidade
 			Constantes::CO_USUARIO => array(
                 'Entidade' => UsuarioEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+            Constantes::CO_PERFIL_PRODUTO_DETALHE => array(
+                'Entidade' => PerfilProdutoDetalheEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -183,6 +187,22 @@ class ProdutoDetalheEntidade
 	public function setCoUsuario($co_usuario)
     {
         return $this->co_usuario = $co_usuario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoPerfilProdutoDetalhe()
+    {
+        return $this->co_perfil_produto_detalhe;
+    }
+
+    /**
+     * @param mixed $co_perfil_produto_detalhe
+     */
+    public function setCoPerfilProdutoDetalhe($co_perfil_produto_detalhe)
+    {
+        $this->co_perfil_produto_detalhe = $co_perfil_produto_detalhe;
     }
 
 }

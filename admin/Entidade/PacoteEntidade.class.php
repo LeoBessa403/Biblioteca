@@ -17,6 +17,7 @@ class PacoteEntidade
 	private $nu_valor;
 	private $st_status;
 	private $co_cliente_sistema;
+	private $co_funcionalidade_pacote;
 
 
 	/**
@@ -41,6 +42,10 @@ class PacoteEntidade
 			Constantes::CO_CLIENTE_SISTEMA => array(
                 'Entidade' => ClienteSistemaEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+            Constantes::CO_FUNCIONALIDADE_PACOTE => array(
+                'Entidade' => FuncionalidadePacoteEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -125,6 +130,22 @@ class PacoteEntidade
 	public function setCoClienteSistema($co_cliente_sistema)
     {
         return $this->co_cliente_sistema = $co_cliente_sistema;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoFuncionalidadePacote()
+    {
+        return $this->co_funcionalidade_pacote;
+    }
+
+    /**
+     * @param mixed $co_funcionalidade_pacote
+     */
+    public function setCoFuncionalidadePacote($co_funcionalidade_pacote)
+    {
+        $this->co_funcionalidade_pacote = $co_funcionalidade_pacote;
     }
 
 }

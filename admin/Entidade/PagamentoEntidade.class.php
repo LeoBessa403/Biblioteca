@@ -20,6 +20,7 @@ class PagamentoEntidade
 	private $ds_observacao;
 	private $co_negociacao;
 	private $co_tipo_pagamento;
+	private $co_parcelamento;
 
 
 	/**
@@ -51,6 +52,10 @@ class PagamentoEntidade
 			Constantes::CO_TIPO_PAGAMENTO => array(
                 'Entidade' => TipoPagamentoEntidade::ENTIDADE,
                 'Tipo' => 1,
+            ),
+            Constantes::CO_PARCELAMENTO => array(
+                'Entidade' => ParcelamentoEntidade::ENTIDADE,
+                'Tipo' => 'N',
             ),
 		];
     	return $relacionamentos;
@@ -183,6 +188,22 @@ class PagamentoEntidade
 	public function setCoTipoPagamento($co_tipo_pagamento)
     {
         return $this->co_tipo_pagamento = $co_tipo_pagamento;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoParcelamento()
+    {
+        return $this->co_parcelamento;
+    }
+
+    /**
+     * @param mixed $co_parcelamento
+     */
+    public function setCoParcelamento($co_parcelamento)
+    {
+        $this->co_parcelamento = $co_parcelamento;
     }
 
 }

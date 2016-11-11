@@ -17,6 +17,8 @@ class PerfilEntidade
 	private $st_status;
 	private $co_cliente_sistema;
 	private $co_usuario_perfil;
+	private $co_perfil_funcionalidade;
+	private $co_perfil_produto_detalhe;
 
 
 	/**
@@ -43,6 +45,14 @@ class PerfilEntidade
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
 				'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
+			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
+				'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
+				'Tipo' => 'N',
+			),
+			Constantes::CO_PERFIL_PRODUTO_DETALHE => array(
+				'Entidade' => PerfilProdutoDetalheEntidade::ENTIDADE,
 				'Tipo' => 'N',
 			),
 		];
@@ -128,6 +138,38 @@ class PerfilEntidade
 	public function setCoUsuarioPerfil($co_usuario_perfil)
 	{
 		$this->co_usuario_perfil = $co_usuario_perfil;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoPerfilFuncionalidade()
+	{
+		return $this->co_perfil_funcionalidade;
+	}
+
+	/**
+	 * @param mixed $co_perfil_funcionalidade
+	 */
+	public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+	{
+		$this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getCoPerfilProdutoDetalhe()
+	{
+		return $this->co_perfil_produto_detalhe;
+	}
+
+	/**
+	 * @param mixed $co_perfil_produto_detalhe
+	 */
+	public function setCoPerfilProdutoDetalhe($co_perfil_produto_detalhe)
+	{
+		$this->co_perfil_produto_detalhe = $co_perfil_produto_detalhe;
 	}
 
 }
