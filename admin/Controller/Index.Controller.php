@@ -19,8 +19,10 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $Model = new UsuarioModel();
-            $resultado = $Model->PesquisaTodos();
+            $dados['nu_cpf'] = '72681438188';
+
+            $Model = new PessoaModel();
+            $resultado = $Model->Salva($dados,1);
 
             debug($resultado);
 
@@ -46,7 +48,7 @@ class Index
 //                        $meuPerfil .= $resUser["co_perfil"];
 //                        $cont = true;
 //                    endforeach;
-////                    $result[CAMPO_PERFIL] = $meuPerfil;
+//                    $result[CAMPO_PERFIL] = $meuPerfil;
 //                    $user = $result;
                         debug($result);
                     break;
