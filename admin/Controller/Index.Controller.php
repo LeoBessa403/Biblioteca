@@ -19,7 +19,7 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $dados['nu_cpf'] = '72681438188';
+            $dados['nu_cpf'] = '72681438187';
 
             $Model = new PessoaModel();
             $resultado = $Model->Salva($dados,1);

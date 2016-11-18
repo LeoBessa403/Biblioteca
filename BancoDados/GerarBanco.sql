@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_USUARIO_PERFIL` (
   CONSTRAINT `fk_tb_usuario_tb_perfil_tb_perfil1`
     FOREIGN KEY (`co_perfil`)
     REFERENCES `brcommerce`.`TB_PERFIL` (`co_perfil`))
-ENGINE = InnoDB
+ENGINE = MyISAM
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PERFIL_FUNCIONALIDADE` (
