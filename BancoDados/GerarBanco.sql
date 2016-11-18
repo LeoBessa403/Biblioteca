@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_AUDITORIA` (
   `co_registro` INT(10) NULL DEFAULT NULL,
   `ds_perfil_usuario` TEXT NULL DEFAULT NULL,
   `co_usuario` INT(10) NOT NULL,
-  `co_cliente_sistema` INT(11) NOT NULL,
+  `co_cliente_sistema` INT(11) NULL,
   PRIMARY KEY (`co_auditoria`, `co_usuario`, `co_cliente_sistema`),
   INDEX `fk_tb_auditoria_tb_usuario1_idx` (`co_usuario` ASC),
   INDEX `fk_tb_auditoria_tb_empresa1_idx` (`co_cliente_sistema` ASC))
@@ -96,7 +96,7 @@ DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_USUARIO_PERFIL` (
     `co_usuario_perfil` INT(11) NOT NULL AUTO_INCREMENT,
-  `co_usuario` INT(10) NOT NULL,
+  `co_usuario` INT(11) NOT NULL,
   `co_perfil` INT(11) NOT NULL,
   PRIMARY KEY (`co_usuario_perfil`, `co_usuario`, `co_perfil`),
   INDEX `fk_tb_usuario_tb_perfil_tb_perfil1_idx` (`co_perfil` ASC),
