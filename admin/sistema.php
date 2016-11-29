@@ -1,8 +1,12 @@
 <?php
 require_once 'library/Config.inc.php';
-$valida = new ValidaUsuario();
-$back = new Backup();
 $url = new UrlAmigavel();
+$valida = new ValidaUsuario();
+if (UrlAmigavel::$action == 'Acessar'):
+    $url->pegaControllerAction();
+    exit;
+endif;
+$back = new Backup();
 $compara = strstr(UrlAmigavel::$action, 'Exporta');
 if ($compara != null):
     $url->pegaControllerAction();

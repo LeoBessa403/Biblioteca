@@ -1,6 +1,3 @@
-<?php
-require('../library/Config.inc.php');
-?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.4 Author: ClipTheme -->
 <!--[if IE 8]>

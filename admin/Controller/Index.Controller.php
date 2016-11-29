@@ -7,6 +7,11 @@ class Index
     public $resultTarefa;
     public $result;
 
+
+    public static function Acessar()
+    {
+    }
+
     function Index()
     {
     }
@@ -19,13 +24,13 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $dados['nu_cpf'] = '72681438187';
-//            $dados = [];
-
             $Model = new PessoaModel();
-            $resultado = $Model->PesquisaTodos($dados);
+            /** @var PessoaEntidade $resultado */
+            $resultado = $Model->PesquisaTodos()[0];
+            /** @var ContatoEntidade $contato */
+            $contato = $resultado->getCoContato();
 
-            debug($resultado);
+            debug($resultado->getCoContato()->getNuTel1());
 
 
 
