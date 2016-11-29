@@ -20,6 +20,7 @@ class Index
         if (($login != "") && ($senha != "")):
 
             $dados['nu_cpf'] = '72681438187';
+//            $dados = [];
 
             $Model = new PessoaModel();
             $resultado = $Model->PesquisaTodos($dados);
