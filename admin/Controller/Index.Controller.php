@@ -78,10 +78,24 @@ class Index
                     break;
                 endif;
             endforeach;
-            debug($user);
             if ($user != ""):
-                $user["session_id"] = session_id();
-                $user["ultimo_acesso"] = strtotime(Valida::DataDB(Valida::DataAtual()));
+                $acesso['ds_session_id'] = session_id();
+                $acesso['co_usuario'] = $user->getCoUsuario();
+                $acessoObj = new AcessoModel();
+                $meuAcesso =  $acessoObj->PesquisaUmQuando($acesso);
+                if($meuAcesso){
+                    $novoAcesso['dt_fim_acesso'] = Valida::DataAtualBanco();
+                    $acessoObj->Salva($novoAcesso, $user->getCoUsuario());
+                }else{
+                    $acesso['dt_inicio_acesso'] = Valida::DataAtualBanco();
+                    $acesso['dt_fim_acesso'] = Valida::DataAtualBanco();
+                    $acesso['co_usuario'] = $user->getCoUsuario();
+                    $acessoObj->Salva($acesso);
+                }
+                debug($meuAcesso);
+
+
+
 
                 $meus_perfis = explode(",", $user['ds_perfil']);
                 $Funcionalidades = FuncionalidadeModel::PesquisaFuncionalidadesPerfis($meus_perfis);

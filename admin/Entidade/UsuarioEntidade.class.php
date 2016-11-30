@@ -24,6 +24,7 @@ class UsuarioEntidade
 	private $co_produto_detalhe;
 	private $co_produto_promocao;
 	private $co_usuario_perfil;
+	private $co_acesso;
 
 
 	/**
@@ -75,6 +76,10 @@ class UsuarioEntidade
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
                 'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
+                'Tipo' => 'N',
+            ),
+			Constantes::CO_ACESSO => array(
+                'Entidade' => AcessoEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 		];
@@ -289,5 +294,23 @@ class UsuarioEntidade
     {
         return $this->co_usuario_perfil = $co_usuario_perfil;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCoAcesso()
+    {
+        return $this->co_acesso;
+    }
+
+    /**
+     * @param mixed $co_acesso
+     */
+    public function setCoAcesso($co_acesso)
+    {
+        $this->co_acesso = $co_acesso;
+    }
+
+
 
 }
