@@ -3,13 +3,50 @@
 class Index
 {
 
-    public $Email;
-    public $resultTarefa;
-    public $result;
+    public $class;
+    public $msg;
+    public $visivel;
 
-
-    public static function Acessar()
+    public function Acessar()
     {
+        $acesso = UrlAmigavel::PegaParametro('acesso');
+        $class = 0;
+        $msg = "";
+        $visivel = true;
+        
+        switch ($acesso){
+            case 'B':
+                $msg = "Por Favor, Preencha o Usuário e senha!";
+                $class = 2;
+                break;
+            case 'R':
+                $msg = "Acesso Restrito, Você não tem permição para acessar!";
+                $class = 4;
+                break;
+            case 'A':
+                $msg = "Usuário ou senha Inválido!";
+                $class = 3;
+                break;
+            case 'I':
+                $msg = "Usuário Inativo!";
+                $class = 3;
+                break;
+            case 'D':
+                $msg = "Usuário deslogado com sucesso!";
+                $class = 1;
+                break;
+            case 'E':
+                $msg = "Sua Sessão foi Expirada!";
+                $class = 2;
+                break;
+            default:
+                $visivel = false;
+                break;
+
+        }
+        $this->class = " " . $class;
+        $this->visivel = $visivel;
+        $this->msg = $msg;
     }
 
     function Index()
@@ -41,7 +78,7 @@ class Index
             foreach ($resultado as $result):
                 if (($result->getDsLogin() == $login) && ($result->getDsCode() == $senha)):
                     if ($result->getStStatus() == "I"):
-                        Redireciona(ADMIN . LOGIN . "?o=alerta3");
+                        Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
                     endif;
 //                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result->getCoUsuario());
@@ -80,10 +117,10 @@ class Index
                     . "window.location.href = '" . HOME . ADMIN . LOGADO . "';"
                     . "</script>";
             else:
-                Redireciona(ADMIN . LOGIN . "?o=alerta2");
+                Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
             endif;
         else:
-            Redireciona(ADMIN . LOGIN . "?o=info2");
+            Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/B"));
         endif;
     }
 

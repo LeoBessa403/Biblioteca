@@ -1,17 +1,17 @@
 <?php
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
-$valida = new ValidaUsuario();
 if (UrlAmigavel::$action == 'Acessar'):
     $url->pegaControllerAction();
     exit;
 endif;
-$back = new Backup();
+$valida = new ValidaUsuario();
 $compara = strstr(UrlAmigavel::$action, 'Exporta');
 if ($compara != null):
     $url->pegaControllerAction();
     exit;
 endif;
+$back = new Backup();
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->

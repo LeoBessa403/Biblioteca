@@ -60,38 +60,6 @@
 <!-- end: HEAD -->
 <!-- start: BODY -->
 <body class="login example1">
-<?php
-$class = 0;
-$msg = "";
-$visivel = true;
-if (isset($_GET['o']) && $_GET['o'] != ""):
-    $class = $_GET['o'];
-    if ($class == "info2"):
-        $msg = "Por Favor, Preencha o Usuário e senha!";
-        $class = 2;
-    elseif ($class == "erro2"):
-        $msg = "Acesso Restrito, Você não tem permição para acessar!";
-        $class = 4;
-    elseif ($class == "alerta2"):
-        $msg = "Usuário ou senha Inválido!";
-        $class = 3;
-    elseif ($class == "alerta3"):
-        $msg = "Usuário Inativo!";
-        $class = 3;
-    elseif ($class == "sucesso2"):
-        $msg = "Usuário deslogado com sucesso!";
-        $class = 1;
-    elseif ($class == "deslogado"):
-        $msg = "Sua Sessão foi Expirada!";
-        $class = 2;
-    else:
-        $msg = "Erro desconhecido!";
-    endif;
-else:
-    $visivel = false;
-endif;
-$class = " " . $class;
-?>
 <div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
     <div class="logo">
         <a style="color: whitesmoke;" href="<?= PASTASITE; ?>">
@@ -162,7 +130,6 @@ $class = " " . $class;
 <script src="<?= PASTAADMIN; ?>plugins/iCheck/jquery.icheck.min.js"></script>
 <script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
 <script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<!--<script src="<?php //echo PASTAADMIN; ?>plugins/less/less-1.5.0.min.js"></script>-->
 <script src="<?= PASTAADMIN; ?>plugins/jquery-cookie/jquery.cookie.js"></script>
 <script src="<?= PASTAADMIN; ?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
 <script src="<?= PASTAADMIN; ?>js/main.js"></script>
