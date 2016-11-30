@@ -72,7 +72,7 @@
         <p>
             Por Favor! Entre com login e senha.
         </p>
-        <form class="form-login" action="../admin/Index/Logar" method="post">
+        <form class="form-login" action="../Logar" method="post">
             <?php
             if ($visivel):
                 Valida::Mensagem($msg, $class);

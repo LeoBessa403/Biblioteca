@@ -61,23 +61,16 @@ class Index
 
         if (($login != "") && ($senha != "")):
 
-            $Model = new PessoaModel();
-            /** @var PessoaEntidade $resultado */
-            $resultado = $Model->PesquisaTodos()[0];
-            /** @var ContatoEntidade $contato */
-            $contato = $resultado->getCoContato();
-
-            debug($resultado->getCoContato()->getNuTel1());
-
-
-
+            $Model = new UsuarioModel();
+            /** @var UsuarioEntidade $resultado */
+            $usuarios = $Model->PesquisaTodos();
 
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
-            foreach ($resultado as $result):
-                if (($result->getDsLogin() == $login) && ($result->getDsCode() == $senha)):
-                    if ($result->getStStatus() == "I"):
+            foreach ($usuarios as $usuario):
+                if (($usuario->getDsLogin() == $login) && ($usuario->getDsCode() == $senha)):
+                    if ($usuario->getStStatus() == "I"):
                         Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
                     endif;
@@ -93,7 +86,7 @@ class Index
 //                    endforeach;
 //                    $result[CAMPO_PERFIL] = $meuPerfil;
 //                    $user = $result;
-                        debug($result);
+                        debug($usuario);
                     break;
                 endif;
             endforeach;
