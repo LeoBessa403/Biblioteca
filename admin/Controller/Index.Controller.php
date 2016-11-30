@@ -62,31 +62,19 @@ class Index
         if (($login != "") && ($senha != "")):
 
             $Model = new UsuarioModel();
-            /** @var UsuarioEntidade $resultado */
             $usuarios = $Model->PesquisaTodos();
 
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
+            /** @var UsuarioEntidade $usuario */
             foreach ($usuarios as $usuario):
                 if (($usuario->getDsLogin() == $login) && ($usuario->getDsCode() == $senha)):
                     if ($usuario->getStStatus() == "I"):
                         Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
                     endif;
-//                    $perfis = UsuarioModel::PesquisaPerfilUsuarios($result->getCoUsuario());
-//                    $cont = false;
-//                    $meuPerfil = "";
-//                    foreach ($perfis as $resUser):
-//                        if ($cont):
-//                            $meuPerfil .= ",";
-//                        endif;
-//                        $meuPerfil .= $resUser["co_perfil"];
-//                        $cont = true;
-//                    endforeach;
-//                    $result[CAMPO_PERFIL] = $meuPerfil;
-//                    $user = $result;
-                        debug($usuario);
+                    $user = $usuario;
                     break;
                 endif;
             endforeach;
