@@ -120,5 +120,9 @@ class  Constantes
 	const DS_SENHA = 'ds_senha';
 	const DS_CODE = 'ds_code';
 	const CO_USUARIO_PERFIL = 'co_usuario_perfil';
+	const CO_ACESSO = 'co_acesso';
+	const DS_SESSION_ID = 'ds_session_id';
+	const DT_INICIO_ACESSO = 'dt_inicio_acesso';
+	const DT_FIM_ACESSO = 'dt_fim_acesso';
 
 }

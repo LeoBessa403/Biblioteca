@@ -581,6 +581,20 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_EMPRESA` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_ACESSO` (
+  `co_acesso` INT NOT NULL AUTO_INCREMENT,
+  `ds_session_id` VARCHAR(255) NULL,
+  `dt_inicio_acesso` DATETIME NULL,
+  `dt_fim_acesso` DATETIME NULL,
+  `co_usuario` INT(10) NOT NULL,
+  PRIMARY KEY (`co_acesso`, `co_usuario`),
+  INDEX `fk_TB_ACESSO_TB_USUARIO1_idx` (`co_usuario` ASC),
+  CONSTRAINT `fk_TB_ACESSO_TB_USUARIO1`
+    FOREIGN KEY (`co_usuario`)
+    REFERENCES `brcommerce`.`TB_USUARIO` (`co_usuario`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
+
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

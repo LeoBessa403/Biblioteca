@@ -78,7 +78,7 @@ class Index
                     break;
                 endif;
             endforeach;
-            debug("aqui");
+            debug($user);
             if ($user != ""):
                 $user["session_id"] = session_id();
                 $user["ultimo_acesso"] = strtotime(Valida::DataDB(Valida::DataAtual()));
