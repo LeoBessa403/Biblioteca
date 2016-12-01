@@ -7,6 +7,11 @@ class Index
     public $msg;
     public $visivel;
 
+
+    function Index()
+    {
+    }
+
     public function Acessar()
     {
         $acesso = UrlAmigavel::PegaParametro('acesso');
@@ -49,10 +54,6 @@ class Index
         $this->msg = $msg;
     }
 
-    function Index()
-    {
-    }
-
     public static function Logar()
     {
         // CLASSE DE LOGAR
@@ -74,6 +75,7 @@ class Index
                         Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
                         exit();
                     endif;
+                    /** @var UsuarioEntidade $user */
                     $user = $usuario;
                     break;
                 endif;
@@ -92,25 +94,27 @@ class Index
                     $acesso['co_usuario'] = $user->getCoUsuario();
                     $acessoObj->Salva($acesso);
                 }
-                debug($meuAcesso);
 
-
-
-
-                $meus_perfis = explode(",", $user['ds_perfil']);
-                $Funcionalidades = FuncionalidadeModel::PesquisaFuncionalidadesPerfis($meus_perfis);
-                $func = array();
-                foreach ($Funcionalidades as $value) {
-                    $func[] = $value['co_funcionalidade'];
+                $perfis = array();
+                /** @var UsuarioPerfilEntidade $perfil */
+                foreach ($user->getCoUsuarioPerfil() as $perfil){
+                    $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
                 }
+                $const = new Constantes();
+                $usuarioAcesso[$const::CO_USUARIO] = $user->getCoUsuario();
+                $usuarioAcesso[$const::CO_CLIENTE_SISTEMA] = $user->getCoClienteSistema()->getCoClienteSistema();
+                $usuarioAcesso[$const::DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
+                $usuarioAcesso[$const::NU_CPF] = $user->getCoPessoa()->getNuCpf();
+                $usuarioAcesso[$const::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
+                $usuarioAcesso[$const::ST_SEXO] = $user->getCoPessoa()->getStSexo();
+                $usuarioAcesso[$const::DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                $usuarioAcesso['perfis'] = implode(',', $perfis);
 
-                $user['funcionalidades'] = implode(",", $func);
-                $usuario = new Session();
-                $usuario->setUser($user);
-                $usuario->setSession(SESSION_USER, $usuario);
-                echo "<script type='text/javascript'>"
-                    . "window.location.href = '" . HOME . ADMIN . LOGADO . "';"
-                    . "</script>";
+                $session = new Session();
+                $session->setUser($usuarioAcesso);
+                $session->setSession(SESSION_USER, $session);
+
+                Redireciona(ADMIN . LOGADO);
             else:
                 Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
             endif;
