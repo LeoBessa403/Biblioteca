@@ -104,9 +104,9 @@ $back = new Backup();
                         <?php
                         $us = $_SESSION[SESSION_USER];
                         $user = $us->getUser();
-                        $fotoPerfil = '';
+                        $fotoPerfil = $user[md5('ds_caminho')];
                         if ($fotoPerfil == ""):
-                            $sexo = 'M';
+                            $sexo = $user[md5('st_sexo')];
                             if ($sexo == "M"):
                                 $fotoPerfil = "avatar-homem.jpg";
                             else:
@@ -118,7 +118,7 @@ $back = new Backup();
                         ?>
                         <span class="username">
                             <?php
-                            echo 'Leonardo';
+                            echo $user[md5('no_pessoa')];
                             ?>
                         </span>
                         <i class="clip-chevron-down"></i>
