@@ -38,7 +38,7 @@ function servidor_inicial(){
     // Atribui o nome da Sessão do usuario Logado no sitema
     define('SESSION_USER', 'user_BrCommerce');
     // Tempo de Inativadade Máximo em Minutos, aceito para deslogar do Sistema.
-    define('INATIVO', 1);
+    define('INATIVO', 15);
     // A frequencia em dias para realizar o BACKUP NO BANCO DE DADOS
     define('BACKUP', 15);
     // TAMANHO PADRÃO DO WIDTH DAS IAMGENS A SEREM CARREGADAS

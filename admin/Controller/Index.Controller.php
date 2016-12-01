@@ -18,7 +18,7 @@ class Index
         $class = 0;
         $msg = "";
         $visivel = true;
-        
+
         switch ($acesso){
             case 'B':
                 $msg = "Por Favor, Preencha o Usuário e senha!";
@@ -113,7 +113,6 @@ class Index
                 $session = new Session();
                 $session->setUser($usuarioAcesso);
                 $session->setSession(SESSION_USER, $session);
-
                 Redireciona(ADMIN . LOGADO);
             else:
                 Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
