@@ -475,36 +475,6 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_TIPO_NEGOCIACAO` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PACOTE` (
-    `co_pacote` INT(11) NOT NULL AUTO_INCREMENT,
-  `no_pacote` VARCHAR(80) NULL DEFAULT NULL,
-  `nu_valor` DECIMAL NULL DEFAULT NULL,
-  `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo /  I - Inativo\'',
-  `co_cliente_sistema` INT(11) NOT NULL,
-  PRIMARY KEY (`co_pacote`, `co_cliente_sistema`),
-  INDEX `fk_TB_PACOTE_TB_CLIENTE_SISTEMA1_idx` (`co_cliente_sistema` ASC),
-  CONSTRAINT `fk_TB_PACOTE_TB_CLIENTE_SISTEMA1`
-    FOREIGN KEY (`co_cliente_sistema`)
-    REFERENCES `brcommerce`.`TB_CLIENTE_SISTEMA` (`co_cliente_sistema`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
-CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FUNCIONALIDADE_PACOTE` (
-    `co_funcionalidade_pacote` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `co_funcionalidade` INT(11) NOT NULL,
-  `co_pacote` INT(11) NOT NULL,
-  PRIMARY KEY (`co_funcionalidade_pacote`, `co_funcionalidade`, `co_pacote`),
-  INDEX `fk_tb_funcionalidade_tb_pacote_tb_pacote1_idx` (`co_pacote` ASC),
-  INDEX `fk_tb_funcionalidade_tb_pacote_tb_funcionalidade1_idx` (`co_funcionalidade` ASC),
-  CONSTRAINT `fk_tb_funcionalidade_tb_pacote_tb_funcionalidade1`
-    FOREIGN KEY (`co_funcionalidade`)
-    REFERENCES `brcommerce`.`TB_FUNCIONALIDADE` (`co_funcionalidade`),
-  CONSTRAINT `fk_tb_funcionalidade_tb_pacote_tb_pacote1`
-    FOREIGN KEY (`co_pacote`)
-    REFERENCES `brcommerce`.`TB_PACOTE` (`co_pacote`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FINANCEIRO` (
     `co_financeiro` INT(11) NOT NULL AUTO_INCREMENT,
   `nu_parcela` INT(11) NOT NULL,

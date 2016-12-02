@@ -58,8 +58,6 @@ class  Constantes
 	const CO_FUNCIONALIDADE = 'co_funcionalidade';
 	const NO_FUNCIONALIDADE = 'no_funcionalidade';
 	const DS_ROTA = 'ds_rota';
-	const CO_FUNCIONALIDADE_PACOTE = 'co_funcionalidade_pacote';
-	const CO_PACOTE = 'co_pacote';
 	const CO_FUNCIONARIO = 'co_funcionario';
 	const DS_CARGO = 'ds_cargo';
 	const DT_ADMISSAO = 'dt_admissao';
@@ -73,9 +71,7 @@ class  Constantes
 	const CO_TIPO_NEGOCIACAO = 'co_tipo_negociacao';
 	const CO_NEGOCIACAO_PRODUTO = 'co_negociacao_produto';
 	const CO_PRODUTO = 'co_produto';
-	const NU_VALOR = 'nu_valor';
 	const NU_QUANTIDADE = 'nu_quantidade';
-	const NO_PACOTE = 'no_pacote';
 	const CO_PAGAMENTO = 'co_pagamento';
 	const NU_TOTAL = 'nu_total';
 	const NU_VALOR_PAGO = 'nu_valor_pago';
