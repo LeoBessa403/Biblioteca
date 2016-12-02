@@ -108,7 +108,7 @@ class Index
                 $usuarioAcesso[$const::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
                 $usuarioAcesso[$const::ST_SEXO] = $user->getCoPessoa()->getStSexo();
                 $usuarioAcesso[$const::DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                $usuarioAcesso['perfis'] = implode(',', $perfis);
+                $usuarioAcesso['ds_perfil'] = implode(',', $perfis);
 
                 $session = new Session();
                 $session->setUser($usuarioAcesso);

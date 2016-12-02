@@ -166,7 +166,7 @@ $back = new Backup();
                 "Empresa" => array("fa fa-outdent", "CadastroEmpresa", "ListarEmpresa"),
                 "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
             );
-            GeraMenu($menu);
+            $url->GeraMenu($menu);
             ?>
             <!-- end: MAIN NAVIGATION MENU -->
         </div>
