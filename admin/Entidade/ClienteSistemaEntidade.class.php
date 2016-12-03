@@ -22,7 +22,6 @@ class ClienteSistemaEntidade
 	private $co_fornecedor;
 	private $co_funcionario;
 	private $co_negociacao;
-	private $co_pacote;
 	private $co_produto;
 	private $co_representante;
 	private $co_unidade_venda;
@@ -74,10 +73,6 @@ class ClienteSistemaEntidade
             ),
 			Constantes::CO_NEGOCIACAO => array(
                 'Entidade' => NegociacaoEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
-			Constantes::CO_PACOTE => array(
-                'Entidade' => PacoteEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 			Constantes::CO_PRODUTO => array(
@@ -271,22 +266,6 @@ class ClienteSistemaEntidade
 	public function setCoNegociacao($co_negociacao)
     {
         return $this->co_negociacao = $co_negociacao;
-    }
-
-	/**
-     * @return $co_pacote
-     */
-	public function getCoPacote()
-    {
-        return $this->co_pacote;
-    }
-
-	/**
-     * @param mixed $co_pacote
-     */
-	public function setCoPacote($co_pacote)
-    {
-        return $this->co_pacote = $co_pacote;
     }
 
 	/**

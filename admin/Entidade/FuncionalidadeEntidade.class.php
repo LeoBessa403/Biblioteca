@@ -15,7 +15,6 @@ class FuncionalidadeEntidade
 	private $no_funcionalidade;
 	private $ds_rota;
 	private $st_status;
-	private $co_funcionalidade_pacote;
 	private $co_perfil_funcionalidade;
 
 
@@ -37,10 +36,6 @@ class FuncionalidadeEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_FUNCIONALIDADE_PACOTE => array(
-                'Entidade' => FuncionalidadePacoteEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
 			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
                 'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
                 'Tipo' => 'N',

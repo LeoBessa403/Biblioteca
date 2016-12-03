@@ -26,9 +26,7 @@
                     Modal::load();
                 ?>
             <div class="row">
-
                  <?php
-
                     echo $form;
                  ?>
 
