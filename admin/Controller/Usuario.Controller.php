@@ -164,6 +164,10 @@ class Usuario
     {
         $id = "CadastroUsuario";
         $session = new Session();
+        $pessoaModel = new PessoaModel();
+        $contatoModel = new ContatoModel();
+        $imagemModel = new ImagemModel();
+        $usuarioModel = new UsuarioModel();
 
         $dados[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
         $dados[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
@@ -175,9 +179,6 @@ class Usuario
             $dados[Constantes::ST_STATUS] = "I";
         endif;
         unset($dados[$id], $dados["ds_senha_confirma"], $dados[Constantes::CO_USUARIO]);
-
-        $pessoaModel = new PessoaModel();
-        $contatoModel = new ContatoModel();
 
         $user[Constantes::NO_PESSOA] = $dados[Constantes::NO_PESSOA];
         /** @var PessoaEntidade $userNome */
@@ -199,42 +200,57 @@ class Usuario
         if ($this->erro):
             $this->mensagem = "Já exite usuário cadastro com o mesmo " . implode(", ", $Campo) . ", Favor Verificar.";
         else:
+            if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
+                $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
+                $up = new Upload();
+                $up->UploadImagens($_FILES[Constantes::DS_CAMINHO], $nome, "usuarios");
+                $dataImagem[Constantes::DS_CAMINHO] = $up->getNameImage();
+            endif;
+            $dataUsuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
+            $dataUsuario[Constantes::DS_CODE] = $dados[Constantes::DS_CODE];
+            $dataUsuario[Constantes::ST_STATUS] = $dados[Constantes::ST_STATUS];
+
+            $dataPessoa[Constantes::NO_PESSOA] = $dados[Constantes::NO_PESSOA];
+            $dataPessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO];
+
+            $dataContato[Constantes::DS_EMAIL] = $dados[Constantes::DS_EMAIL];
+
             if ($idCoUsuario):
-                $usuarioModel = new UsuarioModel();
                 /** @var UsuarioEntidade $usuario */
                 $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO, $idCoUsuario]);
-                $dataUsuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
-                $dataUsuario[Constantes::DS_CODE] = $dados[Constantes::DS_CODE];
-                $dataUsuario[Constantes::ST_STATUS] = $dados[Constantes::ST_STATUS];
                 $usuarioModel->Salva($dataUsuario, $idCoUsuario);
 
-                $pessoaModel = new PessoaModel();
-                $dataPessoa[Constantes::NO_PESSOA] = $dados[Constantes::NO_PESSOA];
-                $dataPessoa['ds_code'] = $dados['ds_code'];
-                $dataPessoa['st_status'] = $dados['st_status'];
+                if ($usuario->getCoImagem()->getDsCaminho()):
+                    if (is_file(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho())):
+                        unlink(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho());
+                    endif;
+                    $imagemModel->Salva($dataImagem, $usuario->getCoImagem()->getCoImagem());
+                endif;
                 $pessoaModel->Salva($dataPessoa, $usuario->getCoPessoa());
-
-
-                
-
+                $contatoModel->Salva($dataContato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
 
                 $session->setSession(ATUALIZADO, "OK");
             else:
-                $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
-                unset($dados[CAMPO_PERFIL]);
-                $dados['dt_cadastro'] = Valida::DataAtualBanco();
-
-                $idUsuario = UsuarioModel::CadastraUsuario($dados);
-                foreach ($meusPerfis as $resPerfis):
-                    $userPerfil = array();
-                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
-                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis;
-                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
-                    $session->setSession(CADASTRADO, "OK");
-                endforeach;
+                debug('Editar');
+//                if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
+//                    $dataUsuario[Constantes::CO_IMAGEM] = $imagemModel->Salva($dataImagem);
+//                endif;
+//
+//                $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
+//                unset($dados[CAMPO_PERFIL]);
+//                $dados['dt_cadastro'] = Valida::DataAtualBanco();
+//
+//                $idUsuario = UsuarioModel::CadastraUsuario($dados);
+//                foreach ($meusPerfis as $resPerfis):
+//                    $userPerfil = array();
+//                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
+//                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis;
+//                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
+//                    $session->setSession(CADASTRADO, "OK");
+//                endforeach;
             endif;
+
             if ($idUsuario):
-                $this->cadastraFotoUsuario($_FILES , $idUsuario);
                 $email = new Email();
 
                 // Índice = Nome, e Valor = Email.
@@ -328,25 +344,6 @@ class Usuario
             $meusPerfis[] = $perfil->getCoPerfil()->getCoPerfil();
         endforeach;
         return $meusPerfis;
-    }
-
-    public function cadastraFotoUsuario($files, $idCoUsuario)
-    {
-        $imagem = array();
-        if ($files["ds_foto"]["tmp_name"]):
-            $usuarioModel = new UsuarioModel();
-            $usuario = $usuarioModel->PesquisaUmQuando(['co_usuario', $idCoUsuario]);
-            $nome = Valida::ValNome($usuario->getCoPessoa()->getNoPessoa());
-            $up = new Upload();
-            $up->UploadImagens($files["ds_foto"], $nome, "usuarios");
-            $imagem['ds_caminho'] = $up->getNameImage();
-            if ($usuario->getCoImagem()->getDsCaminho()):
-                if (is_file(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho())):
-                    unlink(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho());
-                endif;
-            endif;
-        endif;
-        return $imagem;
     }
 
 }
