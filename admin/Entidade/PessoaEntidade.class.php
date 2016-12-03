@@ -27,6 +27,7 @@ class PessoaEntidade
 	private $co_fornecedor;
 	private $co_funcionario;
 	private $co_representante;
+	private $co_usuario;
 
 
 	/**
@@ -83,6 +84,10 @@ class PessoaEntidade
             ),
 			Constantes::CO_REPRESENTANTE => array(
                 'Entidade' => RepresentanteEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -344,6 +349,22 @@ class PessoaEntidade
 	public function setCoRepresentante($co_representante)
     {
         return $this->co_representante = $co_representante;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoUsuario()
+    {
+        return $this->co_usuario;
+    }
+
+    /**
+     * @param mixed $co_usuario
+     */
+    public function setCoUsuario($co_usuario)
+    {
+        $this->co_usuario = $co_usuario;
     }
 
 }

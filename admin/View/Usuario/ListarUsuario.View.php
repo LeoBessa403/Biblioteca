@@ -54,7 +54,7 @@
                             </a>';
                             $grid->setColunas(strtoupper($res->getCoPessoa()->getNoPessoa()));
                             $grid->setColunas($res->getCoPessoa()->getNuCpf());
-                            $grid->setColunas(implode(', ', $perfis[$res->getCoUsuario()]));
+                            $grid->setColunas($perfis[$res->getCoUsuario()]);
                             $grid->setColunas(FuncoesSistema::SituacaoUsuario($res->getStStatus()));
                             $grid->setColunas($acao, 2);
                             $grid->criaLinha($res->getCoUsuario());
