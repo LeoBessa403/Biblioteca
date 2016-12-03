@@ -15,6 +15,7 @@ class ImagemEntidade
 	private $ds_caminho;
 	private $co_funcionario;
 	private $co_produto;
+	private $co_usuario;
 
 
 	/**
@@ -39,6 +40,10 @@ class ImagemEntidade
             ),
 			Constantes::CO_PRODUTO => array(
                 'Entidade' => ProdutoEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_USUARIO => array(
+                'Entidade' => UsuarioEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -108,6 +113,22 @@ class ImagemEntidade
 	public function setCoProduto($co_produto)
     {
         return $this->co_produto = $co_produto;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoUsuario()
+    {
+        return $this->co_usuario;
+    }
+
+    /**
+     * @param mixed $co_usuario
+     */
+    public function setCoUsuario($co_usuario)
+    {
+        $this->co_usuario = $co_usuario;
     }
 
 }
