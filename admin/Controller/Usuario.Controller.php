@@ -28,6 +28,11 @@ class Usuario
     {
         $id = "CadastroUsuario";
 
+
+        
+
+
+
         if (!empty($_POST[$id])):
             $this->salvaUsuario($_POST);
         endif;
