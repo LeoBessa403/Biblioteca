@@ -26,12 +26,8 @@ class Usuario
 
     public function CadastroUsuario()
     {
+        $perfilControl = new Perfil();
         $id = "CadastroUsuario";
-
-
-        
-
-
 
         if (!empty($_POST[$id])):
             $this->salvaUsuario($_POST);
@@ -44,8 +40,8 @@ class Usuario
             $usuarioModel = new UsuarioModel();
             /** @var UsuarioEntidade $usuario */
             $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $this->idUsuario]);
-            $label_options_perfis = $this->montaComboPerfil($usuario);
-            $meusPerfis = $this->montaArrayPerfil($usuario);
+            $label_options_perfis = $perfilControl->montaComboPerfil($usuario);
+            $meusPerfis = $perfilControl->montaArrayPerfil($usuario);
             $res[CAMPO_PERFIL] = $meusPerfis;
         endif;
         $res['ds_senha_confirma'] = $usuario->getDsSenha();
@@ -280,6 +276,7 @@ class Usuario
 
     public function ListarUsuario()
     {
+        $perfilControl = new Perfil();
         $dados = array();
         if (!empty($_POST)):
             $dados = array(
@@ -290,7 +287,7 @@ class Usuario
         $this->result = $usuarioModel->PesquisaTodos($dados);
         /** @var UsuarioEntidade $value */
         foreach ($this->result as $value):
-            $this->perfis = $this->montaComboPerfil($value);
+            $this->perfis = $perfilControl->montaComboPerfil($value);
         endforeach;
     }
 
@@ -331,24 +328,6 @@ class Usuario
 
         echo $formulario->finalizaFormPesquisaAvancada();
 
-    }
-
-    public function montaComboPerfil(UsuarioEntidade $usuario)
-    {
-        $meusPerfis = array();
-        foreach ($usuario->getCoUsuarioPerfil() as $perfil) :
-            $meusPerfis[$perfil->getCoPerfil()->getCoPerfil()] = $perfil->getCoPerfil()->getNoPerfil();
-        endforeach;
-        return $meusPerfis;
-    }
-
-    public function montaArrayPerfil(UsuarioEntidade $usuario)
-    {
-        $meusPerfis = array();
-        foreach ($usuario->getCoUsuarioPerfil() as $perfil) :
-            $meusPerfis[] = $perfil->getCoPerfil()->getCoPerfil();
-        endforeach;
-        return $meusPerfis;
     }
 
 }

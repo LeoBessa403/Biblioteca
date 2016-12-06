@@ -96,9 +96,11 @@ class Index
                 }
 
                 $perfis = array();
+                $no_perfis = array();
                 /** @var UsuarioPerfilEntidade $perfil */
                 foreach ($user->getCoUsuarioPerfil() as $perfil){
                     $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
+                    $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
                 }
                 $const = new Constantes();
                 $usuarioAcesso[$const::CO_USUARIO] = $user->getCoUsuario();
@@ -109,6 +111,8 @@ class Index
                 $usuarioAcesso[$const::ST_SEXO] = $user->getCoPessoa()->getStSexo();
                 $usuarioAcesso[$const::DT_FIM_ACESSO] = Valida::DataAtualBanco();
                 $usuarioAcesso['ds_perfil'] = implode(',', $perfis);
+                $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
+
 
                 $session = new Session();
                 $session->setUser($usuarioAcesso);
