@@ -44,8 +44,9 @@
                                                                         <big><b style="text-transform: capitalize;">';
                     echo " " . $perfis;
                     echo '</b></big></p>';
-                }elseif
-                    ($perfis) {
+                } elseif
+                ($perfis
+                ) {
                     echo '<p><span style="font-weight: bolder; color: #900;">Perfil:</span><br/>
                                                                         <big><b style="text-transform: capitalize;">';
                     echo " " . $perfis;
@@ -98,10 +99,10 @@
                                             $coluna = "Código " . $coluna;
                                         endif;
                                         echo '<div class="form-group">
-                                                                                                        <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
+                                        <label for="form-field-22" style="font-weight: bolder; color: #666; text-transform: capitalize;">';
                                         echo $coluna;
                                         echo '</label>
-                                                                                                        <p><big><b>';
+                                        <p><big><b>';
                                         if ($pre == "dt"):
                                             $data = explode(" ", $reg[1]);
                                             echo Valida::DataShow($data[0], "d/m/Y") . " - " . $data[1];
