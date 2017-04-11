@@ -7,7 +7,7 @@
 
 class PessoaEntidade
 {
-	const TABELA = 'tb_pessoa';
+	const TABELA = 'TB_PESSOA';
 	const ENTIDADE = 'PessoaEntidade';
 	const CHAVE = Constantes::CO_PESSOA;
 
@@ -18,16 +18,11 @@ class PessoaEntidade
 	private $dt_cadastro;
 	private $dt_nascimento;
 	private $st_sexo;
-	private $st_estado_civil;
-	private $co_endereco;
 	private $co_contato;
-	private $co_cliente;
-	private $co_cliente_sistema;
-	private $co_empresa;
-	private $co_fornecedor;
-	private $co_funcionario;
-	private $co_representante;
+	private $co_endereco;
+	private $co_membro;
 	private $co_usuario;
+	private $co_inscricao;
 
 
 	/**
@@ -42,9 +37,8 @@ class PessoaEntidade
 			Constantes::DT_CADASTRO,
 			Constantes::DT_NASCIMENTO,
 			Constantes::ST_SEXO,
-			Constantes::ST_ESTADO_CIVIL,
-			Constantes::CO_ENDERECO,
 			Constantes::CO_CONTATO,
+			Constantes::CO_ENDERECO,
 		];
     	return $campos;
     }
@@ -54,40 +48,24 @@ class PessoaEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_ENDERECO => array(
-                'Entidade' => EnderecoEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_CONTATO => array(
                 'Entidade' => ContatoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
-			Constantes::CO_CLIENTE => array(
-                'Entidade' => ClienteEntidade::ENTIDADE,
+			Constantes::CO_ENDERECO => array(
+                'Entidade' => EnderecoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
-			Constantes::CO_CLIENTE_SISTEMA => array(
-                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_EMPRESA => array(
-                'Entidade' => EmpresaEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_FORNECEDOR => array(
-                'Entidade' => FornecedorEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_FUNCIONARIO => array(
-                'Entidade' => FuncionarioEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_REPRESENTANTE => array(
-                'Entidade' => RepresentanteEntidade::ENTIDADE,
+			Constantes::CO_MEMBRO => array(
+                'Entidade' => MembroEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 			Constantes::CO_USUARIO => array(
                 'Entidade' => UsuarioEntidade::ENTIDADE,
+                'Tipo' => 1,
+            ),
+			Constantes::CO_INSCRICAO => array(
+                'Entidade' => InscricaoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -208,19 +186,19 @@ class PessoaEntidade
     }
 
 	/**
-     * @return $st_estado_civil
+     * @return $co_contato
      */
-	public function getStEstadoCivil()
+	public function getCoContato()
     {
-        return $this->st_estado_civil;
+        return $this->co_contato;
     }
 
 	/**
-     * @param mixed $st_estado_civil
+     * @param mixed $co_contato
      */
-	public function setStEstadoCivil($st_estado_civil)
+	public function setCoContato($co_contato)
     {
-        return $this->st_estado_civil = $st_estado_civil;
+        return $this->co_contato = $co_contato;
     }
 
 	/**
@@ -240,131 +218,51 @@ class PessoaEntidade
     }
 
 	/**
-     * @return $co_contato
+     * @return $co_membro
      */
-	public function getCoContato()
+	public function getCoMembro()
     {
-        return $this->co_contato;
+        return $this->co_membro;
     }
 
 	/**
-     * @param mixed $co_contato
+     * @param mixed $co_membro
      */
-	public function setCoContato($co_contato)
+	public function setCoMembro($co_membro)
     {
-        return $this->co_contato = $co_contato;
+        return $this->co_membro = $co_membro;
     }
 
 	/**
-     * @return $co_cliente
+     * @return $co_usuario
      */
-	public function getCoCliente()
+	public function getCoUsuario()
     {
-        return $this->co_cliente;
+        return $this->co_usuario;
     }
 
 	/**
-     * @param mixed $co_cliente
+     * @param mixed $co_usuario
      */
-	public function setCoCliente($co_cliente)
+	public function setCoUsuario($co_usuario)
     {
-        return $this->co_cliente = $co_cliente;
-    }
-
-	/**
-     * @return $co_cliente_sistema
-     */
-	public function getCoClienteSistema()
-    {
-        return $this->co_cliente_sistema;
-    }
-
-	/**
-     * @param mixed $co_cliente_sistema
-     */
-	public function setCoClienteSistema($co_cliente_sistema)
-    {
-        return $this->co_cliente_sistema = $co_cliente_sistema;
-    }
-
-	/**
-     * @return $co_empresa
-     */
-	public function getCoEmpresa()
-    {
-        return $this->co_empresa;
-    }
-
-	/**
-     * @param mixed $co_empresa
-     */
-	public function setCoEmpresa($co_empresa)
-    {
-        return $this->co_empresa = $co_empresa;
-    }
-
-	/**
-     * @return $co_fornecedor
-     */
-	public function getCoFornecedor()
-    {
-        return $this->co_fornecedor;
-    }
-
-	/**
-     * @param mixed $co_fornecedor
-     */
-	public function setCoFornecedor($co_fornecedor)
-    {
-        return $this->co_fornecedor = $co_fornecedor;
-    }
-
-	/**
-     * @return $co_funcionario
-     */
-	public function getCoFuncionario()
-    {
-        return $this->co_funcionario;
-    }
-
-	/**
-     * @param mixed $co_funcionario
-     */
-	public function setCoFuncionario($co_funcionario)
-    {
-        return $this->co_funcionario = $co_funcionario;
-    }
-
-	/**
-     * @return $co_representante
-     */
-	public function getCoRepresentante()
-    {
-        return $this->co_representante;
-    }
-
-	/**
-     * @param mixed $co_representante
-     */
-	public function setCoRepresentante($co_representante)
-    {
-        return $this->co_representante = $co_representante;
+        return $this->co_usuario = $co_usuario;
     }
 
     /**
      * @return mixed
      */
-    public function getCoUsuario()
+    public function getCoInscricao()
     {
-        return $this->co_usuario;
+        return $this->co_inscricao;
     }
 
     /**
-     * @param mixed $co_usuario
+     * @param mixed $co_inscricao
      */
-    public function setCoUsuario($co_usuario)
+    public function setCoInscricao($co_inscricao)
     {
-        $this->co_usuario = $co_usuario;
+        $this->co_inscricao = $co_inscricao;
     }
 
 }

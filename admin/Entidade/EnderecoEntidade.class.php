@@ -7,7 +7,7 @@
 
 class EnderecoEntidade
 {
-	const TABELA = 'tb_endereco';
+	const TABELA = 'TB_ENDERECO';
 	const ENTIDADE = 'EnderecoEntidade';
 	const CHAVE = Constantes::CO_ENDERECO;
 
@@ -18,7 +18,6 @@ class EnderecoEntidade
 	private $nu_cep;
 	private $no_cidade;
 	private $sg_uf;
-	private $co_empresa;
 	private $co_pessoa;
 
 
@@ -43,10 +42,6 @@ class EnderecoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_EMPRESA => array(
-                'Entidade' => EmpresaEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_PESSOA => array(
                 'Entidade' => PessoaEntidade::ENTIDADE,
                 'Tipo' => 1,
@@ -166,22 +161,6 @@ class EnderecoEntidade
 	public function setSgUf($sg_uf)
     {
         return $this->sg_uf = $sg_uf;
-    }
-
-	/**
-     * @return $co_empresa
-     */
-	public function getCoEmpresa()
-    {
-        return $this->co_empresa;
-    }
-
-	/**
-     * @param mixed $co_empresa
-     */
-	public function setCoEmpresa($co_empresa)
-    {
-        return $this->co_empresa = $co_empresa;
     }
 
 	/**

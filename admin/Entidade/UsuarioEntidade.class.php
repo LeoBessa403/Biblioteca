@@ -7,24 +7,19 @@
 
 class UsuarioEntidade
 {
-	const TABELA = 'tb_usuario';
+	const TABELA = 'TB_USUARIO';
 	const ENTIDADE = 'UsuarioEntidade';
 	const CHAVE = Constantes::CO_USUARIO;
 
 	private $co_usuario;
-	private $ds_login;
 	private $ds_senha;
 	private $ds_code;
 	private $st_status;
 	private $dt_cadastro;
-	private $co_cliente_sistema;
 	private $co_imagem;
 	private $co_pessoa;
-	private $co_negociacao;
-	private $co_produto_detalhe;
-	private $co_produto_promocao;
-	private $co_usuario_perfil;
 	private $co_acesso;
+	private $co_usuario_perfil;
 
 
 	/**
@@ -33,12 +28,10 @@ class UsuarioEntidade
 	public static function getCampos() {
     	$campos = [
 			Constantes::CO_USUARIO,
-			Constantes::DS_LOGIN,
 			Constantes::DS_SENHA,
 			Constantes::DS_CODE,
 			Constantes::ST_STATUS,
 			Constantes::DT_CADASTRO,
-			Constantes::CO_CLIENTE_SISTEMA,
 			Constantes::CO_IMAGEM,
 			Constantes::CO_PESSOA,
 		];
@@ -50,10 +43,6 @@ class UsuarioEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_CLIENTE_SISTEMA => array(
-                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_IMAGEM => array(
                 'Entidade' => ImagemEntidade::ENTIDADE,
                 'Tipo' => 1,
@@ -62,24 +51,12 @@ class UsuarioEntidade
                 'Entidade' => PessoaEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
-			Constantes::CO_NEGOCIACAO => array(
-                'Entidade' => NegociacaoEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
-			Constantes::CO_PRODUTO_DETALHE => array(
-                'Entidade' => ProdutoDetalheEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
-			Constantes::CO_PRODUTO_PROMOCAO => array(
-                'Entidade' => ProdutoPromocaoEntidade::ENTIDADE,
+			Constantes::CO_ACESSO => array(
+                'Entidade' => AcessoEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
                 'Entidade' => UsuarioPerfilEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
-			Constantes::CO_ACESSO => array(
-                'Entidade' => AcessoEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 		];
@@ -101,22 +78,6 @@ class UsuarioEntidade
 	public function setCoUsuario($co_usuario)
     {
         return $this->co_usuario = $co_usuario;
-    }
-
-	/**
-     * @return $ds_login
-     */
-	public function getDsLogin()
-    {
-        return $this->ds_login;
-    }
-
-	/**
-     * @param mixed $ds_login
-     */
-	public function setDsLogin($ds_login)
-    {
-        return $this->ds_login = $ds_login;
     }
 
 	/**
@@ -184,22 +145,6 @@ class UsuarioEntidade
     }
 
 	/**
-     * @return $co_cliente_sistema
-     */
-	public function getCoClienteSistema()
-    {
-        return $this->co_cliente_sistema;
-    }
-
-	/**
-     * @param mixed $co_cliente_sistema
-     */
-	public function setCoClienteSistema($co_cliente_sistema)
-    {
-        return $this->co_cliente_sistema = $co_cliente_sistema;
-    }
-
-	/**
      * @return $co_imagem
      */
 	public function getCoImagem()
@@ -232,51 +177,19 @@ class UsuarioEntidade
     }
 
 	/**
-     * @return $co_negociacao
+     * @return $co_acesso
      */
-	public function getCoNegociacao()
+	public function getCoAcesso()
     {
-        return $this->co_negociacao;
+        return $this->co_acesso;
     }
 
 	/**
-     * @param mixed $co_negociacao
+     * @param mixed $co_acesso
      */
-	public function setCoNegociacao($co_negociacao)
+	public function setCoAcesso($co_acesso)
     {
-        return $this->co_negociacao = $co_negociacao;
-    }
-
-	/**
-     * @return $co_produto_detalhe
-     */
-	public function getCoProdutoDetalhe()
-    {
-        return $this->co_produto_detalhe;
-    }
-
-	/**
-     * @param mixed $co_produto_detalhe
-     */
-	public function setCoProdutoDetalhe($co_produto_detalhe)
-    {
-        return $this->co_produto_detalhe = $co_produto_detalhe;
-    }
-
-	/**
-     * @return $co_produto_promocao
-     */
-	public function getCoProdutoPromocao()
-    {
-        return $this->co_produto_promocao;
-    }
-
-	/**
-     * @param mixed $co_produto_promocao
-     */
-	public function setCoProdutoPromocao($co_produto_promocao)
-    {
-        return $this->co_produto_promocao = $co_produto_promocao;
+        return $this->co_acesso = $co_acesso;
     }
 
 	/**
@@ -294,23 +207,5 @@ class UsuarioEntidade
     {
         return $this->co_usuario_perfil = $co_usuario_perfil;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getCoAcesso()
-    {
-        return $this->co_acesso;
-    }
-
-    /**
-     * @param mixed $co_acesso
-     */
-    public function setCoAcesso($co_acesso)
-    {
-        $this->co_acesso = $co_acesso;
-    }
-
-
 
 }

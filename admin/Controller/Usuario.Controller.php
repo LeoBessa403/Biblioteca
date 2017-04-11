@@ -3,14 +3,6 @@
 class Usuario
 {
 
-    public $result;
-    public $resultAlt;
-    public $form;
-    public $perfis;
-    public $erro;
-    public $mensagem;
-    public $idUsuario;
-
     public function Index()
     {
     }
@@ -20,173 +12,112 @@ class Usuario
         $us = $_SESSION[SESSION_USER];
         $user = $us->getUser();
         $this->idUsuario = $user[md5(Constantes::CO_USUARIO)];
-        $this->CadastroUsuario();
+        $this->CadastroUsuario(true);
         UrlAmigavel::$action = "CadastroUsuario";
     }
 
-    public function CadastroUsuario()
+    public function CadastroUsuario($meuPerfil = false)
     {
-        $perfilControl = new Perfil();
         $id = "CadastroUsuario";
 
         if (!empty($_POST[$id])):
-            $this->salvaUsuario($_POST);
+            $this->salvaUsuario($_POST, $_FILES);
         endif;
-        if (!$this->idUsuario):
-            $this->idUsuario = UrlAmigavel::PegaParametro("usu");
+
+        $idCoUsuario = UrlAmigavel::PegaParametro("usu");
+        if ($meuPerfil):
+            $idCoUsuario = $this->idUsuario;
         endif;
         $res = array();
-        if ($this->idUsuario):
+        if ($idCoUsuario):
             $usuarioModel = new UsuarioModel();
             /** @var UsuarioEntidade $usuario */
-            $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $this->idUsuario]);
-            $label_options_perfis = $perfilControl->montaComboPerfil($usuario);
-            $meusPerfis = $perfilControl->montaArrayPerfil($usuario);
-            $res[CAMPO_PERFIL] = $meusPerfis;
-        endif;
-        $res['ds_senha_confirma'] = $usuario->getDsSenha();
-        $res[Constantes::DS_SENHA] = $usuario->getDsSenha();
-        if ($usuario->getCoImagem()->getDsCaminho()):
-            $res[Constantes::DS_CAMINHO] = "usuarios/" . $usuario->getCoImagem()->getDsCaminho();
-        endif;
-
-        $res[Constantes::CO_USUARIO] = $usuario->getCoUsuario();
-        $res[Constantes::NO_PESSOA] = $usuario->getCoPessoa()->getNoPessoa();
-        $res[Constantes::DS_EMAIL] = $usuario->getCoPessoa()->getCoContato()->getDsEmail();
-        $res[Constantes::ST_SEXO] = $usuario->getCoPessoa()->getStSexo();
-        $res[Constantes::ST_STATUS] = $usuario->getStStatus();
-
-        $formulario = new Form($id, "admin/Usuario/CadastroUsuario");
-        $formulario->setValor($res);
-
-        $formulario
-            ->setId(Constantes::NO_PESSOA)
-            ->setClasses("ob nome")
-            ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
-            ->setLabel("Nome Completo")
-            ->CriaInpunt();
-
-        $formulario
-            ->setId(Constantes::DS_EMAIL)
-            ->setIcon("fa-envelope fa")
-            ->setClasses("email ob")
-            ->setLabel("Email")
-            ->CriaInpunt();
-
-        $label_options = array("" => "Selecione um Sexo", "M" => "Masculino", "F" => "Feminino");
-        $formulario
-            ->setLabel("Sexo")
-            ->setId(Constantes::ST_SEXO)
-            ->setType("select")
-            ->setOptions($label_options)
-            ->CriaInpunt();
-
-        $formulario
-            ->setId(Constantes::DS_CAMINHO)
-            ->setType("singlefile")
-            ->setTamanhoInput(8)
-            ->setInfo("Caso queira troca de foto")
-            ->setLabel("Foto de Perfil")
-            ->CriaInpunt();
-
-        $formulario
-            ->setId(Constantes::DS_SENHA)
-            ->setClasses("ob senha")
-            ->setTamanhoInput(4)
-            ->setType("password")
-            ->setLabel("Senha")
-            ->CriaInpunt();
-
-        $formulario
-            ->setId("ds_senha_confirma")
-            ->setClasses("ob confirma-senha")
-            ->setTamanhoInput(4)
-            ->setType("password")
-            ->setLabel("Confirmação da Senha")
-            ->CriaInpunt();
-        if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
-
-            $formulario
-                ->setLabel("Perfis")
-                ->setId(CAMPO_PERFIL)
-                ->setClasses("multipla")
-                ->setTamanhoInput(8)
-                ->setInfo("Pode selecionar vários perfis.")
-                ->setType("select")
-                ->setOptions($label_options_perfis)
-                ->CriaInpunt();
-
-            $checked = "";
-            if (!empty($res)):
-                if ($res[Constantes::ST_STATUS] == "A"):
-                    $checked = "checked";
-                endif;
+            $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $idCoUsuario]);
+            $res['ds_senha_confirma'] = $usuario->getDsSenha();
+            $res[Constantes::DS_SENHA] = $usuario->getDsSenha();
+            if ($usuario->getCoImagem()->getDsCaminho()):
+                $res[Constantes::DS_CAMINHO] = "usuarios/" . $usuario->getCoImagem()->getDsCaminho();
             endif;
+            $res[Constantes::CO_USUARIO] = $usuario->getCoUsuario();
+            $res[Constantes::NO_PESSOA] = $usuario->getCoPessoa()->getNoPessoa();
+            $res[Constantes::DS_EMAIL] = $usuario->getCoPessoa()->getCoContato()->getDsEmail();
+            $res[Constantes::ST_SEXO] = $usuario->getCoPessoa()->getStSexo();
+            $res[Constantes::ST_STATUS] = $usuario->getStStatus();
 
-            $label_options2 = array("Ativo", "Inativo", "verde", "vermelho");
-            $formulario
-                ->setLabel("Status do Usuário")
-                ->setClasses($checked)
-                ->setId(Constantes::ST_STATUS)
-                ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
-                ->setType("checkbox")
-                ->setTamanhoInput(4)
-                ->setOptions($label_options2)
-                ->CriaInpunt();
-        else:
-            $formulario
-                ->setId(Constantes::ST_STATUS)
-                ->setClasses("disabilita")
-                ->setTamanhoInput(6)
-                ->setLabel("Status do Usuário")
-                ->CriaInpunt();
+            $res[Constantes::NU_CPF] = $usuario->getCoPessoa()->getNuCpf();
+            $res[Constantes::NU_RG] = $usuario->getCoPessoa()->getNuRg();
+            $res[Constantes::DT_NASCIMENTO] = Valida::DataShow($usuario->getCoPessoa()->getDtNascimento());
+            $res[Constantes::NU_TEL1] = $usuario->getCoPessoa()->getCoContato()->getNuTel1();
+            $res[Constantes::NU_TEL2] = $usuario->getCoPessoa()->getCoContato()->getNuTel2();
 
-            $formulario
-                ->setId(CAMPO_PERFIL)
-                ->setClasses("disabilita")
-                ->setTamanhoInput(6)
-                ->setLabel("Perfis")
-                ->CriaInpunt();
+            $res[Constantes::DS_ENDERECO] = $usuario->getCoPessoa()->getCoEndereco()->getDsEndereco();
+            $res[Constantes::DS_COMPLEMENTO] = $usuario->getCoPessoa()->getCoEndereco()->getDsComplemento();
+            $res[Constantes::DS_BAIRRO] = $usuario->getCoPessoa()->getCoEndereco()->getDsBairro();
+            $res[Constantes::NO_CIDADE] = $usuario->getCoPessoa()->getCoEndereco()->getNoCidade();
+            $res[Constantes::NU_CEP] = $usuario->getCoPessoa()->getCoEndereco()->getNuCep();
+            $res[Constantes::SG_UF] = $usuario->getCoPessoa()->getCoEndereco()->getSgUf();
         endif;
 
-        if ($this->idUsuario):
-            $formulario
-                ->setType("hidden")
-                ->setId(Constantes::CO_USUARIO)
-                ->setValues($this->idUsuario)
-                ->CriaInpunt();
-        endif;
-
-        $this->form = $formulario->finalizaForm();
-
+        $this->form = UsuarioForm::Cadastrar($res);
     }
 
-    public function salvaUsuario($dados)
+    public function salvaUsuario($dados, $foto, $resgistrar = false)
     {
-        $id = "CadastroUsuario";
+        $EnderecoModel = new EnderecoModel();
+        $ContatoModel = new ContatoModel();
+        $PessoaModel = new PessoaModel();
+        $UsuarioModel = new UsuarioModel();
+        $ImagemModel = new ImagemModel();
+        $UsuarioPerfilModel = new UsuarioPerfilModel();
         $session = new Session();
-        $pessoaModel = new PessoaModel();
-        $contatoModel = new ContatoModel();
-        $imagemModel = new ImagemModel();
-        $usuarioModel = new UsuarioModel();
 
-        $dados[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
-        $dados[Constantes::NO_PESSOA] = trim($dados[Constantes::NO_PESSOA]);
-        $dados[Constantes::DS_CODE] = base64_encode(base64_encode($dados[Constantes::DS_SENHA]));
+        if ($session->CheckSession(SESSION_USER)) {
+            $us = $_SESSION[SESSION_USER];
+            $user = $us->getUser();
+            $meusPerfis = $user[md5(CAMPO_PERFIL)];
+            $meusPerfis = explode(',', $meusPerfis);
+        } else {
+            $meusPerfis = array();
+        }
+
         $idCoUsuario = (isset($dados[Constantes::CO_USUARIO]) ? $dados[Constantes::CO_USUARIO] : null);
-        if (!empty($dados[Constantes::ST_STATUS])):
-            $dados[Constantes::ST_STATUS] = "A";
-        else:
-            $dados[Constantes::ST_STATUS] = "I";
-        endif;
-        unset($dados[$id], $dados["ds_senha_confirma"], $dados[Constantes::CO_USUARIO]);
 
-        $user[Constantes::NO_PESSOA] = $dados[Constantes::NO_PESSOA];
+        $endereco[Constantes::DS_ENDERECO] = $dados[Constantes::DS_ENDERECO];
+        $endereco[Constantes::DS_COMPLEMENTO] = $dados[Constantes::DS_COMPLEMENTO];
+        $endereco[Constantes::DS_BAIRRO] = $dados[Constantes::DS_BAIRRO];
+        $endereco[Constantes::NO_CIDADE] = $dados[Constantes::NO_CIDADE];
+        $endereco[Constantes::NU_CEP] = Valida::RetiraMascara($dados[Constantes::NU_CEP]);
+        $endereco[Constantes::SG_UF] = $dados[Constantes::SG_UF][0];
+
+        $contato[Constantes::DS_EMAIL] = trim($dados[Constantes::DS_EMAIL]);
+        $contato[Constantes::NU_TEL1] = Valida::RetiraMascara($dados[Constantes::NU_TEL1]);
+        $contato[Constantes::NU_TEL2] = Valida::RetiraMascara($dados[Constantes::NU_TEL2]);
+
+        $pessoa[Constantes::NO_PESSOA] = strtoupper(trim($dados[Constantes::NO_PESSOA]));
+        $pessoa[Constantes::NU_CPF] = Valida::RetiraMascara($dados[Constantes::NU_CPF]);
+        $pessoa[Constantes::NU_RG] = Valida::RetiraMascara($dados[Constantes::NU_RG]);
+        $pessoa[Constantes::DT_NASCIMENTO] = Valida::DataDBDate($dados[Constantes::DT_NASCIMENTO]);
+        $pessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO][0];
+
+        $usu[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
+        $usu[Constantes::DS_CODE] = base64_encode(base64_encode($dados[Constantes::DS_SENHA]));
+        if (!empty($dados[Constantes::ST_STATUS])):
+            $usu[Constantes::ST_STATUS] = "A";
+        else:
+            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
+                $usu[Constantes::ST_STATUS] = "I";
+            endif;
+        endif;
+
+        $user[Constantes::NO_PESSOA] = $pessoa[Constantes::NO_PESSOA];
         /** @var PessoaEntidade $userNome */
-        $userNome = $pessoaModel->PesquisaUmQuando($user);
-        $email[Constantes::DS_EMAIL] = $dados[Constantes::DS_EMAIL];
+        $userNome = $PessoaModel->pesquisaUsuarioCadastrado($user);
+        $email[Constantes::DS_EMAIL] = $contato[Constantes::DS_EMAIL];
         /** @var ContatoEntidade $userEmail */
-        $userEmail = $contatoModel->PesquisaUmQuando($email);
+        $userEmail = $ContatoModel->pesquisaContatoCadastrado($email);
+        $cpf[Constantes::NU_CPF] = $pessoa[Constantes::NU_CPF];
+        /** @var PessoaEntidade $userCpf */
+        $userCpf = $PessoaModel->pesquisaUsuarioCadastrado($cpf);
 
         $this->erro = false;
         if ($userNome && $userNome->getCoUsuario()->getCoUsuario() != $idCoUsuario):
@@ -197,79 +128,115 @@ class Usuario
             $Campo[] = "E-mail";
             $this->erro = true;
         endif;
+        if ($userCpf && $userCpf->getCoUsuario()->getCoUsuario() != $idCoUsuario):
+            $Campo[] = "CPF";
+            $this->erro = true;
+        endif;
 
         if ($this->erro):
-            $this->mensagem = "Já exite usuário cadastro com o mesmo " . implode(", ", $Campo) . ", Favor Verificar.";
+            $session->setSession(MENSAGEM, "Já exite usuário cadastro com o mesmo "
+                . implode(", ", $Campo) . ", Favor Verificar.");
         else:
-            if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
+
+            $imagem[Constantes::DS_CAMINHO] = "";
+            if ($foto[Constantes::DS_CAMINHO]["tmp_name"]):
+                $foto = $_FILES[Constantes::DS_CAMINHO];
                 $nome = Valida::ValNome($dados[Constantes::NO_PESSOA]);
                 $up = new Upload();
-                $up->UploadImagens($_FILES[Constantes::DS_CAMINHO], $nome, "usuarios");
-                $dataImagem[Constantes::DS_CAMINHO] = $up->getNameImage();
+                $up->UploadImagens($foto, $nome, "usuarios");
+                $imagem[Constantes::DS_CAMINHO] = $up->getNameImage();
             endif;
-            $dataUsuario[Constantes::DS_SENHA] = $dados[Constantes::DS_SENHA];
-            $dataUsuario[Constantes::DS_CODE] = $dados[Constantes::DS_CODE];
-            $dataUsuario[Constantes::ST_STATUS] = $dados[Constantes::ST_STATUS];
-
-            $dataPessoa[Constantes::NO_PESSOA] = $dados[Constantes::NO_PESSOA];
-            $dataPessoa[Constantes::ST_SEXO] = $dados[Constantes::ST_SEXO];
-
-            $dataContato[Constantes::DS_EMAIL] = $dados[Constantes::DS_EMAIL];
 
             if ($idCoUsuario):
                 /** @var UsuarioEntidade $usuario */
-                $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO, $idCoUsuario]);
-                $usuarioModel->Salva($dataUsuario, $idCoUsuario);
+                $usuario = $UsuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $idCoUsuario]);
 
                 if ($usuario->getCoImagem()->getDsCaminho()):
                     if (is_file(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho())):
                         unlink(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho());
                     endif;
-                    $imagemModel->Salva($dataImagem, $usuario->getCoImagem()->getCoImagem());
                 endif;
-                $pessoaModel->Salva($dataPessoa, $usuario->getCoPessoa());
-                $contatoModel->Salva($dataContato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
+
+                if ($imagem[Constantes::DS_CAMINHO]):
+                    $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
+                endif;
+                $ContatoModel->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
+                $EnderecoModel->Salva($endereco, $usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
+                $PessoaModel->Salva($pessoa, $usuario->getCoPessoa()->getCoPessoa());
+                $UsuarioModel->Salva($usu, $idCoUsuario);
+                $usuarioPerfil[Constantes::CO_USUARIO] = $idCoUsuario;
+                $ok = $UsuarioPerfilModel->DeletaQuando($usuarioPerfil);
+                if ($ok):
+                    if (!empty($dados['ds_perfil'])) {
+                        foreach ($dados['ds_perfil'] as $perfil) {
+                            $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
+                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                        }
+                    }
+                    $usuarioPerfil[Constantes::CO_PERFIL] = 3;
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                endif;
 
                 $session->setSession(ATUALIZADO, "OK");
             else:
-                debug('Editar');
-//                if ($_FILES[Constantes::DS_CAMINHO]["tmp_name"]):
-//                    $dataUsuario[Constantes::CO_IMAGEM] = $imagemModel->Salva($dataImagem);
-//                endif;
+                $pessoa[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
+                $usu[Constantes::DT_CADASTRO] = Valida::DataAtualBanco();
+
+                $pessoa[Constantes::CO_ENDERECO] = $EnderecoModel->Salva($endereco);
+                $pessoa[Constantes::CO_CONTATO] = $ContatoModel->Salva($contato);
+                $usu[Constantes::CO_IMAGEM] = $ImagemModel->Salva($imagem);
+                $usu[Constantes::CO_PESSOA] = $PessoaModel->Salva($pessoa);
+                $usuarioPerfil[Constantes::CO_USUARIO] = $UsuarioModel->Salva($usu);
+
+                // REGISTRAR ///
+                if ($resgistrar):
+                    $usuarioPerfil[Constantes::CO_PERFIL] = 3;
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                else:
+                    if (!empty($dados['ds_perfil'])) {
+                        foreach ($dados['ds_perfil'] as $perfil) {
+                            $usuarioPerfil[Constantes::CO_PERFIL] = $perfil;
+                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                        }
+                    }
+                    $usuarioPerfil[Constantes::CO_PERFIL] = 3;
+                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                endif;
+
+                $session->setSession(CADASTRADO, 'OK');
+
+//                $email = new Email();
 //
-//                $meusPerfis = explode(",", $dados[CAMPO_PERFIL]);
-//                unset($dados[CAMPO_PERFIL]);
-//                $dados['dt_cadastro'] = Valida::DataAtualBanco();
+//                // Índice = Nome, e Valor = Email.
+//                $emails = array(
+//                    $pessoa[Constantes::NO_PESSOA] => $contato[Constantes::DS_EMAIL]
+//                );
+//                $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
+//                    . "Aguarde a Ativação do seu Usuário.";
 //
-//                $idUsuario = UsuarioModel::CadastraUsuario($dados);
-//                foreach ($meusPerfis as $resPerfis):
-//                    $userPerfil = array();
-//                    $userPerfil[Constantes::USUARIO_CHAVE_PRIMARIA] = $idUsuario;
-//                    $userPerfil[Constantes::PERFIL_CHAVE_PRIMARIA] = $resPerfis;
-//                    UsuarioModel::CadastraUsuarioPerfil($userPerfil);
-//                    $session->setSession(CADASTRADO, "OK");
-//                endforeach;
+//                $email->setEmailDestinatario($emails)
+//                    ->setTitulo("Email de  Teste Pra Todos")
+//                    ->setMensagem($Mensagem);
+//
+//                //Variável para validação de Emails Enviados com Sucesso.
+//                $EmailEnviado = $email->Enviar();
+//
+//                $this->result = true;
             endif;
 
-            if ($idUsuario):
-                $email = new Email();
 
-                // Índice = Nome, e Valor = Email.
-                $emails = array(
-                    $dados['no_pessoa'] => $dados['ds_email']
-                );
-                $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
-                    . "Aguarde a Ativação do seu Usuário " . $dados['ds_login'];
-
-                $email->setEmailDestinatario($emails)
-                    ->setTitulo("Email de  Teste Pra Todos")
-                    ->setMensagem($Mensagem);
-
-                //Variável para validação de Emails Enviados com Sucesso.
-                $EmailEnviado = $email->Enviar();
-
-                $this->result = true;
-            endif;
+            unset($_POST);
+            if (!$resgistrar) {
+                if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
+                    $this->ListarUsuario();
+                    UrlAmigavel::$action = "ListarUsuario";
+                } else {
+                    UrlAmigavel::$action = "Index";
+                    $IndexControl = new Index();
+                    $IndexControl->Index();
+                    UrlAmigavel::$controller = "Index";
+                }
+            }
         endif;
     }
 
@@ -277,57 +244,78 @@ class Usuario
     public function ListarUsuario()
     {
         $perfilControl = new Perfil();
-        $dados = array();
-        if (!empty($_POST)):
-            $dados = array(
-                'no_pessoa' => $_POST['no_pessoa']
-            );
-        endif;
         $usuarioModel = new UsuarioModel();
-        $this->result = $usuarioModel->PesquisaTodos($dados);
+        $dados = array();
+        $session = new Session();
+
+        if ($session->CheckSession(PESQUISA_AVANCADA)) {
+            $session->FinalizaSession(PESQUISA_AVANCADA);
+        }
+        if (!empty($_POST)) {
+            $dados = array(
+                Constantes::NO_PESSOA => trim($_POST[Constantes::NO_PESSOA]),
+                Constantes::NU_CPF => Valida::RetiraMascara($_POST[Constantes::NU_CPF]),
+            );
+            $session->setSession(PESQUISA_AVANCADA, $dados);
+            $pessoaModel = new PessoaModel();
+            $pessoas = $pessoaModel->PesquisaTodos($dados);
+            $todos = array();
+            foreach ($pessoas as $pessoa) {
+                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
+            }
+            if ($todos) {
+                $usuarios[Constantes::CO_USUARIO] = implode(', ', $todos);
+                $this->result = $usuarioModel->PesquisaTodos($usuarios);
+            } else {
+                $this->result = array();
+            }
+        } else {
+            $this->result = $usuarioModel->PesquisaTodos($dados);
+        }
+
         /** @var UsuarioEntidade $value */
         foreach ($this->result as $value):
-            $this->perfis = $perfilControl->montaComboPerfil($value);
+            $this->perfis[$value->getCoUsuario()] = implode(', ', $perfilControl->montaComboPerfil($value));
         endforeach;
     }
 
     // AÇÃO DE EXPORTAÇÃO
     public function ExportarListarUsuario()
     {
-
+        $usuarioModel = new UsuarioModel();
+        $session = new Session();
+        if ($session->CheckSession(PESQUISA_AVANCADA)) {
+            $dados = $session->getSession(PESQUISA_AVANCADA);
+            $pessoaModel = new PessoaModel();
+            $pessoas = $pessoaModel->PesquisaTodos($dados);
+            foreach ($pessoas as $pessoa) {
+                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
+            }
+            $usuarios[Constantes::CO_USUARIO] = implode(', ', $todos);
+            $result = $usuarioModel->PesquisaTodos($usuarios);
+        } else {
+            $result = $usuarioModel->PesquisaTodos();
+        }
         $formato = UrlAmigavel::PegaParametro("formato");
-        $result = CategoriaModel::PesquisaCategoria();
         $i = 0;
+        /** @var UsuarioEntidade $value */
         foreach ($result as $value) {
-            $res[$i]['id_categoria'] = $value['id_categoria'];
-            $res[$i]['nome'] = $value['nome'];
+            $res[$i][Constantes::NO_PESSOA] = $value->getCoPessoa()->getNoPessoa();
+            $res[$i][Constantes::NU_CPF] = Valida::MascaraCpf($value->getCoPessoa()->getNuCpf());
+            $res[$i][Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuario($value->getStStatus());
             $i++;
         }
-        $Colunas = array('Código', 'Categoria');
-        $exporta = new Exportacao($formato, "Relatório de Categorias");
+        $Colunas = array('Nome', 'CPF', 'Status');
+        $exporta = new Exportacao($formato);
         // $exporta->setPapelOrientacao("paisagem");
         $exporta->setColunas($Colunas);
         $exporta->setConteudo($res);
         $exporta->GeraArquivo();
-
     }
 
     public function ListarUsuarioPesquisaAvancada()
     {
-
-        $id = "pesquisaUsuario";
-
-        $formulario = new Form($id, "admin/Usuario/ListarUsuario", "Pesquisa", 12);
-
-        $formulario
-            ->setId("no_pessoa")
-            ->setIcon("clip-user-6")
-            ->setLabel("Nome do Usuario")
-            ->setInfo("Pode ser Parte do nome")
-            ->CriaInpunt();
-
-        echo $formulario->finalizaFormPesquisaAvancada();
-
+        echo UsuarioForm::Pesquisar();
     }
 
 }

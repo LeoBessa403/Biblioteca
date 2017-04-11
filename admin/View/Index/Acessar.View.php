@@ -60,33 +60,33 @@
 <!-- end: HEAD -->
 <!-- start: BODY -->
 <body class="login example1">
-<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+<div class="main-login col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3" style="padding: 20px 50px;">
     <div class="logo">
         <a style="color: whitesmoke;" href="<?= PASTASITE; ?>">
             <?= DESC; ?>
         </a>
     </div>
     <!-- start: LOGIN BOX -->
-    <div class="box-login">
+    <div class="box-login" style="padding: 10px 20px;">
         <h3>Entre com sua Conta</h3>
         <p>
             Por Favor! Entre com login e senha.
         </p>
         <form class="form-login" action="../Logar" method="post">
             <?php
-            if ($visivel):
+            if (!empty($visivel)):
                 Valida::Mensagem($msg, $class);
             endif;
             ?>
             <fieldset>
                 <div class="form-group">
 							<span class="input-icon">
-								<input type="text" class="form-control" name="user" id="user" placeholder="Usuário">
+								<input type="text" class="form-control cpf" name="nu_cpf" id="nu_cpf" placeholder="CPF">
 								<i class="fa fa-user"></i> </span>
                 </div>
                 <div class="form-group form-actions">
 							<span class="input-icon">
-								<input type="password" class="form-control password" name="senha" id="senha"
+								<input type="password" class="form-control password" name="ds_senha" id="ds_senha"
                                        placeholder="Senha">
 								<i class="fa fa-lock"></i>
                 </div>
@@ -102,7 +102,7 @@
                 </div>
                 <div class="new-account">
                     Você não tem Conta?
-                    <a href="../admin/registrar.php" class="register">
+                    <a href="<?= PASTAADMIN; ?>Index/Registrar" class="register">
                         Criar Conta
                     </a>
                 </div>
@@ -115,6 +115,7 @@
     <!-- end: COPYRIGHT -->
 </div>
 <!-- start: MAIN JAVASCRIPTS -->
+<!-- start: MAIN JAVASCRIPTS -->
 <!--[if lt IE 9]>
 <script src="<?= PASTAADMIN; ?>plugins/respond.min.js"></script>
 <script src="<?= PASTAADMIN; ?>plugins/excanvas.min.js"></script>
@@ -123,27 +124,50 @@
 <!--[if gte IE 9]><!-->
 <script src="<?= INCLUDES; ?>jquery-2.0.3.js"></script>
 <!--<![endif]-->
+<?= '<script type="text/javascript">
+                        function constantes(){    
+                                var dados = {
+                                    "HOME" : "' . HOME . '",
+                                    "INATIVO" : "' . INATIVO . '",
+                                    "PASTAUPLOADS" : "' . PASTAUPLOADS . '"                                        
+                                    };
+                                return dados;
+                        }
+                </script>'; ?>
+<!--<script src="<?= PASTAADMIN; ?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
 <script src="<?= INCLUDES; ?>jquery-ui.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/blockUI/jquery.blockUI.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/iCheck/jquery.icheck.min.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/jquery.mousewheel.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/jquery-cookie/jquery.cookie.js"></script>
-<script src="<?= PASTAADMIN; ?>plugins/bootstrap-colorpalette/js/bootstrap-colorpalette.js"></script>
-<script src="<?= PASTAADMIN; ?>js/main.js"></script>
-<!-- end: MAIN JAVASCRIPTS -->
-<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
-<script src="<?= PASTAADMIN; ?>plugins/jquery-validation/dist/jquery.validate.min.js"></script>
-<script src="<?= PASTAADMIN; ?>js/login.js"></script>
-<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script type="text/javascript" src="<?= INCLUDES; ?>jquery.mask.js"></script>
+<script type="text/javascript" src="<?= INCLUDES; ?>jquery.maskMoney.js"></script>
+<script type="text/javascript" src="<?= INCLUDES; ?>validacoes.js"></script>
+<script src="<?= PASTAADMIN; ?>plugins/select2/select2.min.js"></script>
 <script>
     jQuery(document).ready(function () {
-        Main.init();
-        Login.init();
+        <?php
+        $session = new Session();
+        if($session->CheckSession(ATUALIZADO)):
+        $session->FinalizaSession(ATUALIZADO);
+        ?>
+        Funcoes.Sucesso("<?= Mensagens::OK_ATUALIZADO;?>");
+        <?php
+        endif;
+
+        if($session->CheckSession(CADASTRADO)):
+        $session->FinalizaSession(CADASTRADO);
+        ?>
+        Funcoes.Sucesso("<?= Mensagens::OK_SALVO;?>");
+        <?php
+        endif;
+        if($session->CheckSession(MENSAGEM)):
+        ?>
+        Funcoes.Alerta("<?php echo $session->getSession(MENSAGEM);?>");
+        <?php
+        $session->FinalizaSession(MENSAGEM);
+        endif;
+        ?>
+        $('.close').click(function () {
+           $(this).parents('#sumir').fadeOut('fast');
+        });
     });
 </script>
 </body>
-<!-- end: BODY -->
 </html>

@@ -7,7 +7,7 @@
 
 class PagamentoEntidade
 {
-	const TABELA = 'tb_pagamento';
+	const TABELA = 'TB_PAGAMENTO';
 	const ENTIDADE = 'PagamentoEntidade';
 	const CHAVE = Constantes::CO_PAGAMENTO;
 
@@ -17,8 +17,7 @@ class PagamentoEntidade
 	private $nu_parcelas;
 	private $tp_situacao;
 	private $ds_observacao;
-	private $co_tipo_pagamento;
-	private $co_negociacao;
+	private $co_inscricao;
 	private $co_parcelamento;
 
 
@@ -33,8 +32,7 @@ class PagamentoEntidade
 			Constantes::NU_PARCELAS,
 			Constantes::TP_SITUACAO,
 			Constantes::DS_OBSERVACAO,
-			Constantes::CO_TIPO_PAGAMENTO,
-			Constantes::CO_NEGOCIACAO,
+			Constantes::CO_INSCRICAO,
 		];
     	return $campos;
     }
@@ -44,12 +42,8 @@ class PagamentoEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_TIPO_PAGAMENTO => array(
-                'Entidade' => TipoPagamentoEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_NEGOCIACAO => array(
-                'Entidade' => NegociacaoEntidade::ENTIDADE,
+			Constantes::CO_INSCRICAO => array(
+                'Entidade' => InscricaoEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 			Constantes::CO_PARCELAMENTO => array(
@@ -158,35 +152,19 @@ class PagamentoEntidade
     }
 
 	/**
-     * @return $co_tipo_pagamento
+     * @return $co_inscricao
      */
-	public function getCoTipoPagamento()
+	public function getCoInscricao()
     {
-        return $this->co_tipo_pagamento;
+        return $this->co_inscricao;
     }
 
 	/**
-     * @param mixed $co_tipo_pagamento
+     * @param mixed $co_inscricao
      */
-	public function setCoTipoPagamento($co_tipo_pagamento)
+	public function setCoInscricao($co_inscricao)
     {
-        return $this->co_tipo_pagamento = $co_tipo_pagamento;
-    }
-
-	/**
-     * @return $co_negociacao
-     */
-	public function getCoNegociacao()
-    {
-        return $this->co_negociacao;
-    }
-
-	/**
-     * @param mixed $co_negociacao
-     */
-	public function setCoNegociacao($co_negociacao)
-    {
-        return $this->co_negociacao = $co_negociacao;
+        return $this->co_inscricao = $co_inscricao;
     }
 
 	/**

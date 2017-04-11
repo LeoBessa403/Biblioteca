@@ -7,7 +7,7 @@
 
 class AuditoriaEntidade
 {
-	const TABELA = 'tb_auditoria';
+	const TABELA = 'TB_AUDITORIA';
 	const ENTIDADE = 'AuditoriaEntidade';
 	const CHAVE = Constantes::CO_AUDITORIA;
 
@@ -20,7 +20,6 @@ class AuditoriaEntidade
 	private $co_registro;
 	private $ds_perfil_usuario;
 	private $co_usuario;
-	private $co_cliente_sistema;
 
 
 	/**
@@ -37,7 +36,6 @@ class AuditoriaEntidade
 			Constantes::CO_REGISTRO,
 			Constantes::DS_PERFIL_USUARIO,
 			Constantes::CO_USUARIO,
-			Constantes::CO_CLIENTE_SISTEMA,
 		];
     	return $campos;
     }
@@ -49,10 +47,6 @@ class AuditoriaEntidade
     	$relacionamentos = [
 			Constantes::CO_USUARIO => array(
                 'Entidade' => UsuarioEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_CLIENTE_SISTEMA => array(
-                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
                 'Tipo' => 1,
             ),
 		];
@@ -202,22 +196,6 @@ class AuditoriaEntidade
 	public function setCoUsuario($co_usuario)
     {
         return $this->co_usuario = $co_usuario;
-    }
-
-	/**
-     * @return $co_cliente_sistema
-     */
-	public function getCoClienteSistema()
-    {
-        return $this->co_cliente_sistema;
-    }
-
-	/**
-     * @param mixed $co_cliente_sistema
-     */
-	public function setCoClienteSistema($co_cliente_sistema)
-    {
-        return $this->co_cliente_sistema = $co_cliente_sistema;
     }
 
 }

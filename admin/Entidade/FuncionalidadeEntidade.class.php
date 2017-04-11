@@ -7,7 +7,7 @@
 
 class FuncionalidadeEntidade
 {
-	const TABELA = 'tb_funcionalidade';
+	const TABELA = 'TB_FUNCIONALIDADE';
 	const ENTIDADE = 'FuncionalidadeEntidade';
 	const CHAVE = Constantes::CO_FUNCIONALIDADE;
 
@@ -107,22 +107,6 @@ class FuncionalidadeEntidade
 	public function setStStatus($st_status)
     {
         return $this->st_status = $st_status;
-    }
-
-	/**
-     * @return $co_funcionalidade_pacote
-     */
-	public function getCoFuncionalidadePacote()
-    {
-        return $this->co_funcionalidade_pacote;
-    }
-
-	/**
-     * @param mixed $co_funcionalidade_pacote
-     */
-	public function setCoFuncionalidadePacote($co_funcionalidade_pacote)
-    {
-        return $this->co_funcionalidade_pacote = $co_funcionalidade_pacote;
     }
 
 	/**

@@ -1,7 +1,8 @@
 <?php
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
-if (UrlAmigavel::$action == 'Acessar'):
+$back = new Backup();
+if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     $url->pegaControllerAction();
     exit;
 endif;
@@ -11,7 +12,6 @@ if ($compara != null):
     $url->pegaControllerAction();
     exit;
 endif;
-$back = new Backup();
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
@@ -73,6 +73,8 @@ $back = new Backup();
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/DataTables/media/css/DT_bootstrap.css">
     <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <link rel="shortcut icon" href="favicon.ico"/>
+    <!-- SCRIPT GERAR GRAFICOS -->
+    <script type="text/javascript" src="<?= HOME; ?>library/Helpers/includes/gera-grafico.js"></script>
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
@@ -113,7 +115,7 @@ $back = new Backup();
                             endif;
                         endif;
 
-                        echo Valida::getMiniatura("usuarios/" . $fotoPerfil, 'Leonardo', 35, 35, "circle-img");
+                        echo Valida::GetMiniatura("usuarios/" . $fotoPerfil, 'Leonardo', 35, 35, "circle-img");
                         ?>
                         <span class="username">
                             <?php
@@ -158,11 +160,15 @@ $back = new Backup();
             <!-- end: MAIN MENU TOGGLER BUTTON -->
             <!-- start: MAIN NAVIGATION MENU -->
             <?php
-            $menu = array(
+            $menu = array(//"Membros" => array("clip-tree","ListarMembros","ListarMembrosRetiro"),
+//                "Tarefa" => array("fa fa-tasks","CadastroTarefa","ListarTarefa"),
+//                "Evento" => array("fa fa-list","CadastroEvento","ListarEvento"),
+//                "Biblioteca" => array("fa fa-book","CadastroLivro","ListarLivro"),
+//                "Agenda" => array("fa fa-calendar","Calendario"),
                 "Usuario" => array("fa fa-group", "MeuPerfilUsuario", "CadastroUsuario", "ListarUsuario"),
+                "Inscricao" => array("fa fa-group", "ListarInscricao"),
                 "Perfil" => array("clip-stack-empty", "CadastroPerfil", "ListarPerfil"),
                 "Funcionalidade" => array("fa fa-outdent", "CadastroFuncionalidade", "ListarFuncionalidade"),
-                "Empresa" => array("fa fa-outdent", "CadastroEmpresa", "ListarEmpresa"),
                 "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
             );
             $url->GeraMenu($menu);
@@ -200,7 +206,6 @@ $back = new Backup();
 <!--<![endif]-->
 <!--<script src="<?= PASTAADMIN; ?>plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>-->
 <script src="<?= INCLUDES; ?>jquery-ui.js"></script>
-<script type="text/javascript" src="<?= INCLUDES; ?>gera-grafico.js"></script>
 <script type="text/javascript" src="<?= INCLUDES; ?>jquery.mask.js"></script>
 <script type="text/javascript" src="<?= INCLUDES; ?>jquery.maskMoney.js"></script>
 <?= '<script type="text/javascript">
@@ -208,7 +213,8 @@ $back = new Backup();
                                 var dados = {
                                     "HOME" : "' . HOME . '",
                                     "INATIVO" : "' . INATIVO . '",
-                                    "PASTAUPLOADS" : "' . PASTAUPLOADS . '"                                        
+                                    "PASTAUPLOADS" : "' . PASTAUPLOADS . '" ,                                       
+                                    "AMBIENTE" : "ADMIN"                                      
                                     };
                                 return dados;
                         }
@@ -256,16 +262,23 @@ $back = new Backup();
         <?php
         $session = new Session();
         if($session->CheckSession(ATUALIZADO)):
+        $session->FinalizaSession(ATUALIZADO);
         ?>
         Funcoes.Sucesso("<?= Mensagens::OK_ATUALIZADO;?>");
         <?php
         endif;
-        ?>
-        <?php
+
         if($session->CheckSession(CADASTRADO)):
+        $session->FinalizaSession(CADASTRADO);
         ?>
         Funcoes.Sucesso("<?= Mensagens::OK_SALVO;?>");
         <?php
+        endif;
+        if($session->CheckSession(MENSAGEM)):
+        ?>
+        Funcoes.Alerta("<?php echo $session->getSession(MENSAGEM);?>");
+        <?php
+        $session->FinalizaSession(MENSAGEM);
         endif;
         ?>
         Main.init();

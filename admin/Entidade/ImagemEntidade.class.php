@@ -7,14 +7,12 @@
 
 class ImagemEntidade
 {
-	const TABELA = 'tb_imagem';
+	const TABELA = 'TB_IMAGEM';
 	const ENTIDADE = 'ImagemEntidade';
 	const CHAVE = Constantes::CO_IMAGEM;
 
 	private $co_imagem;
 	private $ds_caminho;
-	private $co_funcionario;
-	private $co_produto;
 	private $co_usuario;
 
 
@@ -34,14 +32,6 @@ class ImagemEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_FUNCIONARIO => array(
-                'Entidade' => FuncionarioEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
-			Constantes::CO_PRODUTO => array(
-                'Entidade' => ProdutoEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_USUARIO => array(
                 'Entidade' => UsuarioEntidade::ENTIDADE,
                 'Tipo' => 1,
@@ -84,51 +74,19 @@ class ImagemEntidade
     }
 
 	/**
-     * @return $co_funcionario
+     * @return $co_usuario
      */
-	public function getCoFuncionario()
-    {
-        return $this->co_funcionario;
-    }
-
-	/**
-     * @param mixed $co_funcionario
-     */
-	public function setCoFuncionario($co_funcionario)
-    {
-        return $this->co_funcionario = $co_funcionario;
-    }
-
-	/**
-     * @return $co_produto
-     */
-	public function getCoProduto()
-    {
-        return $this->co_produto;
-    }
-
-	/**
-     * @param mixed $co_produto
-     */
-	public function setCoProduto($co_produto)
-    {
-        return $this->co_produto = $co_produto;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCoUsuario()
+	public function getCoUsuario()
     {
         return $this->co_usuario;
     }
 
-    /**
+	/**
      * @param mixed $co_usuario
      */
-    public function setCoUsuario($co_usuario)
+	public function setCoUsuario($co_usuario)
     {
-        $this->co_usuario = $co_usuario;
+        return $this->co_usuario = $co_usuario;
     }
 
 }

@@ -7,16 +7,14 @@
 
 class PerfilEntidade
 {
-	const TABELA = 'tb_perfil';
+	const TABELA = 'TB_PERFIL';
 	const ENTIDADE = 'PerfilEntidade';
 	const CHAVE = Constantes::CO_PERFIL;
 
 	private $co_perfil;
 	private $no_perfil;
 	private $st_status;
-	private $co_cliente_sistema;
 	private $co_perfil_funcionalidade;
-	private $co_perfil_produto_detalhe;
 	private $co_usuario_perfil;
 
 
@@ -28,7 +26,6 @@ class PerfilEntidade
 			Constantes::CO_PERFIL,
 			Constantes::NO_PERFIL,
 			Constantes::ST_STATUS,
-			Constantes::CO_CLIENTE_SISTEMA,
 		];
     	return $campos;
     }
@@ -38,16 +35,8 @@ class PerfilEntidade
      */
 	public static function getRelacionamentos() {
     	$relacionamentos = [
-			Constantes::CO_CLIENTE_SISTEMA => array(
-                'Entidade' => ClienteSistemaEntidade::ENTIDADE,
-                'Tipo' => 1,
-            ),
 			Constantes::CO_PERFIL_FUNCIONALIDADE => array(
                 'Entidade' => PerfilFuncionalidadeEntidade::ENTIDADE,
-                'Tipo' => 'N',
-            ),
-			Constantes::CO_PERFIL_PRODUTO_DETALHE => array(
-                'Entidade' => PerfilProdutoDetalheEntidade::ENTIDADE,
                 'Tipo' => 'N',
             ),
 			Constantes::CO_USUARIO_PERFIL => array(
@@ -108,22 +97,6 @@ class PerfilEntidade
     }
 
 	/**
-     * @return $co_cliente_sistema
-     */
-	public function getCoClienteSistema()
-    {
-        return $this->co_cliente_sistema;
-    }
-
-	/**
-     * @param mixed $co_cliente_sistema
-     */
-	public function setCoClienteSistema($co_cliente_sistema)
-    {
-        return $this->co_cliente_sistema = $co_cliente_sistema;
-    }
-
-	/**
      * @return $co_perfil_funcionalidade
      */
 	public function getCoPerfilFuncionalidade()
@@ -137,22 +110,6 @@ class PerfilEntidade
 	public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
     {
         return $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
-    }
-
-	/**
-     * @return $co_perfil_produto_detalhe
-     */
-	public function getCoPerfilProdutoDetalhe()
-    {
-        return $this->co_perfil_produto_detalhe;
-    }
-
-	/**
-     * @param mixed $co_perfil_produto_detalhe
-     */
-	public function setCoPerfilProdutoDetalhe($co_perfil_produto_detalhe)
-    {
-        return $this->co_perfil_produto_detalhe = $co_perfil_produto_detalhe;
     }
 
 	/**

@@ -86,12 +86,12 @@
                         if ($result->getNoOperacao() == "I" || $result->getNoOperacao() == "D"):
                             if ($result->getNoOperacao() == "I"):
                                 $dado = explode(";/", $result->getDsItemAtual());
-                            elseif ($result['no_operacao'] == "D"):
+                            elseif ($result->getNoOperacao() == "D"):
                                 $dado = explode(";/", $result->getDsItemAnterior());
                             endif;
                             foreach ($dado as $value) {
                                 $reg = explode("==", $value);
-                                if ($reg[1]):
+                                if (!empty($reg[1])):
                                     $pre = substr($reg[0], 0, 2);
                                     $coluna = str_replace("_", " ", substr($reg[0], 3, strlen($reg[0])));
                                     if ($reg[0] != "dt_cadastro" && $coluna != "senha"):
@@ -105,7 +105,8 @@
                                         <p><big><b>';
                                         if ($pre == "dt"):
                                             $data = explode(" ", $reg[1]);
-                                            echo Valida::DataShow($data[0], "d/m/Y") . " - " . $data[1];
+                                            echo Valida::DataShow($data[0], "d/m/Y");
+                                            echo (!empty($data[1])) ? " - " . $data[1] : '';
                                         else:
                                             echo $reg[1];
                                         endif;
@@ -160,9 +161,6 @@
                                     endif;
                                 endif;
                             endforeach;
-
-//                                                                                    debug($dados_atual);
-//                                                                                    debug($dados_anterior);
                         endif;
                         ?>
                     </div>
@@ -170,7 +168,7 @@
 
                 <a href="<?php echo PASTAADMIN . 'Auditoria/ListarAuditoria'; ?>" class="btn btn-primary tooltips"
                    data-original-title="Editar Registro" data-placement="top">
-                    Voltar à Auditorias <i class="clip-arrow-right-2"></i>
+                    Voltar <i class="clip-arrow-right-2"></i>
                 </a>
                 <br/><br/>
             </div>
