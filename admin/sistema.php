@@ -1,8 +1,8 @@
 <?php
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
-
-
+$entidade = new GerarEntidades();
+debug(10);
 //$back = new Backup();
 if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     $url->pegaControllerAction();
