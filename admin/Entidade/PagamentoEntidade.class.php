@@ -1,0 +1,205 @@
+<?php
+
+/**
+ * Pagamento.Entidade [ ENTIDADE ]
+ * @copyright (c) 2017, Leo Bessa
+ */
+class PagamentoEntidade extends AbstractEntidade
+{
+    const TABELA = 'tb_pagamento';
+    const ENTIDADE = 'PagamentoEntidade';
+    const CHAVE = Constantes::CO_PAGAMENTO;
+
+    private $co_pagamento;
+    private $nu_total;
+    private $nu_valor_pago;
+    private $nu_parcelas;
+    private $tp_situacao;
+    private $dt_atualizado;
+    private $ds_observacao;
+    private $co_tipo_pagamento;
+    private $co_negociacao;
+
+
+    /**
+     * @return array
+     */
+    public static function getCampos()
+    {
+        return [
+            Constantes::CO_PAGAMENTO,
+            Constantes::NU_TOTAL,
+            Constantes::NU_VALOR_PAGO,
+            Constantes::NU_PARCELAS,
+            Constantes::TP_SITUACAO,
+            Constantes::DT_ATUALIZADO,
+            Constantes::DS_OBSERVACAO,
+            Constantes::CO_TIPO_PAGAMENTO,
+            Constantes::CO_NEGOCIACAO,
+        ];
+    }
+
+    /**
+     * @return $relacionamentos
+     */
+    public static function getRelacionamentos()
+    {
+        $relacionamentos = Relacionamentos::getRelacionamentos();
+        return $relacionamentos[static::TABELA];
+    }
+
+
+    /**
+     * @return $co_pagamento
+     */
+    public function getCoPagamento()
+    {
+        return $this->co_pagamento;
+    }
+
+    /**
+     * @param $co_pagamento
+     * @return mixed
+     */
+    public function setCoPagamento($co_pagamento)
+    {
+        return $this->co_pagamento = $co_pagamento;
+    }
+
+    /**
+     * @return $nu_total
+     */
+    public function getNuTotal()
+    {
+        return $this->nu_total;
+    }
+
+    /**
+     * @param $nu_total
+     * @return mixed
+     */
+    public function setNuTotal($nu_total)
+    {
+        return $this->nu_total = $nu_total;
+    }
+
+    /**
+     * @return $nu_valor_pago
+     */
+    public function getNuValorPago()
+    {
+        return $this->nu_valor_pago;
+    }
+
+    /**
+     * @param $nu_valor_pago
+     * @return mixed
+     */
+    public function setNuValorPago($nu_valor_pago)
+    {
+        return $this->nu_valor_pago = $nu_valor_pago;
+    }
+
+    /**
+     * @return $nu_parcelas
+     */
+    public function getNuParcelas()
+    {
+        return $this->nu_parcelas;
+    }
+
+    /**
+     * @param $nu_parcelas
+     * @return mixed
+     */
+    public function setNuParcelas($nu_parcelas)
+    {
+        return $this->nu_parcelas = $nu_parcelas;
+    }
+
+    /**
+     * @return $tp_situacao
+     */
+    public function getTpSituacao()
+    {
+        return $this->tp_situacao;
+    }
+
+    /**
+     * @param $tp_situacao
+     * @return mixed
+     */
+    public function setTpSituacao($tp_situacao)
+    {
+        return $this->tp_situacao = $tp_situacao;
+    }
+
+    /**
+     * @return $dt_atualizado
+     */
+    public function getDtAtualizado()
+    {
+        return $this->dt_atualizado;
+    }
+
+    /**
+     * @param $dt_atualizado
+     * @return mixed
+     */
+    public function setDtAtualizado($dt_atualizado)
+    {
+        return $this->dt_atualizado = $dt_atualizado;
+    }
+
+    /**
+     * @return $ds_observacao
+     */
+    public function getDsObservacao()
+    {
+        return $this->ds_observacao;
+    }
+
+    /**
+     * @param $ds_observacao
+     * @return mixed
+     */
+    public function setDsObservacao($ds_observacao)
+    {
+        return $this->ds_observacao = $ds_observacao;
+    }
+
+    /**
+     * @return $co_tipo_pagamento
+     */
+    public function getCoTipoPagamento()
+    {
+        return $this->co_tipo_pagamento;
+    }
+
+    /**
+     * @param $co_tipo_pagamento
+     * @return mixed
+     */
+    public function setCoTipoPagamento($co_tipo_pagamento)
+    {
+        return $this->co_tipo_pagamento = $co_tipo_pagamento;
+    }
+
+    /**
+     * @return $co_negociacao
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param $co_negociacao
+     * @return mixed
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        return $this->co_negociacao = $co_negociacao;
+    }
+
+}
