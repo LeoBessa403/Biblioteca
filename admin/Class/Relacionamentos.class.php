@@ -83,27 +83,27 @@ class Relacionamentos
                     ('Entidade') => 'UsuarioPerfilEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CHAT) => Array(
+                (Constantes::CO_USUARIO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_DESTINO,
                     ('Entidade') => 'ChatEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_GRUPO_LEMBRETE_USUARIO) => Array(
+                (Constantes::CO_USUARIO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_DESTINO,
                     ('Entidade') => 'GrupoLembreteUsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_LEMBRETE) => Array(
+                (Constantes::CO_USUARIO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_DESTINO,
                     ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CHAT) => Array(
+                (Constantes::CO_USUARIO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_ORIGEM,
                     ('Entidade') => 'ChatEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_LEMBRETE) => Array(
+                (Constantes::CO_USUARIO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_ORIGEM,
                     ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '1',
@@ -166,7 +166,7 @@ class Relacionamentos
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR_MATRIZ) => Array(
+                (Constantes::CO_CONSUMIDOR) => Array(
                     ('Campo') => Constantes::CO_CONSUMIDOR_MATRIZ,
                     ('Entidade') => 'ConsumidorMatrizEntidade',
                     ('Tipo') => '1',
@@ -276,12 +276,12 @@ class Relacionamentos
             (ChatEntidade::TABELA) => Array(
                 (Constantes::CO_USUARIO_ORIGEM) => Array(
                     ('Campo') => Constantes::CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'UsuarioOrigemEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (Constantes::CO_USUARIO_DESTINO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_DESTINO,
-                    ('Entidade') => 'UsuarioDestinoEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
@@ -679,12 +679,12 @@ class Relacionamentos
             (LembreteEntidade::TABELA) => Array(
                 (Constantes::CO_USUARIO_ORIGEM) => Array(
                     ('Campo') => Constantes::CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'UsuarioOrigemEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (Constantes::CO_USUARIO_DESTINO) => Array(
                     ('Campo') => Constantes::CO_USUARIO_DESTINO,
-                    ('Entidade') => 'UsuarioDestinoEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (Constantes::CO_GRUPO_LEMBRETE) => Array(

@@ -29,7 +29,7 @@ class UsuarioEntidade extends AbstractEntidade
     private $co_produto_promocao;
     private $co_sugestao;
     private $co_usuario_perfil;
-
+    private $co_lembrete;
 
     /**
      * @return array
@@ -380,6 +380,22 @@ class UsuarioEntidade extends AbstractEntidade
     public function setCoUsuarioPerfil($co_usuario_perfil)
     {
         return $this->co_usuario_perfil = $co_usuario_perfil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoLembrete()
+    {
+        return $this->co_lembrete;
+    }
+
+    /**
+     * @param mixed $co_lembrete
+     */
+    public function setCoLembrete($co_lembrete)
+    {
+        $this->co_lembrete = $co_lembrete;
     }
 
 }
