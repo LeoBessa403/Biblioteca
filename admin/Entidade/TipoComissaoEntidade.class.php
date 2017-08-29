@@ -13,6 +13,7 @@ class TipoComissaoEntidade extends AbstractEntidade
     private $co_tipo_comissao;
     private $no_tipo_comissao;
     private $sg_tipo_comissao;
+    private $co_comissao;
 
 
     /**
@@ -86,6 +87,23 @@ class TipoComissaoEntidade extends AbstractEntidade
     public function setSgTipoComissao($sg_tipo_comissao)
     {
         return $this->sg_tipo_comissao = $sg_tipo_comissao;
+    }
+
+    /**
+     * @return $co_comissao
+     */
+    public function getCoComissao()
+    {
+        return $this->co_comissao;
+    }
+
+    /**
+     * @param $co_comissao
+     * @return mixed
+     */
+    public function setCoComissao($co_comissao)
+    {
+        return $this->co_comissao = $co_comissao;
     }
 
 }

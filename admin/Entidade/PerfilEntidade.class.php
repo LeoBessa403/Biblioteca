@@ -14,6 +14,9 @@ class PerfilEntidade extends AbstractEntidade
     private $no_perfil;
     private $st_status;
     private $co_consumidor;
+    private $co_perfil_funcionalidade;
+    private $co_perfil_produto_detalhe;
+    private $co_usuario_perfil;
 
 
     /**
@@ -105,6 +108,57 @@ class PerfilEntidade extends AbstractEntidade
     public function setCoConsumidor($co_consumidor)
     {
         return $this->co_consumidor = $co_consumidor;
+    }
+
+    /**
+     * @return $co_perfil_funcionalidade
+     */
+    public function getCoPerfilFuncionalidade()
+    {
+        return $this->co_perfil_funcionalidade;
+    }
+
+    /**
+     * @param $co_perfil_funcionalidade
+     * @return mixed
+     */
+    public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+    {
+        return $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
+    }
+
+    /**
+     * @return $co_perfil_produto_detalhe
+     */
+    public function getCoPerfilProdutoDetalhe()
+    {
+        return $this->co_perfil_produto_detalhe;
+    }
+
+    /**
+     * @param $co_perfil_produto_detalhe
+     * @return mixed
+     */
+    public function setCoPerfilProdutoDetalhe($co_perfil_produto_detalhe)
+    {
+        return $this->co_perfil_produto_detalhe = $co_perfil_produto_detalhe;
+    }
+
+    /**
+     * @return $co_usuario_perfil
+     */
+    public function getCoUsuarioPerfil()
+    {
+        return $this->co_usuario_perfil;
+    }
+
+    /**
+     * @param $co_usuario_perfil
+     * @return mixed
+     */
+    public function setCoUsuarioPerfil($co_usuario_perfil)
+    {
+        return $this->co_usuario_perfil = $co_usuario_perfil;
     }
 
 }

@@ -23,6 +23,11 @@ class ProdutoEntidade extends AbstractEntidade
     private $co_consumidor;
     private $co_unidade_venda_consumidor;
     private $co_lote_produto;
+    private $co_negociacao_produto;
+    private $co_produto_detalhe;
+    private $co_produto_grade_produto;
+    private $co_produto_localidade;
+    private $co_produto_promocao;
 
 
     /**
@@ -276,6 +281,91 @@ class ProdutoEntidade extends AbstractEntidade
     public function setCoLoteProduto($co_lote_produto)
     {
         return $this->co_lote_produto = $co_lote_produto;
+    }
+
+    /**
+     * @return $co_negociacao_produto
+     */
+    public function getCoNegociacaoProduto()
+    {
+        return $this->co_negociacao_produto;
+    }
+
+    /**
+     * @param $co_negociacao_produto
+     * @return mixed
+     */
+    public function setCoNegociacaoProduto($co_negociacao_produto)
+    {
+        return $this->co_negociacao_produto = $co_negociacao_produto;
+    }
+
+    /**
+     * @return $co_produto_detalhe
+     */
+    public function getCoProdutoDetalhe()
+    {
+        return $this->co_produto_detalhe;
+    }
+
+    /**
+     * @param $co_produto_detalhe
+     * @return mixed
+     */
+    public function setCoProdutoDetalhe($co_produto_detalhe)
+    {
+        return $this->co_produto_detalhe = $co_produto_detalhe;
+    }
+
+    /**
+     * @return $co_produto_grade_produto
+     */
+    public function getCoProdutoGradeProduto()
+    {
+        return $this->co_produto_grade_produto;
+    }
+
+    /**
+     * @param $co_produto_grade_produto
+     * @return mixed
+     */
+    public function setCoProdutoGradeProduto($co_produto_grade_produto)
+    {
+        return $this->co_produto_grade_produto = $co_produto_grade_produto;
+    }
+
+    /**
+     * @return $co_produto_localidade
+     */
+    public function getCoProdutoLocalidade()
+    {
+        return $this->co_produto_localidade;
+    }
+
+    /**
+     * @param $co_produto_localidade
+     * @return mixed
+     */
+    public function setCoProdutoLocalidade($co_produto_localidade)
+    {
+        return $this->co_produto_localidade = $co_produto_localidade;
+    }
+
+    /**
+     * @return $co_produto_promocao
+     */
+    public function getCoProdutoPromocao()
+    {
+        return $this->co_produto_promocao;
+    }
+
+    /**
+     * @param $co_produto_promocao
+     * @return mixed
+     */
+    public function setCoProdutoPromocao($co_produto_promocao)
+    {
+        return $this->co_produto_promocao = $co_produto_promocao;
     }
 
 }

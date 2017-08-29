@@ -15,6 +15,7 @@ class RepresentanteEntidade extends AbstractEntidade
     private $st_status;
     private $co_consumidor;
     private $co_pessoa;
+    private $co_fornecedor;
 
 
     /**
@@ -124,6 +125,23 @@ class RepresentanteEntidade extends AbstractEntidade
     public function setCoPessoa($co_pessoa)
     {
         return $this->co_pessoa = $co_pessoa;
+    }
+
+    /**
+     * @return $co_fornecedor
+     */
+    public function getCoFornecedor()
+    {
+        return $this->co_fornecedor;
+    }
+
+    /**
+     * @param $co_fornecedor
+     * @return mixed
+     */
+    public function setCoFornecedor($co_fornecedor)
+    {
+        return $this->co_fornecedor = $co_fornecedor;
     }
 
 }

@@ -17,6 +17,7 @@ class ClienteEntidade extends AbstractEntidade
     private $co_consumidor;
     private $co_pessoa;
     private $co_empresa;
+    private $co_negociacao;
 
 
     /**
@@ -162,6 +163,23 @@ class ClienteEntidade extends AbstractEntidade
     public function setCoEmpresa($co_empresa)
     {
         return $this->co_empresa = $co_empresa;
+    }
+
+    /**
+     * @return $co_negociacao
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param $co_negociacao
+     * @return mixed
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        return $this->co_negociacao = $co_negociacao;
     }
 
 }

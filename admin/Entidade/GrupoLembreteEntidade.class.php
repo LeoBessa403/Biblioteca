@@ -14,6 +14,8 @@ class GrupoLembreteEntidade extends AbstractEntidade
     private $no_grupo_lembrete;
     private $dt_cadastro;
     private $co_consumidor;
+    private $co_grupo_lembrete_usuario;
+    private $co_lembrete;
 
 
     /**
@@ -105,6 +107,40 @@ class GrupoLembreteEntidade extends AbstractEntidade
     public function setCoConsumidor($co_consumidor)
     {
         return $this->co_consumidor = $co_consumidor;
+    }
+
+    /**
+     * @return $co_grupo_lembrete_usuario
+     */
+    public function getCoGrupoLembreteUsuario()
+    {
+        return $this->co_grupo_lembrete_usuario;
+    }
+
+    /**
+     * @param $co_grupo_lembrete_usuario
+     * @return mixed
+     */
+    public function setCoGrupoLembreteUsuario($co_grupo_lembrete_usuario)
+    {
+        return $this->co_grupo_lembrete_usuario = $co_grupo_lembrete_usuario;
+    }
+
+    /**
+     * @return $co_lembrete
+     */
+    public function getCoLembrete()
+    {
+        return $this->co_lembrete;
+    }
+
+    /**
+     * @param $co_lembrete
+     * @return mixed
+     */
+    public function setCoLembrete($co_lembrete)
+    {
+        return $this->co_lembrete = $co_lembrete;
     }
 
 }

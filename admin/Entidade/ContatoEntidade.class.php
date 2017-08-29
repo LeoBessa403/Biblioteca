@@ -17,6 +17,8 @@ class ContatoEntidade extends AbstractEntidade
     private $nu_tel4;
     private $ds_email;
     private $ds_site;
+    private $co_empresa;
+    private $co_pessoa;
 
 
     /**
@@ -162,6 +164,40 @@ class ContatoEntidade extends AbstractEntidade
     public function setDsSite($ds_site)
     {
         return $this->ds_site = $ds_site;
+    }
+
+    /**
+     * @return $co_empresa
+     */
+    public function getCoEmpresa()
+    {
+        return $this->co_empresa;
+    }
+
+    /**
+     * @param $co_empresa
+     * @return mixed
+     */
+    public function setCoEmpresa($co_empresa)
+    {
+        return $this->co_empresa = $co_empresa;
+    }
+
+    /**
+     * @return $co_pessoa
+     */
+    public function getCoPessoa()
+    {
+        return $this->co_pessoa;
+    }
+
+    /**
+     * @param $co_pessoa
+     * @return mixed
+     */
+    public function setCoPessoa($co_pessoa)
+    {
+        return $this->co_pessoa = $co_pessoa;
     }
 
 }

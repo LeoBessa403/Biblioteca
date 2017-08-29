@@ -13,6 +13,7 @@ class SitEntregPedEntidade extends AbstractEntidade
     private $co_sit_entreg_ped;
     private $no_sit_entreg_ped;
     private $sg_sit_entreg_ped;
+    private $co_entrega_pedido;
 
 
     /**
@@ -86,6 +87,23 @@ class SitEntregPedEntidade extends AbstractEntidade
     public function setSgSitEntregPed($sg_sit_entreg_ped)
     {
         return $this->sg_sit_entreg_ped = $sg_sit_entreg_ped;
+    }
+
+    /**
+     * @return $co_entrega_pedido
+     */
+    public function getCoEntregaPedido()
+    {
+        return $this->co_entrega_pedido;
+    }
+
+    /**
+     * @param $co_entrega_pedido
+     * @return mixed
+     */
+    public function setCoEntregaPedido($co_entrega_pedido)
+    {
+        return $this->co_entrega_pedido = $co_entrega_pedido;
     }
 
 }

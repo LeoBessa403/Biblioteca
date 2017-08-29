@@ -14,6 +14,7 @@ class UnidadeVendaConsumidorEntidade extends AbstractEntidade
     private $st_ativo;
     private $co_unidade_venda;
     private $co_consumidor;
+    private $co_produto;
 
 
     /**
@@ -105,6 +106,23 @@ class UnidadeVendaConsumidorEntidade extends AbstractEntidade
     public function setCoConsumidor($co_consumidor)
     {
         return $this->co_consumidor = $co_consumidor;
+    }
+
+    /**
+     * @return $co_produto
+     */
+    public function getCoProduto()
+    {
+        return $this->co_produto;
+    }
+
+    /**
+     * @param $co_produto
+     * @return mixed
+     */
+    public function setCoProduto($co_produto)
+    {
+        return $this->co_produto = $co_produto;
     }
 
 }

@@ -14,6 +14,7 @@ class LoteProdutoEntidade extends AbstractEntidade
     private $dt_validade;
     private $dt_cadastro;
     private $ds_observacao;
+    private $co_produto;
 
 
     /**
@@ -105,6 +106,23 @@ class LoteProdutoEntidade extends AbstractEntidade
     public function setDsObservacao($ds_observacao)
     {
         return $this->ds_observacao = $ds_observacao;
+    }
+
+    /**
+     * @return $co_produto
+     */
+    public function getCoProduto()
+    {
+        return $this->co_produto;
+    }
+
+    /**
+     * @param $co_produto
+     * @return mixed
+     */
+    public function setCoProduto($co_produto)
+    {
+        return $this->co_produto = $co_produto;
     }
 
 }

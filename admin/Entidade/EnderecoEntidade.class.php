@@ -17,6 +17,8 @@ class EnderecoEntidade extends AbstractEntidade
     private $nu_cep;
     private $no_cidade;
     private $sg_uf;
+    private $co_empresa;
+    private $co_pessoa;
 
 
     /**
@@ -162,6 +164,40 @@ class EnderecoEntidade extends AbstractEntidade
     public function setSgUf($sg_uf)
     {
         return $this->sg_uf = $sg_uf;
+    }
+
+    /**
+     * @return $co_empresa
+     */
+    public function getCoEmpresa()
+    {
+        return $this->co_empresa;
+    }
+
+    /**
+     * @param $co_empresa
+     * @return mixed
+     */
+    public function setCoEmpresa($co_empresa)
+    {
+        return $this->co_empresa = $co_empresa;
+    }
+
+    /**
+     * @return $co_pessoa
+     */
+    public function getCoPessoa()
+    {
+        return $this->co_pessoa;
+    }
+
+    /**
+     * @param $co_pessoa
+     * @return mixed
+     */
+    public function setCoPessoa($co_pessoa)
+    {
+        return $this->co_pessoa = $co_pessoa;
     }
 
 }

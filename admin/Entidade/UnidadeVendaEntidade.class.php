@@ -13,6 +13,7 @@ class UnidadeVendaEntidade extends AbstractEntidade
     private $co_unidade_venda;
     private $no_unidade_venda;
     private $sg_unidade_venda;
+    private $co_unidade_venda_consumidor;
 
 
     /**
@@ -86,6 +87,23 @@ class UnidadeVendaEntidade extends AbstractEntidade
     public function setSgUnidadeVenda($sg_unidade_venda)
     {
         return $this->sg_unidade_venda = $sg_unidade_venda;
+    }
+
+    /**
+     * @return $co_unidade_venda_consumidor
+     */
+    public function getCoUnidadeVendaConsumidor()
+    {
+        return $this->co_unidade_venda_consumidor;
+    }
+
+    /**
+     * @param $co_unidade_venda_consumidor
+     * @return mixed
+     */
+    public function setCoUnidadeVendaConsumidor($co_unidade_venda_consumidor)
+    {
+        return $this->co_unidade_venda_consumidor = $co_unidade_venda_consumidor;
     }
 
 }

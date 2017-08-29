@@ -5,128 +5,10 @@ class Index
 
     function Index()
     {
-        $InscricaoModel = new InscricaoModel();
-        $PagamentoModel = new PagamentoModel();
-        $inscricoes = $InscricaoModel->PesquisaTodos();
-        $dados['TotalInscricoes'] = count($inscricoes);
-        $dados['TotalArrecadado'] = 0;
-        $dados['TotalNaoMembros'] = 0;
-        $dados['TotalMembros'] = 0;
-        $dados['TotalServos'] = 0;
-        $dados['TotalNaoPago'] = 0;
-        $dados['TotalParcial'] = 0;
-        $dados['TotalConcluido'] = 0;
-        $dados['TotalInscricoesRestantes'] = 0;
+        $Model = new UsuarioModel();
+        $usuarios = $Model->PesquisaTodos();
+        debug($usuarios);
 
-        /** @var InscricaoEntidade $inscricao */
-        foreach ($inscricoes as $inscricao) {
-            if ($inscricao->getDsMembroAtivo() == "N") {
-                $dados['TotalNaoMembros'] = $dados['TotalNaoMembros'] + 1;
-            } else {
-                $dados['TotalMembros'] = $dados['TotalMembros'] + 1;
-            }
-            if ($inscricao->getStEquipeTrabalho() == "S") {
-                $dados['TotalServos'] = $dados['TotalServos'] + 1;
-            }
-
-            if (!$inscricao->getCoPagamento()) {
-                $pagamentoModel = new PagamentoModel();
-                $parcelaModel = new ParcelamentoModel();
-                $pagamento[Constantes::NU_TOTAL] = '120.00';
-                $pagamento[Constantes::NU_PARCELAS] = 1;
-                $pagamento[Constantes::CO_INSCRICAO] = $inscricao->getCoInscricao();
-
-                $parcela[Constantes::CO_PAGAMENTO] = $pagamentoModel->Salva($pagamento);
-                $parcela[Constantes::CO_TIPO_PAGAMENTO] = 1;
-                $parcela[Constantes::NU_PARCELA] = 1;
-                $parcela[Constantes::NU_VALOR_PARCELA] = '120.00';
-                $parcela[Constantes::DT_VENCIMENTO] = Valida::DataAtualBanco('Y-m-d');
-
-                $parcelaModel->Salva($parcela);
-            }
-
-            /** @var PagamentoEntidade $pagamentoInscricao */
-            $pagamentoInscricao = $PagamentoModel->PesquisaUmRegistro($inscricao->getCoPagamento()->getCoPagamento());
-            switch ($pagamentoInscricao->getTpSituacao()) {
-                case "C":
-                    $dados['TotalConcluido'] = $dados['TotalConcluido'] + 1;
-                    if ($inscricao->getStEquipeTrabalho() == "N") {
-                        $dados['TotalInscricoesRestantes'] = $dados['TotalInscricoesRestantes'] + 1;
-                    }
-                    break;
-                case "N":
-                    $dados['TotalNaoPago'] = $dados['TotalNaoPago'] + 1;
-                    break;
-                case "I":
-                    $dados['TotalParcial'] = $dados['TotalParcial'] + 1;
-                    if ($inscricao->getStEquipeTrabalho() == "N") {
-                        $dados['TotalInscricoesRestantes'] = $dados['TotalInscricoesRestantes'] + 1;
-                    }
-                    break;
-                default:
-                    break;
-            }
-            foreach ($pagamentoInscricao->getCoParcelamento() as $pagamentoInsc) {
-                $dados['TotalArrecadado'] = $dados['TotalArrecadado'] + $pagamentoInsc->getNuValorParcelaPago();
-            }
-        }
-        $dados['TotalAArrecadar'] = Valida::FormataMoeda($dados['TotalInscricoes'] * 120.00 - $dados['TotalArrecadado']);
-        $dados['TotalArrecadado'] = Valida::FormataMoeda($dados['TotalArrecadado']);
-
-        $this->dados = $dados;
-    }
-
-    function Registrar()
-    {
-        $id = "CadastroUsuario";
-        if (!empty($_POST[$id])):
-            $usuarioControl = new Usuario();
-            $usuarioControl->salvaUsuario($_POST, $_FILES, true);
-        endif;
-
-        $this->form = UsuarioForm::Cadastrar(false, true, 12);
-    }
-
-    public function Acessar()
-    {
-        $acesso = UrlAmigavel::PegaParametro('acesso');
-        $class = 0;
-        $msg = "";
-        $visivel = true;
-
-        switch ($acesso) {
-            case 'B':
-                $msg = "Por Favor, Preencha o Usuário e senha!";
-                $class = 2;
-                break;
-            case 'R':
-                $msg = "Acesso Restrito, Você não tem permição para acessar!";
-                $class = 4;
-                break;
-            case 'A':
-                $msg = "CPF ou senha Inválido!";
-                $class = 3;
-                break;
-            case 'I':
-                $msg = "Usuário Inativo!";
-                $class = 3;
-                break;
-            case 'D':
-                $msg = "Usuário deslogado com sucesso!";
-                $class = 1;
-                break;
-            case 'E':
-                $msg = "Sua Sessão foi Expirada!";
-                $class = 2;
-                break;
-            default:
-                $visivel = false;
-                break;
-
-        }
-        $this->class = " " . $class;
-        $this->visivel = $visivel;
-        $this->msg = $msg;
     }
 
     public static function Logar()
@@ -202,12 +84,55 @@ class Index
         endif;
     }
 
+    public function Acessar()
+    {
+        $acesso = UrlAmigavel::PegaParametro('acesso');
+        $class = 0;
+        $msg = "";
+        $visivel = true;
+
+        switch ($acesso) {
+            case 'B':
+                $msg = "Por Favor, Preencha o Usuário e senha!";
+                $class = 2;
+                break;
+            case 'R':
+                $msg = "Acesso Restrito, Você não tem permição para acessar!";
+                $class = 4;
+                break;
+            case 'A':
+                $msg = "CPF ou senha Inválido!";
+                $class = 3;
+                break;
+            case 'I':
+                $msg = "Usuário Inativo!";
+                $class = 3;
+                break;
+            case 'D':
+                $msg = "Usuário deslogado com sucesso!";
+                $class = 1;
+                break;
+            case 'E':
+                $msg = "Sua Sessão foi Expirada!";
+                $class = 2;
+                break;
+            default:
+                $visivel = false;
+                break;
+
+        }
+        $this->class = " " . $class;
+        $this->visivel = $visivel;
+        $this->msg = $msg;
+    }
+
 
     //*************************************************************//
     //************ EXEMPLOS DE ACTION ****************************//
     //*************************************************************//
 
     // EXEMPLO DE ENVIO DE EMAIL
+
     function VerGraficos()
     {
 //        $grafico = new Grafico(Grafico::PORCENTAGEM, "Teste Porcentagem", "div_porcentagem");

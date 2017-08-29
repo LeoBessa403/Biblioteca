@@ -19,6 +19,7 @@ class PagamentoEntidade extends AbstractEntidade
     private $ds_observacao;
     private $co_tipo_pagamento;
     private $co_negociacao;
+    private $co_parcelamento;
 
 
     /**
@@ -200,6 +201,23 @@ class PagamentoEntidade extends AbstractEntidade
     public function setCoNegociacao($co_negociacao)
     {
         return $this->co_negociacao = $co_negociacao;
+    }
+
+    /**
+     * @return $co_parcelamento
+     */
+    public function getCoParcelamento()
+    {
+        return $this->co_parcelamento;
+    }
+
+    /**
+     * @param $co_parcelamento
+     * @return mixed
+     */
+    public function setCoParcelamento($co_parcelamento)
+    {
+        return $this->co_parcelamento = $co_parcelamento;
     }
 
 }

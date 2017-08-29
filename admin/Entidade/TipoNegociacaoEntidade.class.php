@@ -13,6 +13,7 @@ class TipoNegociacaoEntidade extends AbstractEntidade
     private $co_tipo_negociacao;
     private $no_tipo_negociacao;
     private $sg_tipo_negociacao;
+    private $co_negociacao;
 
 
     /**
@@ -86,6 +87,23 @@ class TipoNegociacaoEntidade extends AbstractEntidade
     public function setSgTipoNegociacao($sg_tipo_negociacao)
     {
         return $this->sg_tipo_negociacao = $sg_tipo_negociacao;
+    }
+
+    /**
+     * @return $co_negociacao
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param $co_negociacao
+     * @return mixed
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        return $this->co_negociacao = $co_negociacao;
     }
 
 }

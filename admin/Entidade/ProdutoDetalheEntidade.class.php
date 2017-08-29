@@ -22,6 +22,7 @@ class ProdutoDetalheEntidade extends AbstractEntidade
     private $dt_cadastro;
     private $co_usuario;
     private $co_produto;
+    private $co_perfil_produto_detalhe;
 
 
     /**
@@ -257,6 +258,23 @@ class ProdutoDetalheEntidade extends AbstractEntidade
     public function setCoProduto($co_produto)
     {
         return $this->co_produto = $co_produto;
+    }
+
+    /**
+     * @return $co_perfil_produto_detalhe
+     */
+    public function getCoPerfilProdutoDetalhe()
+    {
+        return $this->co_perfil_produto_detalhe;
+    }
+
+    /**
+     * @param $co_perfil_produto_detalhe
+     * @return mixed
+     */
+    public function setCoPerfilProdutoDetalhe($co_perfil_produto_detalhe)
+    {
+        return $this->co_perfil_produto_detalhe = $co_perfil_produto_detalhe;
     }
 
 }

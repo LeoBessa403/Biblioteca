@@ -12,6 +12,8 @@ class LocalidadeEntidade extends AbstractEntidade
 
     private $co_localidade;
     private $ds_localidade;
+    private $co_localidade_consumidor;
+    private $co_produto_localidade;
 
 
     /**
@@ -67,6 +69,40 @@ class LocalidadeEntidade extends AbstractEntidade
     public function setDsLocalidade($ds_localidade)
     {
         return $this->ds_localidade = $ds_localidade;
+    }
+
+    /**
+     * @return $co_localidade_consumidor
+     */
+    public function getCoLocalidadeConsumidor()
+    {
+        return $this->co_localidade_consumidor;
+    }
+
+    /**
+     * @param $co_localidade_consumidor
+     * @return mixed
+     */
+    public function setCoLocalidadeConsumidor($co_localidade_consumidor)
+    {
+        return $this->co_localidade_consumidor = $co_localidade_consumidor;
+    }
+
+    /**
+     * @return $co_produto_localidade
+     */
+    public function getCoProdutoLocalidade()
+    {
+        return $this->co_produto_localidade;
+    }
+
+    /**
+     * @param $co_produto_localidade
+     * @return mixed
+     */
+    public function setCoProdutoLocalidade($co_produto_localidade)
+    {
+        return $this->co_produto_localidade = $co_produto_localidade;
     }
 
 }

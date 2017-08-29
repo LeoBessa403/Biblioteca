@@ -19,6 +19,11 @@ class NegociacaoEntidade extends AbstractEntidade
     private $co_tipo_negociacao;
     private $co_consumidor;
     private $co_caixa;
+    private $co_comissao;
+    private $co_entrega_pedido;
+    private $co_negociacao_produto;
+    private $co_ordem_servico;
+    private $co_pagamento;
 
 
     /**
@@ -200,6 +205,91 @@ class NegociacaoEntidade extends AbstractEntidade
     public function setCoCaixa($co_caixa)
     {
         return $this->co_caixa = $co_caixa;
+    }
+
+    /**
+     * @return $co_comissao
+     */
+    public function getCoComissao()
+    {
+        return $this->co_comissao;
+    }
+
+    /**
+     * @param $co_comissao
+     * @return mixed
+     */
+    public function setCoComissao($co_comissao)
+    {
+        return $this->co_comissao = $co_comissao;
+    }
+
+    /**
+     * @return $co_entrega_pedido
+     */
+    public function getCoEntregaPedido()
+    {
+        return $this->co_entrega_pedido;
+    }
+
+    /**
+     * @param $co_entrega_pedido
+     * @return mixed
+     */
+    public function setCoEntregaPedido($co_entrega_pedido)
+    {
+        return $this->co_entrega_pedido = $co_entrega_pedido;
+    }
+
+    /**
+     * @return $co_negociacao_produto
+     */
+    public function getCoNegociacaoProduto()
+    {
+        return $this->co_negociacao_produto;
+    }
+
+    /**
+     * @param $co_negociacao_produto
+     * @return mixed
+     */
+    public function setCoNegociacaoProduto($co_negociacao_produto)
+    {
+        return $this->co_negociacao_produto = $co_negociacao_produto;
+    }
+
+    /**
+     * @return $co_ordem_servico
+     */
+    public function getCoOrdemServico()
+    {
+        return $this->co_ordem_servico;
+    }
+
+    /**
+     * @param $co_ordem_servico
+     * @return mixed
+     */
+    public function setCoOrdemServico($co_ordem_servico)
+    {
+        return $this->co_ordem_servico = $co_ordem_servico;
+    }
+
+    /**
+     * @return $co_pagamento
+     */
+    public function getCoPagamento()
+    {
+        return $this->co_pagamento;
+    }
+
+    /**
+     * @param $co_pagamento
+     * @return mixed
+     */
+    public function setCoPagamento($co_pagamento)
+    {
+        return $this->co_pagamento = $co_pagamento;
     }
 
 }

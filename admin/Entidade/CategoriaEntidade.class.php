@@ -16,6 +16,7 @@ class CategoriaEntidade extends AbstractEntidade
     private $st_status;
     private $co_sessao;
     private $co_consumidor;
+    private $co_produto;
 
 
     /**
@@ -143,6 +144,23 @@ class CategoriaEntidade extends AbstractEntidade
     public function setCoConsumidor($co_consumidor)
     {
         return $this->co_consumidor = $co_consumidor;
+    }
+
+    /**
+     * @return $co_produto
+     */
+    public function getCoProduto()
+    {
+        return $this->co_produto;
+    }
+
+    /**
+     * @param $co_produto
+     * @return mixed
+     */
+    public function setCoProduto($co_produto)
+    {
+        return $this->co_produto = $co_produto;
     }
 
 }

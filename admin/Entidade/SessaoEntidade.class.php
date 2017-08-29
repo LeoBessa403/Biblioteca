@@ -12,6 +12,7 @@ class SessaoEntidade extends AbstractEntidade
 
     private $co_sessao;
     private $ds_sessao;
+    private $co_categoria;
 
 
     /**
@@ -67,6 +68,23 @@ class SessaoEntidade extends AbstractEntidade
     public function setDsSessao($ds_sessao)
     {
         return $this->ds_sessao = $ds_sessao;
+    }
+
+    /**
+     * @return $co_categoria
+     */
+    public function getCoCategoria()
+    {
+        return $this->co_categoria;
+    }
+
+    /**
+     * @param $co_categoria
+     * @return mixed
+     */
+    public function setCoCategoria($co_categoria)
+    {
+        return $this->co_categoria = $co_categoria;
     }
 
 }

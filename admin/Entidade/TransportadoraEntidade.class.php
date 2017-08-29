@@ -16,6 +16,7 @@ class TransportadoraEntidade extends AbstractEntidade
     private $st_status;
     private $co_consumidor;
     private $co_empresa;
+    private $co_entrega_pedido;
 
 
     /**
@@ -143,6 +144,23 @@ class TransportadoraEntidade extends AbstractEntidade
     public function setCoEmpresa($co_empresa)
     {
         return $this->co_empresa = $co_empresa;
+    }
+
+    /**
+     * @return $co_entrega_pedido
+     */
+    public function getCoEntregaPedido()
+    {
+        return $this->co_entrega_pedido;
+    }
+
+    /**
+     * @param $co_entrega_pedido
+     * @return mixed
+     */
+    public function setCoEntregaPedido($co_entrega_pedido)
+    {
+        return $this->co_entrega_pedido = $co_entrega_pedido;
     }
 
 }

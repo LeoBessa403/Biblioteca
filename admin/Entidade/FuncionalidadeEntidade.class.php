@@ -14,6 +14,8 @@ class FuncionalidadeEntidade extends AbstractEntidade
     private $no_funcionalidade;
     private $ds_rota;
     private $st_status;
+    private $co_ajuda;
+    private $co_perfil_funcionalidade;
 
 
     /**
@@ -105,6 +107,40 @@ class FuncionalidadeEntidade extends AbstractEntidade
     public function setStStatus($st_status)
     {
         return $this->st_status = $st_status;
+    }
+
+    /**
+     * @return $co_ajuda
+     */
+    public function getCoAjuda()
+    {
+        return $this->co_ajuda;
+    }
+
+    /**
+     * @param $co_ajuda
+     * @return mixed
+     */
+    public function setCoAjuda($co_ajuda)
+    {
+        return $this->co_ajuda = $co_ajuda;
+    }
+
+    /**
+     * @return $co_perfil_funcionalidade
+     */
+    public function getCoPerfilFuncionalidade()
+    {
+        return $this->co_perfil_funcionalidade;
+    }
+
+    /**
+     * @param $co_perfil_funcionalidade
+     * @return mixed
+     */
+    public function setCoPerfilFuncionalidade($co_perfil_funcionalidade)
+    {
+        return $this->co_perfil_funcionalidade = $co_perfil_funcionalidade;
     }
 
 }

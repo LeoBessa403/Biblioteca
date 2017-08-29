@@ -17,6 +17,7 @@ class CaixaEntidade extends AbstractEntidade
     private $ds_observacao;
     private $nu_troco;
     private $co_usuario;
+    private $co_negociacao;
 
 
     /**
@@ -162,6 +163,23 @@ class CaixaEntidade extends AbstractEntidade
     public function setCoUsuario($co_usuario)
     {
         return $this->co_usuario = $co_usuario;
+    }
+
+    /**
+     * @return $co_negociacao
+     */
+    public function getCoNegociacao()
+    {
+        return $this->co_negociacao;
+    }
+
+    /**
+     * @param $co_negociacao
+     * @return mixed
+     */
+    public function setCoNegociacao($co_negociacao)
+    {
+        return $this->co_negociacao = $co_negociacao;
     }
 
 }
