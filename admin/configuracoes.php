@@ -73,6 +73,8 @@ function servidor_inicial()
 
     define('IP_LOCALIZACAO', 'http://ip-api.com/php/');
 
+    include_once('Class/Constantes.class.php');
+
 }
 
 
