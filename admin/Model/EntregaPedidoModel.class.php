@@ -4,7 +4,6 @@
  * EntregaPedidoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  EntregaPedidoModel extends AbstractModel
 {
 

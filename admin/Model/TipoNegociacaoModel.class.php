@@ -4,7 +4,6 @@
  * TipoNegociacaoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  TipoNegociacaoModel extends AbstractModel
 {
 

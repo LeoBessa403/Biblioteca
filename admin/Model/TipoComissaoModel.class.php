@@ -4,7 +4,6 @@
  * TipoComissaoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  TipoComissaoModel extends AbstractModel
 {
 

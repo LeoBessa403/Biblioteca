@@ -4,7 +4,6 @@
  * NegociacaoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  NegociacaoModel extends AbstractModel
 {
 

@@ -4,7 +4,6 @@
  * ChatModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  ChatModel extends AbstractModel
 {
 

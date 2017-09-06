@@ -4,7 +4,6 @@
  * SugestaoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  SugestaoModel extends AbstractModel
 {
 

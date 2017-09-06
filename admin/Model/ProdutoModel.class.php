@@ -4,7 +4,6 @@
  * ProdutoModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  ProdutoModel extends AbstractModel
 {
 

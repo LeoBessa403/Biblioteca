@@ -4,7 +4,6 @@
  * ProdutoLocalidadeModel.class [ MODEL ]
  * @copyright (c) 2017, Leo Bessa
  */
-
 class  ProdutoLocalidadeModel extends AbstractModel
 {
 
