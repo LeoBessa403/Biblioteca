@@ -7,7 +7,7 @@ class Index
     {
         $Model = new UsuarioModel();
         $usuarios = $Model->PesquisaTodos();
-        debug(TipoPagamentoEnum::$descricao);
+        debug(UnidadeVendaEnum::$descricao);
 
     }
 
