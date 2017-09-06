@@ -7,7 +7,7 @@ class Index
     {
         $Model = new UsuarioModel();
         $usuarios = $Model->PesquisaTodos();
-        debug($usuarios);
+        debug(TipoNegociacao::$descricao[TipoNegociacao::TRASNFERENCIA]);
 
     }
 
