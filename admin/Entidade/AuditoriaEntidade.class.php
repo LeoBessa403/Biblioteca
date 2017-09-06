@@ -8,7 +8,7 @@ class AuditoriaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_auditoria';
     const ENTIDADE = 'AuditoriaEntidade';
-    const CHAVE = Constantes::CO_AUDITORIA;
+    const CHAVE = CO_AUDITORIA;
 
     private $co_auditoria;
     private $no_tabela;
@@ -28,16 +28,16 @@ class AuditoriaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_AUDITORIA,
-            Constantes::NO_TABELA,
-            Constantes::DT_REALIZADO,
-            Constantes::NO_OPERACAO,
-            Constantes::DS_ITEM_ANTERIOR,
-            Constantes::DS_ITEM_ATUAL,
-            Constantes::CO_REGISTRO,
-            Constantes::DS_PERFIL_USUARIO,
-            Constantes::CO_USUARIO,
-            Constantes::CO_CONSUMIDOR,
+            CO_AUDITORIA,
+            NO_TABELA,
+            DT_REALIZADO,
+            NO_OPERACAO,
+            DS_ITEM_ANTERIOR,
+            DS_ITEM_ATUAL,
+            CO_REGISTRO,
+            DS_PERFIL_USUARIO,
+            CO_USUARIO,
+            CO_CONSUMIDOR,
         ];
     }
 

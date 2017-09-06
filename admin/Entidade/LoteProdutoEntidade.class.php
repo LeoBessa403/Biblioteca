@@ -8,7 +8,7 @@ class LoteProdutoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_lote_produto';
     const ENTIDADE = 'LoteProdutoEntidade';
-    const CHAVE = Constantes::CO_LOTE_PRODUTO;
+    const CHAVE = CO_LOTE_PRODUTO;
 
     private $co_lote_produto;
     private $dt_validade;
@@ -23,10 +23,10 @@ class LoteProdutoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_LOTE_PRODUTO,
-            Constantes::DT_VALIDADE,
-            Constantes::DT_CADASTRO,
-            Constantes::DS_OBSERVACAO,
+            CO_LOTE_PRODUTO,
+            DT_VALIDADE,
+            DT_CADASTRO,
+            DS_OBSERVACAO,
         ];
     }
 

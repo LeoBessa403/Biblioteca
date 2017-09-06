@@ -8,7 +8,7 @@ class FinanceiroEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_financeiro';
     const ENTIDADE = 'FinanceiroEntidade';
-    const CHAVE = Constantes::CO_FINANCEIRO;
+    const CHAVE = CO_FINANCEIRO;
 
     private $co_financeiro;
     private $nu_parcela;
@@ -26,14 +26,14 @@ class FinanceiroEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_FINANCEIRO,
-            Constantes::NU_PARCELA,
-            Constantes::NU_VALOR_PARCELA,
-            Constantes::NU_VALOR_PARCELA_PAGO,
-            Constantes::DT_VENCIMENTO,
-            Constantes::DT_VENCIMENTO_PAGO,
-            Constantes::DS_OBSERVACAO,
-            Constantes::CO_CONSUMIDOR,
+            CO_FINANCEIRO,
+            NU_PARCELA,
+            NU_VALOR_PARCELA,
+            NU_VALOR_PARCELA_PAGO,
+            DT_VENCIMENTO,
+            DT_VENCIMENTO_PAGO,
+            DS_OBSERVACAO,
+            CO_CONSUMIDOR,
         ];
     }
 

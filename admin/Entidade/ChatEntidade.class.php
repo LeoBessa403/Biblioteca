@@ -8,7 +8,7 @@ class ChatEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_chat';
     const ENTIDADE = 'ChatEntidade';
-    const CHAVE = Constantes::CO_CHAT;
+    const CHAVE = CO_CHAT;
 
     private $co_chat;
     private $ds_mensagem;
@@ -24,12 +24,12 @@ class ChatEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_CHAT,
-            Constantes::DS_MENSAGEM,
-            Constantes::DT_CADASTRO,
-            Constantes::ST_LIDO,
-            Constantes::CO_USUARIO_ORIGEM,
-            Constantes::CO_USUARIO_DESTINO,
+            CO_CHAT,
+            DS_MENSAGEM,
+            DT_CADASTRO,
+            ST_LIDO,
+            CO_USUARIO_ORIGEM,
+            CO_USUARIO_DESTINO,
         ];
     }
 

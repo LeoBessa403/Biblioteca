@@ -8,7 +8,7 @@ class ContatoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_contato';
     const ENTIDADE = 'ContatoEntidade';
-    const CHAVE = Constantes::CO_CONTATO;
+    const CHAVE = CO_CONTATO;
 
     private $co_contato;
     private $nu_tel1;
@@ -27,13 +27,13 @@ class ContatoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_CONTATO,
-            Constantes::NU_TEL1,
-            Constantes::NU_TEL2,
-            Constantes::NU_TEL3,
-            Constantes::NU_TEL4,
-            Constantes::DS_EMAIL,
-            Constantes::DS_SITE,
+            CO_CONTATO,
+            NU_TEL1,
+            NU_TEL2,
+            NU_TEL3,
+            NU_TEL4,
+            DS_EMAIL,
+            DS_SITE,
         ];
     }
 

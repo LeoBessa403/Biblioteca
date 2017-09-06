@@ -8,7 +8,7 @@ class CategoriaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_categoria';
     const ENTIDADE = 'CategoriaEntidade';
-    const CHAVE = Constantes::CO_CATEGORIA;
+    const CHAVE = CO_CATEGORIA;
 
     private $co_categoria;
     private $no_categoria;
@@ -25,12 +25,12 @@ class CategoriaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_CATEGORIA,
-            Constantes::NO_CATEGORIA,
-            Constantes::NU_LUCRO,
-            Constantes::ST_STATUS,
-            Constantes::CO_SESSAO,
-            Constantes::CO_CONSUMIDOR,
+            CO_CATEGORIA,
+            NO_CATEGORIA,
+            NU_LUCRO,
+            ST_STATUS,
+            CO_SESSAO,
+            CO_CONSUMIDOR,
         ];
     }
 

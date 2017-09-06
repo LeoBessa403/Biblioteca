@@ -8,7 +8,7 @@ class NegociacaoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_negociacao';
     const ENTIDADE = 'NegociacaoEntidade';
-    const CHAVE = Constantes::CO_NEGOCIACAO;
+    const CHAVE = CO_NEGOCIACAO;
 
     private $co_negociacao;
     private $dt_cadastro;
@@ -32,15 +32,15 @@ class NegociacaoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_NEGOCIACAO,
-            Constantes::DT_CADASTRO,
-            Constantes::DS_OBSERVACAO,
-            Constantes::CO_CLIENTE,
-            Constantes::CO_FORNECEDOR,
-            Constantes::CO_USUARIO,
-            Constantes::CO_TIPO_NEGOCIACAO,
-            Constantes::CO_CONSUMIDOR,
-            Constantes::CO_CAIXA,
+            CO_NEGOCIACAO,
+            DT_CADASTRO,
+            DS_OBSERVACAO,
+            CO_CLIENTE,
+            CO_FORNECEDOR,
+            CO_USUARIO,
+            CO_TIPO_NEGOCIACAO,
+            CO_CONSUMIDOR,
+            CO_CAIXA,
         ];
     }
 

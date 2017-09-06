@@ -8,7 +8,7 @@ class EmpresaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_empresa';
     const ENTIDADE = 'EmpresaEntidade';
-    const CHAVE = Constantes::CO_EMPRESA;
+    const CHAVE = CO_EMPRESA;
 
     private $co_empresa;
     private $no_empresa;
@@ -34,18 +34,18 @@ class EmpresaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_EMPRESA,
-            Constantes::NO_EMPRESA,
-            Constantes::NO_FANTASIA,
-            Constantes::DT_CADASTRO,
-            Constantes::NU_CNPJ,
-            Constantes::NU_INSC_ESTADUAL,
-            Constantes::DS_OBSERVACAO,
-            Constantes::ST_STATUS,
-            Constantes::CO_CONTATO,
-            Constantes::CO_PESSOA,
-            Constantes::CO_ENDERECO,
-            Constantes::CO_IMAGEM,
+            CO_EMPRESA,
+            NO_EMPRESA,
+            NO_FANTASIA,
+            DT_CADASTRO,
+            NU_CNPJ,
+            NU_INSC_ESTADUAL,
+            DS_OBSERVACAO,
+            ST_STATUS,
+            CO_CONTATO,
+            CO_PESSOA,
+            CO_ENDERECO,
+            CO_IMAGEM,
         ];
     }
 

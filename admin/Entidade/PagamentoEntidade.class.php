@@ -8,7 +8,7 @@ class PagamentoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_pagamento';
     const ENTIDADE = 'PagamentoEntidade';
-    const CHAVE = Constantes::CO_PAGAMENTO;
+    const CHAVE = CO_PAGAMENTO;
 
     private $co_pagamento;
     private $nu_total;
@@ -28,15 +28,15 @@ class PagamentoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PAGAMENTO,
-            Constantes::NU_TOTAL,
-            Constantes::NU_VALOR_PAGO,
-            Constantes::NU_PARCELAS,
-            Constantes::TP_SITUACAO,
-            Constantes::DT_ATUALIZADO,
-            Constantes::DS_OBSERVACAO,
-            Constantes::CO_TIPO_PAGAMENTO,
-            Constantes::CO_NEGOCIACAO,
+            CO_PAGAMENTO,
+            NU_TOTAL,
+            NU_VALOR_PAGO,
+            NU_PARCELAS,
+            TP_SITUACAO,
+            DT_ATUALIZADO,
+            DS_OBSERVACAO,
+            CO_TIPO_PAGAMENTO,
+            CO_NEGOCIACAO,
         ];
     }
 

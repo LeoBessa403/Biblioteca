@@ -8,7 +8,7 @@ class AjudaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_ajuda';
     const ENTIDADE = 'AjudaEntidade';
-    const CHAVE = Constantes::CO_AJUDA;
+    const CHAVE = CO_AJUDA;
 
     private $co_ajuda;
     private $ds_ajuda;
@@ -21,9 +21,9 @@ class AjudaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_AJUDA,
-            Constantes::DS_AJUDA,
-            Constantes::CO_FUNCIONALIDADE,
+            CO_AJUDA,
+            DS_AJUDA,
+            CO_FUNCIONALIDADE,
         ];
     }
 

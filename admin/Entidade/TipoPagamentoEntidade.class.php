@@ -8,7 +8,7 @@ class TipoPagamentoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_tipo_pagamento';
     const ENTIDADE = 'TipoPagamentoEntidade';
-    const CHAVE = Constantes::CO_TIPO_PAGAMENTO;
+    const CHAVE = CO_TIPO_PAGAMENTO;
 
     private $co_tipo_pagamento;
     private $ds_tipo_pagamento;
@@ -22,9 +22,9 @@ class TipoPagamentoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_TIPO_PAGAMENTO,
-            Constantes::DS_TIPO_PAGAMENTO,
-            Constantes::SG_TIPO_PAGAMENTO,
+            CO_TIPO_PAGAMENTO,
+            DS_TIPO_PAGAMENTO,
+            SG_TIPO_PAGAMENTO,
         ];
     }
 

@@ -8,7 +8,7 @@ class LembreteEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_lembrete';
     const ENTIDADE = 'LembreteEntidade';
-    const CHAVE = Constantes::CO_LEMBRETE;
+    const CHAVE = CO_LEMBRETE;
 
     private $co_lembrete;
     private $dt_inicio;
@@ -26,14 +26,14 @@ class LembreteEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_LEMBRETE,
-            Constantes::DT_INICIO,
-            Constantes::DT_FIM,
-            Constantes::ST_ATIVO,
-            Constantes::DS_LEMBRETE,
-            Constantes::CO_USUARIO_ORIGEM,
-            Constantes::CO_USUARIO_DESTINO,
-            Constantes::CO_GRUPO_LEMBRETE,
+            CO_LEMBRETE,
+            DT_INICIO,
+            DT_FIM,
+            ST_ATIVO,
+            DS_LEMBRETE,
+            CO_USUARIO_ORIGEM,
+            CO_USUARIO_DESTINO,
+            CO_GRUPO_LEMBRETE,
         ];
     }
 

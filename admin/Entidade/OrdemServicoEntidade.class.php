@@ -8,7 +8,7 @@ class OrdemServicoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_ordem_servico';
     const ENTIDADE = 'OrdemServicoEntidade';
-    const CHAVE = Constantes::CO_ORDEM_SERVICO;
+    const CHAVE = CO_ORDEM_SERVICO;
 
     private $co_ordem_servico;
     private $nu_ordem_servico;
@@ -26,14 +26,14 @@ class OrdemServicoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_ORDEM_SERVICO,
-            Constantes::NU_ORDEM_SERVICO,
-            Constantes::DT_CADASTRO,
-            Constantes::DS_DESCRICAO,
-            Constantes::NO_ORDEM_SERVICO,
-            Constantes::DT_ENTREGA,
-            Constantes::CO_USUARIO,
-            Constantes::CO_NEGOCIACAO,
+            CO_ORDEM_SERVICO,
+            NU_ORDEM_SERVICO,
+            DT_CADASTRO,
+            DS_DESCRICAO,
+            NO_ORDEM_SERVICO,
+            DT_ENTREGA,
+            CO_USUARIO,
+            CO_NEGOCIACAO,
         ];
     }
 

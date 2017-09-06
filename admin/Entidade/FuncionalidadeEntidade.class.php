@@ -8,7 +8,7 @@ class FuncionalidadeEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_funcionalidade';
     const ENTIDADE = 'FuncionalidadeEntidade';
-    const CHAVE = Constantes::CO_FUNCIONALIDADE;
+    const CHAVE = CO_FUNCIONALIDADE;
 
     private $co_funcionalidade;
     private $no_funcionalidade;
@@ -24,10 +24,10 @@ class FuncionalidadeEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_FUNCIONALIDADE,
-            Constantes::NO_FUNCIONALIDADE,
-            Constantes::DS_ROTA,
-            Constantes::ST_STATUS,
+            CO_FUNCIONALIDADE,
+            NO_FUNCIONALIDADE,
+            DS_ROTA,
+            ST_STATUS,
         ];
     }
 

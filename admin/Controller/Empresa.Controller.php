@@ -66,8 +66,8 @@ class Empresa{
                 $empresa['ds_observacao']                       = $dados['ds_observacao'];
                 $empresa['no_responsavel']                      = $dados['no_responsavel'];
                 $empresa['dt_cadastro']                         = Valida::DataAtualBanco('Y-m-d');
-                $empresa[Constantes::CONTATO_CHAVE_PRIMARIA]    = $idContato;
-                $empresa[Constantes::ENDERECO_CHAVE_PRIMARIA]   = $idEndereco;
+                $empresa[CONTATO_CHAVE_PRIMARIA]    = $idContato;
+                $empresa[ENDERECO_CHAVE_PRIMARIA]   = $idEndereco;
         
                     $idEmpresa = EmpresaModel::CadastraEmpresa($empresa);
                     if($idEmpresa):

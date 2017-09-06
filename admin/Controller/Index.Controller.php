@@ -7,15 +7,15 @@ class Index
     {
         $Model = new UsuarioModel();
         $usuarios = $Model->PesquisaTodos();
-        debug(TipoNegociacao::$descricao[TipoNegociacao::TRASNFERENCIA]);
+        debug($usuarios);
 
     }
 
     public static function Logar()
     {
         // CLASSE DE LOGAR
-        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[Constantes::NU_CPF]));
-        $senha = Valida::LimpaVariavel($_POST[Constantes::DS_SENHA]);
+        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CEP]));
+        $senha = Valida::LimpaVariavel($_POST[DS_SENHA]);
 
         if (($cpf != "") && ($senha != "")):
 
@@ -42,17 +42,17 @@ class Index
                 }
             endforeach;
             if ($user != ""):
-                $acesso[Constantes::DS_SESSION_ID] = session_id();
-                $acesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
+                $acesso[DS_SESSION_ID] = session_id();
+                $acesso[CO_USUARIO] = $user->getCoUsuario();
                 $acessoObj = new AcessoModel();
                 $meuAcesso = $acessoObj->PesquisaUmQuando($acesso);
                 if ($meuAcesso) {
-                    $novoAcesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                    $novoAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
                     $acessoObj->Salva($novoAcesso, $user->getCoUsuario());
                 } else {
-                    $acesso[Constantes::DT_INICIO_ACESSO] = Valida::DataAtualBanco();
-                    $acesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                    $acesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
+                    $acesso[DT_INICIO_ACESSO] = Valida::DataAtualBanco();
+                    $acesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                    $acesso[CO_USUARIO] = $user->getCoUsuario();
                     $acessoObj->Salva($acesso);
                 }
 
@@ -63,12 +63,12 @@ class Index
                     $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
                     $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
                 }
-                $usuarioAcesso[Constantes::CO_USUARIO] = $user->getCoUsuario();
-                $usuarioAcesso[Constantes::DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
-                $usuarioAcesso[Constantes::NU_CPF] = $user->getCoPessoa()->getNuCpf();
-                $usuarioAcesso[Constantes::NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
-                $usuarioAcesso[Constantes::ST_SEXO] = $user->getCoPessoa()->getStSexo();
-                $usuarioAcesso[Constantes::DT_FIM_ACESSO] = Valida::DataAtualBanco();
+                $usuarioAcesso[CO_USUARIO] = $user->getCoUsuario();
+                $usuarioAcesso[DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
+                $usuarioAcesso[NU_CPF] = $user->getCoPessoa()->getNuCpf();
+                $usuarioAcesso[NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
+                $usuarioAcesso[ST_SEXO] = $user->getCoPessoa()->getStSexo();
+                $usuarioAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
                 $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
                 $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
 

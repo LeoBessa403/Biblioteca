@@ -8,7 +8,7 @@ class UsuarioPerfilEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_usuario_perfil';
     const ENTIDADE = 'UsuarioPerfilEntidade';
-    const CHAVE = Constantes::CO_USUARIO_PERFIL;
+    const CHAVE = CO_USUARIO_PERFIL;
 
     private $co_usuario_perfil;
     private $co_usuario;
@@ -21,9 +21,9 @@ class UsuarioPerfilEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_USUARIO_PERFIL,
-            Constantes::CO_USUARIO,
-            Constantes::CO_PERFIL,
+            CO_USUARIO_PERFIL,
+            CO_USUARIO,
+            CO_PERFIL,
         ];
     }
 

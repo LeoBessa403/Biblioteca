@@ -8,7 +8,7 @@ class UnidadeVendaConsumidorEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_unidade_venda_consumidor';
     const ENTIDADE = 'UnidadeVendaConsumidorEntidade';
-    const CHAVE = Constantes::CO_UNIDADE_VENDA_CONSUMIDOR;
+    const CHAVE = CO_UNIDADE_VENDA_CONSUMIDOR;
 
     private $co_unidade_venda_consumidor;
     private $st_ativo;
@@ -23,10 +23,10 @@ class UnidadeVendaConsumidorEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_UNIDADE_VENDA_CONSUMIDOR,
-            Constantes::ST_ATIVO,
-            Constantes::CO_UNIDADE_VENDA,
-            Constantes::CO_CONSUMIDOR,
+            CO_UNIDADE_VENDA_CONSUMIDOR,
+            ST_ATIVO,
+            CO_UNIDADE_VENDA,
+            CO_CONSUMIDOR,
         ];
     }
 

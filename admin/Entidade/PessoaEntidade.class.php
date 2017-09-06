@@ -8,7 +8,7 @@ class PessoaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_pessoa';
     const ENTIDADE = 'PessoaEntidade';
-    const CHAVE = Constantes::CO_PESSOA;
+    const CHAVE = CO_PESSOA;
 
     private $co_pessoa;
     private $nu_cpf;
@@ -36,17 +36,17 @@ class PessoaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PESSOA,
-            Constantes::NU_CPF,
-            Constantes::NO_PESSOA,
-            Constantes::NU_RG,
-            Constantes::DT_CADASTRO,
-            Constantes::DT_NASCIMENTO,
-            Constantes::ST_SEXO,
-            Constantes::ST_ESTADO_CIVIL,
-            Constantes::CO_ENDERECO,
-            Constantes::CO_CONTATO,
-            Constantes::CO_IMAGEM,
+            CO_PESSOA,
+            NU_CPF,
+            NO_PESSOA,
+            NU_RG,
+            DT_CADASTRO,
+            DT_NASCIMENTO,
+            ST_SEXO,
+            ST_ESTADO_CIVIL,
+            CO_ENDERECO,
+            CO_CONTATO,
+            CO_IMAGEM,
         ];
     }
 

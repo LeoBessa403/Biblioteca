@@ -8,7 +8,7 @@ class AcessoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_acesso';
     const ENTIDADE = 'AcessoEntidade';
-    const CHAVE = Constantes::CO_ACESSO;
+    const CHAVE = CO_ACESSO;
 
     private $co_acesso;
     private $ds_session_id;
@@ -23,11 +23,11 @@ class AcessoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_ACESSO,
-            Constantes::DS_SESSION_ID,
-            Constantes::DT_INICIO_ACESSO,
-            Constantes::DT_FIM_ACESSO,
-            Constantes::CO_USUARIO,
+            CO_ACESSO,
+            DS_SESSION_ID,
+            DT_INICIO_ACESSO,
+            DT_FIM_ACESSO,
+            CO_USUARIO,
         ];
     }
 

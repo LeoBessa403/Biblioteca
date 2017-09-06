@@ -8,7 +8,7 @@ class FornecedorEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_fornecedor';
     const ENTIDADE = 'FornecedorEntidade';
-    const CHAVE = Constantes::CO_FORNECEDOR;
+    const CHAVE = CO_FORNECEDOR;
 
     private $co_fornecedor;
     private $ds_observacao;
@@ -28,15 +28,15 @@ class FornecedorEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_FORNECEDOR,
-            Constantes::DS_OBSERVACAO,
-            Constantes::DT_CADASTRO,
-            Constantes::TP_CREDOR,
-            Constantes::ST_STATUS,
-            Constantes::CO_REPRESENTANTE,
-            Constantes::CO_PESSOA,
-            Constantes::CO_EMPRESA,
-            Constantes::CO_CONSUMIDOR,
+            CO_FORNECEDOR,
+            DS_OBSERVACAO,
+            DT_CADASTRO,
+            TP_CREDOR,
+            ST_STATUS,
+            CO_REPRESENTANTE,
+            CO_PESSOA,
+            CO_EMPRESA,
+            CO_CONSUMIDOR,
         ];
     }
 

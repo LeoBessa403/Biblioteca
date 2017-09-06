@@ -8,7 +8,7 @@ class PerfilEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_perfil';
     const ENTIDADE = 'PerfilEntidade';
-    const CHAVE = Constantes::CO_PERFIL;
+    const CHAVE = CO_PERFIL;
 
     private $co_perfil;
     private $no_perfil;
@@ -25,10 +25,10 @@ class PerfilEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PERFIL,
-            Constantes::NO_PERFIL,
-            Constantes::ST_STATUS,
-            Constantes::CO_CONSUMIDOR,
+            CO_PERFIL,
+            NO_PERFIL,
+            ST_STATUS,
+            CO_CONSUMIDOR,
         ];
     }
 

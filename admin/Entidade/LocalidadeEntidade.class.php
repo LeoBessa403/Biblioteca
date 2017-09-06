@@ -8,7 +8,7 @@ class LocalidadeEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_localidade';
     const ENTIDADE = 'LocalidadeEntidade';
-    const CHAVE = Constantes::CO_LOCALIDADE;
+    const CHAVE = CO_LOCALIDADE;
 
     private $co_localidade;
     private $ds_localidade;
@@ -22,8 +22,8 @@ class LocalidadeEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_LOCALIDADE,
-            Constantes::DS_LOCALIDADE,
+            CO_LOCALIDADE,
+            DS_LOCALIDADE,
         ];
     }
 

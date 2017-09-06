@@ -17,7 +17,7 @@ class MembroWebForm
             $label_options = array("1" => "1", "2" => "2", "3" => "3");
             $formulario
                 ->setLabel("Números de Parcelas")
-                ->setId(Constantes::NU_PARCELAS)
+                ->setId(NU_PARCELAS)
                 ->setType("select")
                 ->setTamanhoInput(12)
                 ->setOptions($label_options)
@@ -26,9 +26,9 @@ class MembroWebForm
             $label_options = array("Sim", "Não", "verde", "vermelho");
             $formulario
                 ->setLabel("Servo?")
-                ->setId(Constantes::ST_EQUIPE_TRABALHO)
+                ->setId(ST_EQUIPE_TRABALHO)
                 ->setType("checkbox")
-                ->setClasses($res[Constantes::ST_EQUIPE_TRABALHO])
+                ->setClasses($res[ST_EQUIPE_TRABALHO])
                 ->setTamanhoInput(6)
                 ->setOptions($label_options)
                 ->CriaInpunt();
@@ -39,15 +39,15 @@ class MembroWebForm
         $label_options = array("Sim", "Não", "verde", "vermelho");
         $formulario
             ->setLabel("Membro do Grupo GEJ?")
-            ->setId(Constantes::DS_MEMBRO_ATIVO)
+            ->setId(DS_MEMBRO_ATIVO)
             ->setType("checkbox")
-            ->setClasses($res[Constantes::DS_MEMBRO_ATIVO])
+            ->setClasses($res[DS_MEMBRO_ATIVO])
             ->setTamanhoInput(6)
             ->setOptions($label_options)
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NO_PESSOA)
+            ->setId(NO_PESSOA)
             ->setClasses("ob nome")
             ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
             ->setLabel("Nome Completo")
@@ -55,14 +55,14 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_CPF)
+            ->setId(NU_CPF)
             ->setClasses("cpf ob")
             ->setTamanhoInput(6)
             ->setLabel("CPF")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_RG)
+            ->setId(NU_RG)
             ->setTamanhoInput(6)
             ->setClasses("numero")
             ->setLabel("RG")
@@ -71,7 +71,7 @@ class MembroWebForm
         $label_options = array("" => "Selecione um", "M" => "Masculino", "F" => "Feminino");
         $formulario
             ->setLabel("Sexo")
-            ->setId(Constantes::ST_SEXO)
+            ->setId(ST_SEXO)
             ->setClasses("ob")
             ->setType("select")
             ->setTamanhoInput(6)
@@ -79,7 +79,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DT_NASCIMENTO)
+            ->setId(DT_NASCIMENTO)
             ->setIcon("clip-calendar-3")
             ->setTamanhoInput(6)
             ->setClasses("data ob")
@@ -88,7 +88,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_TEL1)
+            ->setId(NU_TEL1)
             ->setTamanhoInput(6)
             ->setIcon("fa fa-mobile-phone")
             ->setLabel("Telefone Celular")
@@ -97,7 +97,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_TEL2)
+            ->setId(NU_TEL2)
             ->setTamanhoInput(6)
             ->setIcon("fa fa-mobile-phone")
             ->setLabel("Telefone Celular 2")
@@ -105,7 +105,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_ENDERECO)
+            ->setId(DS_ENDERECO)
             ->setIcon("clip-home-2")
             ->setTamanhoInput(12)
             ->setClasses("ob")
@@ -113,25 +113,25 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_COMPLEMENTO)
+            ->setId(DS_COMPLEMENTO)
             ->setLabel("Complemento")
             ->setTamanhoInput(12)
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_BAIRRO)
+            ->setId(DS_BAIRRO)
             ->setLabel("Bairro")
             ->setTamanhoInput(12)
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NO_CIDADE)
+            ->setId(NO_CIDADE)
             ->setLabel("Cidade")
             ->setTamanhoInput(12)
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_CEP)
+            ->setId(NU_CEP)
             ->setLabel("CEP")
             ->setTamanhoInput(4)
             ->setClasses("cep")
@@ -140,7 +140,7 @@ class MembroWebForm
         $options = Endereco::montaComboEstadosDescricao();
         $formulario
             ->setTamanhoInput(8)
-            ->setId(Constantes::SG_UF)
+            ->setId(SG_UF)
             ->setType("select")
             ->setLabel("Estado")
             ->setOptions($options)
@@ -150,8 +150,8 @@ class MembroWebForm
         $formulario
             ->setLabel("Participou de algum Retiro?")
             ->setTamanhoInput(5)
-            ->setId(Constantes::DS_RETIRO)
-            ->setClasses($res[Constantes::DS_RETIRO])
+            ->setId(DS_RETIRO)
+            ->setClasses($res[DS_RETIRO])
             ->setType("checkbox")
             ->setOptions($label_options)
             ->CriaInpunt();
@@ -169,13 +169,13 @@ class MembroWebForm
         $formulario
             ->setLabel("Qual Pastoral?")
             ->setTamanhoInput(12)
-            ->setId(Constantes::DS_PASTORAL)
+            ->setId(DS_PASTORAL)
             ->CriaInpunt();
 
         $opticoes_camisa = MembroWeb::montaComboCamisas();
 
         $formulario
-            ->setId(Constantes::NU_CAMISA)
+            ->setId(NU_CAMISA)
             ->setType("select")
             ->setTamanhoInput(12)
             ->setClasses("ob")
@@ -184,7 +184,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NO_RESPONSAVEL)
+            ->setId(NO_RESPONSAVEL)
             ->setTamanhoInput(6)
             ->setClasses("ob nome")
             ->setLabel("Pessoa de Referência")
@@ -192,7 +192,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_TEL_RESPONSAVEL)
+            ->setId(NU_TEL_RESPONSAVEL)
             ->setTamanhoInput(6)
             ->setIcon("clip-phone-2")
             ->setClasses("tel ob")
@@ -200,7 +200,7 @@ class MembroWebForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_EMAIL)
+            ->setId(DS_EMAIL)
             ->setIcon("fa-envelope fa")
             ->setClasses("email ob")
             ->setLabel("Email")
@@ -210,7 +210,7 @@ class MembroWebForm
         if ($CoInscricao) {
             $formulario
                 ->setType("hidden")
-                ->setId(Constantes::CO_INSCRICAO)
+                ->setId(CO_INSCRICAO)
                 ->setValues($CoInscricao)
                 ->CriaInpunt();
         }

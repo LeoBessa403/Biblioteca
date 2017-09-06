@@ -8,7 +8,7 @@ class GrupoLembreteEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_grupo_lembrete';
     const ENTIDADE = 'GrupoLembreteEntidade';
-    const CHAVE = Constantes::CO_GRUPO_LEMBRETE;
+    const CHAVE = CO_GRUPO_LEMBRETE;
 
     private $co_grupo_lembrete;
     private $no_grupo_lembrete;
@@ -24,10 +24,10 @@ class GrupoLembreteEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_GRUPO_LEMBRETE,
-            Constantes::NO_GRUPO_LEMBRETE,
-            Constantes::DT_CADASTRO,
-            Constantes::CO_CONSUMIDOR,
+            CO_GRUPO_LEMBRETE,
+            NO_GRUPO_LEMBRETE,
+            DT_CADASTRO,
+            CO_CONSUMIDOR,
         ];
     }
 

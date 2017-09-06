@@ -8,7 +8,7 @@ class EntregaPedidoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_entrega_pedido';
     const ENTIDADE = 'EntregaPedidoEntidade';
-    const CHAVE = Constantes::CO_ENTREGA_PEDIDO;
+    const CHAVE = CO_ENTREGA_PEDIDO;
 
     private $co_entrega_pedido;
     private $dt_entrega;
@@ -25,13 +25,13 @@ class EntregaPedidoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_ENTREGA_PEDIDO,
-            Constantes::DT_ENTREGA,
-            Constantes::DT_SER_ENTREGUE,
-            Constantes::DS_OBSERVACAO,
-            Constantes::CO_SIT_ENTREG_PED,
-            Constantes::CO_NEGOCIACAO,
-            Constantes::CO_TRANSPORTADORA,
+            CO_ENTREGA_PEDIDO,
+            DT_ENTREGA,
+            DT_SER_ENTREGUE,
+            DS_OBSERVACAO,
+            CO_SIT_ENTREG_PED,
+            CO_NEGOCIACAO,
+            CO_TRANSPORTADORA,
         ];
     }
 

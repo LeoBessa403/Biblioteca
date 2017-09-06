@@ -8,7 +8,7 @@ class EnderecoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_endereco';
     const ENTIDADE = 'EnderecoEntidade';
-    const CHAVE = Constantes::CO_ENDERECO;
+    const CHAVE = CO_ENDERECO;
 
     private $co_endereco;
     private $ds_endereco;
@@ -27,13 +27,13 @@ class EnderecoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_ENDERECO,
-            Constantes::DS_ENDERECO,
-            Constantes::DS_COMPLEMENTO,
-            Constantes::DS_BAIRRO,
-            Constantes::NU_CEP,
-            Constantes::NO_CIDADE,
-            Constantes::SG_UF,
+            CO_ENDERECO,
+            DS_ENDERECO,
+            DS_COMPLEMENTO,
+            DS_BAIRRO,
+            NU_CEP,
+            NO_CIDADE,
+            SG_UF,
         ];
     }
 

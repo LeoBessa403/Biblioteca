@@ -8,7 +8,7 @@ class TransportadoraEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_transportadora';
     const ENTIDADE = 'TransportadoraEntidade';
-    const CHAVE = Constantes::CO_TRANSPORTADORA;
+    const CHAVE = CO_TRANSPORTADORA;
 
     private $co_transportadora;
     private $ds_observacao;
@@ -25,12 +25,12 @@ class TransportadoraEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_TRANSPORTADORA,
-            Constantes::DS_OBSERVACAO,
-            Constantes::DT_CADASTRO,
-            Constantes::ST_STATUS,
-            Constantes::CO_CONSUMIDOR,
-            Constantes::CO_EMPRESA,
+            CO_TRANSPORTADORA,
+            DS_OBSERVACAO,
+            DT_CADASTRO,
+            ST_STATUS,
+            CO_CONSUMIDOR,
+            CO_EMPRESA,
         ];
     }
 

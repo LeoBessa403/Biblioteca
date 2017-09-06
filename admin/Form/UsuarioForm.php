@@ -19,40 +19,40 @@ class UsuarioForm
             $meusPerfis = explode(',', $meusPerfis);
 
             $usuarioModel = new UsuarioModel();
-            $usuario = $usuarioModel->PesquisaUmQuando([Constantes::CO_USUARIO => $res['co_usuario']]);
+            $usuario = $usuarioModel->PesquisaUmQuando([CO_USUARIO => $res['co_usuario']]);
 
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
                 $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
             } else {
-                $res[Constantes::ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($res[Constantes::ST_STATUS]);
+                $res[ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($res[ST_STATUS]);
                 $res[CAMPO_PERFIL] = implode(', ', $perfilControl->montaComboPerfil($usuario));
             }
             $formulario->setValor($res);
         endif;
 
         $formulario
-            ->setId(Constantes::NO_PESSOA)
+            ->setId(NO_PESSOA)
             ->setClasses("ob nome")
             ->setInfo("O Nome deve ser Completo Mínimo de 10 Caracteres")
             ->setLabel("Nome Completo")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_CPF)
+            ->setId(NU_CPF)
             ->setClasses("cpf ob")
             ->setTamanhoInput(6)
             ->setLabel("CPF")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_RG)
+            ->setId(NU_RG)
             ->setTamanhoInput(6)
             ->setClasses("numero")
             ->setLabel("RG")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DT_NASCIMENTO)
+            ->setId(DT_NASCIMENTO)
             ->setTamanhoInput(6)
             ->setClasses("data ob")
             ->setLabel("Nascimento")
@@ -62,7 +62,7 @@ class UsuarioForm
         $label_options = array("" => "Selecione um", "M" => "Masculino", "F" => "Feminino");
         $formulario
             ->setLabel("Sexo")
-            ->setId(Constantes::ST_SEXO)
+            ->setId(ST_SEXO)
             ->setClasses("ob")
             ->setType("select")
             ->setTamanhoInput(6)
@@ -70,14 +70,14 @@ class UsuarioForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_EMAIL)
+            ->setId(DS_EMAIL)
             ->setIcon("fa-envelope fa")
             ->setClasses("email ob")
             ->setLabel("Email")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_TEL1)
+            ->setId(NU_TEL1)
             ->setTamanhoInput(6)
             ->setIcon("fa fa-mobile-phone")
             ->setLabel("Telefone Celular")
@@ -86,7 +86,7 @@ class UsuarioForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_TEL2)
+            ->setId(NU_TEL2)
             ->setTamanhoInput(6)
             ->setIcon("fa fa-mobile-phone")
             ->setLabel("Telefone Celular 2")
@@ -94,29 +94,29 @@ class UsuarioForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_ENDERECO)
+            ->setId(DS_ENDERECO)
             ->setIcon("clip-home-2")
             ->setClasses("ob")
             ->setLabel("Endereço")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_COMPLEMENTO)
+            ->setId(DS_COMPLEMENTO)
             ->setLabel("Complemento")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_BAIRRO)
+            ->setId(DS_BAIRRO)
             ->setLabel("Bairro")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NO_CIDADE)
+            ->setId(NO_CIDADE)
             ->setLabel("Cidade")
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_CEP)
+            ->setId(NU_CEP)
             ->setLabel("CEP")
             ->setTamanhoInput(4)
             ->setClasses("cep")
@@ -125,7 +125,7 @@ class UsuarioForm
         $options = Endereco::montaComboEstadosDescricao();
         $formulario
             ->setTamanhoInput(8)
-            ->setId(Constantes::SG_UF)
+            ->setId(SG_UF)
             ->setType("select")
             ->setClasses("ob")
             ->setLabel("Estado")
@@ -133,7 +133,7 @@ class UsuarioForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::DS_SENHA)
+            ->setId(DS_SENHA)
             ->setClasses("ob senha")
             ->setTamanhoInput(6)
             ->setType("password")
@@ -164,7 +164,7 @@ class UsuarioForm
 
                 $checked = "";
                 if ($res):
-                    if ($res[Constantes::ST_STATUS] == "A"):
+                    if ($res[ST_STATUS] == "A"):
                         $checked = "checked";
                     endif;
                 endif;
@@ -173,7 +173,7 @@ class UsuarioForm
                 $formulario
                     ->setLabel("Status do Usuário")
                     ->setClasses($checked)
-                    ->setId(Constantes::ST_STATUS)
+                    ->setId(ST_STATUS)
                     ->setInfo("Para Ativar e Desativar Usuários do Sistema.")
                     ->setType("checkbox")
                     ->setTamanhoInput(4)
@@ -189,7 +189,7 @@ class UsuarioForm
                     ->CriaInpunt();
 
                 $formulario
-                    ->setId(Constantes::ST_STATUS)
+                    ->setId(ST_STATUS)
                     ->setClasses("disabilita")
                     ->setTamanhoInput(3)
                     ->setLabel("Status do Usuário")
@@ -200,7 +200,7 @@ class UsuarioForm
         }
 
         $formulario
-            ->setId(Constantes::DS_CAMINHO)
+            ->setId(DS_CAMINHO)
             ->setType("singlefile")
             ->setInfo("Caso queira troca de foto")
             ->setLabel("Foto de Perfil")
@@ -209,7 +209,7 @@ class UsuarioForm
         if ($res):
             $formulario
                 ->setType("hidden")
-                ->setId(Constantes::CO_USUARIO)
+                ->setId(CO_USUARIO)
                 ->setValues($res['co_usuario'])
                 ->CriaInpunt();
         endif;
@@ -231,7 +231,7 @@ class UsuarioForm
             ->CriaInpunt();
 
         $formulario
-            ->setId(Constantes::NU_CPF)
+            ->setId(NU_CPF)
             ->setClasses("cpf")
             ->setTamanhoInput(6)
             ->setLabel("CPF")

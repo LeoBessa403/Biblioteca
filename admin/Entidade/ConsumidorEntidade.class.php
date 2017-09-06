@@ -8,7 +8,7 @@ class ConsumidorEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_consumidor';
     const ENTIDADE = 'ConsumidorEntidade';
-    const CHAVE = Constantes::CO_CONSUMIDOR;
+    const CHAVE = CO_CONSUMIDOR;
 
     private $co_consumidor;
     private $dt_cadastro;
@@ -40,13 +40,13 @@ class ConsumidorEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_CONSUMIDOR,
-            Constantes::DT_CADASTRO,
-            Constantes::DS_OBSERVACAO,
-            Constantes::ST_STATUS,
-            Constantes::CO_PESSOA,
-            Constantes::CO_EMPRESA,
-            Constantes::CO_CONSUMIDOR_MATRIZ,
+            CO_CONSUMIDOR,
+            DT_CADASTRO,
+            DS_OBSERVACAO,
+            ST_STATUS,
+            CO_PESSOA,
+            CO_EMPRESA,
+            CO_CONSUMIDOR_MATRIZ,
         ];
     }
 

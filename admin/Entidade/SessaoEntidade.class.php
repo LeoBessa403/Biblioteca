@@ -8,7 +8,7 @@ class SessaoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_sessao';
     const ENTIDADE = 'SessaoEntidade';
-    const CHAVE = Constantes::CO_SESSAO;
+    const CHAVE = CO_SESSAO;
 
     private $co_sessao;
     private $ds_sessao;
@@ -21,8 +21,8 @@ class SessaoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_SESSAO,
-            Constantes::DS_SESSAO,
+            CO_SESSAO,
+            DS_SESSAO,
         ];
     }
 

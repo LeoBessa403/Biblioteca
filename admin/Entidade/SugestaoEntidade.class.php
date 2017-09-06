@@ -8,7 +8,7 @@ class SugestaoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_sugestao';
     const ENTIDADE = 'SugestaoEntidade';
-    const CHAVE = Constantes::CO_SUGESTAO;
+    const CHAVE = CO_SUGESTAO;
 
     private $co_sugestao;
     private $dt_cadastro;
@@ -25,13 +25,13 @@ class SugestaoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_SUGESTAO,
-            Constantes::DT_CADASTRO,
-            Constantes::TP_SUGESTAO,
-            Constantes::DS_TITULO_SUGESTAO,
-            Constantes::DS_SUGESTAO,
-            Constantes::CO_USUARIO,
-            Constantes::CO_IMAGEM,
+            CO_SUGESTAO,
+            DT_CADASTRO,
+            TP_SUGESTAO,
+            DS_TITULO_SUGESTAO,
+            DS_SUGESTAO,
+            CO_USUARIO,
+            CO_IMAGEM,
         ];
     }
 

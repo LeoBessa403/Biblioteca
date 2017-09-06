@@ -8,7 +8,7 @@ class RepresentanteEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_representante';
     const ENTIDADE = 'RepresentanteEntidade';
-    const CHAVE = Constantes::CO_REPRESENTANTE;
+    const CHAVE = CO_REPRESENTANTE;
 
     private $co_representante;
     private $dt_cadastro;
@@ -24,11 +24,11 @@ class RepresentanteEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_REPRESENTANTE,
-            Constantes::DT_CADASTRO,
-            Constantes::ST_STATUS,
-            Constantes::CO_CONSUMIDOR,
-            Constantes::CO_PESSOA,
+            CO_REPRESENTANTE,
+            DT_CADASTRO,
+            ST_STATUS,
+            CO_CONSUMIDOR,
+            CO_PESSOA,
         ];
     }
 

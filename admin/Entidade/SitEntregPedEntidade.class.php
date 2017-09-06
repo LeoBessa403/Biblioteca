@@ -8,7 +8,7 @@ class SitEntregPedEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_sit_entreg_ped';
     const ENTIDADE = 'SitEntregPedEntidade';
-    const CHAVE = Constantes::CO_SIT_ENTREG_PED;
+    const CHAVE = CO_SIT_ENTREG_PED;
 
     private $co_sit_entreg_ped;
     private $no_sit_entreg_ped;
@@ -22,9 +22,9 @@ class SitEntregPedEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_SIT_ENTREG_PED,
-            Constantes::NO_SIT_ENTREG_PED,
-            Constantes::SG_SIT_ENTREG_PED,
+            CO_SIT_ENTREG_PED,
+            NO_SIT_ENTREG_PED,
+            SG_SIT_ENTREG_PED,
         ];
     }
 

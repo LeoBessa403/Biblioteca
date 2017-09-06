@@ -8,7 +8,7 @@ class CaixaEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_caixa';
     const ENTIDADE = 'CaixaEntidade';
-    const CHAVE = Constantes::CO_CAIXA;
+    const CHAVE = CO_CAIXA;
 
     private $co_caixa;
     private $nu_caixa;
@@ -26,13 +26,13 @@ class CaixaEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_CAIXA,
-            Constantes::NU_CAIXA,
-            Constantes::DT_ABERTURA,
-            Constantes::DT_FECHAMENTO,
-            Constantes::DS_OBSERVACAO,
-            Constantes::NU_TROCO,
-            Constantes::CO_USUARIO,
+            CO_CAIXA,
+            NU_CAIXA,
+            DT_ABERTURA,
+            DT_FECHAMENTO,
+            DS_OBSERVACAO,
+            NU_TROCO,
+            CO_USUARIO,
         ];
     }
 

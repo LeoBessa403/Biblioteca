@@ -8,7 +8,7 @@ class ProdutoGradeProdutoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_produto_grade_produto';
     const ENTIDADE = 'ProdutoGradeProdutoEntidade';
-    const CHAVE = Constantes::CO_PRODUTO_GRADE_PRODUTO;
+    const CHAVE = CO_PRODUTO_GRADE_PRODUTO;
 
     private $co_produto_grade_produto;
     private $co_grade_produto;
@@ -21,9 +21,9 @@ class ProdutoGradeProdutoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PRODUTO_GRADE_PRODUTO,
-            Constantes::CO_GRADE_PRODUTO,
-            Constantes::CO_PRODUTO,
+            CO_PRODUTO_GRADE_PRODUTO,
+            CO_GRADE_PRODUTO,
+            CO_PRODUTO,
         ];
     }
 

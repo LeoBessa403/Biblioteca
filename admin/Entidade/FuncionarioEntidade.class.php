@@ -8,7 +8,7 @@ class FuncionarioEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_funcionario';
     const ENTIDADE = 'FuncionarioEntidade';
-    const CHAVE = Constantes::CO_FUNCIONARIO;
+    const CHAVE = CO_FUNCIONARIO;
 
     private $co_funcionario;
     private $ds_cargo;
@@ -30,18 +30,18 @@ class FuncionarioEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_FUNCIONARIO,
-            Constantes::DS_CARGO,
-            Constantes::DT_ADMISSAO,
-            Constantes::DT_DEMISSAO,
-            Constantes::DT_CADASTRO,
-            Constantes::NU_CARTEIRA,
-            Constantes::NU_SALARIO,
-            Constantes::NU_HORAS,
-            Constantes::ST_STATUS,
-            Constantes::CO_IMAGEM,
-            Constantes::CO_CONSUMIDOR,
-            Constantes::CO_PESSOA,
+            CO_FUNCIONARIO,
+            DS_CARGO,
+            DT_ADMISSAO,
+            DT_DEMISSAO,
+            DT_CADASTRO,
+            NU_CARTEIRA,
+            NU_SALARIO,
+            NU_HORAS,
+            ST_STATUS,
+            CO_IMAGEM,
+            CO_CONSUMIDOR,
+            CO_PESSOA,
         ];
     }
 

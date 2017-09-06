@@ -11,978 +11,978 @@ class Relacionamentos
     {
         return array(
             (AcessoEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (UsuarioEntidade::TABELA) => Array(
-                (Constantes::CO_ACESSO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_ACESSO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'AcessoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_AUDITORIA) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_AUDITORIA) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'AuditoriaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CAIXA) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_CAIXA) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'CaixaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_COMISSAO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_COMISSAO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'ComissaoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_ORDEM_SERVICO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_ORDEM_SERVICO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'OrdemServicoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PRODUTO_DETALHE) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_PRODUTO_DETALHE) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'ProdutoDetalheEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PRODUTO_PROMOCAO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_PRODUTO_PROMOCAO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'ProdutoPromocaoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_SUGESTAO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_SUGESTAO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'SugestaoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO_PERFIL) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioPerfilEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'ChatEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'GrupoLembreteUsuarioEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_ORIGEM,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
                     ('Entidade') => 'ChatEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_ORIGEM,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
                     ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (AjudaEntidade::TABELA) => Array(
-                (Constantes::CO_FUNCIONALIDADE) => Array(
-                    ('Campo') => Constantes::CO_FUNCIONALIDADE,
+                (CO_FUNCIONALIDADE) => Array(
+                    ('Campo') => CO_FUNCIONALIDADE,
                     ('Entidade') => 'FuncionalidadeEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (FuncionalidadeEntidade::TABELA) => Array(
-                (Constantes::CO_AJUDA) => Array(
-                    ('Campo') => Constantes::CO_FUNCIONALIDADE,
+                (CO_AJUDA) => Array(
+                    ('Campo') => CO_FUNCIONALIDADE,
                     ('Entidade') => 'AjudaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PERFIL_FUNCIONALIDADE) => Array(
-                    ('Campo') => Constantes::CO_FUNCIONALIDADE,
+                (CO_PERFIL_FUNCIONALIDADE) => Array(
+                    ('Campo') => CO_FUNCIONALIDADE,
                     ('Entidade') => 'PerfilFuncionalidadeEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (AuditoriaEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ConsumidorEntidade::TABELA) => Array(
-                (Constantes::CO_AUDITORIA) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_AUDITORIA) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'AuditoriaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CATEGORIA) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CATEGORIA) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'CategoriaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CLIENTE) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CLIENTE) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ClienteEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR_MATRIZ,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR_MATRIZ,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_FINANCEIRO) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_FINANCEIRO) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'FinanceiroEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_FORNECEDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_FORNECEDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'FornecedorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_FUNCIONARIO) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_FUNCIONARIO) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'FuncionarioEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_GRUPO_LEMBRETE) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_GRUPO_LEMBRETE) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'GrupoLembreteEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_LOCALIDADE_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_LOCALIDADE_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'LocalidadeConsumidorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_PERFIL) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'PerfilEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_REPRESENTANTE) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_REPRESENTANTE) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'RepresentanteEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_TRANSPORTADORA) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_TRANSPORTADORA) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'TransportadoraEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'UnidadeVendaConsumidorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (CaixaEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_CAIXA,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_CAIXA,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (CategoriaEntidade::TABELA) => Array(
-                (Constantes::CO_SESSAO) => Array(
-                    ('Campo') => Constantes::CO_SESSAO,
+                (CO_SESSAO) => Array(
+                    ('Campo') => CO_SESSAO,
                     ('Entidade') => 'SessaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_CATEGORIA,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_CATEGORIA,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (SessaoEntidade::TABELA) => Array(
-                (Constantes::CO_CATEGORIA) => Array(
-                    ('Campo') => Constantes::CO_SESSAO,
+                (CO_CATEGORIA) => Array(
+                    ('Campo') => CO_SESSAO,
                     ('Entidade') => 'CategoriaEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (ChatEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_ORIGEM,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ClienteEntidade::TABELA) => Array(
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_CLIENTE,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_CLIENTE,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (PessoaEntidade::TABELA) => Array(
-                (Constantes::CO_CLIENTE) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_CLIENTE) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'ClienteEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FORNECEDOR) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_FORNECEDOR) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'FornecedorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FUNCIONARIO) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_FUNCIONARIO) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'FuncionarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_ENDERECO) => Array(
-                    ('Campo') => Constantes::CO_ENDERECO,
+                (CO_ENDERECO) => Array(
+                    ('Campo') => CO_ENDERECO,
                     ('Entidade') => 'EnderecoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONTATO) => Array(
-                    ('Campo') => Constantes::CO_CONTATO,
+                (CO_CONTATO) => Array(
+                    ('Campo') => CO_CONTATO,
                     ('Entidade') => 'ContatoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_REPRESENTANTE) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_REPRESENTANTE) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'RepresentanteEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (EmpresaEntidade::TABELA) => Array(
-                (Constantes::CO_CLIENTE) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_CLIENTE) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'ClienteEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONTATO) => Array(
-                    ('Campo') => Constantes::CO_CONTATO,
+                (CO_CONTATO) => Array(
+                    ('Campo') => CO_CONTATO,
                     ('Entidade') => 'ContatoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_ENDERECO) => Array(
-                    ('Campo') => Constantes::CO_ENDERECO,
+                (CO_ENDERECO) => Array(
+                    ('Campo') => CO_ENDERECO,
                     ('Entidade') => 'EnderecoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FORNECEDOR) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_FORNECEDOR) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'FornecedorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_TRANSPORTADORA) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_TRANSPORTADORA) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'TransportadoraEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (ComissaoEntidade::TABELA) => Array(
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_TIPO_COMISSAO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_COMISSAO,
+                (CO_TIPO_COMISSAO) => Array(
+                    ('Campo') => CO_TIPO_COMISSAO,
                     ('Entidade') => 'TipoComissaoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (NegociacaoEntidade::TABELA) => Array(
-                (Constantes::CO_COMISSAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_COMISSAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'ComissaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_ENTREGA_PEDIDO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_ENTREGA_PEDIDO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'EntregaPedidoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CLIENTE) => Array(
-                    ('Campo') => Constantes::CO_CLIENTE,
+                (CO_CLIENTE) => Array(
+                    ('Campo') => CO_CLIENTE,
                     ('Entidade') => 'ClienteEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FORNECEDOR) => Array(
-                    ('Campo') => Constantes::CO_FORNECEDOR,
+                (CO_FORNECEDOR) => Array(
+                    ('Campo') => CO_FORNECEDOR,
                     ('Entidade') => 'FornecedorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_TIPO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_NEGOCIACAO,
+                (CO_TIPO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_TIPO_NEGOCIACAO,
                     ('Entidade') => 'TipoNegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CAIXA) => Array(
-                    ('Campo') => Constantes::CO_CAIXA,
+                (CO_CAIXA) => Array(
+                    ('Campo') => CO_CAIXA,
                     ('Entidade') => 'CaixaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO_PRODUTO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoProdutoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_ORDEM_SERVICO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_ORDEM_SERVICO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'OrdemServicoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PAGAMENTO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_PAGAMENTO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'PagamentoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (TipoComissaoEntidade::TABELA) => Array(
-                (Constantes::CO_COMISSAO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_COMISSAO,
+                (CO_COMISSAO) => Array(
+                    ('Campo') => CO_TIPO_COMISSAO,
                     ('Entidade') => 'ComissaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (ContatoEntidade::TABELA) => Array(
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_CONTATO,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_CONTATO,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_CONTATO,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_CONTATO,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (EnderecoEntidade::TABELA) => Array(
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_ENDERECO,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_ENDERECO,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_ENDERECO,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_ENDERECO,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ImagemEntidade::TABELA) => Array(
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FUNCIONARIO) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_FUNCIONARIO) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'FuncionarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_SUGESTAO) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_SUGESTAO) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'SugestaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (EntregaPedidoEntidade::TABELA) => Array(
-                (Constantes::CO_SIT_ENTREG_PED) => Array(
-                    ('Campo') => Constantes::CO_SIT_ENTREG_PED,
+                (CO_SIT_ENTREG_PED) => Array(
+                    ('Campo') => CO_SIT_ENTREG_PED,
                     ('Entidade') => 'SitEntregPedEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_TRANSPORTADORA) => Array(
-                    ('Campo') => Constantes::CO_TRANSPORTADORA,
+                (CO_TRANSPORTADORA) => Array(
+                    ('Campo') => CO_TRANSPORTADORA,
                     ('Entidade') => 'TransportadoraEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (SitEntregPedEntidade::TABELA) => Array(
-                (Constantes::CO_ENTREGA_PEDIDO) => Array(
-                    ('Campo') => Constantes::CO_SIT_ENTREG_PED,
+                (CO_ENTREGA_PEDIDO) => Array(
+                    ('Campo') => CO_SIT_ENTREG_PED,
                     ('Entidade') => 'EntregaPedidoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (TransportadoraEntidade::TABELA) => Array(
-                (Constantes::CO_ENTREGA_PEDIDO) => Array(
-                    ('Campo') => Constantes::CO_TRANSPORTADORA,
+                (CO_ENTREGA_PEDIDO) => Array(
+                    ('Campo') => CO_TRANSPORTADORA,
                     ('Entidade') => 'EntregaPedidoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (FinanceiroEntidade::TABELA) => Array(
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (FornecedorEntidade::TABELA) => Array(
-                (Constantes::CO_REPRESENTANTE) => Array(
-                    ('Campo') => Constantes::CO_REPRESENTANTE,
+                (CO_REPRESENTANTE) => Array(
+                    ('Campo') => CO_REPRESENTANTE,
                     ('Entidade') => 'RepresentanteEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_EMPRESA) => Array(
-                    ('Campo') => Constantes::CO_EMPRESA,
+                (CO_EMPRESA) => Array(
+                    ('Campo') => CO_EMPRESA,
                     ('Entidade') => 'EmpresaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_FORNECEDOR,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_FORNECEDOR,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (RepresentanteEntidade::TABELA) => Array(
-                (Constantes::CO_FORNECEDOR) => Array(
-                    ('Campo') => Constantes::CO_REPRESENTANTE,
+                (CO_FORNECEDOR) => Array(
+                    ('Campo') => CO_REPRESENTANTE,
                     ('Entidade') => 'FornecedorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (FuncionarioEntidade::TABELA) => Array(
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PESSOA) => Array(
-                    ('Campo') => Constantes::CO_PESSOA,
+                (CO_PESSOA) => Array(
+                    ('Campo') => CO_PESSOA,
                     ('Entidade') => 'PessoaEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (GrupoLembreteEntidade::TABELA) => Array(
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_GRUPO_LEMBRETE_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_GRUPO_LEMBRETE,
+                (CO_GRUPO_LEMBRETE_USUARIO) => Array(
+                    ('Campo') => CO_GRUPO_LEMBRETE,
                     ('Entidade') => 'GrupoLembreteUsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_LEMBRETE) => Array(
-                    ('Campo') => Constantes::CO_GRUPO_LEMBRETE,
+                (CO_LEMBRETE) => Array(
+                    ('Campo') => CO_GRUPO_LEMBRETE,
                     ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (GrupoLembreteUsuarioEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'UsuarioDestinoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_GRUPO_LEMBRETE) => Array(
-                    ('Campo') => Constantes::CO_GRUPO_LEMBRETE,
+                (CO_GRUPO_LEMBRETE) => Array(
+                    ('Campo') => CO_GRUPO_LEMBRETE,
                     ('Entidade') => 'GrupoLembreteEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (LembreteEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_ORIGEM,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO_DESTINO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_GRUPO_LEMBRETE) => Array(
-                    ('Campo') => Constantes::CO_GRUPO_LEMBRETE,
+                (CO_GRUPO_LEMBRETE) => Array(
+                    ('Campo') => CO_GRUPO_LEMBRETE,
                     ('Entidade') => 'GrupoLembreteEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (LocalidadeConsumidorEntidade::TABELA) => Array(
-                (Constantes::CO_LOCALIDADE) => Array(
-                    ('Campo') => Constantes::CO_LOCALIDADE,
+                (CO_LOCALIDADE) => Array(
+                    ('Campo') => CO_LOCALIDADE,
                     ('Entidade') => 'LocalidadeEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (LocalidadeEntidade::TABELA) => Array(
-                (Constantes::CO_LOCALIDADE_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_LOCALIDADE,
+                (CO_LOCALIDADE_CONSUMIDOR) => Array(
+                    ('Campo') => CO_LOCALIDADE,
                     ('Entidade') => 'LocalidadeConsumidorEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PRODUTO_LOCALIDADE) => Array(
-                    ('Campo') => Constantes::CO_LOCALIDADE,
+                (CO_PRODUTO_LOCALIDADE) => Array(
+                    ('Campo') => CO_LOCALIDADE,
                     ('Entidade') => 'ProdutoLocalidadeEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (TipoNegociacaoEntidade::TABELA) => Array(
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_TIPO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (NegociacaoProdutoEntidade::TABELA) => Array(
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ProdutoEntidade::TABELA) => Array(
-                (Constantes::CO_NEGOCIACAO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_NEGOCIACAO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'NegociacaoProdutoEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_CATEGORIA) => Array(
-                    ('Campo') => Constantes::CO_CATEGORIA,
+                (CO_CATEGORIA) => Array(
+                    ('Campo') => CO_CATEGORIA,
                     ('Entidade') => 'CategoriaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_UNIDADE_VENDA_CONSUMIDOR,
+                (CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
+                    ('Campo') => CO_UNIDADE_VENDA_CONSUMIDOR,
                     ('Entidade') => 'UnidadeVendaConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_LOTE_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_LOTE_PRODUTO,
+                (CO_LOTE_PRODUTO) => Array(
+                    ('Campo') => CO_LOTE_PRODUTO,
                     ('Entidade') => 'LoteProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO_DETALHE) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO_DETALHE) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoDetalheEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PRODUTO_GRADE_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO_GRADE_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoGradeProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO_LOCALIDADE) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO_LOCALIDADE) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoLocalidadeEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO_PROMOCAO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO_PROMOCAO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoPromocaoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (OrdemServicoEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (PagamentoEntidade::TABELA) => Array(
-                (Constantes::CO_TIPO_PAGAMENTO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_PAGAMENTO,
+                (CO_TIPO_PAGAMENTO) => Array(
+                    ('Campo') => CO_TIPO_PAGAMENTO,
                     ('Entidade') => 'TipoPagamentoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_NEGOCIACAO) => Array(
-                    ('Campo') => Constantes::CO_NEGOCIACAO,
+                (CO_NEGOCIACAO) => Array(
+                    ('Campo') => CO_NEGOCIACAO,
                     ('Entidade') => 'NegociacaoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PARCELAMENTO) => Array(
-                    ('Campo') => Constantes::CO_PAGAMENTO,
+                (CO_PARCELAMENTO) => Array(
+                    ('Campo') => CO_PAGAMENTO,
                     ('Entidade') => 'ParcelamentoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (TipoPagamentoEntidade::TABELA) => Array(
-                (Constantes::CO_PAGAMENTO) => Array(
-                    ('Campo') => Constantes::CO_TIPO_PAGAMENTO,
+                (CO_PAGAMENTO) => Array(
+                    ('Campo') => CO_TIPO_PAGAMENTO,
                     ('Entidade') => 'PagamentoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (ParcelamentoEntidade::TABELA) => Array(
-                (Constantes::CO_PAGAMENTO) => Array(
-                    ('Campo') => Constantes::CO_PAGAMENTO,
+                (CO_PAGAMENTO) => Array(
+                    ('Campo') => CO_PAGAMENTO,
                     ('Entidade') => 'PagamentoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (PerfilEntidade::TABELA) => Array(
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PERFIL_FUNCIONALIDADE) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_PERFIL_FUNCIONALIDADE) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'PerfilFuncionalidadeEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_PERFIL_PRODUTO_DETALHE) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_PERFIL_PRODUTO_DETALHE) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'PerfilProdutoDetalheEntidade',
                     ('Tipo') => '2',
                 ),
-                (Constantes::CO_USUARIO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_USUARIO_PERFIL) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'UsuarioPerfilEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (PerfilFuncionalidadeEntidade::TABELA) => Array(
-                (Constantes::CO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_PERFIL) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'PerfilEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_FUNCIONALIDADE) => Array(
-                    ('Campo') => Constantes::CO_FUNCIONALIDADE,
+                (CO_FUNCIONALIDADE) => Array(
+                    ('Campo') => CO_FUNCIONALIDADE,
                     ('Entidade') => 'FuncionalidadeEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (PerfilProdutoDetalheEntidade::TABELA) => Array(
-                (Constantes::CO_PRODUTO_DETALHE) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO_DETALHE,
+                (CO_PRODUTO_DETALHE) => Array(
+                    ('Campo') => CO_PRODUTO_DETALHE,
                     ('Entidade') => 'ProdutoDetalheEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_PERFIL) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'PerfilEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ProdutoDetalheEntidade::TABELA) => Array(
-                (Constantes::CO_PERFIL_PRODUTO_DETALHE) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO_DETALHE,
+                (CO_PERFIL_PRODUTO_DETALHE) => Array(
+                    ('Campo') => CO_PRODUTO_DETALHE,
                     ('Entidade') => 'PerfilProdutoDetalheEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (UnidadeVendaConsumidorEntidade::TABELA) => Array(
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_UNIDADE_VENDA_CONSUMIDOR,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_UNIDADE_VENDA_CONSUMIDOR,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_UNIDADE_VENDA) => Array(
-                    ('Campo') => Constantes::CO_UNIDADE_VENDA,
+                (CO_UNIDADE_VENDA) => Array(
+                    ('Campo') => CO_UNIDADE_VENDA,
                     ('Entidade') => 'UnidadeVendaEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_CONSUMIDOR,
+                (CO_CONSUMIDOR) => Array(
+                    ('Campo') => CO_CONSUMIDOR,
                     ('Entidade') => 'ConsumidorEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (LoteProdutoEntidade::TABELA) => Array(
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_LOTE_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_LOTE_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (ProdutoGradeProdutoEntidade::TABELA) => Array(
-                (Constantes::CO_GRADE_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_GRADE_PRODUTO,
+                (CO_GRADE_PRODUTO) => Array(
+                    ('Campo') => CO_GRADE_PRODUTO,
                     ('Entidade') => 'GradeProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (GradeProdutoEntidade::TABELA) => Array(
-                (Constantes::CO_PRODUTO_GRADE_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_GRADE_PRODUTO,
+                (CO_PRODUTO_GRADE_PRODUTO) => Array(
+                    ('Campo') => CO_GRADE_PRODUTO,
                     ('Entidade') => 'ProdutoGradeProdutoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ProdutoLocalidadeEntidade::TABELA) => Array(
-                (Constantes::CO_LOCALIDADE) => Array(
-                    ('Campo') => Constantes::CO_LOCALIDADE,
+                (CO_LOCALIDADE) => Array(
+                    ('Campo') => CO_LOCALIDADE,
                     ('Entidade') => 'LocalidadeEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (ProdutoPromocaoEntidade::TABELA) => Array(
-                (Constantes::CO_PRODUTO) => Array(
-                    ('Campo') => Constantes::CO_PRODUTO,
+                (CO_PRODUTO) => Array(
+                    ('Campo') => CO_PRODUTO,
                     ('Entidade') => 'ProdutoEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (SugestaoEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_IMAGEM) => Array(
-                    ('Campo') => Constantes::CO_IMAGEM,
+                (CO_IMAGEM) => Array(
+                    ('Campo') => CO_IMAGEM,
                     ('Entidade') => 'ImagemEntidade',
                     ('Tipo') => '1',
                 ),
             ),
             (UnidadeVendaEntidade::TABELA) => Array(
-                (Constantes::CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
-                    ('Campo') => Constantes::CO_UNIDADE_VENDA,
+                (CO_UNIDADE_VENDA_CONSUMIDOR) => Array(
+                    ('Campo') => CO_UNIDADE_VENDA,
                     ('Entidade') => 'UnidadeVendaConsumidorEntidade',
                     ('Tipo') => '2',
                 ),
             ),
             (UsuarioPerfilEntidade::TABELA) => Array(
-                (Constantes::CO_USUARIO) => Array(
-                    ('Campo') => Constantes::CO_USUARIO,
+                (CO_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
-                (Constantes::CO_PERFIL) => Array(
-                    ('Campo') => Constantes::CO_PERFIL,
+                (CO_PERFIL) => Array(
+                    ('Campo') => CO_PERFIL,
                     ('Entidade') => 'PerfilEntidade',
                     ('Tipo') => '1',
                 ),

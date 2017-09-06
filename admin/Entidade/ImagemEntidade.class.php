@@ -8,7 +8,7 @@ class ImagemEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_imagem';
     const ENTIDADE = 'ImagemEntidade';
-    const CHAVE = Constantes::CO_IMAGEM;
+    const CHAVE = CO_IMAGEM;
 
     private $co_imagem;
     private $ds_caminho;
@@ -26,8 +26,8 @@ class ImagemEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_IMAGEM,
-            Constantes::DS_CAMINHO,
+            CO_IMAGEM,
+            DS_CAMINHO,
         ];
     }
 

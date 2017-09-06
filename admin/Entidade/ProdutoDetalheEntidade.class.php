@@ -8,7 +8,7 @@ class ProdutoDetalheEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_produto_detalhe';
     const ENTIDADE = 'ProdutoDetalheEntidade';
-    const CHAVE = Constantes::CO_PRODUTO_DETALHE;
+    const CHAVE = CO_PRODUTO_DETALHE;
 
     private $co_produto_detalhe;
     private $nu_estoque_baixo;
@@ -31,18 +31,18 @@ class ProdutoDetalheEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PRODUTO_DETALHE,
-            Constantes::NU_ESTOQUE_BAIXO,
-            Constantes::NU_PRECO_VENDA,
-            Constantes::NU_VALOR_LUCRO,
-            Constantes::NU_PORC_VALOR_LUCRO,
-            Constantes::NU_VALOR_DESCONTO_MAXIMO,
-            Constantes::NU_PORC_DESC_MAX,
-            Constantes::NU_PRECO_ATACADO,
-            Constantes::NU_QUANTIDADE_ATACADO,
-            Constantes::DT_CADASTRO,
-            Constantes::CO_USUARIO,
-            Constantes::CO_PRODUTO,
+            CO_PRODUTO_DETALHE,
+            NU_ESTOQUE_BAIXO,
+            NU_PRECO_VENDA,
+            NU_VALOR_LUCRO,
+            NU_PORC_VALOR_LUCRO,
+            NU_VALOR_DESCONTO_MAXIMO,
+            NU_PORC_DESC_MAX,
+            NU_PRECO_ATACADO,
+            NU_QUANTIDADE_ATACADO,
+            DT_CADASTRO,
+            CO_USUARIO,
+            CO_PRODUTO,
         ];
     }
 

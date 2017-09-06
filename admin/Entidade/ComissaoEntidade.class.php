@@ -8,7 +8,7 @@ class ComissaoEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_comissao';
     const ENTIDADE = 'ComissaoEntidade';
-    const CHAVE = Constantes::CO_COMISSAO;
+    const CHAVE = CO_COMISSAO;
 
     private $co_comissao;
     private $nu_valor;
@@ -27,15 +27,15 @@ class ComissaoEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_COMISSAO,
-            Constantes::NU_VALOR,
-            Constantes::NU_PERCENTUAL,
-            Constantes::ST_STATUS,
-            Constantes::DT_CADASTRO,
-            Constantes::DT_OCORRENCIA,
-            Constantes::CO_NEGOCIACAO,
-            Constantes::CO_USUARIO,
-            Constantes::CO_TIPO_COMISSAO,
+            CO_COMISSAO,
+            NU_VALOR,
+            NU_PERCENTUAL,
+            ST_STATUS,
+            DT_CADASTRO,
+            DT_OCORRENCIA,
+            CO_NEGOCIACAO,
+            CO_USUARIO,
+            CO_TIPO_COMISSAO,
         ];
     }
 

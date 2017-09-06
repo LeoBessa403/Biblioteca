@@ -8,7 +8,7 @@ class ProdutoLocalidadeEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_produto_localidade';
     const ENTIDADE = 'ProdutoLocalidadeEntidade';
-    const CHAVE = Constantes::CO_PRODUTO_LOCALIDADE;
+    const CHAVE = CO_PRODUTO_LOCALIDADE;
 
     private $co_produto_localidade;
     private $co_localidade;
@@ -22,10 +22,10 @@ class ProdutoLocalidadeEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PRODUTO_LOCALIDADE,
-            Constantes::CO_LOCALIDADE,
-            Constantes::CO_PRODUTO,
-            Constantes::DS_LOCALIDADE,
+            CO_PRODUTO_LOCALIDADE,
+            CO_LOCALIDADE,
+            CO_PRODUTO,
+            DS_LOCALIDADE,
         ];
     }
 

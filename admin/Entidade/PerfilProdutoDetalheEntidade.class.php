@@ -8,7 +8,7 @@ class PerfilProdutoDetalheEntidade extends AbstractEntidade
 {
     const TABELA = 'tb_perfil_produto_detalhe';
     const ENTIDADE = 'PerfilProdutoDetalheEntidade';
-    const CHAVE = Constantes::CO_PERFIL_PRODUTO_DETALHE;
+    const CHAVE = CO_PERFIL_PRODUTO_DETALHE;
 
     private $co_perfil_produto_detalhe;
     private $co_produto_detalhe;
@@ -23,11 +23,11 @@ class PerfilProdutoDetalheEntidade extends AbstractEntidade
     public static function getCampos()
     {
         return [
-            Constantes::CO_PERFIL_PRODUTO_DETALHE,
-            Constantes::CO_PRODUTO_DETALHE,
-            Constantes::CO_PERFIL,
-            Constantes::NU_DESCONTO,
-            Constantes::NU_PORC_DESCONTO,
+            CO_PERFIL_PRODUTO_DETALHE,
+            CO_PRODUTO_DETALHE,
+            CO_PERFIL,
+            NU_DESCONTO,
+            NU_PORC_DESCONTO,
         ];
     }
 
