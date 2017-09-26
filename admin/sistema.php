@@ -13,7 +13,6 @@ if ($compara != null):
     $url->pegaControllerAction();
     exit;
 endif;
-debug(10);
 ?>
 <!DOCTYPE html>
 <!-- Template Name: Clip-One - Responsive Admin Template build with Twitter Bootstrap 3.x Version: 1.3 Author: ClipTheme -->
@@ -116,7 +115,6 @@ debug(10);
                                 $fotoPerfil = "avatar-mulher.jpg";
                             endif;
                         endif;
-
                         echo Valida::GetMiniatura("usuarios/" . $fotoPerfil, 'Leonardo', 35, 35, "circle-img");
                         ?>
                         <span class="username">

@@ -5,34 +5,26 @@ class Index extends AbstractController
 
     function Index()
     {
-        /** @var UsuarioService $usuariaService */
-        $usuariaService = $this->getService(USUARIO_SERVICE);
-        $usuarios = $usuariaService->PesquisaTodos();
-
-        debug($usuarios);
-
-        debug(UnidadeVendaEnum::$descricao);
-
+//        $sessao = new Session();
+//        debug($sessao->getUser());
     }
 
     public static function Logar()
     {
         // CLASSE DE LOGAR
-        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CEP]));
+        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CPF]));
         $senha = Valida::LimpaVariavel($_POST[DS_SENHA]);
-
         if (($cpf != "") && ($senha != "")):
 
-            $Model = new UsuarioModel();
-            $usuarios = $Model->PesquisaTodos();
+            /** @var UsuarioService $usuariaService */
+            $usuariaService = static::getService(USUARIO_SERVICE);
+            $usuarios = $usuariaService->PesquisaTodos();
 
             $user = "";
             // Codifica a senha
             $senha = base64_encode(base64_encode($senha));
             /** @var UsuarioEntidade $usuario */
             foreach ($usuarios as $usuario):
-//                debug($usuario->getCoPessoa()->getNuCpf(). " - " . $cpf . " / " .
-//                    strtoupper($usuario->getDsCode()) . " - " . strtoupper($senha));
                 if (($usuario->getCoPessoa()->getNuCpf() == $cpf)
                     && (strtoupper($usuario->getDsCode()) == strtoupper($senha))
                 ) {
@@ -48,16 +40,15 @@ class Index extends AbstractController
             if ($user != ""):
                 $acesso[DS_SESSION_ID] = session_id();
                 $acesso[CO_USUARIO] = $user->getCoUsuario();
-                $acessoObj = new AcessoModel();
-                $meuAcesso = $acessoObj->PesquisaUmQuando($acesso);
+                $acessoService = static::getService(ACESSO_SERVICE);
+                $meuAcesso = $acessoService->PesquisaUmQuando($acesso);
                 if ($meuAcesso) {
                     $novoAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                    $acessoObj->Salva($novoAcesso, $user->getCoUsuario());
+                    $acessoService->Salva($novoAcesso, $user->getCoUsuario());
                 } else {
                     $acesso[DT_INICIO_ACESSO] = Valida::DataAtualBanco();
                     $acesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
                     $acesso[CO_USUARIO] = $user->getCoUsuario();
-                    $acessoObj->Salva($acesso);
                 }
 
                 $perfis = array();
@@ -68,6 +59,7 @@ class Index extends AbstractController
                     $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
                 }
                 $usuarioAcesso[CO_USUARIO] = $user->getCoUsuario();
+                $usuarioAcesso[CO_CONSUMIDOR] = $user->getCoConsumidor();
                 $usuarioAcesso[DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
                 $usuarioAcesso[NU_CPF] = $user->getCoPessoa()->getNuCpf();
                 $usuarioAcesso[NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
@@ -75,7 +67,6 @@ class Index extends AbstractController
                 $usuarioAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
                 $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
                 $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
-
 
                 $session = new Session();
                 $session->setUser($usuarioAcesso);
