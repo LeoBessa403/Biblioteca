@@ -7,4 +7,10 @@
 class  OrdemServicoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(OrdemServicoEntidade::ENTIDADE);
+    }
+
+
 }

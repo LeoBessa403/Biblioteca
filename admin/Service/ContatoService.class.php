@@ -7,4 +7,10 @@
 class  ContatoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(ContatoEntidade::ENTIDADE);
+    }
+
+
 }

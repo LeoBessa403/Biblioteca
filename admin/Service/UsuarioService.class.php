@@ -7,4 +7,10 @@
 class  UsuarioService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(UsuarioEntidade::ENTIDADE);
+    }
+
+
 }

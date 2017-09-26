@@ -7,4 +7,10 @@
 class  ProdutoGradeProdutoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(ProdutoGradeProdutoEntidade::ENTIDADE);
+    }
+
+
 }

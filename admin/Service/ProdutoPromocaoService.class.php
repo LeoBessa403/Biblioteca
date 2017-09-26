@@ -7,4 +7,10 @@
 class  ProdutoPromocaoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(ProdutoPromocaoEntidade::ENTIDADE);
+    }
+
+
 }

@@ -7,4 +7,10 @@
 class  RepresentanteService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(RepresentanteEntidade::ENTIDADE);
+    }
+
+
 }

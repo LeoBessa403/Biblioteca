@@ -7,4 +7,10 @@
 class  GrupoLembreteUsuarioService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(GrupoLembreteUsuarioEntidade::ENTIDADE);
+    }
+
+
 }

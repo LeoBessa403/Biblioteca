@@ -7,4 +7,10 @@
 class  PerfilService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(PerfilEntidade::ENTIDADE);
+    }
+
+
 }

@@ -7,4 +7,10 @@
 class  TipoNegociacaoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(TipoNegociacaoEntidade::ENTIDADE);
+    }
+
+
 }

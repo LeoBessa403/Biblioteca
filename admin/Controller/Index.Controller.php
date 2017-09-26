@@ -1,12 +1,16 @@
 <?php
 
-class Index
+class Index extends AbstractController
 {
 
     function Index()
     {
-        $Model = new UsuarioModel();
-        $usuarios = $Model->PesquisaTodos();
+        /** @var UsuarioService $usuariaService */
+        $usuariaService = $this->getService(USUARIO_SERVICE);
+        $usuarios = $usuariaService->PesquisaTodos();
+
+        debug($usuarios);
+
         debug(UnidadeVendaEnum::$descricao);
 
     }

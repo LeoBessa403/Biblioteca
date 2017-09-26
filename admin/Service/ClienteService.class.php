@@ -7,4 +7,10 @@
 class  ClienteService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(ClienteEntidade::ENTIDADE);
+    }
+
+
 }

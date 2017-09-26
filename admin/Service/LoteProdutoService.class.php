@@ -7,4 +7,10 @@
 class  LoteProdutoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(LoteProdutoEntidade::ENTIDADE);
+    }
+
+
 }

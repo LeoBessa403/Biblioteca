@@ -7,4 +7,10 @@
 class  SugestaoService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(SugestaoEntidade::ENTIDADE);
+    }
+
+
 }

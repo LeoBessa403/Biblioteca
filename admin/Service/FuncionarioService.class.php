@@ -7,4 +7,10 @@
 class  FuncionarioService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(FuncionarioEntidade::ENTIDADE);
+    }
+
+
 }

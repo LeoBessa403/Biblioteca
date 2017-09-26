@@ -7,4 +7,10 @@
 class  AjudaService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(AjudaEntidade::ENTIDADE);
+    }
+
+
 }

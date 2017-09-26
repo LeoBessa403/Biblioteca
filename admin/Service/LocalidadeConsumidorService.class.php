@@ -7,4 +7,10 @@
 class  LocalidadeConsumidorService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(LocalidadeConsumidorEntidade::ENTIDADE);
+    }
+
+
 }

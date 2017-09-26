@@ -7,4 +7,10 @@
 class  ConsumidorService extends AbstractService
 {
 
+    public function __construct()
+    {
+        parent::__construct(ConsumidorEntidade::ENTIDADE);
+    }
+
+
 }
