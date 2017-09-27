@@ -31,10 +31,11 @@ class Usuario extends AbstractController
         endif;
         $res = array();
         if ($idCoUsuario):
-            /** @var UsuarioService $usuariaService */
-            $usuariaService = $this->getService(USUARIO_SERVICE);
+            /** @var UsuarioService $usuarioService */
+            $usuarioService = $this->getService(USUARIO_SERVICE);
             /** @var UsuarioEntidade $usuario */
-            $usuario = $usuariaService->PesquisaUmQuando([CO_USUARIO => $idCoUsuario]);
+            $usuario = $usuarioService->PesquisaUmRegistro($idCoUsuario);
+
             $res['ds_senha_confirma'] = $usuario->getDsSenha();
             $res[DS_SENHA] = $usuario->getDsSenha();
             if ($usuario->getCoImagem()->getDsCaminho()):
@@ -65,15 +66,22 @@ class Usuario extends AbstractController
 
     public function salvaUsuario($dados, $foto, $resgistrar = false)
     {
-        $EnderecoModel = new EnderecoModel();
-        $ContatoModel = new ContatoModel();
-        $PessoaModel = new PessoaModel();
-        $UsuarioModel = new UsuarioModel();
-        $ImagemModel = new ImagemModel();
-        $UsuarioPerfilModel = new UsuarioPerfilModel();
+        /** @var EnderecoService $enderecoService */
+        $enderecoService = $this->getService(ENDERECO_SERVICE);
+        /** @var ContatoService $contatoService */
+        $contatoService = $this->getService(CONTATO_SERVICE);
+        /** @var UsuarioService $usuarioService */
+        $usuarioService = $this->getService(USUARIO_SERVICE);
+        /** @var PessoaService $pessoaService */
+        $pessoaService = $this->getService(PESSOA_SERVICE);
+        /** @var ImagemService $imagemService */
+        $imagemService = $this->getService(IMAGEM_SERVICE);
+        /** @var UsuarioPerfilService $usuarioPerfilService */
+        $usuarioPerfilService = $this->getService(USUARIO_PERFIL_SERVICE);
         $session = new Session();
 
         if ($session->CheckSession(SESSION_USER)) {
+            /** @var Session $us */
             $us = $_SESSION[SESSION_USER];
             $user = $us->getUser();
             $meusPerfis = $user[md5(CAMPO_PERFIL)];
@@ -113,29 +121,30 @@ class Usuario extends AbstractController
 
         $user[NO_PESSOA] = $pessoa[NO_PESSOA];
         /** @var PessoaEntidade $userNome */
-        $userNome = $PessoaModel->pesquisaUsuarioCadastrado($user);
+        $userNome = $pessoaService->PesquisaUmQuando($user);
         $email[DS_EMAIL] = $contato[DS_EMAIL];
         /** @var ContatoEntidade $userEmail */
-        $userEmail = $ContatoModel->pesquisaContatoCadastrado($email);
+        $userEmail = $contatoService->PesquisaUmQuando($email);
         $cpf[NU_CPF] = $pessoa[NU_CPF];
         /** @var PessoaEntidade $userCpf */
-        $userCpf = $PessoaModel->pesquisaUsuarioCadastrado($cpf);
+        $userCpf = $pessoaService->PesquisaUmQuando($cpf);
 
-        $this->erro = false;
+        $erro = false;
+        $Campo = array();
         if ($userNome && $userNome->getCoUsuario()->getCoUsuario() != $idCoUsuario):
             $Campo[] = "Nome do Usuário";
-            $this->erro = true;
+            $erro = true;
         endif;
         if ($userEmail && $userEmail->getCoPessoa()->getCoUsuario()->getCoUsuario() != $idCoUsuario):
             $Campo[] = "E-mail";
-            $this->erro = true;
+            $erro = true;
         endif;
         if ($userCpf && $userCpf->getCoUsuario()->getCoUsuario() != $idCoUsuario):
             $Campo[] = "CPF";
-            $this->erro = true;
+            $erro = true;
         endif;
 
-        if ($this->erro):
+        if ($erro):
             $session->setSession(MENSAGEM, "Já exite usuário cadastro com o mesmo "
                 . implode(", ", $Campo) . ", Favor Verificar.");
         else:
@@ -151,7 +160,7 @@ class Usuario extends AbstractController
 
             if ($idCoUsuario):
                 /** @var UsuarioEntidade $usuario */
-                $usuario = $UsuarioModel->PesquisaUmQuando([CO_USUARIO => $idCoUsuario]);
+                $usuario = $usuarioService->PesquisaUmRegistro($idCoUsuario);
 
                 if ($usuario->getCoImagem()->getDsCaminho()):
                     if (is_file(Upload::$BaseDir . "usuarios/" . $usuario->getCoImagem()->getDsCaminho())):
@@ -160,23 +169,23 @@ class Usuario extends AbstractController
                 endif;
 
                 if ($imagem[DS_CAMINHO]):
-                    $ImagemModel->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
+                    $imagemService->Salva($imagem, $usuario->getCoImagem()->getCoImagem());
                 endif;
-                $ContatoModel->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
-                $EnderecoModel->Salva($endereco, $usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
-                $PessoaModel->Salva($pessoa, $usuario->getCoPessoa()->getCoPessoa());
-                $UsuarioModel->Salva($usu, $idCoUsuario);
+                $contatoService->Salva($contato, $usuario->getCoPessoa()->getCoContato()->getCoContato());
+                $enderecoService->Salva($endereco, $usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
+                $pessoaService->Salva($pessoa, $usuario->getCoPessoa()->getCoPessoa());
+                $usuarioService->Salva($usu, $idCoUsuario);
                 $usuarioPerfil[CO_USUARIO] = $idCoUsuario;
-                $ok = $UsuarioPerfilModel->DeletaQuando($usuarioPerfil);
+                $ok = $usuarioPerfilService->DeletaQuando($usuarioPerfil);
                 if ($ok):
                     if (!empty($dados['ds_perfil'])) {
                         foreach ($dados['ds_perfil'] as $perfil) {
                             $usuarioPerfil[CO_PERFIL] = $perfil;
-                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                            $usuarioPerfilService->Salva($usuarioPerfil);
                         }
                     }
                     $usuarioPerfil[CO_PERFIL] = 3;
-                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    $usuarioPerfilService->Salva($usuarioPerfil);
                 endif;
 
                 $session->setSession(ATUALIZADO, "OK");
@@ -184,25 +193,25 @@ class Usuario extends AbstractController
                 $pessoa[DT_CADASTRO] = Valida::DataAtualBanco();
                 $usu[DT_CADASTRO] = Valida::DataAtualBanco();
 
-                $pessoa[CO_ENDERECO] = $EnderecoModel->Salva($endereco);
-                $pessoa[CO_CONTATO] = $ContatoModel->Salva($contato);
-                $usu[CO_IMAGEM] = $ImagemModel->Salva($imagem);
-                $usu[CO_PESSOA] = $PessoaModel->Salva($pessoa);
-                $usuarioPerfil[CO_USUARIO] = $UsuarioModel->Salva($usu);
+                $pessoa[CO_ENDERECO] = $enderecoService->Salva($endereco);
+                $pessoa[CO_CONTATO] = $contatoService->Salva($contato);
+                $usu[CO_IMAGEM] = $imagemService->Salva($imagem);
+                $usu[CO_PESSOA] = $pessoaService->Salva($pessoa);
+                $usuarioPerfil[CO_USUARIO] = $usuarioService->Salva($usu);
 
                 // REGISTRAR ///
                 if ($resgistrar):
                     $usuarioPerfil[CO_PERFIL] = 3;
-                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    $usuarioPerfilService->Salva($usuarioPerfil);
                 else:
                     if (!empty($dados['ds_perfil'])) {
                         foreach ($dados['ds_perfil'] as $perfil) {
                             $usuarioPerfil[CO_PERFIL] = $perfil;
-                            $UsuarioPerfilModel->Salva($usuarioPerfil);
+                            $usuarioPerfilService->Salva($usuarioPerfil);
                         }
                     }
                     $usuarioPerfil[CO_PERFIL] = 3;
-                    $UsuarioPerfilModel->Salva($usuarioPerfil);
+                    $usuarioPerfilService->Salva($usuarioPerfil);
                 endif;
 
                 $session->setSession(CADASTRADO, 'OK');
