@@ -1,6 +1,6 @@
 <?php
 
-class Empresa extends AbstractController
+class Consumidor extends AbstractController
 {
 
     public $result;
