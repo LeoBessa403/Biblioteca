@@ -38,10 +38,10 @@ class Consumidor extends AbstractController
 
     }
 
-    function CadastroEmpresa()
+    function CadastroConsumidor()
     {
 
-        $id = "cadastroEmpresa";
+        $id = "cadastroConsumidor";
 
         if (!empty($_POST[$id])):
             $dados = $_POST;
@@ -52,35 +52,35 @@ class Consumidor extends AbstractController
             $idContato = ContatoModel::CadastraContato($contato);
             $idEndereco = EnderecoModel::CadastraEndereco($endereco);
 
-            $empresa['no_empresa'] = $dados['no_empresa'];
-            $empresa['no_fantasia'] = $dados['no_fantasia'];
-            $empresa['nu_cpf'] = (!empty($dados['nu_cpf']) ? $dados['nu_cpf'] : '');
-            $empresa['nu_cnpj'] = (!empty($dados['nu_cnpj']) ? $dados['nu_cnpj'] : '');
-            $empresa['ds_observacao'] = $dados['ds_observacao'];
-            $empresa['no_responsavel'] = $dados['no_responsavel'];
-            $empresa['dt_cadastro'] = Valida::DataAtualBanco('Y-m-d');
-            $empresa[CONTATO_CHAVE_PRIMARIA] = $idContato;
-            $empresa[ENDERECO_CHAVE_PRIMARIA] = $idEndereco;
+            $Consumidor['no_Consumidor'] = $dados['no_Consumidor'];
+            $Consumidor['no_fantasia'] = $dados['no_fantasia'];
+            $Consumidor['nu_cpf'] = (!empty($dados['nu_cpf']) ? $dados['nu_cpf'] : '');
+            $Consumidor['nu_cnpj'] = (!empty($dados['nu_cnpj']) ? $dados['nu_cnpj'] : '');
+            $Consumidor['ds_observacao'] = $dados['ds_observacao'];
+            $Consumidor['no_responsavel'] = $dados['no_responsavel'];
+            $Consumidor['dt_cadastro'] = Valida::DataAtualBanco('Y-m-d');
+            $Consumidor[CONTATO_CHAVE_PRIMARIA] = $idContato;
+            $Consumidor[ENDERECO_CHAVE_PRIMARIA] = $idEndereco;
 
-            $idEmpresa = EmpresaModel::CadastraEmpresa($empresa);
-            if ($idEmpresa):
+            $idConsumidor = ConsumidorModel::CadastraConsumidor($Consumidor);
+            if ($idConsumidor):
                 $session = new Session();
                 $session->setSession(CADASTRADO, "OK");
             endif;
 
 
-            $this->ListarEmpresa();
-            UrlAmigavel::$action = "ListarEmpresa";
+            $this->ListarConsumidor();
+            UrlAmigavel::$action = "ListarConsumidor";
         endif;
 
-        $idEmpresa = UrlAmigavel::PegaParametro("emp");
+        $idConsumidor = UrlAmigavel::PegaParametro("emp");
         $res = array();
-        if ($idEmpresa):
-            $res = EmpresaModel::PesquisaUmMembro($idEmpresa);
+        if ($idConsumidor):
+            $res = ConsumidorModel::PesquisaUmMembro($idConsumidor);
             $res = $res[0];
         endif;
 
-        $formulario = new Form($id, "admin/Empresa/CadastroEmpresa");
+        $formulario = new Form($id, "admin/Consumidor/CadastroConsumidor");
         $formulario->setValor($res);
 
 
@@ -108,11 +108,11 @@ class Consumidor extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("no_empresa")
+            ->setId("no_Consumidor")
             ->setLabel("Nome ou Razão Social")
             ->setIcon("clip-user-3")
             ->setClasses("ob")
-            ->setInfo("Nome da pessoa ou Razão social da empresa")
+            ->setInfo("Nome da pessoa ou Razão social da Consumidor")
             ->CriaInpunt();
 
         $formulario
@@ -212,7 +212,7 @@ class Consumidor extends AbstractController
             ->setId("nu_tel_0800")
             ->setTamanhoInput(4)
             ->setIcon("fa fa-phone")
-            ->setLabel("0800 da Empresa")
+            ->setLabel("0800 da Consumidor")
             ->setClasses("tel0800")
             ->CriaInpunt();
 
@@ -238,11 +238,11 @@ class Consumidor extends AbstractController
             ->CriaInpunt();
 
 
-        if ($idEmpresa):
+        if ($idConsumidor):
             $formulario
                 ->setType("hidden")
-                ->setId("co_empresa")
-                ->setValues($idEmpresa)
+                ->setId("co_Consumidor")
+                ->setValues($idConsumidor)
                 ->CriaInpunt();
         endif;
 
@@ -250,7 +250,7 @@ class Consumidor extends AbstractController
 
     }
 
-    function ListarEmpresa()
+    function ListarConsumidor()
     {
         $dados = array();
         if (!empty($_POST)):
@@ -259,7 +259,7 @@ class Consumidor extends AbstractController
                 'no_membro' => $_POST['no_membro']
             );
         endif;
-        $this->result = EmpresaModel::PesquisaEmpresa($dados);
+        $this->result = ConsumidorModel::PesquisaConsumidor($dados);
     }
 
 
