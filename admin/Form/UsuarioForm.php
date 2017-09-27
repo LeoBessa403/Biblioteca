@@ -13,6 +13,7 @@ class UsuarioForm
         /** @var Form $formulario */
         $formulario = new Form($id, ADMIN . "/" . UrlAmigavel::$controller . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
         if ($res):
+            /** @var Session $us */
             $us = $_SESSION[SESSION_USER];
             $user = $us->getUser();
             $meusPerfis = $user[md5(CAMPO_PERFIL)];
@@ -122,7 +123,7 @@ class UsuarioForm
             ->setClasses("cep")
             ->CriaInpunt();
 
-        $options = Endereco::montaComboEstadosDescricao();
+        $options = EnderecoService::montaComboEstadosDescricao();
         $formulario
             ->setTamanhoInput(8)
             ->setId(SG_UF)

@@ -1,6 +1,6 @@
 <?php
 
-class Usuario
+class Usuario extends AbstractController
 {
 
     public function Index()
@@ -9,6 +9,7 @@ class Usuario
 
     public function MeuPerfilUsuario()
     {
+        /** @var Session $us */
         $us = $_SESSION[SESSION_USER];
         $user = $us->getUser();
         $this->idUsuario = $user[md5(CO_USUARIO)];
@@ -30,9 +31,10 @@ class Usuario
         endif;
         $res = array();
         if ($idCoUsuario):
-            $usuarioModel = new UsuarioModel();
+            /** @var UsuarioService $usuariaService */
+            $usuariaService = $this->getService(USUARIO_SERVICE);
             /** @var UsuarioEntidade $usuario */
-            $usuario = $usuarioModel->PesquisaUmQuando([CO_USUARIO => $idCoUsuario]);
+            $usuario = $usuariaService->PesquisaUmQuando([CO_USUARIO => $idCoUsuario]);
             $res['ds_senha_confirma'] = $usuario->getDsSenha();
             $res[DS_SENHA] = $usuario->getDsSenha();
             if ($usuario->getCoImagem()->getDsCaminho()):

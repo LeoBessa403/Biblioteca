@@ -1,6 +1,6 @@
 <?php
 
-class Funcionalidade
+class Funcionalidade extends AbstractController
 {
 
     function ListarFuncionalidade()

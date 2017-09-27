@@ -1,6 +1,6 @@
 <?php
 
-class Perfil
+class Perfil extends AbstractController
 {
 
     function ListarPerfil()

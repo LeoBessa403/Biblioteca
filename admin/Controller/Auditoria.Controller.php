@@ -1,6 +1,6 @@
 <?php
 
-class Auditoria
+class Auditoria extends AbstractController
 {
     public $result;
     public $perfis;
@@ -20,12 +20,12 @@ class Auditoria
         /** @var AuditoriaEntidade result */
         $this->result = $auditoriaModel->PesquisaUmRegistro($id);
         $usuarioModel = new UsuarioModel();
-        if($this->result->getCoUsuario()){
+        if ($this->result->getCoUsuario()) {
             /** @var UsuarioEntidade $usuario */
             $usuario = $usuarioModel->PesquisaUmRegistro($this->result->getCoUsuario()->getCoUsuario());
             $perfis = $perfilControl->montaComboPerfil($usuario);
-            $this->perfis = implode(', ',$perfis);
-        }else{
+            $this->perfis = implode(', ', $perfis);
+        } else {
             $this->perfis = '';
         }
     }
