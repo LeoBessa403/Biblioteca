@@ -5,8 +5,6 @@ class Index extends AbstractController
 
     function Index()
     {
-//        $sessao = new Session();
-//        debug($sessao->getUser());
     }
 
     public static function Logar()
@@ -48,7 +46,7 @@ class Index extends AbstractController
                 } else {
                     $acesso[DT_INICIO_ACESSO] = Valida::DataAtualBanco();
                     $acesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                    $acesso[CO_USUARIO] = $user->getCoUsuario();
+                    $acessoService->Salva($acesso);
                 }
 
                 $perfis = array();

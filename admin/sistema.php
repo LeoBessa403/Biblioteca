@@ -104,6 +104,7 @@ endif;
                     <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true"
                        href="#">
                         <?php
+                        /** @var Session $us */
                         $us = $_SESSION[SESSION_USER];
                         $user = $us->getUser();
                         $fotoPerfil = $user[md5('ds_caminho')];
