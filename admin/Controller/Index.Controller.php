@@ -7,7 +7,7 @@ class Index extends AbstractController
     {
     }
 
-    public static function Logar()
+    public function Logar()
     {
         // CLASSE DE LOGAR
         $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CPF]));
@@ -15,7 +15,7 @@ class Index extends AbstractController
         if (($cpf != "") && ($senha != "")):
 
             /** @var UsuarioService $usuariaService */
-            $usuariaService = static::getService(USUARIO_SERVICE);
+            $usuariaService = $this->getService(USUARIO_SERVICE);
             $usuarios = $usuariaService->PesquisaTodos();
 
             $user = "";
