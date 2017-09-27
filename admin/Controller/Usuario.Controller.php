@@ -3,6 +3,9 @@
 class Usuario extends AbstractController
 {
 
+    private $idUsuario;
+    private $form;
+
     public function Index()
     {
     }
