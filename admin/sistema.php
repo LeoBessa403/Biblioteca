@@ -165,6 +165,7 @@ endif;
                 "Usuario" => array("fa fa-group", "MeuPerfilUsuario", "CadastroUsuario", "ListarUsuario"),
                 "Perfil" => array("clip-stack-empty", "CadastroPerfil", "ListarPerfil"),
                 "Funcionalidade" => array("fa fa-outdent", "CadastroFuncionalidade", "ListarFuncionalidade"),
+                "Consumidor" => array("fa fa-outdent", "CadastroConsumidor", "ListarConsumidor"),
                 "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
             );
             $url->GeraMenu($menu);
