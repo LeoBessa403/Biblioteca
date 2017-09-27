@@ -165,7 +165,7 @@
         endif;
         ?>
         $('.close').click(function () {
-           $(this).parents('#sumir').fadeOut('fast');
+            $(this).parents('#sumir').fadeOut('fast');
         });
     });
 </script>
