@@ -234,7 +234,7 @@ CREATE TABLE `tb_endereco` (
   `ds_endereco` varchar(150) NOT NULL,
   `ds_complemento` varchar(100) DEFAULT NULL,
   `ds_bairro` varchar(80) DEFAULT NULL,
-  `nu_cep` varchar(112) DEFAULT NULL,
+  `nu_cep` varchar(12) DEFAULT NULL,
   `no_cidade` varchar(80) NOT NULL,
   `sg_uf` varchar(2) NOT NULL,
   PRIMARY KEY (`co_endereco`)

@@ -41,29 +41,26 @@ class Consumidor extends AbstractController
     function CadastroConsumidor()
     {
         /** @var ConsumidorService $consumidorService */
-        $consumidorService = static::getService(CONSUMIDOR_SERVICE);
+        $consumidorService = $this->getService(CONSUMIDOR_SERVICE);
         $id = "cadastroConsumidor";
         if (!empty($_POST[$id])):
-            $retorno = $consumidorService->salvarConsumidor($_POST);
-            debug($retorno);
+            $consumidorService->salvarConsumidor($_POST);
             $this->ListarConsumidor();
             UrlAmigavel::$action = "ListarConsumidor";
         endif;
-
         $this->form = ConsumidorForm::Cadastrar();
-
     }
 
     function ListarConsumidor()
     {
-        $dados = array();
-        if (!empty($_POST)):
-            $dados = array(
-                'st_status' => $_POST['st_status'][0],
-                'no_membro' => $_POST['no_membro']
-            );
-        endif;
-        $this->result = ConsumidorModel::PesquisaConsumidor($dados);
+//        $dados = array();
+//        if (!empty($_POST)):
+//            $dados = array(
+////                'st_status' => $_POST['st_status'][0],
+////                'no_membro' => $_POST['no_membro']
+//            );
+//        endif;
+//        $this->result = ConsumidorModel::PesquisaConsumidor($dados);
     }
 
 

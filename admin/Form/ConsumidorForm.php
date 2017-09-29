@@ -71,7 +71,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("no_Consumidor")
+            ->setId("no_consumidor")
             ->setLabel("Nome ou Razão Social")
             ->setIcon("clip-user-3")
             ->setClasses("ob")

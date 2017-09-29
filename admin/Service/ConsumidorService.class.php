@@ -17,26 +17,39 @@ class  ConsumidorService extends AbstractService
      */
     public function salvarConsumidor($dados)
     {
+        /** @var ContatoService $contatoService */
+        $contatoService = $this->getService(CONTATO_SERVICE);
+        /** @var EnderecoService $enderecoService */
+        $enderecoService = $this->getService(ENDERECO_SERVICE);
+        /** @var PessoaService $pessoaService */
+        $pessoaService = $this->getService(PESSOA_SERVICE);
+        /** @var EmpresaService $empresaService */
+        $empresaService = $this->getService(EMPRESA_SERVICE);
+
         $consumidor = $this->getDados($dados, ConsumidorEntidade::ENTIDADE);
-        debug($consumidor);
+        $contato = $this->getDados($dados, ContatoEntidade::ENTIDADE);
+        $endereco = $this->getDados($dados, EnderecoEntidade::ENTIDADE);
+        $endereco[SG_UF] = $endereco[SG_UF][0];
+        $endereco[NU_CEP] = Valida::RetiraMascara($endereco[NU_CEP]);
+        $consumidor[ST_STATUS] = SimNaoEnum::NAO;
 
-        $contato = FuncoesSistema::GetDadosContato($dados);
-        $endereco = FuncoesSistema::GetDadosEndereco($dados);
+        $idContato = $contatoService->Salva($contato);
+        $idEndereco = $enderecoService->Salva($endereco);
 
-        $idContato = ContatoModel::CadastraContato($contato);
-        $idEndereco = EnderecoModel::CadastraEndereco($endereco);
-
-        $Consumidor['no_Consumidor'] = $dados['no_Consumidor'];
-        $Consumidor['no_fantasia'] = $dados['no_fantasia'];
-        $Consumidor['nu_cpf'] = (!empty($dados['nu_cpf']) ? $dados['nu_cpf'] : '');
-        $Consumidor['nu_cnpj'] = (!empty($dados['nu_cnpj']) ? $dados['nu_cnpj'] : '');
-        $Consumidor['ds_observacao'] = $dados['ds_observacao'];
-        $Consumidor['no_responsavel'] = $dados['no_responsavel'];
-        $Consumidor['dt_cadastro'] = Valida::DataAtualBanco('Y-m-d');
-        $Consumidor[CONTATO_CHAVE_PRIMARIA] = $idContato;
-        $Consumidor[ENDERECO_CHAVE_PRIMARIA] = $idEndereco;
-
-        $idConsumidor = ConsumidorModel::CadastraConsumidor($Consumidor);
+        if(!empty($dados['tipo'])){
+            $pessoa = $this->getDados($dados, PessoaEntidade::ENTIDADE);
+            $pessoa[CO_CONTATO] = $idContato;
+            $pessoa[CO_ENDERECO] = $idEndereco;
+            $pessoa[NO_PESSOA] = $dados['no_consumidor'];
+            $consumidor[CO_PESSOA] = $pessoaService->Salva($pessoa);
+        }else{
+            $empresa = $this->getDados($dados, EmpresaEntidade::ENTIDADE);
+            $empresa[CO_CONTATO] = $idContato;
+            $empresa[CO_ENDERECO] = $idEndereco;
+            $empresa[NO_EMPRESA] = $dados['no_consumidor'];
+            $consumidor[CO_EMPRESA] = $empresaService->Salva($empresa);
+        }
+        $idConsumidor = $this->Salva($consumidor);
         if ($idConsumidor):
             $session = new Session();
             $session->setSession(CADASTRADO, "OK");
