@@ -2,7 +2,7 @@
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
 //$entidade = new GerarEntidades();
-$back = new Backup();
+//$back = new Backup();
 if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     $url->pegaControllerAction();
     exit;
@@ -165,7 +165,7 @@ endif;
                 "Usuario" => array("fa fa-group", "MeuPerfilUsuario", "CadastroUsuario", "ListarUsuario"),
                 "Perfil" => array("clip-stack-empty", "CadastroPerfil", "ListarPerfil"),
                 "Funcionalidade" => array("fa fa-outdent", "CadastroFuncionalidade", "ListarFuncionalidade"),
-                "Consumidor" => array("fa fa-outdent", "CadastroConsumidor", "ListarConsumidor"),
+                "Consumidor" => array("fa fa-briefcase", "CadastroConsumidor", "ListarConsumidor"),
                 "Auditoria" => array("fa fa-cogs", "ListarAuditoria"),
             );
             $url->GeraMenu($menu);

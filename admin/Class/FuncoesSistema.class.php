@@ -38,7 +38,7 @@ class FuncoesSistema
 
     public static function OperacaoAuditoria($operacao)
     {
-
+        $op = '';
         switch ($operacao) {
             case "I":
                 $op = '<span class="label label-success">INSERIU</span>';
@@ -50,7 +50,6 @@ class FuncoesSistema
                 $op = '<span class="label label-warning">ATUALIZOU</span>';
                 break;
         }
-
         return $op;
     }
 
@@ -58,6 +57,7 @@ class FuncoesSistema
     {
 
         $codigo = '';
+        $letra = '';
         for ($p = 0; $p < 2; $p++) {
             for ($m = 0; $m < 3; $m++) {
                 $numero = rand(1, 26);
@@ -153,7 +153,7 @@ class FuncoesSistema
 
     public static function SituacaoUsuario($st)
     {
-
+        $op = '';
         switch ($st) {
             case "A":
                 $op = '<span class="label label-success">ATIVO</span>';
@@ -162,13 +162,12 @@ class FuncoesSistema
                 $op = '<span class="label label-danger">INATIVO</span>';
                 break;
         }
-
         return $op;
     }
 
     public static function SituacaoUsuarioLabel($st)
     {
-
+        $op = '';
         switch ($st) {
             case "A":
                 $op = 'ATIVO';
@@ -183,6 +182,7 @@ class FuncoesSistema
 
     public static function SituacaoSimNao($st)
     {
+        $op = '';
         if (!$st):
             $st = "N";
         endif;
@@ -194,7 +194,6 @@ class FuncoesSistema
                 $op = '<span class="label label-danger">NÃO</span>';
                 break;
         }
-
         return $op;
     }
 
@@ -214,7 +213,6 @@ class FuncoesSistema
                 $op = '';
                 break;
         }
-
         return $op;
     }
 
