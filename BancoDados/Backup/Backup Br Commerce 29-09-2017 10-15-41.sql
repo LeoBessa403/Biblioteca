@@ -167,7 +167,7 @@ DROP TABLE IF EXISTS tb_consumidor;
 
 CREATE TABLE `tb_consumidor` (
   `co_consumidor` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Cliente do Sistema',
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `ds_observacao` text,
   `st_status` varchar(1) DEFAULT 'A' COMMENT '''A - Ativo / I - Inativo''',
   `co_pessoa` int(11) NOT NULL DEFAULT '0',
@@ -210,7 +210,7 @@ CREATE TABLE `tb_empresa` (
   `co_empresa` int(11) NOT NULL AUTO_INCREMENT,
   `no_empresa` varchar(250) NOT NULL COMMENT 'Razão Social',
   `no_fantasia` varchar(150) DEFAULT NULL,
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `nu_cnpj` varchar(20) DEFAULT NULL,
   `nu_insc_estadual` varchar(20) DEFAULT NULL,
   `ds_observacao` text,
@@ -293,7 +293,7 @@ DROP TABLE IF EXISTS tb_fornecedor;
 CREATE TABLE `tb_fornecedor` (
   `co_fornecedor` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Fornecedor do Consumidor',
   `ds_observacao` text,
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `tp_credor` varchar(1) DEFAULT 'N' COMMENT 'Flag se o Fornecedor é credor\n''S'' - Sim / ''N'' - Não',
   `st_status` varchar(1) DEFAULT 'A' COMMENT '''A - Ativo / I - Inativo''',
   `co_representante` int(11) NOT NULL,
@@ -356,7 +356,7 @@ CREATE TABLE `tb_funcionario` (
   `ds_cargo` varchar(70) DEFAULT NULL,
   `dt_admissao` date NOT NULL,
   `dt_demissao` date DEFAULT NULL,
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `nu_carteira` varchar(45) DEFAULT NULL,
   `nu_salario` decimal(10,0) DEFAULT NULL,
   `nu_horas` int(2) DEFAULT NULL COMMENT 'Quantidade de Horas Trabalhada por semana',
@@ -380,7 +380,7 @@ DROP TABLE IF EXISTS tb_grade_produto;
 CREATE TABLE `tb_grade_produto` (
   `co_grade_produto` int(11) NOT NULL AUTO_INCREMENT,
   `no_grade_produto` varchar(120) NOT NULL,
-  `dt_cadastro` date DEFAULT NULL,
+  `dt_cadastro` datetime DEFAULT NULL,
   PRIMARY KEY (`co_grade_produto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -719,7 +719,7 @@ CREATE TABLE `tb_produto` (
   `nu_codigo` int(11) NOT NULL COMMENT 'Código de barras do produto',
   `nu_codigo_interno` int(10) DEFAULT NULL COMMENT 'Código do Produto interno para facilitar a busca',
   `ds_marca` varchar(100) DEFAULT NULL COMMENT 'Marca ou fabricante',
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `st_status` varchar(1) DEFAULT 'A' COMMENT '''A - Ativo / I - Inativo''',
   `co_categoria` int(10) unsigned NOT NULL,
   `co_imagem` int(10) unsigned NOT NULL DEFAULT '0',
@@ -823,7 +823,7 @@ DROP TABLE IF EXISTS tb_representante;
 
 CREATE TABLE `tb_representante` (
   `co_representante` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Representante do Fornecedor',
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `st_status` varchar(1) DEFAULT 'A' COMMENT '''A - Ativo / I - Inativo''',
   `co_consumidor` int(11) NOT NULL,
   `co_pessoa` int(11) NOT NULL,
@@ -981,7 +981,7 @@ DROP TABLE IF EXISTS tb_transportadora;
 CREATE TABLE `tb_transportadora` (
   `co_transportadora` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Fornecedor do Consumidor',
   `ds_observacao` text,
-  `dt_cadastro` date NOT NULL,
+  `dt_cadastro` datetime NOT NULL,
   `st_status` varchar(1) DEFAULT 'A' COMMENT '''A - Ativo / I - Inativo''',
   `co_consumidor` int(11) NOT NULL,
   `co_empresa` int(11) NOT NULL,

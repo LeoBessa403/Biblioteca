@@ -26,22 +26,22 @@ class ConsumidorForm extends AbstractController
         return $formulario->finalizaFormPesquisaAvancada();
     }
 
-    public static function Cadastrar($res = false, $tamanho = 6)
+    public static function Cadastrar($res = false)
     {
-        $id = "CadastroConsumidor";
+        /** @var EnderecoService $enderecoService */
+        $enderecoService = static::getService(ENDERECO_SERVICE);
+        /** @var ConsumidorService $consumidorService */
+        $consumidorService = static::getService(CONSUMIDOR_SERVICE);
+        
+        $id = "cadastroConsumidor";
         $link = UrlAmigavel::$controller . '/Listar' . UrlAmigavel::$controller;
         $idConsumidor = null;
 
-        /** @var EnderecoService $enderecoService */
-        $enderecoService = static::getService(ENDERECO_SERVICE);
-
         /** @var Form $formulario */
         $formulario = new Form($id, ADMIN . "/" . UrlAmigavel::$controller . "/" .
-            UrlAmigavel::$action, 'Cadastrar', $tamanho);
+            UrlAmigavel::$action);
         if ($res):
             $idConsumidor = UrlAmigavel::PegaParametro(ConsumidorEntidade::CHAVE);
-            /** @var ConsumidorService $consumidorService */
-            $consumidorService = static::getService(CONSUMIDOR_SERVICE);
             $res = $consumidorService->PesquisaUmRegistro($idConsumidor);
             $formulario->setValor($res);
         endif;
