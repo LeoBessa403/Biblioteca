@@ -49,7 +49,7 @@ class  ConsumidorService extends AbstractService
             $empresa[NO_EMPRESA] = $dados['no_consumidor'];
             $consumidor[CO_EMPRESA] = $empresaService->Salva($empresa);
         }
-        $idConsumidor = $this->Salva($consumidor);
+        $idConsumidor = $this->Salva($consumidor, null, true);
         if ($idConsumidor):
             $session = new Session();
             $session->setSession(CADASTRADO, "OK");
