@@ -11,12 +11,12 @@ class Consumidor extends AbstractController
     {
     }
 
-    function ListarEmpresaPesquisaAvancada()
+    function ListarConsumidorPesquisaAvancada()
     {
 
-        $id = "pesquisaEmpresa";
+        $id = "pesquisaConsumidor";
 
-        $formulario = new Form($id, "admin/Empresa/ListarEmpresa", "Pesquisa", 12);
+        $formulario = new Form($id, "admin/Consumidor/ListarConsumidor", "Pesquisa", 12);
 
 
         $label_options = array("" => "Todos", "S" => "Ativo", "N" => "Inativo");
@@ -53,14 +53,17 @@ class Consumidor extends AbstractController
 
     function ListarConsumidor()
     {
-//        $dados = array();
-//        if (!empty($_POST)):
-//            $dados = array(
-////                'st_status' => $_POST['st_status'][0],
-////                'no_membro' => $_POST['no_membro']
-//            );
-//        endif;
-//        $this->result = ConsumidorModel::PesquisaConsumidor($dados);
+        /** @var ConsumidorService $consumidorService */
+        $consumidorService = $this->getService(CONSUMIDOR_SERVICE);
+        $dados = array();
+        if (!empty($_POST['pesquisaConsumidor'])):
+            $dados = array(
+                'st_status' => $_POST['st_status'][0],
+                'no_membro' => $_POST['no_membro']
+            );
+        endif;
+        $this->result = $consumidorService->PesquisaTodos($dados);
+
     }
 
 
