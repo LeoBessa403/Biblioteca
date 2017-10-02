@@ -33,6 +33,7 @@ class  ConsumidorService extends AbstractService
         $endereco[NU_CEP] = Valida::RetiraMascara($endereco[NU_CEP]);
         $consumidor[ST_STATUS] = SimNaoEnum::NAO;
 
+
         $idContato = $contatoService->Salva($contato);
         $idEndereco = $enderecoService->Salva($endereco);
 
@@ -49,7 +50,7 @@ class  ConsumidorService extends AbstractService
             $empresa[NO_EMPRESA] = $dados['no_consumidor'];
             $consumidor[CO_EMPRESA] = $empresaService->Salva($empresa);
         }
-        $idConsumidor = $this->Salva($consumidor, null, true);
+        $idConsumidor = $this->Salva($consumidor);
         if ($idConsumidor):
             $session = new Session();
             $session->setSession(CADASTRADO, "OK");
