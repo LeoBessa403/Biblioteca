@@ -2,41 +2,8 @@
 
 class Consumidor extends AbstractController
 {
-
     public $result;
-    public $resultAlt;
     public $form;
-
-    function Index()
-    {
-    }
-
-    function ListarConsumidorPesquisaAvancada()
-    {
-
-        $id = "pesquisaConsumidor";
-
-        $formulario = new Form($id, "admin/Consumidor/ListarConsumidor", "Pesquisa", 12);
-
-
-        $label_options = array("" => "Todos", "S" => "Ativo", "N" => "Inativo");
-        $formulario
-            ->setLabel("Status do Membro")
-            ->setId("st_status")
-            ->setType("select")
-            ->setOptions($label_options)
-            ->CriaInpunt();
-
-        $formulario
-            ->setId("no_membro")
-            ->setIcon("clip-user-6")
-            ->setLabel("Nome do Membro")
-            ->setInfo("Pode ser Parte do nome")
-            ->CriaInpunt();
-
-        echo $formulario->finalizaFormPesquisaAvancada();
-
-    }
 
     function CadastroConsumidor()
     {
@@ -66,8 +33,32 @@ class Consumidor extends AbstractController
 
     }
 
+    function ListarConsumidorPesquisaAvancada()
+    {
+
+        $id = "pesquisaConsumidor";
+
+        $formulario = new Form($id, "admin/Consumidor/ListarConsumidor", "Pesquisa", 12);
+
+
+        $label_options = array("" => "Todos", "S" => "Ativo", "N" => "Inativo");
+        $formulario
+            ->setLabel("Status do Membro")
+            ->setId("st_status")
+            ->setType("select")
+            ->setOptions($label_options)
+            ->CriaInpunt();
+
+        $formulario
+            ->setId("no_membro")
+            ->setIcon("clip-user-6")
+            ->setLabel("Nome do Membro")
+            ->setInfo("Pode ser Parte do nome")
+            ->CriaInpunt();
+
+        echo $formulario->finalizaFormPesquisaAvancada();
+
+    }
+
 
 }
-
-?>
-   
