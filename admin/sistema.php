@@ -252,6 +252,7 @@ endif;
 <script src="<?= PASTAADMIN; ?>plugins/ckeditor/adapters/jquery.js"></script>
 <script src="<?= PASTAADMIN; ?>js/Funcoes.js"></script>
 <script src="<?= PASTAADMIN; ?>js/FullCalendar.js"></script>
+<?php carregaJs($url); ?>
 <!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
 <script>
     jQuery(document).ready(function () {
