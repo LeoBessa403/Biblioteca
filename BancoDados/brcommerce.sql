@@ -113,16 +113,16 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `brcommerce`.`TB_CONSUMIDOR_DEPEDENCIA`
+-- Table `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA`
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR_DEPEDENCIA` (
-  `co_consumidor_depedencia` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA` (
+  `co_consumidor_dependencia` INT NOT NULL AUTO_INCREMENT,
   `co_consumidor_matriz` INT NOT NULL,
   `co_consumidor_filial` INT NOT NULL,
-  PRIMARY KEY (`co_consumidor_depedencia`, `co_consumidor_matriz`, `co_consumidor_filial`),
-  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC),
-  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR2_idx` (`co_consumidor_filial` ASC))
+  PRIMARY KEY (`co_consumidor_dependencia`, `co_consumidor_matriz`, `co_consumidor_filial`),
+  INDEX `fk_TB_CONSUMIDOR_DEPENDENCIA_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC),
+  INDEX `fk_TB_CONSUMIDOR_DEPENDENCIA_TB_CONSUMIDOR2_idx` (`co_consumidor_filial` ASC))
 ENGINE = InnoDB
 
 
