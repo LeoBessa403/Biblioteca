@@ -166,11 +166,6 @@ class Relacionamentos
 					('Entidade') => 'EmpresaEntidade',
 					('Tipo') => '2',
 				),
-				(CO_CONSUMIDOR) => Array(
-					('Campo') => CO_CONSUMIDOR_MATRIZ,
-					('Entidade') => 'ConsumidorEntidade',
-					('Tipo') => '2',
-				),
 				(CO_FINANCEIRO) => Array(
 					('Campo') => CO_CONSUMIDOR,
 					('Entidade') => 'FinanceiroEntidade',
@@ -276,6 +271,18 @@ class Relacionamentos
 				),
 				(CO_USUARIO) => Array(
 					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'UsuarioEntidade',
+					('Tipo') => '1',
+				),
+			),
+			(ConsumidorDependenciaEntidade::TABELA) => Array(
+				(CO_CONSUMIDOR) => Array(
+					('Campo') => CO_CONSUMIDOR_MATRIZ,
+					('Entidade') => 'UsuarioEntidade',
+					('Tipo') => '1',
+				),
+				(CO_CONSUMIDOR) => Array(
+					('Campo') => CO_CONSUMIDOR_FILIAL,
 					('Entidade') => 'UsuarioEntidade',
 					('Tipo') => '1',
 				),

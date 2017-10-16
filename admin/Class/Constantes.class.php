@@ -23,6 +23,7 @@
 	define('CO_REGISTRO', 'co_registro');
 	define('DS_PERFIL_USUARIO', 'ds_perfil_usuario');
 	define('CO_CONSUMIDOR', 'co_consumidor');
+	define('CO_CONSUMIDOR_DEPENDENCIA', 'co_consumidor_dependencia');
 	define('CO_CAIXA', 'co_caixa');
 	define('NU_CAIXA', 'nu_caixa');
 	define('DT_ABERTURA', 'dt_abertura');
@@ -51,6 +52,7 @@
 	define('CO_NEGOCIACAO', 'co_negociacao');
 	define('CO_TIPO_COMISSAO', 'co_tipo_comissao');
 	define('CO_CONSUMIDOR_MATRIZ', 'co_consumidor_matriz');
+	define('CO_CONSUMIDOR_FILIAL', 'co_consumidor_filial');
 	define('CO_CONTATO', 'co_contato');
 	define('NU_TEL1', 'nu_tel1');
 	define('NU_TEL2', 'nu_tel2');
