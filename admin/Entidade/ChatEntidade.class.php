@@ -111,7 +111,7 @@ class ChatEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return UsuarioOrigemEntidade $co_usuario_origem
+	* @return UsuarioEntidade $co_usuario_origem
      */
 	public function getCoUsuarioOrigem()
     {
@@ -128,7 +128,7 @@ class ChatEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return UsuarioDestinoEntidade $co_usuario_destino
+	* @return UsuarioEntidade $co_usuario_destino
      */
 	public function getCoUsuarioDestino()
     {

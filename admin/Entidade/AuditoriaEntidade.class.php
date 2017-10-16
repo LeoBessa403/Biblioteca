@@ -153,7 +153,7 @@ class AuditoriaEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return RegistroEntidade $co_registro
+	* @return $co_registro
      */
 	public function getCoRegistro()
     {
