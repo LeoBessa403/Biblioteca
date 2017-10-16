@@ -107,12 +107,23 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR` (
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_pessoa` INT NULL,
   `co_empresa` INT NULL,
-  `co_consumidor_matriz` INT NULL COMMENT 'Matriz de uma Filial',
   PRIMARY KEY (`co_consumidor`, `co_pessoa`, `co_empresa`, `co_consumidor_matriz`),
   INDEX `fk_TB_CLIENTE_SISTEMA_TB_PESSOA1_idx` (`co_pessoa` ASC),
-  INDEX `fk_TB_CLIENTE_SISTEMA_TB_EMPRESA1_idx` (`co_empresa` ASC),
-  INDEX `fk_TB_CONSUMIDOR_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC))
+  INDEX `fk_TB_CLIENTE_SISTEMA_TB_EMPRESA1_idx` (`co_empresa` ASC))
 ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `brcommerce`.`TB_CONSUMIDOR_DEPEDENCIA`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR_DEPEDENCIA` (
+  `co_consumidor_depedencia` INT NOT NULL AUTO_INCREMENT,
+  `co_consumidor_matriz` INT NOT NULL,
+  `co_consumidor_filial` INT NOT NULL,
+  PRIMARY KEY (`co_consumidor_depedencia`, `co_consumidor_matriz`, `co_consumidor_filial`),
+  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC),
+  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR2_idx` (`co_consumidor_filial` ASC))
+ENGINE = InnoDB
 
 
 -- -----------------------------------------------------
