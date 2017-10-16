@@ -162,7 +162,7 @@ class ConsumidorEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return ConsumidorMatrizEntidade $co_consumidor_matriz
+	* @return ConsumidorEntidade $co_consumidor_matriz
      */
 	public function getCoConsumidorMatriz()
     {
