@@ -17,7 +17,9 @@ class ConsumidorEntidade extends AbstractEntidade
 	private $st_status;
 	private $co_pessoa;
 	private $co_empresa;
+	private $co_consumidor_dependencia;
 	private $co_consumidor_matriz;
+	private $co_consumidor_filial;
 	private $co_auditoria;
 	private $co_categoria;
 	private $co_cliente;
@@ -46,7 +48,6 @@ class ConsumidorEntidade extends AbstractEntidade
 			ST_STATUS,
 			CO_PESSOA,
 			CO_EMPRESA,
-			CO_CONSUMIDOR_MATRIZ,
 		];
     }
 
@@ -162,7 +163,7 @@ class ConsumidorEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return ConsumidorEntidade $co_consumidor_matriz
+	* @return ConsumidorDependenciaEntidade $co_consumidor_matriz
      */
 	public function getCoConsumidorMatriz()
     {
@@ -176,6 +177,39 @@ class ConsumidorEntidade extends AbstractEntidade
 	public function setCoConsumidorMatriz($co_consumidor_matriz)
     {
         return $this->co_consumidor_matriz = $co_consumidor_matriz;
+    }
+
+	/**
+	* @return ConsumidorDependenciaEntidade co_consumidor_filial
+     */
+	public function getCoConsumidorFilial()
+    {
+        return $this->co_consumidor_filial;
+    }
+
+	/**
+	* @param $co_consumidor_filial
+     * @return mixed
+     */
+	public function setCoConsumidorFilial($co_consumidor_filial)
+    {
+        return $this->co_consumidor_filial = $co_consumidor_filial;
+    }
+
+    /**
+     * @return ConsumidorDependenciaEntidade mixed
+     */
+    public function getCoConsumidorDependencia()
+    {
+        return $this->co_consumidor_dependencia;
+    }
+
+    /**
+     * @param mixed $co_consumidor_dependencia
+     */
+    public function setCoConsumidorDependencia($co_consumidor_dependencia)
+    {
+        $this->co_consumidor_dependencia = $co_consumidor_dependencia;
     }
 
 	/**

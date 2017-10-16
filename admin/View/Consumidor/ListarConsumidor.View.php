@@ -41,23 +41,26 @@
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
 
+                        /** @var ConsumidorEntidade $res */
                         foreach ($result as $res):
                             $acao = '<a href="' . PASTAADMIN . 'Consumidor/CadastroConsumidor/' .
-                                Valida::GeraParametro("consumidor/" . $res[CO_CONSUMIDOR]) . '" 
-                                    class="btn btn-primary tooltips" 
+                                Valida::GeraParametro("consumidor/" . $res->getCoConsumidor()) . '"
+                                    class="btn btn-primary tooltips"
                                     data-original-title="Visualizar Registro" data-placement="top">
                                     <i class="fa fa-clipboard"></i>
                                  </a>
-                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" 
-                                    id="' . $res[CO_CONSUMIDOR] . '" 
+                                 <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta"
+                                    id="' . $res->getCoConsumidor() . '"
                                     href="#Consumidor" data-original-title="Excluir Registro" data-placement="top">
                                     <i class="fa fa-trash-o"></i>
                                  </a>';
-                            $grid->setColunas(strtoupper($res['no_empresa']));
-                            $grid->setColunas((!empty($res['nu_cnpj']) ? $res['nu_cnpj'] : $res['nu_cpf']));
-                            $grid->setColunas($res['no_responsavel']);
+                            $grid->setColunas((!empty($res->getCoEmpresa())
+                                ? $res->getCoEmpresa()->getNoEmpresa() : $res->getCoPessoa()->getNoPessoa()));
+                            $grid->setColunas((!empty($res->getCoEmpresa())
+                                ? $res->getCoEmpresa()->getNuCnpj() : $res->getCoPessoa()->getNuCpf()));
+                            $grid->setColunas($res->getCoEmpresa()->getCoPessoa()->getNoPessoa());
                             $grid->setColunas($acao, 2);
-                            $grid->criaLinha($res['co_empresa']);
+                            $grid->criaLinha($res->getCoConsumidor());
                         endforeach;
 
                         $grid->finalizaGrid();

@@ -226,6 +226,16 @@ class Relacionamentos
 					('Entidade') => 'UsuarioEntidade',
 					('Tipo') => '2',
 				),
+				(CO_CONSUMIDOR) => Array(
+					('Campo') => CO_CONSUMIDOR_MATRIZ,
+					('Entidade') => 'ConsumidorDependenciaEntidade',
+					('Tipo') => '2',
+				),
+				(CO_CONSUMIDOR) => Array(
+					('Campo') => CO_CONSUMIDOR_FILIAL,
+					('Entidade') => 'ConsumidorDependenciaEntidade',
+					('Tipo') => '1',
+				),
 			),
 			(CaixaEntidade::TABELA) => Array(
 				(CO_USUARIO) => Array(
@@ -276,14 +286,14 @@ class Relacionamentos
 				),
 			),
 			(ConsumidorDependenciaEntidade::TABELA) => Array(
-				(CO_CONSUMIDOR) => Array(
-					('Campo') => CO_CONSUMIDOR_MATRIZ,
-					('Entidade') => 'UsuarioEntidade',
+				(CO_CONSUMIDOR_MATRIZ) => Array(
+					('Campo') => CO_CONSUMIDOR,
+					('Entidade') => 'ConsumidorEntidade',
 					('Tipo') => '1',
 				),
-				(CO_CONSUMIDOR) => Array(
-					('Campo') => CO_CONSUMIDOR_FILIAL,
-					('Entidade') => 'UsuarioEntidade',
+				(CO_CONSUMIDOR_FILIAL) => Array(
+					('Campo') => CO_CONSUMIDOR,
+					('Entidade') => 'ConsumidorEntidade',
 					('Tipo') => '1',
 				),
 			),

@@ -30,7 +30,6 @@ class Consumidor extends AbstractController
             );
         endif;
         $this->result = $consumidorService->PesquisaTodos($dados);
-
     }
 
     function ListarConsumidorPesquisaAvancada()
