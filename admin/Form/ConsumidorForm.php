@@ -10,7 +10,7 @@ class ConsumidorForm extends AbstractController
         $formulario = new Form($id, "admin/Usuario/ListarUsuario", "Pesquisa", 12);
 
         $formulario
-            ->setId("no_pessoa")
+            ->setId(NO_PESSOA)
             ->setIcon("clip-user-6")
             ->setLabel("Nome do Usuario")
             ->setInfo("Pode ser Parte do nome")
@@ -32,7 +32,7 @@ class ConsumidorForm extends AbstractController
         $enderecoService = static::getService(ENDERECO_SERVICE);
         /** @var ConsumidorService $consumidorService */
         $consumidorService = static::getService(CONSUMIDOR_SERVICE);
-        
+
         $id = "cadastroConsumidor";
         $link = UrlAmigavel::$controller . '/Listar' . UrlAmigavel::$controller;
         $idConsumidor = null;
