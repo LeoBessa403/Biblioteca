@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Consumidor.Entidade [ ENTIDADE ]
+ * ConsumidorDependencia.Entidade [ ENTIDADE ]
  * @copyright (c) 2017, Leo Bessa
  */
 
