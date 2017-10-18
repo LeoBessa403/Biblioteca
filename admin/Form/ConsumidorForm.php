@@ -79,7 +79,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("no_fantasia")
+            ->setId(NO_FANTASIA)
             ->setLabel("Nome Fantasia")
             ->setClasses("ob")
             ->setInfo("Nome do Estabelecimento")
@@ -93,7 +93,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_cpf")
+            ->setId(NU_CPF)
             ->setLabel("CPF")
             ->setTamanhoInput(6)
             ->setClasses("cpf ob")
@@ -101,7 +101,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_cnpj")
+            ->setId(NU_CNPJ)
             ->setLabel("CNPJ")
             ->setTamanhoInput(6)
             ->setClasses("cnpj ob")
@@ -109,29 +109,29 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_endereco")
+            ->setId(DS_ENDERECO)
             ->setIcon("clip-home-2")
             ->setClasses("ob")
             ->setLabel("Endereço")
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_complemento")
+            ->setId(DS_COMPLEMENTO)
             ->setLabel("Complemento")
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_bairro")
+            ->setId(DS_BAIRRO)
             ->setLabel("Bairro")
             ->CriaInpunt();
 
         $formulario
-            ->setId("no_cidade")
+            ->setId(NO_CIDADE)
             ->setLabel("Cidade")
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_cep")
+            ->setId(NU_CEP)
             ->setLabel("CEP")
             ->setTamanhoInput(4)
             ->setClasses("cep")
@@ -140,7 +140,7 @@ class ConsumidorForm extends AbstractController
         $options = $enderecoService->montaComboEstadosDescricao();
         $formulario
             ->setTamanhoInput(8)
-            ->setId("sg_uf")
+            ->setId(SG_UF)
             ->setType("select")
             ->setClasses("ob")
             ->setLabel("Estado")
@@ -148,7 +148,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_tel1")
+            ->setId(NU_TEL1)
             ->setTamanhoInput(4)
             ->setIcon("fa fa-phone")
             ->setLabel("Telefone Comercial")
@@ -156,7 +156,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_tel2")
+            ->setId(NU_TEL2)
             ->setTamanhoInput(4)
             ->setIcon("fa fa-mobile-phone")
             ->setLabel("Telefone Celular")
@@ -164,7 +164,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_tel3")
+            ->setId(NU_TEL3)
             ->setTamanhoInput(4)
             ->setIcon("fa fa-phone")
             ->setLabel("Telefone Residencial")
@@ -172,7 +172,7 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("nu_tel_0800")
+            ->setId(NU_TEL4)
             ->setTamanhoInput(4)
             ->setIcon("fa fa-phone")
             ->setLabel("0800 da Consumidor")
@@ -180,21 +180,21 @@ class ConsumidorForm extends AbstractController
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_site")
+            ->setId(DS_SITE)
             ->setTamanhoInput(8)
             ->setIcon("clip-earth-2")
             ->setLabel("Site")
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_email")
+            ->setId(DS_EMAIL)
             ->setIcon("clip-archive")
             ->setLabel("E-mail")
             ->setClasses("email")
             ->CriaInpunt();
 
         $formulario
-            ->setId("ds_observacao")
+            ->setId(DS_OBSERVACAO)
             ->setLabel("Observação")
             ->setType("textarea")
             ->setClasses("ckeditor")
@@ -204,7 +204,7 @@ class ConsumidorForm extends AbstractController
         if ($idConsumidor):
             $formulario
                 ->setType("hidden")
-                ->setId("co_Consumidor")
+                ->setId(CO_CONSUMIDOR)
                 ->setValues($idConsumidor)
                 ->CriaInpunt();
         endif;
