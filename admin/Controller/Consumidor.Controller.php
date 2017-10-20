@@ -38,7 +38,6 @@ class Consumidor extends AbstractController
 
     function ListarConsumidorPesquisaAvancada()
     {
-
         $id = static::PESQUISA;
         $formulario = new Form($id, "admin/Consumidor/ListarConsumidor", "Pesquisa", 12);
         $label_options = array("" => "Todos", "S" => "Ativo", "N" => "Inativo");
