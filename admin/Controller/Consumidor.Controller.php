@@ -2,6 +2,10 @@
 
 class Consumidor extends AbstractController
 {
+    const CADASTRO = "cadastroConsumidor";
+    const PESQUISA = "pesquisaConsumidor";
+    const LISTAR = "ListarConsumidor";
+
     public $result;
     public $form;
 
@@ -9,11 +13,11 @@ class Consumidor extends AbstractController
     {
         /** @var ConsumidorService $consumidorService */
         $consumidorService = $this->getService(CONSUMIDOR_SERVICE);
-        $id = "cadastroConsumidor";
+        $id = static::CADASTRO;
         if (!empty($_POST[$id])):
             $consumidorService->salvarConsumidor($_POST);
             $this->ListarConsumidor();
-            UrlAmigavel::$action = "ListarConsumidor";
+            UrlAmigavel::$action = static::LISTAR;
         endif;
         $this->form = ConsumidorForm::Cadastrar();
     }
@@ -23,7 +27,7 @@ class Consumidor extends AbstractController
         /** @var ConsumidorService $consumidorService */
         $consumidorService = $this->getService(CONSUMIDOR_SERVICE);
         $dados = array();
-        if (!empty($_POST['pesquisaConsumidor'])):
+        if (!empty($_POST[static::PESQUISA])):
             $dados = array(
                 'st_status' => $_POST['st_status'][0],
                 'no_membro' => $_POST['no_membro']
@@ -35,11 +39,8 @@ class Consumidor extends AbstractController
     function ListarConsumidorPesquisaAvancada()
     {
 
-        $id = "pesquisaConsumidor";
-
+        $id = static::PESQUISA;
         $formulario = new Form($id, "admin/Consumidor/ListarConsumidor", "Pesquisa", 12);
-
-
         $label_options = array("" => "Todos", "S" => "Ativo", "N" => "Inativo");
         $formulario
             ->setLabel("Status do Membro")
@@ -56,7 +57,6 @@ class Consumidor extends AbstractController
             ->CriaInpunt();
 
         echo $formulario->finalizaFormPesquisaAvancada();
-
     }
 
 
