@@ -3,14 +3,14 @@ ob_start();
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
 $valida = new ValidaUsuario();
-$compara = strstr(UrlAmigavel::$action, 'Exporta');
-if ($compara != null):
+//$entidade = new GerarEntidades();
+if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     $url->pegaControllerAction();
     exit;
 endif;
 $back = new Backup();
-//$entidade = new GerarEntidades();
-if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
+$compara = strstr(UrlAmigavel::$action, 'Exporta');
+if ($compara != null):
     $url->pegaControllerAction();
     exit;
 endif;
