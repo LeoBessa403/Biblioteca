@@ -1,15 +1,16 @@
 <?php
+ob_start();
 require_once 'library/Config.inc.php';
 $url = new UrlAmigavel();
-//$entidade = new GerarEntidades();
-//$back = new Backup();
-if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
-    $url->pegaControllerAction();
-    exit;
-endif;
 $valida = new ValidaUsuario();
 $compara = strstr(UrlAmigavel::$action, 'Exporta');
 if ($compara != null):
+    $url->pegaControllerAction();
+    exit;
+endif;
+$back = new Backup();
+//$entidade = new GerarEntidades();
+if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     $url->pegaControllerAction();
     exit;
 endif;
@@ -288,3 +289,5 @@ endif;
 </body>
 <!-- end: BODY -->
 </html>
+<?php
+ob_end_flush();
