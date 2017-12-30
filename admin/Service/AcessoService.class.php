@@ -151,14 +151,14 @@ class  AcessoService extends AbstractService
             'win16'              =>  'Windows 3.11',
             'macintosh|mac os x' =>  'Mac OS X',
             'mac_powerpc'        =>  'Mac OS 9',
-            'linux'              =>  'Linux',
-            'ubuntu'             =>  'Ubuntu',
+            'android'            =>  'Android',
             'iphone'             =>  'iPhone',
             'ipod'               =>  'iPod',
             'ipad'               =>  'iPad',
-            'android'            =>  'Android',
+            'webos'              =>  'Mobile',
+            'linux'              =>  'Linux',
+            'ubuntu'             =>  'Ubuntu',
             'blackberry'         =>  'BlackBerry',
-            'webos'              =>  'Mobile'
         );
 
         foreach ($os_array as $regex => $value) {
@@ -179,7 +179,7 @@ class  AcessoService extends AbstractService
             'iPod'     =>  'iPod',
             'ipad'      =>  'ipad',
             'android'     =>  'android',
-            'webOS'     =>  'webOS',
+            'webOS'     =>  'Mobile',
             'BlackBerry'     =>  'BlackBerry',
             'Symbian'     =>  'Symbian',
             'IsGeneric'     =>  'IsGeneric',
