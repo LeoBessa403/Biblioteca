@@ -83,6 +83,21 @@ class Relacionamentos
 					('Entidade') => 'UsuarioPerfilEntidade',
 					('Tipo') => '2',
 				),
+				(CO_GRUPO_LEMBRETE_USUARIO) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'GrupoLembreteUsuarioEntidade',
+					('Tipo') => '2',
+				),
+				(CO_CHAT) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'ChatEntidade',
+					('Tipo') => '2',
+				),
+				(CO_LEMBRETE) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'LembreteEntidade',
+					('Tipo') => '2',
+				),
 			),
 			(AjudaEntidade::TABELA) => Array(
 				(CO_FUNCIONALIDADE) => Array(
