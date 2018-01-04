@@ -2,7 +2,7 @@
 
 /**
  * Usuario.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class UsuarioEntidade extends AbstractEntidade
@@ -30,7 +30,6 @@ class UsuarioEntidade extends AbstractEntidade
 	private $co_produto_promocao;
 	private $co_sugestao;
 	private $co_usuario_perfil;
-	private $co_lembrete;
 
 
 	/**
@@ -380,23 +379,6 @@ class UsuarioEntidade extends AbstractEntidade
 	public function setCoUsuarioPerfil($co_usuario_perfil)
     {
         return $this->co_usuario_perfil = $co_usuario_perfil;
-    }
-
-	/**
-	* @return LembreteEntidade $co_lembrete
-     */
-	public function getCoLembrete()
-    {
-        return $this->co_lembrete;
-    }
-
-	/**
-     * @param $co_lembrete
-     * @return mixed
-     */
-	public function setCoLembrete($co_lembrete)
-    {
-        return $this->co_lembrete = $co_lembrete;
     }
 
 }

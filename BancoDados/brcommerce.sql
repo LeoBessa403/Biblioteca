@@ -22,11 +22,11 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_ENDERECO` (
   `ds_endereco` VARCHAR(150) NOT NULL,
   `ds_complemento` VARCHAR(100) NULL,
   `ds_bairro` VARCHAR(80) NULL,
-  `nu_cep` VARCHAR(112) NULL,
+  `nu_cep` VARCHAR(12) NULL,
   `no_cidade` VARCHAR(80) NOT NULL,
   `sg_uf` VARCHAR(2) NOT NULL,
   PRIMARY KEY (`co_endereco`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONTATO` (
   `ds_email` VARCHAR(150) NULL,
   `ds_site` VARCHAR(150) NULL,
   PRIMARY KEY (`co_contato`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_IMAGEM` (
   `co_imagem` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `ds_caminho` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`co_imagem`))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;
+  ENGINE = MyISAM
+  DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PESSOA` (
   INDEX `fk_TB_PESSOA_TB_ENDERECO1_idx` (`co_endereco` ASC),
   INDEX `fk_TB_PESSOA_TB_CONTATO1_idx` (`co_contato` ASC),
   INDEX `fk_TB_PESSOA_TB_IMAGEM1_idx` (`co_imagem` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_EMPRESA` (
   `co_empresa` INT NOT NULL AUTO_INCREMENT,
   `no_empresa` VARCHAR(250) NOT NULL COMMENT 'Razão Social',
   `no_fantasia` VARCHAR(150) NULL,
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `nu_cnpj` VARCHAR(20) NULL,
   `nu_insc_estadual` VARCHAR(20) NULL,
   `ds_observacao` TEXT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_EMPRESA` (
   `co_endereco` INT NOT NULL,
   `co_imagem` INT(10) UNSIGNED NOT NULL,
   PRIMARY KEY (`co_empresa`, `co_contato`, `co_pessoa`, `co_endereco`, `co_imagem`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -102,28 +102,15 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR` (
   `co_consumidor` INT NOT NULL AUTO_INCREMENT COMMENT 'Cliente do Sistema',
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `ds_observacao` TEXT NULL,
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_pessoa` INT NULL,
   `co_empresa` INT NULL,
-  PRIMARY KEY (`co_consumidor`, `co_pessoa`, `co_empresa`, `co_consumidor_matriz`),
+  PRIMARY KEY (`co_consumidor`, `co_pessoa`, `co_empresa`),
   INDEX `fk_TB_CLIENTE_SISTEMA_TB_PESSOA1_idx` (`co_pessoa` ASC),
   INDEX `fk_TB_CLIENTE_SISTEMA_TB_EMPRESA1_idx` (`co_empresa` ASC))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA`
--- -----------------------------------------------------
-
-CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA` (
-  `co_consumidor_dependencia` INT NOT NULL AUTO_INCREMENT,
-  `co_consumidor_matriz` INT NOT NULL,
-  `co_consumidor_filial` INT NOT NULL,
-  PRIMARY KEY (`co_consumidor_dependencia`, `co_consumidor_matriz`, `co_consumidor_filial`),
-  INDEX `fk_TB_CONSUMIDOR_DEPENDENCIA_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC),
-  INDEX `fk_TB_CONSUMIDOR_DEPENDENCIA_TB_CONSUMIDOR2_idx` (`co_consumidor_filial` ASC))
-ENGINE = InnoDB
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -143,8 +130,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_USUARIO` (
   INDEX `fk_tb_usuario_tb_empresa1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_USUARIO_TB_IMAGEM1_idx` (`co_imagem` ASC),
   INDEX `fk_TB_USUARIO_TB_PESSOA1_idx` (`co_pessoa` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -153,19 +140,19 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_AUDITORIA` (
   `co_auditoria` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `no_tabela` VARCHAR(150) NULL,
-  `dt_realizado` DATETIME NULL DEFAULT NULL,
-  `no_operacao` VARCHAR(1) NULL DEFAULT NULL,
-  `ds_item_anterior` TEXT NULL DEFAULT NULL,
-  `ds_item_atual` TEXT NULL DEFAULT NULL,
-  `co_registro` INT(10) NULL DEFAULT NULL,
-  `ds_perfil_usuario` TEXT CHARACTER SET 'big5' NULL DEFAULT NULL,
+  `dt_realizado` DATETIME NULL,
+  `no_operacao` VARCHAR(1) NULL,
+  `ds_item_anterior` TEXT NULL,
+  `ds_item_atual` TEXT CHARACTER SET 'big5' COLLATE 'big5_chinese_ci' NULL,
+  `co_registro` INT(10) NULL,
+  `ds_perfil_usuario` TEXT CHARACTER SET 'big5' COLLATE 'big5_chinese_ci' NULL,
   `co_usuario` INT(10) NOT NULL,
   `co_consumidor` INT NOT NULL,
   PRIMARY KEY (`co_auditoria`, `co_usuario`, `co_consumidor`),
   INDEX `fk_tb_auditoria_tb_usuario1_idx` (`co_usuario` ASC),
   INDEX `fk_tb_auditoria_tb_empresa1_idx` (`co_consumidor` ASC))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = MyISAM
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -175,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_SESSAO` (
   `co_sessao` INT NOT NULL AUTO_INCREMENT COMMENT 'Sessão dos produtos',
   `ds_sessao` VARCHAR(100) NOT NULL COMMENT 'Sessão da categoria',
   PRIMARY KEY (`co_sessao`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -191,9 +178,9 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CATEGORIA` (
   PRIMARY KEY (`co_categoria`, `co_sessao`, `co_consumidor`),
   INDEX `fk_tb_categoria_tb_tipo_categoria1_idx` (`co_sessao` ASC),
   INDEX `fk_tb_categoria_tb_empresa1_idx` (`co_consumidor` ASC))
-ENGINE = MyISAM
-DEFAULT CHARACTER SET = utf8
-PACK_KEYS = DEFAULT;
+  ENGINE = MyISAM
+  DEFAULT CHARACTER SET = utf8
+  PACK_KEYS = DEFAULT;
 
 
 -- -----------------------------------------------------
@@ -205,8 +192,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FUNCIONALIDADE` (
   `ds_rota` VARCHAR(250) NOT NULL,
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   PRIMARY KEY (`co_funcionalidade`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -219,8 +206,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PERFIL` (
   `co_consumidor` INT NULL COMMENT 'Código do cliente do sistema',
   PRIMARY KEY (`co_perfil`, `co_consumidor`),
   INDEX `fk_tb_perfil_tb_empresa1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -233,8 +220,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_USUARIO_PERFIL` (
   PRIMARY KEY (`co_usuario_perfil`, `co_usuario`, `co_perfil`),
   INDEX `fk_tb_usuario_tb_perfil_tb_perfil1_idx` (`co_perfil` ASC),
   INDEX `fk_tb_usuario_tb_perfil_tb_usuario_idx` (`co_usuario` ASC))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
@@ -245,8 +232,8 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PERFIL_FUNCIONALIDADE` (
   `co_perfil` INT(11) NOT NULL,
   `co_funcionalidade` INT(11) NOT NULL,
   PRIMARY KEY (`co_perfil_funcionalidade`, `co_perfil`, `co_funcionalidade`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = latin1;
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
@@ -254,10 +241,10 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_UNIDADE_VENDA` (
   `co_unidade_venda` INT NOT NULL AUTO_INCREMENT COMMENT 'Manter unidade de venda',
-  `no_unidade_venda` VARCHAR(45) NOT NULL COMMENT 'Nom e da unidade de venda',
+  `no_unidade_venda` VARCHAR(45) NOT NULL COMMENT 'Nome da unidade de venda',
   `sg_unidade_venda` VARCHAR(3) NOT NULL COMMENT 'sigla da unidade de venda',
   PRIMARY KEY (`co_unidade_venda`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -271,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_UNIDADE_VENDA_CONSUMIDOR` (
   PRIMARY KEY (`co_unidade_venda_consumidor`, `co_unidade_venda`, `co_consumidor`),
   INDEX `fk_TB_UNIDADE_VENDA_CONSUMIDOR_TB_UNIDADE_VENDA1_idx` (`co_unidade_venda` ASC),
   INDEX `fk_TB_UNIDADE_VENDA_CONSUMIDOR_TB_CONSUMIDOR1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -283,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_LOTE_PRODUTO` (
   `dt_cadastro` DATETIME NULL,
   `ds_observacao` TEXT NULL,
   PRIMARY KEY (`co_lote_produto`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -296,7 +283,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO` (
   `nu_codigo` INT NOT NULL COMMENT 'Código de barras do produto',
   `nu_codigo_interno` INT(10) NULL COMMENT 'Código do Produto interno para facilitar a busca',
   `ds_marca` VARCHAR(100) NULL COMMENT 'Marca ou fabricante',
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_categoria` INT(10) UNSIGNED NOT NULL,
   `co_imagem` INT(10) UNSIGNED NULL,
@@ -309,7 +296,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO` (
   INDEX `fk_tb_produto_tb_empresa1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_PRODUTO_TB_UNIDADE_VENDA_CONSUMIDOR1_idx` (`co_unidade_venda_consumidor` ASC),
   INDEX `fk_TB_PRODUTO_TB_LOTE_PRODUTO1_idx` (`co_lote_produto` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -317,14 +304,14 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_REPRESENTANTE` (
   `co_representante` INT NOT NULL AUTO_INCREMENT COMMENT 'Representante do Fornecedor',
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_consumidor` INT NOT NULL,
   `co_pessoa` INT NOT NULL,
   PRIMARY KEY (`co_representante`, `co_consumidor`, `co_pessoa`),
   INDEX `fk_tb_representante_tb_empresa1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_REPRESENTANTE_TB_PESSOA1_idx` (`co_pessoa` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -333,7 +320,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FORNECEDOR` (
   `co_fornecedor` INT NOT NULL AUTO_INCREMENT COMMENT 'Fornecedor do Consumidor',
   `ds_observacao` TEXT NULL,
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `tp_credor` VARCHAR(1) NULL DEFAULT 'N' COMMENT 'Flag se o Fornecedor é credor\n\'S\' - Sim / \'N\' - Não',
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_representante` INT NOT NULL,
@@ -345,7 +332,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FORNECEDOR` (
   INDEX `fk_TB_FORNECEDOR_TB_PESSOA1_idx` (`co_pessoa` ASC),
   INDEX `fk_TB_FORNECEDOR_TB_EMPRESA1_idx` (`co_empresa` ASC),
   INDEX `fk_TB_FORNECEDOR_TB_CONSUMIDOR1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -363,7 +350,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CLIENTE` (
   INDEX `fk_tb_cliente_tb_consumidor1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_CLIENTE_TB_PESSOA1_idx` (`co_pessoa` ASC),
   INDEX `fk_TB_CLIENTE_TB_EMPRESA1_idx` (`co_empresa` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -374,7 +361,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_TIPO_NEGOCIACAO` (
   `no_tipo_negociacao` VARCHAR(45) NULL,
   `sg_tipo_negociacao` VARCHAR(2) NULL,
   PRIMARY KEY (`co_tipo_negociacao`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -390,7 +377,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CAIXA` (
   `co_usuario` INT(10) NOT NULL,
   PRIMARY KEY (`co_caixa`, `co_usuario`),
   INDEX `fk_TB_CAIXA_TB_USUARIO1_idx` (`co_usuario` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -413,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_NEGOCIACAO` (
   INDEX `fk_tb_negociacao_tb_tipo_negociacao1_idx` (`co_tipo_negociacao` ASC),
   INDEX `fk_TB_NEGOCIACAO_TB_CLIENTE_SISTEMA1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_NEGOCIACAO_TB_CAIXA1_idx` (`co_caixa` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -429,7 +416,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_NEGOCIACAO_PRODUTO` (
   PRIMARY KEY (`co_negociacao_produto`, `co_negociacao`, `co_produto`),
   INDEX `fk_tb_negociacao_tb_produto_tb_produto1_idx` (`co_produto` ASC),
   INDEX `fk_tb_negociacao_tb_produto_tb_negociacao1_idx` (`co_negociacao` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -440,7 +427,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_TIPO_PAGAMENTO` (
   `ds_tipo_pagamento` VARCHAR(45) NULL,
   `sg_tipo_pagamento` VARCHAR(2) NULL,
   PRIMARY KEY (`co_tipo_pagamento`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -459,7 +446,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PAGAMENTO` (
   PRIMARY KEY (`co_pagamento`, `co_tipo_pagamento`, `co_negociacao`),
   INDEX `fk_tb_pagamento_tb_tipo_pagamento1_idx` (`co_tipo_pagamento` ASC),
   INDEX `fk_TB_PAGAMENTO_TB_NEGOCIACAO1_idx` (`co_negociacao` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -476,7 +463,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PARCELAMENTO` (
   `co_pagamento` INT NOT NULL,
   PRIMARY KEY (`co_parcelamento`, `co_pagamento`),
   INDEX `fk_tb_parcelamento_tb_pagamento1_idx` (`co_pagamento` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -487,7 +474,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FUNCIONARIO` (
   `ds_cargo` VARCHAR(70) NULL,
   `dt_admissao` DATE NOT NULL,
   `dt_demissao` DATE NULL,
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `nu_carteira` VARCHAR(45) NULL,
   `nu_salario` DECIMAL NULL,
   `nu_horas` INT(2) NULL COMMENT 'Quantidade de Horas Trabalhada por semana',
@@ -499,7 +486,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FUNCIONARIO` (
   INDEX `fk_tb_funcionario_tb_foto1_idx` (`co_imagem` ASC),
   INDEX `fk_tb_funcionario_tb_empresa1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_FUNCIONARIO_TB_PESSOA1_idx` (`co_pessoa` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -521,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO_DETALHE` (
   PRIMARY KEY (`co_produto_detalhe`, `co_usuario`, `co_produto`),
   INDEX `fk_tb_financeiro_produto_tb_produto1_idx` (`co_produto` ASC),
   INDEX `fk_tb_produto_detalhe_tb_usuario1_idx` (`co_usuario` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -541,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO_PROMOCAO` (
   PRIMARY KEY (`co_produto_promocao`, `co_produto`, `co_usuario`),
   INDEX `fk_tb_promocao_produto_tb_produto1_idx` (`co_produto` ASC),
   INDEX `fk_tb_produto_promocao_tb_usuario1_idx` (`co_usuario` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -556,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PERFIL_PRODUTO_DETALHE` (
   PRIMARY KEY (`co_perfil_produto_detalhe`, `co_produto_detalhe`, `co_perfil`),
   INDEX `fk_tb_produto_detalhe_tb_perfil_tb_perfil1_idx` (`co_perfil` ASC),
   INDEX `fk_tb_produto_detalhe_tb_perfil_tb_produto_detalhe1_idx` (`co_produto_detalhe` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -573,7 +560,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_FINANCEIRO` (
   `co_consumidor` INT NOT NULL,
   PRIMARY KEY (`co_financeiro`, `co_consumidor`),
   INDEX `fk_tb_financeiro_tb_empresa1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -584,10 +571,14 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_ACESSO` (
   `ds_session_id` VARCHAR(255) NULL,
   `dt_inicio_acesso` DATETIME NULL,
   `dt_fim_acesso` DATETIME NULL,
+  `tp_situacao` VARCHAR(1) NULL COMMENT 'A - Ativo / F - Finalizado',
+  `ds_navegador` VARCHAR(45) NULL,
+  `ds_sistema_operacional` VARCHAR(45) NULL,
+  `ds_dispositivo` VARCHAR(45) NULL,
   `co_usuario` INT(10) NOT NULL,
   PRIMARY KEY (`co_acesso`, `co_usuario`),
   INDEX `fk_TB_ACESSO_TB_USUARIO1_idx` (`co_usuario` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -599,7 +590,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_AJUDA` (
   `co_funcionalidade` INT(11) NOT NULL,
   PRIMARY KEY (`co_ajuda`, `co_funcionalidade`),
   INDEX `fk_TB_AJUDA_TB_FUNCIONALIDADE1_idx` (`co_funcionalidade` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -616,7 +607,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_SUGESTAO` (
   PRIMARY KEY (`co_sugestao`, `co_usuario`, `co_imagem`),
   INDEX `fk_TB_SUGESTAO_TB_USUARIO1_idx` (`co_usuario` ASC),
   INDEX `fk_TB_SUGESTAO_TB_IMAGEM1_idx` (`co_imagem` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -626,32 +617,34 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_LOCALIDADE` (
   `co_localidade` INT NOT NULL AUTO_INCREMENT,
   `ds_localidade` VARCHAR(40) NULL,
   PRIMARY KEY (`co_localidade`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `brcommerce`.`TB_PRODUTO_LOCALIDADE`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO_LOCALIDADE` (
-  `co_produto` INT NOT NULL,
+  `co_produto_localidade` INT NOT NULL AUTO_INCREMENT,
   `co_localidade` INT NOT NULL,
+  `co_produto` INT NOT NULL,
   `ds_localidade` VARCHAR(5) NULL COMMENT 'Letra referente a localidade Ex: A ou 5',
-  PRIMARY KEY (`co_produto`, `co_localidade`),
+  PRIMARY KEY (`co_produto_localidade`, `co_localidade`, `co_produto`),
   INDEX `fk_TB_PRODUTO_TB_LOCALIDADE_TB_LOCALIDADE1_idx` (`co_localidade` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `brcommerce`.`TB_LOCALIDADE_CONSUMIDOR`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_LOCALIDADE_CONSUMIDOR` (
-  `co_consumidor` INT NOT NULL,
-  `co_localidade` INT NOT NULL,
+  `co_localidade_consumidor` INT NOT NULL AUTO_INCREMENT,
   `st_ativo` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
-  PRIMARY KEY (`co_consumidor`, `co_localidade`),
+  `co_localidade` INT NOT NULL,
+  `co_consumidor` INT NOT NULL,
+  PRIMARY KEY (`co_localidade_consumidor`, `co_localidade`, `co_consumidor`),
   INDEX `fk_TB_CONSUMIDOR_TB_LOCALIDADE_TB_LOCALIDADE1_idx` (`co_localidade` ASC),
   INDEX `fk_TB_CONSUMIDOR_TB_LOCALIDADE_TB_CONSUMIDOR1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -669,7 +662,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_ORDEM_SERVICO` (
   PRIMARY KEY (`co_ordem_servico`, `co_usuario`, `co_negociacao`),
   INDEX `fk_TB_ORDEM_SERVICO_TB_USUARIO1_idx` (`co_usuario` ASC),
   INDEX `fk_TB_ORDEM_SERVICO_TB_NEGOCIACAO1_idx` (`co_negociacao` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -685,7 +678,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CHAT` (
   PRIMARY KEY (`co_chat`, `co_usuario_origem`, `co_usuario_destino`),
   INDEX `fk_TB_CHAT_TB_USUARIO1_idx` (`co_usuario_origem` ASC),
   INDEX `fk_TB_CHAT_TB_USUARIO2_idx` (`co_usuario_destino` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -694,21 +687,22 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_GRADE_PRODUTO` (
   `co_grade_produto` INT NOT NULL AUTO_INCREMENT,
   `no_grade_produto` VARCHAR(120) NOT NULL,
-  `dt_cadastro` DATE NULL,
+  `dt_cadastro` DATETIME NULL,
   PRIMARY KEY (`co_grade_produto`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `brcommerce`.`TB_PRODUTO_GRADE_PRODUTO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_PRODUTO_GRADE_PRODUTO` (
-  `co_produto` INT NOT NULL,
+  `co_produto_grade_produto` INT NOT NULL AUTO_INCREMENT,
   `co_grade_produto` INT NOT NULL,
-  PRIMARY KEY (`co_produto`, `co_grade_produto`),
+  `co_produto` INT NOT NULL,
+  PRIMARY KEY (`co_produto_grade_produto`, `co_grade_produto`, `co_produto`),
   INDEX `fk_TB_PRODUTO_TB_GRADE_PRODUTO_TB_GRADE_PRODUTO1_idx` (`co_grade_produto` ASC),
   INDEX `fk_TB_PRODUTO_TB_GRADE_PRODUTO_TB_PRODUTO1_idx` (`co_produto` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -719,7 +713,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_SIT_ENTREG_PED` (
   `no_sit_entreg_ped` VARCHAR(60) NULL,
   `sg_sit_entreg_ped` VARCHAR(2) NULL,
   PRIMARY KEY (`co_sit_entreg_ped`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -728,32 +722,32 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_TRANSPORTADORA` (
   `co_transportadora` INT NOT NULL AUTO_INCREMENT COMMENT 'Fornecedor do Consumidor',
   `ds_observacao` TEXT NULL,
-  `dt_cadastro` DATE NOT NULL,
+  `dt_cadastro` DATETIME NOT NULL,
   `st_status` VARCHAR(1) NULL DEFAULT 'A' COMMENT '\'A - Ativo / I - Inativo\'',
   `co_consumidor` INT NOT NULL,
   `co_empresa` INT NOT NULL,
   PRIMARY KEY (`co_transportadora`, `co_consumidor`, `co_empresa`),
   INDEX `fk_tb_fornecedor_tb_consumidor1_idx` (`co_consumidor` ASC),
   INDEX `fk_TB_FORNECEDOR_TB_EMPRESA1_idx` (`co_empresa` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `brcommerce`.`TB_ENTREGA_PEDIDO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_ENTREGA_PEDIDO` (
-  `co_entrega` INT NOT NULL AUTO_INCREMENT COMMENT 'Manter as entregas do consumidor',
+  `co_entrega_pedido` INT NOT NULL AUTO_INCREMENT COMMENT 'Manter as entregas do consumidor',
   `dt_entrega` DATETIME NULL COMMENT 'data que foi entregue',
   `dt_ser_entregue` DATETIME NULL COMMENT 'data provável da entrega',
   `ds_observacao` TEXT NULL,
   `co_sit_entreg_ped` INT NOT NULL,
   `co_negociacao` INT NOT NULL,
   `co_transportadora` INT NOT NULL,
-  PRIMARY KEY (`co_entrega`, `co_sit_entreg_ped`, `co_negociacao`, `co_transportadora`),
+  PRIMARY KEY (`co_entrega_pedido`, `co_sit_entreg_ped`, `co_negociacao`, `co_transportadora`),
   INDEX `fk_TB_ENTREGA_PEDIDO_TB_SITUACAO_ENTREGA_PEDIDO1_idx` (`co_sit_entreg_ped` ASC),
   INDEX `fk_TB_ENTREGA_PEDIDO_TB_NEGOCIACAO1_idx` (`co_negociacao` ASC),
   INDEX `fk_TB_ENTREGA_PEDIDO_TB_TRANSPORTADORA1_idx` (`co_transportadora` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -772,7 +766,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_LEMBRETE` (
   INDEX `fk_TB_LEMBRETE_TB_USUARIO1_idx` (`co_usuario_origem` ASC),
   INDEX `fk_TB_LEMBRETE_TB_USUARIO2_idx` (`co_usuario_destino` ASC),
   INDEX `fk_TB_LEMBRETE_TB_GRUPO_LEMBRETE1_idx` (`co_grupo_lembrete` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -783,7 +777,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_TIPO_COMISSAO` (
   `no_tipo_comissao` VARCHAR(100) NULL,
   `sg_tipo_comissao` VARCHAR(2) NULL,
   PRIMARY KEY (`co_tipo_comissao`))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -803,7 +797,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_COMISSAO` (
   INDEX `fk_TB_COMISSAO_TB_NEGOCIACAO1_idx` (`co_negociacao` ASC),
   INDEX `fk_TB_COMISSAO_TB_USUARIO1_idx` (`co_usuario` ASC),
   INDEX `fk_TB_COMISSAO_TB_TIPO_COMISSAO1_idx` (`co_tipo_comissao` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -816,7 +810,7 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_GRUPO_LEMBRETE` (
   `co_consumidor` INT NOT NULL,
   PRIMARY KEY (`co_grupo_lembrete`, `co_consumidor`),
   INDEX `fk_TB_GRUPO_LEMBRETE_TB_CONSUMIDOR1_idx` (`co_consumidor` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -835,19 +829,33 @@ CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_LEMBRETE` (
   INDEX `fk_TB_LEMBRETE_TB_USUARIO1_idx` (`co_usuario_origem` ASC),
   INDEX `fk_TB_LEMBRETE_TB_USUARIO2_idx` (`co_usuario_destino` ASC),
   INDEX `fk_TB_LEMBRETE_TB_GRUPO_LEMBRETE1_idx` (`co_grupo_lembrete` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `brcommerce`.`TB_GRUPO_LEMBRETE_USUARIO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_GRUPO_LEMBRETE_USUARIO` (
-  `co_grupo_lembrete` INT NOT NULL,
+  `co_grupo_lembrete_usuario` INT NOT NULL AUTO_INCREMENT,
   `co_usuario_destino` INT(10) NOT NULL,
-  PRIMARY KEY (`co_grupo_lembrete`, `co_usuario_destino`),
+  `co_grupo_lembrete` INT NOT NULL,
+  PRIMARY KEY (`co_grupo_lembrete_usuario`, `co_usuario_destino`, `co_grupo_lembrete`),
   INDEX `fk_TB_GRUPO_LEMBRETE_TB_USUARIO_TB_USUARIO1_idx` (`co_usuario_destino` ASC),
   INDEX `fk_TB_GRUPO_LEMBRETE_TB_USUARIO_TB_GRUPO_LEMBRETE1_idx` (`co_grupo_lembrete` ASC))
-ENGINE = InnoDB;
+  ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `brcommerce`.`TB_CONSUMIDOR_DEPENDENCIA` (
+  `co_consumidor_dependencia` INT NOT NULL AUTO_INCREMENT,
+  `co_consumidor_matriz` INT NOT NULL,
+  `co_consumidor_filial` INT NOT NULL,
+  PRIMARY KEY (`co_consumidor_dependencia`, `co_consumidor_matriz`, `co_consumidor_filial`),
+  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR1_idx` (`co_consumidor_matriz` ASC),
+  INDEX `fk_TB_CONSUMIDOR_DEPEDENCIA_TB_CONSUMIDOR2_idx` (`co_consumidor_filial` ASC))
+  ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
@@ -875,6 +883,16 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `brcommerce`.`TB_IMAGEM`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `brcommerce`;
+INSERT INTO `brcommerce`.`TB_IMAGEM` (`co_imagem`, `ds_caminho`) VALUES (1, 'leo_bessa.jpg');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `brcommerce`.`TB_PESSOA`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -889,7 +907,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `brcommerce`;
-INSERT INTO `brcommerce`.`TB_USUARIO` (`co_usuario`, `ds_login`, `ds_senha`, `ds_code`, `st_status`, `dt_cadastro`, `co_consumidor`, `co_imagem`, `co_pessoa`) VALUES (1, 'leobessa', '123456**', 'TVRJek5EVTJLaW89', 'A', '2016-02-18 10:10:10', 0, 0, 1);
+INSERT INTO `brcommerce`.`TB_USUARIO` (`co_usuario`, `ds_login`, `ds_senha`, `ds_code`, `st_status`, `dt_cadastro`, `co_consumidor`, `co_imagem`, `co_pessoa`) VALUES (1, 'leobessa', '123456**', 'TVRJek5EVTJLaW89', 'A', '2016-02-18 10:10:10', 0, 1, 1);
 
 COMMIT;
 

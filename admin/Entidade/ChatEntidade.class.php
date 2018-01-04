@@ -2,7 +2,7 @@
 
 /**
  * Chat.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class ChatEntidade extends AbstractEntidade
@@ -111,7 +111,7 @@ class ChatEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return UsuarioEntidade $co_usuario_origem
+	* @return UsuarioOrigemEntidade $co_usuario_origem
      */
 	public function getCoUsuarioOrigem()
     {
@@ -128,7 +128,7 @@ class ChatEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return UsuarioEntidade $co_usuario_destino
+	* @return UsuarioDestinoEntidade $co_usuario_destino
      */
 	public function getCoUsuarioDestino()
     {

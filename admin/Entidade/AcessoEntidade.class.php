@@ -2,7 +2,7 @@
 
 /**
  * Acesso.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class AcessoEntidade extends AbstractEntidade
@@ -15,6 +15,10 @@ class AcessoEntidade extends AbstractEntidade
 	private $ds_session_id;
 	private $dt_inicio_acesso;
 	private $dt_fim_acesso;
+	private $tp_situacao;
+	private $ds_navegador;
+	private $ds_sistema_operacional;
+	private $ds_dispositivo;
 	private $co_usuario;
 
 
@@ -27,6 +31,10 @@ class AcessoEntidade extends AbstractEntidade
 			DS_SESSION_ID,
 			DT_INICIO_ACESSO,
 			DT_FIM_ACESSO,
+			TP_SITUACAO,
+			DS_NAVEGADOR,
+			DS_SISTEMA_OPERACIONAL,
+			DS_DISPOSITIVO,
 			CO_USUARIO,
 		];
     }
@@ -106,6 +114,74 @@ class AcessoEntidade extends AbstractEntidade
 	public function setDtFimAcesso($dt_fim_acesso)
     {
         return $this->dt_fim_acesso = $dt_fim_acesso;
+    }
+
+	/**
+	* @return $tp_situacao
+     */
+	public function getTpSituacao()
+    {
+        return $this->tp_situacao;
+    }
+
+	/**
+	* @param $tp_situacao
+     * @return mixed
+     */
+	public function setTpSituacao($tp_situacao)
+    {
+        return $this->tp_situacao = $tp_situacao;
+    }
+
+	/**
+	* @return $ds_navegador
+     */
+	public function getDsNavegador()
+    {
+        return $this->ds_navegador;
+    }
+
+	/**
+	* @param $ds_navegador
+     * @return mixed
+     */
+	public function setDsNavegador($ds_navegador)
+    {
+        return $this->ds_navegador = $ds_navegador;
+    }
+
+	/**
+	* @return $ds_sistema_operacional
+     */
+	public function getDsSistemaOperacional()
+    {
+        return $this->ds_sistema_operacional;
+    }
+
+	/**
+	* @param $ds_sistema_operacional
+     * @return mixed
+     */
+	public function setDsSistemaOperacional($ds_sistema_operacional)
+    {
+        return $this->ds_sistema_operacional = $ds_sistema_operacional;
+    }
+
+	/**
+	* @return $ds_dispositivo
+     */
+	public function getDsDispositivo()
+    {
+        return $this->ds_dispositivo;
+    }
+
+	/**
+	* @param $ds_dispositivo
+     * @return mixed
+     */
+	public function setDsDispositivo($ds_dispositivo)
+    {
+        return $this->ds_dispositivo = $ds_dispositivo;
     }
 
 	/**

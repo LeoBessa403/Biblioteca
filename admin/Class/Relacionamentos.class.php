@@ -2,14 +2,14 @@
 
 /**
  * Relacionamentos.class [ RELACIONAMENTOS DO BANCO ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
+
 class Relacionamentos
 {
 
-	public static function getRelacionamentos()
-	{
-		return array(
+	public static function getRelacionamentos(){
+    		return array(
 			(AcessoEntidade::TABELA) => Array(
 				(CO_USUARIO) => Array(
 					('Campo') => CO_USUARIO,
@@ -66,7 +66,7 @@ class Relacionamentos
 				(CO_CONSUMIDOR) => Array(
 					('Campo') => CO_CONSUMIDOR,
 					('Entidade') => 'ConsumidorEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 				(CO_IMAGEM) => Array(
 					('Campo') => CO_IMAGEM,
@@ -81,31 +81,6 @@ class Relacionamentos
 				(CO_USUARIO_PERFIL) => Array(
 					('Campo') => CO_USUARIO,
 					('Entidade') => 'UsuarioPerfilEntidade',
-					('Tipo') => '2',
-				),
-				(CO_USUARIO) => Array(
-					('Campo') => CO_USUARIO_DESTINO,
-					('Entidade') => 'ChatEntidade',
-					('Tipo') => '2',
-				),
-				(CO_USUARIO) => Array(
-					('Campo') => CO_USUARIO_DESTINO,
-					('Entidade') => 'GrupoLembreteUsuarioEntidade',
-					('Tipo') => '2',
-				),
-				(CO_USUARIO) => Array(
-					('Campo') => CO_USUARIO_DESTINO,
-					('Entidade') => 'LembreteEntidade',
-					('Tipo') => '2',
-				),
-				(CO_USUARIO) => Array(
-					('Campo') => CO_USUARIO_ORIGEM,
-					('Entidade') => 'ChatEntidade',
-					('Tipo') => '2',
-				),
-				(CO_USUARIO) => Array(
-					('Campo') => CO_USUARIO_ORIGEM,
-					('Entidade') => 'LembreteEntidade',
 					('Tipo') => '2',
 				),
 			),
@@ -226,16 +201,6 @@ class Relacionamentos
 					('Entidade') => 'UsuarioEntidade',
 					('Tipo') => '2',
 				),
-				(CO_CONSUMIDOR) => Array(
-					('Campo') => CO_CONSUMIDOR_MATRIZ,
-					('Entidade') => 'ConsumidorDependenciaEntidade',
-					('Tipo') => '2',
-				),
-				(CO_CONSUMIDOR) => Array(
-					('Campo') => CO_CONSUMIDOR_FILIAL,
-					('Entidade') => 'ConsumidorDependenciaEntidade',
-					('Tipo') => '1',
-				),
 			),
 			(CaixaEntidade::TABELA) => Array(
 				(CO_USUARIO) => Array(
@@ -270,31 +235,48 @@ class Relacionamentos
 				(CO_CATEGORIA) => Array(
 					('Campo') => CO_SESSAO,
 					('Entidade') => 'CategoriaEntidade',
-					('Tipo') => '2',
+					('Tipo') => '1',
 				),
 			),
 			(ChatEntidade::TABELA) => Array(
-				(CO_USUARIO) => Array(
+				(CO_USUARIO_ORIGEM) => Array(
 					('Campo') => CO_USUARIO_ORIGEM,
-					('Entidade') => 'UsuarioEntidade',
+					('Entidade') => 'UsuarioOrigemEntidade',
 					('Tipo') => '1',
 				),
-				(CO_USUARIO) => Array(
+				(CO_USUARIO_DESTINO) => Array(
 					('Campo') => CO_USUARIO_DESTINO,
-					('Entidade') => 'UsuarioEntidade',
+					('Entidade') => 'UsuarioDestinoEntidade',
 					('Tipo') => '1',
 				),
 			),
-			(ConsumidorDependenciaEntidade::TABELA) => Array(
-				(CO_CONSUMIDOR_MATRIZ) => Array(
-					('Campo') => CO_CONSUMIDOR,
-					('Entidade') => 'ConsumidorEntidade',
-					('Tipo') => '1',
+			(UsuarioEntidade::TABELA) => Array(
+				(CO_CHAT) => Array(
+					('Campo') => CO_USUARIO_ORIGEM,
+					('Entidade') => 'ChatEntidade',
+					('Tipo') => '2',
 				),
-				(CO_CONSUMIDOR_FILIAL) => Array(
-					('Campo') => CO_CONSUMIDOR,
-					('Entidade') => 'ConsumidorEntidade',
-					('Tipo') => '1',
+				(CO_LEMBRETE) => Array(
+					('Campo') => CO_USUARIO_ORIGEM,
+					('Entidade') => 'LembreteEntidade',
+					('Tipo') => '2',
+				),
+			),
+			(UsuarioEntidade::TABELA) => Array(
+				(CO_CHAT) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'ChatEntidade',
+					('Tipo') => '2',
+				),
+				(CO_GRUPO_LEMBRETE_USUARIO) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'GrupoLembreteUsuarioEntidade',
+					('Tipo') => '2',
+				),
+				(CO_LEMBRETE) => Array(
+					('Campo') => CO_USUARIO_DESTINO,
+					('Entidade') => 'LembreteEntidade',
+					('Tipo') => '2',
 				),
 			),
 			(ClienteEntidade::TABELA) => Array(
@@ -474,7 +456,7 @@ class Relacionamentos
 				(CO_NEGOCIACAO_PRODUTO) => Array(
 					('Campo') => CO_NEGOCIACAO,
 					('Entidade') => 'NegociacaoProdutoEntidade',
-					('Tipo') => '2',
+					('Tipo') => '1',
 				),
 				(CO_ORDEM_SERVICO) => Array(
 					('Campo') => CO_NEGOCIACAO,
@@ -491,6 +473,32 @@ class Relacionamentos
 				(CO_COMISSAO) => Array(
 					('Campo') => CO_TIPO_COMISSAO,
 					('Entidade') => 'ComissaoEntidade',
+					('Tipo') => '2',
+				),
+			),
+			(ConsumidorDependenciaEntidade::TABELA) => Array(
+				(CO_CONSUMIDOR_MATRIZ) => Array(
+					('Campo') => CO_CONSUMIDOR_MATRIZ,
+					('Entidade') => 'ConsumidorMatrizEntidade',
+					('Tipo') => '1',
+				),
+				(CO_CONSUMIDOR_FILIAL) => Array(
+					('Campo') => CO_CONSUMIDOR_FILIAL,
+					('Entidade') => 'ConsumidorFilialEntidade',
+					('Tipo') => '1',
+				),
+			),
+			(ConsumidorEntidade::TABELA) => Array(
+				(CO_CONSUMIDOR_DEPENDENCIA) => Array(
+					('Campo') => CO_CONSUMIDOR_MATRIZ,
+					('Entidade') => 'ConsumidorDependenciaEntidade',
+					('Tipo') => '2',
+				),
+			),
+			(ConsumidorEntidade::TABELA) => Array(
+				(CO_CONSUMIDOR_DEPENDENCIA) => Array(
+					('Campo') => CO_CONSUMIDOR_FILIAL,
+					('Entidade') => 'ConsumidorDependenciaEntidade',
 					('Tipo') => '2',
 				),
 			),
@@ -677,7 +685,7 @@ class Relacionamentos
 				),
 			),
 			(GrupoLembreteUsuarioEntidade::TABELA) => Array(
-				(CO_USUARIO) => Array(
+				(CO_USUARIO_DESTINO) => Array(
 					('Campo') => CO_USUARIO_DESTINO,
 					('Entidade') => 'UsuarioDestinoEntidade',
 					('Tipo') => '2',
@@ -689,14 +697,14 @@ class Relacionamentos
 				),
 			),
 			(LembreteEntidade::TABELA) => Array(
-				(CO_USUARIO) => Array(
+				(CO_USUARIO_ORIGEM) => Array(
 					('Campo') => CO_USUARIO_ORIGEM,
-					('Entidade') => 'UsuarioEntidade',
+					('Entidade') => 'UsuarioOrigemEntidade',
 					('Tipo') => '1',
 				),
-				(CO_USUARIO) => Array(
+				(CO_USUARIO_DESTINO) => Array(
 					('Campo') => CO_USUARIO_DESTINO,
-					('Entidade') => 'UsuarioEntidade',
+					('Entidade') => 'UsuarioDestinoEntidade',
 					('Tipo') => '1',
 				),
 				(CO_GRUPO_LEMBRETE) => Array(
@@ -881,19 +889,19 @@ class Relacionamentos
 				(CO_PRODUTO_DETALHE) => Array(
 					('Campo') => CO_PRODUTO_DETALHE,
 					('Entidade') => 'ProdutoDetalheEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 				(CO_PERFIL) => Array(
 					('Campo') => CO_PERFIL,
 					('Entidade') => 'PerfilEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 			),
 			(ProdutoDetalheEntidade::TABELA) => Array(
 				(CO_PERFIL_PRODUTO_DETALHE) => Array(
 					('Campo') => CO_PRODUTO_DETALHE,
 					('Entidade') => 'PerfilProdutoDetalheEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 				(CO_USUARIO) => Array(
 					('Campo') => CO_USUARIO,
@@ -910,7 +918,7 @@ class Relacionamentos
 				(CO_PRODUTO) => Array(
 					('Campo') => CO_UNIDADE_VENDA_CONSUMIDOR,
 					('Entidade') => 'ProdutoEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 				(CO_UNIDADE_VENDA) => Array(
 					('Campo') => CO_UNIDADE_VENDA,
@@ -946,19 +954,19 @@ class Relacionamentos
 				(CO_PRODUTO_GRADE_PRODUTO) => Array(
 					('Campo') => CO_GRADE_PRODUTO,
 					('Entidade') => 'ProdutoGradeProdutoEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 			),
 			(ProdutoLocalidadeEntidade::TABELA) => Array(
 				(CO_LOCALIDADE) => Array(
 					('Campo') => CO_LOCALIDADE,
 					('Entidade') => 'LocalidadeEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 				(CO_PRODUTO) => Array(
 					('Campo') => CO_PRODUTO,
 					('Entidade') => 'ProdutoEntidade',
-					('Tipo') => '1',
+					('Tipo') => '2',
 				),
 			),
 			(ProdutoPromocaoEntidade::TABELA) => Array(
@@ -1005,5 +1013,5 @@ class Relacionamentos
 				),
 			),
 		);
-	}
+}
 }

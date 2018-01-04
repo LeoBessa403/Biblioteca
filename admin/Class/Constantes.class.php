@@ -4,12 +4,16 @@
  * Constantes.class [ HELPER ]
  * Classe responável por manipular e validade dados do sistema!
  *
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 	define('CO_ACESSO', 'co_acesso');
 	define('DS_SESSION_ID', 'ds_session_id');
 	define('DT_INICIO_ACESSO', 'dt_inicio_acesso');
 	define('DT_FIM_ACESSO', 'dt_fim_acesso');
+	define('TP_SITUACAO', 'tp_situacao');
+	define('DS_NAVEGADOR', 'ds_navegador');
+	define('DS_SISTEMA_OPERACIONAL', 'ds_sistema_operacional');
+	define('DS_DISPOSITIVO', 'ds_dispositivo');
 	define('CO_USUARIO', 'co_usuario');
 	define('CO_AJUDA', 'co_ajuda');
 	define('DS_AJUDA', 'ds_ajuda');
@@ -23,7 +27,6 @@
 	define('CO_REGISTRO', 'co_registro');
 	define('DS_PERFIL_USUARIO', 'ds_perfil_usuario');
 	define('CO_CONSUMIDOR', 'co_consumidor');
-	define('CO_CONSUMIDOR_DEPENDENCIA', 'co_consumidor_dependencia');
 	define('CO_CAIXA', 'co_caixa');
 	define('NU_CAIXA', 'nu_caixa');
 	define('DT_ABERTURA', 'dt_abertura');
@@ -51,6 +54,7 @@
 	define('DT_OCORRENCIA', 'dt_ocorrencia');
 	define('CO_NEGOCIACAO', 'co_negociacao');
 	define('CO_TIPO_COMISSAO', 'co_tipo_comissao');
+	define('CO_CONSUMIDOR_DEPENDENCIA', 'co_consumidor_dependencia');
 	define('CO_CONSUMIDOR_MATRIZ', 'co_consumidor_matriz');
 	define('CO_CONSUMIDOR_FILIAL', 'co_consumidor_filial');
 	define('CO_CONTATO', 'co_contato');
@@ -122,7 +126,6 @@
 	define('NU_TOTAL', 'nu_total');
 	define('NU_VALOR_PAGO', 'nu_valor_pago');
 	define('NU_PARCELAS', 'nu_parcelas');
-	define('TP_SITUACAO', 'tp_situacao');
 	define('DT_ATUALIZADO', 'dt_atualizado');
 	define('CO_TIPO_PAGAMENTO', 'co_tipo_pagamento');
 	define('CO_PARCELAMENTO', 'co_parcelamento');
@@ -187,6 +190,7 @@
 	define('CLIENTE_SERVICE', 'ClienteService');
 	define('COMISSAO_SERVICE', 'ComissaoService');
 	define('CONSUMIDOR_SERVICE', 'ConsumidorService');
+	define('CONSUMIDOR_DEPENDENCIA_SERVICE', 'ConsumidorDependenciaService');
 	define('CONTATO_SERVICE', 'ContatoService');
 	define('EMPRESA_SERVICE', 'EmpresaService');
 	define('ENDERECO_SERVICE', 'EnderecoService');

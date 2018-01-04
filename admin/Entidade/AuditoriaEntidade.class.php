@@ -2,7 +2,7 @@
 
 /**
  * Auditoria.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class AuditoriaEntidade extends AbstractEntidade
@@ -153,7 +153,7 @@ class AuditoriaEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return $co_registro
+	* @return RegistroEntidade $co_registro
      */
 	public function getCoRegistro()
     {

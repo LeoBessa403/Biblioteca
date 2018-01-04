@@ -2,7 +2,7 @@
 
 /**
  * ConsumidorDependencia.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class ConsumidorDependenciaEntidade extends AbstractEntidade
@@ -20,7 +20,11 @@ class ConsumidorDependenciaEntidade extends AbstractEntidade
      * @return array
      */
 	public static function getCampos() {
-    	return [CO_CONSUMIDOR_DEPENDENCIA];
+    	return [
+			CO_CONSUMIDOR_DEPENDENCIA,
+			CO_CONSUMIDOR_MATRIZ,
+			CO_CONSUMIDOR_FILIAL,
+		];
     }
 
 	/**
@@ -31,51 +35,56 @@ class ConsumidorDependenciaEntidade extends AbstractEntidade
 		return $relacionamentos[static::TABELA];
 	}
 
-    /**
-     * @return mixed
+
+	/**
+	* @return $co_consumidor_dependencia
      */
-    public function getCoConsumidorDependencia()
+	public function getCoConsumidorDependencia()
     {
         return $this->co_consumidor_dependencia;
     }
 
-    /**
-     * @param mixed $co_consumidor_dependencia
+	/**
+	* @param $co_consumidor_dependencia
+     * @return mixed
      */
-    public function setCoConsumidorDependencia($co_consumidor_dependencia)
+	public function setCoConsumidorDependencia($co_consumidor_dependencia)
     {
-        $this->co_consumidor_dependencia = $co_consumidor_dependencia;
+        return $this->co_consumidor_dependencia = $co_consumidor_dependencia;
     }
 
-    /**
-     * @return ConsumidorEntidade mixed
+	/**
+	* @return ConsumidorMatrizEntidade $co_consumidor_matriz
      */
-    public function getCoConsumidorMatriz()
+	public function getCoConsumidorMatriz()
     {
         return $this->co_consumidor_matriz;
     }
 
-    /**
-     * @param mixed $co_consumidor_matriz
+	/**
+	* @param $co_consumidor_matriz
+     * @return mixed
      */
-    public function setCoConsumidorMatriz($co_consumidor_matriz)
+	public function setCoConsumidorMatriz($co_consumidor_matriz)
     {
-        $this->co_consumidor_matriz = $co_consumidor_matriz;
+        return $this->co_consumidor_matriz = $co_consumidor_matriz;
     }
 
-    /**
-     * @return ConsumidorEntidade mixed
+	/**
+	* @return ConsumidorFilialEntidade $co_consumidor_filial
      */
-    public function getCoConsumidorFilial()
+	public function getCoConsumidorFilial()
     {
         return $this->co_consumidor_filial;
     }
 
-    /**
-     * @param mixed $co_consumidor_filial
+	/**
+	* @param $co_consumidor_filial
+     * @return mixed
      */
-    public function setCoConsumidorFilial($co_consumidor_filial)
+	public function setCoConsumidorFilial($co_consumidor_filial)
     {
-        $this->co_consumidor_filial = $co_consumidor_filial;
+        return $this->co_consumidor_filial = $co_consumidor_filial;
     }
+
 }

@@ -2,7 +2,7 @@
 
 /**
  * LocalidadeConsumidor.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class LocalidadeConsumidorEntidade extends AbstractEntidade

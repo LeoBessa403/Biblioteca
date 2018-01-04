@@ -2,7 +2,7 @@
 
 /**
  * GrupoLembreteUsuario.Entidade [ ENTIDADE ]
- * @copyright (c) 2017, Leo Bessa
+ * @copyright (c) 2018, Leo Bessa
  */
 
 class GrupoLembreteUsuarioEntidade extends AbstractEntidade
@@ -54,7 +54,7 @@ class GrupoLembreteUsuarioEntidade extends AbstractEntidade
     }
 
 	/**
-	* @return UsuarioEntidade $co_usuario_destino
+	* @return UsuarioDestinoEntidade $co_usuario_destino
      */
 	public function getCoUsuarioDestino()
     {
