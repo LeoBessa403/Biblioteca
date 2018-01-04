@@ -2,9 +2,9 @@
 
 class Usuario extends AbstractController
 {
-
-    private $idUsuario;
-    private $form;
+    public $form;
+    public $result;
+    public $perfis;
 
     public function Index()
     {
@@ -15,13 +15,15 @@ class Usuario extends AbstractController
         /** @var Session $us */
         $us = $_SESSION[SESSION_USER];
         $user = $us->getUser();
-        $this->idUsuario = $user[md5(CO_USUARIO)];
-        $this->CadastroUsuario(true);
-        UrlAmigavel::$action = "CadastroUsuario";
+        $idUsuario = $user[md5(CO_USUARIO)];
+        Redireciona('admin/Usuario/CadastroUsuario/'.Valida::GeraParametro('usu/'.$idUsuario));
     }
 
-    public function CadastroUsuario($meuPerfil = false)
+    public function CadastroUsuario()
     {
+        /** @var PerfilService $perfilService */
+        $perfilService = static::getService(PERFIL_SERVICE);
+
         $id = "CadastroUsuario";
 
         if (!empty($_POST[$id])):
@@ -29,9 +31,6 @@ class Usuario extends AbstractController
         endif;
 
         $idCoUsuario = UrlAmigavel::PegaParametro("usu");
-        if ($meuPerfil):
-            $idCoUsuario = $this->idUsuario;
-        endif;
         $res = array();
         if ($idCoUsuario):
             /** @var UsuarioService $usuarioService */
@@ -64,7 +63,7 @@ class Usuario extends AbstractController
             $res[SG_UF] = $usuario->getCoPessoa()->getCoEndereco()->getSgUf();
         endif;
 
-        $this->form = UsuarioForm::Cadastrar($res);
+        $this->form = UsuarioForm::Cadastrar($res, false, 6, $perfilService);
     }
 
     public function salvaUsuario($dados, $foto, $resgistrar = false)
@@ -82,7 +81,6 @@ class Usuario extends AbstractController
         /** @var UsuarioPerfilService $usuarioPerfilService */
         $usuarioPerfilService = $this->getService(USUARIO_PERFIL_SERVICE);
         $session = new Session();
-
         if ($session->CheckSession(SESSION_USER)) {
             /** @var Session $us */
             $us = $_SESSION[SESSION_USER];
@@ -92,66 +90,48 @@ class Usuario extends AbstractController
         } else {
             $meusPerfis = array();
         }
-
         $idCoUsuario = (isset($dados[CO_USUARIO]) ? $dados[CO_USUARIO] : null);
 
-        $endereco[DS_ENDERECO] = $dados[DS_ENDERECO];
-        $endereco[DS_COMPLEMENTO] = $dados[DS_COMPLEMENTO];
-        $endereco[DS_BAIRRO] = $dados[DS_BAIRRO];
-        $endereco[NO_CIDADE] = $dados[NO_CIDADE];
-        $endereco[NU_CEP] = Valida::RetiraMascara($dados[NU_CEP]);
+        $endereco = $enderecoService->getDados($dados, EnderecoEntidade::ENTIDADE);
         $endereco[SG_UF] = $dados[SG_UF][0];
 
-        $contato[DS_EMAIL] = trim($dados[DS_EMAIL]);
-        $contato[NU_TEL1] = Valida::RetiraMascara($dados[NU_TEL1]);
-        $contato[NU_TEL2] = Valida::RetiraMascara($dados[NU_TEL2]);
+        $contato = $contatoService->getDados($dados, ContatoEntidade::ENTIDADE);
 
+        $pessoa = $pessoaService->getDados($dados, PessoaEntidade::ENTIDADE);
         $pessoa[NO_PESSOA] = strtoupper(trim($dados[NO_PESSOA]));
-        $pessoa[NU_CPF] = Valida::RetiraMascara($dados[NU_CPF]);
-        $pessoa[NU_RG] = Valida::RetiraMascara($dados[NU_RG]);
         $pessoa[DT_NASCIMENTO] = Valida::DataDBDate($dados[DT_NASCIMENTO]);
         $pessoa[ST_SEXO] = $dados[ST_SEXO][0];
 
-        $usu[DS_SENHA] = $dados[DS_SENHA];
-        $usu[DS_CODE] = base64_encode(base64_encode($dados[DS_SENHA]));
-        if (!empty($dados[ST_STATUS])):
-            $usu[ST_STATUS] = "A";
-        else:
-            if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
-                $usu[ST_STATUS] = "I";
-            endif;
-        endif;
-
-        $user[NO_PESSOA] = $pessoa[NO_PESSOA];
-        /** @var PessoaEntidade $userNome */
-        $userNome = $pessoaService->PesquisaUmQuando($user);
-        $email[DS_EMAIL] = $contato[DS_EMAIL];
-        /** @var ContatoEntidade $userEmail */
-        $userEmail = $contatoService->PesquisaUmQuando($email);
-        $cpf[NU_CPF] = $pessoa[NU_CPF];
-        /** @var PessoaEntidade $userCpf */
-        $userCpf = $pessoaService->PesquisaUmQuando($cpf);
-
         $erro = false;
         $Campo = array();
-        if ($userNome && $userNome->getCoUsuario()->getCoUsuario() != $idCoUsuario):
-            $Campo[] = "Nome do Usuário";
-            $erro = true;
-        endif;
-        if ($userEmail && $userEmail->getCoPessoa()->getCoUsuario()->getCoUsuario() != $idCoUsuario):
-            $Campo[] = "E-mail";
-            $erro = true;
-        endif;
-        if ($userCpf && $userCpf->getCoUsuario()->getCoUsuario() != $idCoUsuario):
-            $Campo[] = "CPF";
-            $erro = true;
-        endif;
+        /** @var UsuarioEntidade $usuario */
+        $usuarios = $usuarioService->PesquisaTodos();
+
+        /** @var UsuarioEntidade $usuario */
+        foreach ($usuarios as $usuario) {
+            if($usuario->getCoUsuario() != $idCoUsuario){
+                if($usuario->getCoPessoa()->getNoPessoa() == strtoupper($pessoa[NO_PESSOA])){
+                    $Campo[] = "Nome do Usuário";
+                    $erro = true;
+                }
+                if($usuario->getCoPessoa()->getCoContato()->getDsEmail() == $contato[DS_EMAIL]){
+                    $Campo[] = "E-mail";
+                    $erro = true;
+                }
+                if($usuario->getCoPessoa()->getNuCpf() == $pessoa[NU_CPF]){
+                    $Campo[] = "CPF";
+                    $erro = true;
+                }
+            }
+            if ($erro){
+                break;
+            }
+        }
 
         if ($erro):
             $session->setSession(MENSAGEM, "Já exite usuário cadastro com o mesmo "
                 . implode(", ", $Campo) . ", Favor Verificar.");
         else:
-
             $imagem[DS_CAMINHO] = "";
             if ($foto[DS_CAMINHO]["tmp_name"]):
                 $foto = $_FILES[DS_CAMINHO];
@@ -159,6 +139,16 @@ class Usuario extends AbstractController
                 $up = new Upload();
                 $up->UploadImagens($foto, $nome, "usuarios");
                 $imagem[DS_CAMINHO] = $up->getNameImage();
+            endif;
+
+            $usu[DS_CODE] = base64_encode(base64_encode($dados[DS_SENHA]));
+            $usu[DS_SENHA] = trim($dados[DS_SENHA]);
+            if (!empty($dados[ST_STATUS])):
+                $usu[ST_STATUS] = "A";
+            else:
+                if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
+                    $usu[ST_STATUS] = "I";
+                endif;
             endif;
 
             if ($idCoUsuario):
@@ -216,49 +206,27 @@ class Usuario extends AbstractController
                     $usuarioPerfil[CO_PERFIL] = 3;
                     $usuarioPerfilService->Salva($usuarioPerfil);
                 endif;
-
-                $session->setSession(CADASTRADO, 'OK');
-
-//                $email = new Email();
-//
-//                // Índice = Nome, e Valor = Email.
-//                $emails = array(
-//                    $pessoa[NO_PESSOA] => $contato[DS_EMAIL]
-//                );
-//                $Mensagem = "<h2>Seu cadastro foi realizado com sucesso</h2><br/>"
-//                    . "Aguarde a Ativação do seu Usuário.";
-//
-//                $email->setEmailDestinatario($emails)
-//                    ->setTitulo("Email de  Teste Pra Todos")
-//                    ->setMensagem($Mensagem);
-//
-//                //Variável para validação de Emails Enviados com Sucesso.
-//                $EmailEnviado = $email->Enviar();
-//
-//                $this->result = true;
             endif;
 
-
-            unset($_POST);
             if (!$resgistrar) {
                 if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
-                    $this->ListarUsuario();
-                    UrlAmigavel::$action = "ListarUsuario";
+                    Redireciona(UrlAmigavel::$modulo.'/'.UrlAmigavel::$controller.'/ListarUsuario/');
                 } else {
-                    UrlAmigavel::$action = "Index";
-                    $IndexControl = new Index();
-                    $IndexControl->Index();
-                    UrlAmigavel::$controller = "Index";
+                    Redireciona(UrlAmigavel::$modulo.'/Index/Index/');
                 }
+            }else{
+                Redireciona('admin/Index/Acessar/'.Valida::GeraParametro('acesso/C'));
             }
         endif;
     }
 
-
     public function ListarUsuario()
     {
-        $perfilControl = new Perfil();
-        $usuarioModel = new UsuarioModel();
+        /** @var PerfilService $perfilService */
+        $perfilService = $this->getService(PERFIL_SERVICE);
+        /** @var UsuarioService $usuarioService */
+        $usuarioService = $this->getService(USUARIO_SERVICE);
+
         $dados = array();
         $session = new Session();
 
@@ -266,49 +234,34 @@ class Usuario extends AbstractController
             $session->FinalizaSession(PESQUISA_AVANCADA);
         }
         if (!empty($_POST)) {
-            $dados = array(
-                NO_PESSOA => trim($_POST[NO_PESSOA]),
-                NU_CPF => Valida::RetiraMascara($_POST[NU_CPF]),
+            $Condicoes = array(
+                "pes." . NO_PESSOA => trim($_POST[NO_PESSOA]),
+                "pes." . NU_CPF => Valida::RetiraMascara($_POST[NU_CPF]),
             );
-            $session->setSession(PESQUISA_AVANCADA, $dados);
-            $pessoaModel = new PessoaModel();
-            $pessoas = $pessoaModel->PesquisaTodos($dados);
-            $todos = array();
-            foreach ($pessoas as $pessoa) {
-                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
-            }
-            if ($todos) {
-                $usuarios[CO_USUARIO] = implode(', ', $todos);
-                $this->result = $usuarioModel->PesquisaTodos($usuarios);
-            } else {
-                $this->result = array();
-            }
+            $session->setSession(PESQUISA_AVANCADA, $Condicoes);
+            $this->result = $usuarioService->PesquisaAvancada($Condicoes);
         } else {
-            $this->result = $usuarioModel->PesquisaTodos($dados);
+            $this->result = $usuarioService->PesquisaTodos($dados);
         }
 
         /** @var UsuarioEntidade $value */
         foreach ($this->result as $value):
-            $this->perfis[$value->getCoUsuario()] = implode(', ', $perfilControl->montaComboPerfil($value));
+            $this->perfis[$value->getCoUsuario()] = implode(', ', $perfilService->montaComboPerfil($value));
         endforeach;
     }
 
     // AÇÃO DE EXPORTAÇÃO
     public function ExportarListarUsuario()
     {
-        $usuarioModel = new UsuarioModel();
+        /** @var UsuarioService $usuarioService */
+        $usuarioService = $this->getService(USUARIO_SERVICE);
+
         $session = new Session();
         if ($session->CheckSession(PESQUISA_AVANCADA)) {
-            $dados = $session->getSession(PESQUISA_AVANCADA);
-            $pessoaModel = new PessoaModel();
-            $pessoas = $pessoaModel->PesquisaTodos($dados);
-            foreach ($pessoas as $pessoa) {
-                $todos[] = $pessoa->getCoUsuario()->getCoUsuario();
-            }
-            $usuarios[CO_USUARIO] = implode(', ', $todos);
-            $result = $usuarioModel->PesquisaTodos($usuarios);
+            $Condicoes = $session->getSession(PESQUISA_AVANCADA);
+            $result =  $usuarioService->PesquisaAvancada($Condicoes);
         } else {
-            $result = $usuarioModel->PesquisaTodos();
+            $result = $usuarioService->PesquisaTodos();
         }
         $formato = UrlAmigavel::PegaParametro("formato");
         $i = 0;
@@ -333,6 +286,3 @@ class Usuario extends AbstractController
     }
 
 }
-
-?>
-   

@@ -5,76 +5,21 @@ class Index extends AbstractController
 
     function Index()
     {
+
     }
 
-    public function Logar()
+    function Registrar()
     {
-        // CLASSE DE LOGAR
-        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CPF]));
-        $senha = Valida::LimpaVariavel($_POST[DS_SENHA]);
-        if (($cpf != "") && ($senha != "")):
+        /** @var PerfilService $perfilService */
+        $perfilService = static::getService(PERFIL_SERVICE);
 
-            /** @var UsuarioService $usuariaService */
-            $usuariaService = $this->getService(USUARIO_SERVICE);
-            $usuarios = $usuariaService->PesquisaTodos();
-
-            $user = "";
-            // Codifica a senha
-            $senha = base64_encode(base64_encode($senha));
-            /** @var UsuarioEntidade $usuario */
-            foreach ($usuarios as $usuario):
-                if (($usuario->getCoPessoa()->getNuCpf() == $cpf)
-                    && (strtoupper($usuario->getDsCode()) == strtoupper($senha))
-                ) {
-                    if ($usuario->getStStatus() == "I"):
-                        Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
-                        exit();
-                    endif;
-                    /** @var UsuarioEntidade $user */
-                    $user = $usuario;
-                    break;
-                }
-            endforeach;
-            if ($user != ""):
-                $acesso[DS_SESSION_ID] = session_id();
-                $acesso[CO_USUARIO] = $user->getCoUsuario();
-                $acessoService = static::getService(ACESSO_SERVICE);
-                $meuAcesso = $acessoService->PesquisaUmQuando($acesso);
-                if ($meuAcesso) {
-                    $novoAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                    $acessoService->Salva($novoAcesso, $user->getCoUsuario());
-                } else {
-                    $acesso[DT_INICIO_ACESSO] = Valida::DataAtualBanco();
-                    $acesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                    $acessoService->Salva($acesso);
-                }
-
-                $perfis = array();
-                $no_perfis = array();
-                /** @var UsuarioPerfilEntidade $perfil */
-                foreach ($user->getCoUsuarioPerfil() as $perfil) {
-                    $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
-                    $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
-                }
-                $usuarioAcesso[CO_USUARIO] = $user->getCoUsuario();
-                $usuarioAcesso[CO_CONSUMIDOR] = $user->getCoConsumidor();
-                $usuarioAcesso[DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
-                $usuarioAcesso[NU_CPF] = $user->getCoPessoa()->getNuCpf();
-                $usuarioAcesso[NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
-                $usuarioAcesso[ST_SEXO] = $user->getCoPessoa()->getStSexo();
-                $usuarioAcesso[DT_FIM_ACESSO] = Valida::DataAtualBanco();
-                $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
-                $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
-
-                $session = new Session();
-                $session->setUser($usuarioAcesso);
-                Redireciona(ADMIN . LOGADO);
-            else:
-                Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
-            endif;
-        else:
-            Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/B"));
+        $id = "CadastroUsuario";
+        if (!empty($_POST[$id])):
+            $usuarioControl = new Usuario();
+            $usuarioControl->salvaUsuario($_POST, $_FILES, true);
         endif;
+
+        $this->form = UsuarioForm::Cadastrar(false, true, 12, $perfilService);
     }
 
     public function Acessar()
@@ -109,6 +54,10 @@ class Index extends AbstractController
                 $msg = "Sua Sessão foi Expirada!";
                 $class = 2;
                 break;
+            case 'C':
+                $msg = Mensagens::USUARIO_CADASTRADO_SUCESSO;
+                $class = 1;
+                break;
             default:
                 $visivel = false;
                 break;
@@ -119,13 +68,72 @@ class Index extends AbstractController
         $this->msg = $msg;
     }
 
+    public function Logar()
+    {
+        // CLASSE DE LOGAR
+        $cpf = Valida::RetiraMascara(Valida::LimpaVariavel($_POST[NU_CPF]));
+        $senha = Valida::LimpaVariavel($_POST[DS_SENHA]);
+        if (($cpf != "") && ($senha != "")):
+
+            /** @var UsuarioService $usuariaService */
+            $usuariaService = $this->getService(USUARIO_SERVICE);
+            $usuarios = $usuariaService->PesquisaTodos();
+
+            $user = "";
+            // Codifica a senha
+            $senha = base64_encode(base64_encode($senha));
+            /** @var UsuarioEntidade $usuario */
+            foreach ($usuarios as $usuario):
+                if (($usuario->getCoPessoa()->getNuCpf() == $cpf)
+                    && (strtoupper($usuario->getDsCode()) == strtoupper($senha))
+                ) {
+                    if ($usuario->getStStatus() == "I"):
+                        Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/I"));
+                        exit();
+                    endif;
+                    /** @var UsuarioEntidade $user */
+                    $user = $usuario;
+                    break;
+                }
+            endforeach;
+            if ($user != ""):
+                /** @var AcessoService $acessoService */
+                $acessoService = $this->getService(ACESSO_SERVICE);
+                $acessoService->finalizaAcessos();
+                $acessoService->salvarAcesso($user->getCoUsuario());
+
+                $perfis = array();
+                $no_perfis = array();
+                /** @var UsuarioPerfilEntidade $perfil */
+                foreach ($user->getCoUsuarioPerfil() as $perfil) {
+                    $perfis[] = $perfil->getCoPerfil()->getCoPerfil();
+                    $no_perfis[] = $perfil->getCoPerfil()->getNoPerfil();
+                }
+                $usuarioAcesso[CO_USUARIO] = $user->getCoUsuario();
+                $usuarioAcesso[DS_CAMINHO] = $user->getCoImagem()->getDsCaminho();
+                $usuarioAcesso[NU_CPF] = $user->getCoPessoa()->getNuCpf();
+                $usuarioAcesso[NO_PESSOA] = $user->getCoPessoa()->getNoPessoa();
+                $usuarioAcesso[ST_SEXO] = $user->getCoPessoa()->getStSexo();
+                $usuarioAcesso[DT_FIM_ACESSO] = $acessoService->geraDataFimAcesso();
+                $usuarioAcesso[CAMPO_PERFIL] = implode(',', $perfis);
+                $usuarioAcesso['no_perfis'] = implode(', ', $no_perfis);
+
+                $session = new Session();
+                $session->setUser($usuarioAcesso);
+                Redireciona(ADMIN . LOGADO);
+            else:
+                Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/A"));
+            endif;
+        else:
+            Redireciona(ADMIN . LOGIN . Valida::GeraParametro("acesso/B"));
+        endif;
+    }
 
     //*************************************************************//
     //************ EXEMPLOS DE ACTION ****************************//
     //*************************************************************//
 
     // EXEMPLO DE ENVIO DE EMAIL
-
     function VerGraficos()
     {
 //        $grafico = new Grafico(Grafico::PORCENTAGEM, "Teste Porcentagem", "div_porcentagem");

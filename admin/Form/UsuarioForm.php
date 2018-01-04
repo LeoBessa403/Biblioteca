@@ -1,19 +1,18 @@
 <?php
 
-class UsuarioForm
+class UsuarioForm extends AbstractController
 {
 
-    public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6)
+    public static function Cadastrar($res = false, $resgistrar = false, $tamanho = 6, $perfilService)
     {
         $id = "CadastroUsuario";
         $meusPerfis = array();
         $link = UrlAmigavel::$controller . '/Listar' . UrlAmigavel::$controller;
 
-        $perfilControl = new Perfil();
         /** @var Form $formulario */
-        $formulario = new Form($id, ADMIN . "/" . UrlAmigavel::$controller . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
+        $formulario = new Form($id, ADMIN . "/" . UrlAmigavel::$controller
+            . "/" . UrlAmigavel::$action, 'Cadastrar', $tamanho);
         if ($res):
-            /** @var Session $us */
             $us = $_SESSION[SESSION_USER];
             $user = $us->getUser();
             $meusPerfis = $user[md5(CAMPO_PERFIL)];
@@ -23,10 +22,10 @@ class UsuarioForm
             $usuario = $usuarioModel->PesquisaUmQuando([CO_USUARIO => $res['co_usuario']]);
 
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)) {
-                $res[CAMPO_PERFIL] = $perfilControl->montaArrayPerfil($usuario);
+                $res[CAMPO_PERFIL] = $perfilService->montaArrayPerfil($usuario);
             } else {
                 $res[ST_STATUS] = FuncoesSistema::SituacaoUsuarioLabel($res[ST_STATUS]);
-                $res[CAMPO_PERFIL] = implode(', ', $perfilControl->montaComboPerfil($usuario));
+                $res[CAMPO_PERFIL] = implode(', ', $perfilService->montaComboPerfil($usuario));
             }
             $formulario->setValor($res);
         endif;
@@ -123,7 +122,7 @@ class UsuarioForm
             ->setClasses("cep")
             ->CriaInpunt();
 
-        $options = EnderecoService::montaComboEstadosDescricao();
+        $options = Endereco::montaComboEstadosDescricao();
         $formulario
             ->setTamanhoInput(8)
             ->setId(SG_UF)
@@ -151,7 +150,7 @@ class UsuarioForm
 
         if (!$resgistrar) {
             if (in_array(1, $meusPerfis) || in_array(2, $meusPerfis)):
-                $label_options_perfis = $perfilControl->montaComboTodosPerfis();
+                $label_options_perfis = $perfilService->montaComboTodosPerfis();
                 unset($label_options_perfis[1]);
                 $formulario
                     ->setLabel("Perfis")
@@ -241,5 +240,5 @@ class UsuarioForm
         return $formulario->finalizaFormPesquisaAvancada();
     }
 }
+
 ?>
-   
