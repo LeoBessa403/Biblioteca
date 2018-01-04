@@ -9,6 +9,7 @@ if (in_array(UrlAmigavel::$action, UrlAmigavel::$ACESSO_PERMITIDO)):
     exit;
 endif;
 $valida = new ValidaUsuario();
+$valida->validacao();
 $compara = strstr(UrlAmigavel::$action, 'Exporta');
 if ($compara != null):
     $url->pegaControllerAction();

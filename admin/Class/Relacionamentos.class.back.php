@@ -241,12 +241,12 @@ class Relacionamentos
             (ChatEntidade::TABELA) => Array(
                 (CO_USUARIO_ORIGEM) => Array(
                     ('Campo') => CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'UsuarioOrigemEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (CO_USUARIO_DESTINO) => Array(
                     ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'UsuarioDestinoEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
             ),
@@ -687,7 +687,7 @@ class Relacionamentos
             (GrupoLembreteUsuarioEntidade::TABELA) => Array(
                 (CO_USUARIO_DESTINO) => Array(
                     ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'UsuarioDestinoEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '2',
                 ),
                 (CO_GRUPO_LEMBRETE) => Array(
@@ -699,12 +699,12 @@ class Relacionamentos
             (LembreteEntidade::TABELA) => Array(
                 (CO_USUARIO_ORIGEM) => Array(
                     ('Campo') => CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'UsuarioOrigemEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (CO_USUARIO_DESTINO) => Array(
                     ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'UsuarioDestinoEntidade',
+                    ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
                 ),
                 (CO_GRUPO_LEMBRETE) => Array(

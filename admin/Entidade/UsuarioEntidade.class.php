@@ -30,6 +30,9 @@ class UsuarioEntidade extends AbstractEntidade
 	private $co_produto_promocao;
 	private $co_sugestao;
 	private $co_usuario_perfil;
+	private $co_chat;
+	private $co_grupo_lembrete_usuario;
+	private $co_lembrete;
 
 
 	/**
@@ -379,6 +382,54 @@ class UsuarioEntidade extends AbstractEntidade
 	public function setCoUsuarioPerfil($co_usuario_perfil)
     {
         return $this->co_usuario_perfil = $co_usuario_perfil;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoChat()
+    {
+        return $this->co_chat;
+    }
+
+    /**
+     * @param mixed $co_chat
+     */
+    public function setCoChat($co_chat)
+    {
+        $this->co_chat = $co_chat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoGrupoLembreteUsuario()
+    {
+        return $this->co_grupo_lembrete_usuario;
+    }
+
+    /**
+     * @param mixed $co_grupo_lembrete_usuario
+     */
+    public function setCoGrupoLembreteUsuario($co_grupo_lembrete_usuario)
+    {
+        $this->co_grupo_lembrete_usuario = $co_grupo_lembrete_usuario;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCoLembrete()
+    {
+        return $this->co_lembrete;
+    }
+
+    /**
+     * @param mixed $co_lembrete
+     */
+    public function setCoLembrete($co_lembrete)
+    {
+        $this->co_lembrete = $co_lembrete;
     }
 
 }
