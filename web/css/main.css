@@ -362,6 +362,13 @@ hr.fade-left {
 	content: "\f0d5";
 	background: #DD4B39;
 }
+.social-icons ul li.social-instagram a:before {
+	content: "\f16d";
+}
+.social-icons ul li.social-instagram a:after {
+	content: "\f16d";
+	background: hotpink;
+}
 .social-icons ul li.social-linkedin a:before {
 	content: "\f0e1";
 }
