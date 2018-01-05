@@ -84,7 +84,6 @@ class Index extends AbstractController
             $senha = base64_encode(base64_encode($senha));
             /** @var UsuarioEntidade $usuario */
             foreach ($usuarios as $usuario):
-                debug($usuario);
                 if (($usuario->getCoPessoa()->getNuCpf() == $cpf)
                     && (strtoupper($usuario->getDsCode()) == strtoupper($senha))
                 ) {
