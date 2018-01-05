@@ -7,325 +7,327 @@
 
 class EmpresaEntidade extends AbstractEntidade
 {
-	const TABELA = 'tb_empresa';
-	const ENTIDADE = 'EmpresaEntidade';
-	const CHAVE = CO_EMPRESA;
+    const TABELA = 'TB_EMPRESA';
+    const ENTIDADE = 'EmpresaEntidade';
+    const CHAVE = CO_EMPRESA;
 
-	private $co_empresa;
-	private $no_empresa;
-	private $no_fantasia;
-	private $dt_cadastro;
-	private $nu_cnpj;
-	private $nu_insc_estadual;
-	private $ds_observacao;
-	private $st_status;
-	private $co_contato;
-	private $co_pessoa;
-	private $co_endereco;
-	private $co_imagem;
-	private $co_cliente;
-	private $co_consumidor;
-	private $co_fornecedor;
-	private $co_transportadora;
+    private $co_empresa;
+    private $no_empresa;
+    private $no_fantasia;
+    private $dt_cadastro;
+    private $nu_cnpj;
+    private $nu_insc_estadual;
+    private $ds_observacao;
+    private $st_status;
+    private $co_contato;
+    private $co_pessoa;
+    private $co_endereco;
+    private $co_imagem;
+    private $co_cliente;
+    private $co_consumidor;
+    private $co_fornecedor;
+    private $co_transportadora;
 
 
-	/**
+    /**
      * @return array
      */
-	public static function getCampos() {
-    	return [
-			CO_EMPRESA,
-			NO_EMPRESA,
-			NO_FANTASIA,
-			DT_CADASTRO,
-			NU_CNPJ,
-			NU_INSC_ESTADUAL,
-			DS_OBSERVACAO,
-			ST_STATUS,
-			CO_CONTATO,
-			CO_PESSOA,
-			CO_ENDERECO,
-			CO_IMAGEM,
-		];
+    public static function getCampos()
+    {
+        return [
+            CO_EMPRESA,
+            NO_EMPRESA,
+            NO_FANTASIA,
+            DT_CADASTRO,
+            NU_CNPJ,
+            NU_INSC_ESTADUAL,
+            DS_OBSERVACAO,
+            ST_STATUS,
+            CO_CONTATO,
+            CO_PESSOA,
+            CO_ENDERECO,
+            CO_IMAGEM,
+        ];
     }
 
-	/**
-	* @return $relacionamentos
+    /**
+     * @return $relacionamentos
      */
-	public static function getRelacionamentos() {
-    	$relacionamentos = Relacionamentos::getRelacionamentos();
-		return $relacionamentos[static::TABELA];
-	}
+    public static function getRelacionamentos()
+    {
+        $relacionamentos = Relacionamentos::getRelacionamentos();
+        return $relacionamentos[static::TABELA];
+    }
 
 
-	/**
-	* @return $co_empresa
+    /**
+     * @return $co_empresa
      */
-	public function getCoEmpresa()
+    public function getCoEmpresa()
     {
         return $this->co_empresa;
     }
 
-	/**
-	* @param $co_empresa
+    /**
+     * @param $co_empresa
      * @return mixed
      */
-	public function setCoEmpresa($co_empresa)
+    public function setCoEmpresa($co_empresa)
     {
         return $this->co_empresa = $co_empresa;
     }
 
-	/**
-	* @return $no_empresa
+    /**
+     * @return $no_empresa
      */
-	public function getNoEmpresa()
+    public function getNoEmpresa()
     {
         return $this->no_empresa;
     }
 
-	/**
-	* @param $no_empresa
+    /**
+     * @param $no_empresa
      * @return mixed
      */
-	public function setNoEmpresa($no_empresa)
+    public function setNoEmpresa($no_empresa)
     {
         return $this->no_empresa = $no_empresa;
     }
 
-	/**
-	* @return $no_fantasia
+    /**
+     * @return $no_fantasia
      */
-	public function getNoFantasia()
+    public function getNoFantasia()
     {
         return $this->no_fantasia;
     }
 
-	/**
-	* @param $no_fantasia
+    /**
+     * @param $no_fantasia
      * @return mixed
      */
-	public function setNoFantasia($no_fantasia)
+    public function setNoFantasia($no_fantasia)
     {
         return $this->no_fantasia = $no_fantasia;
     }
 
-	/**
-	* @return $dt_cadastro
+    /**
+     * @return $dt_cadastro
      */
-	public function getDtCadastro()
+    public function getDtCadastro()
     {
         return $this->dt_cadastro;
     }
 
-	/**
-	* @param $dt_cadastro
+    /**
+     * @param $dt_cadastro
      * @return mixed
      */
-	public function setDtCadastro($dt_cadastro)
+    public function setDtCadastro($dt_cadastro)
     {
         return $this->dt_cadastro = $dt_cadastro;
     }
 
-	/**
-	* @return $nu_cnpj
+    /**
+     * @return $nu_cnpj
      */
-	public function getNuCnpj()
+    public function getNuCnpj()
     {
         return $this->nu_cnpj;
     }
 
-	/**
-	* @param $nu_cnpj
+    /**
+     * @param $nu_cnpj
      * @return mixed
      */
-	public function setNuCnpj($nu_cnpj)
+    public function setNuCnpj($nu_cnpj)
     {
         return $this->nu_cnpj = $nu_cnpj;
     }
 
-	/**
-	* @return $nu_insc_estadual
+    /**
+     * @return $nu_insc_estadual
      */
-	public function getNuInscEstadual()
+    public function getNuInscEstadual()
     {
         return $this->nu_insc_estadual;
     }
 
-	/**
-	* @param $nu_insc_estadual
+    /**
+     * @param $nu_insc_estadual
      * @return mixed
      */
-	public function setNuInscEstadual($nu_insc_estadual)
+    public function setNuInscEstadual($nu_insc_estadual)
     {
         return $this->nu_insc_estadual = $nu_insc_estadual;
     }
 
-	/**
-	* @return $ds_observacao
+    /**
+     * @return $ds_observacao
      */
-	public function getDsObservacao()
+    public function getDsObservacao()
     {
         return $this->ds_observacao;
     }
 
-	/**
-	* @param $ds_observacao
+    /**
+     * @param $ds_observacao
      * @return mixed
      */
-	public function setDsObservacao($ds_observacao)
+    public function setDsObservacao($ds_observacao)
     {
         return $this->ds_observacao = $ds_observacao;
     }
 
-	/**
-	* @return $st_status
+    /**
+     * @return $st_status
      */
-	public function getStStatus()
+    public function getStStatus()
     {
         return $this->st_status;
     }
 
-	/**
-	* @param $st_status
+    /**
+     * @param $st_status
      * @return mixed
      */
-	public function setStStatus($st_status)
+    public function setStStatus($st_status)
     {
         return $this->st_status = $st_status;
     }
 
-	/**
-	* @return ContatoEntidade $co_contato
+    /**
+     * @return ContatoEntidade $co_contato
      */
-	public function getCoContato()
+    public function getCoContato()
     {
         return $this->co_contato;
     }
 
-	/**
-	* @param $co_contato
+    /**
+     * @param $co_contato
      * @return mixed
      */
-	public function setCoContato($co_contato)
+    public function setCoContato($co_contato)
     {
         return $this->co_contato = $co_contato;
     }
 
-	/**
-	* @return PessoaEntidade $co_pessoa
+    /**
+     * @return PessoaEntidade $co_pessoa
      */
-	public function getCoPessoa()
+    public function getCoPessoa()
     {
         return $this->co_pessoa;
     }
 
-	/**
-	* @param $co_pessoa
+    /**
+     * @param $co_pessoa
      * @return mixed
      */
-	public function setCoPessoa($co_pessoa)
+    public function setCoPessoa($co_pessoa)
     {
         return $this->co_pessoa = $co_pessoa;
     }
 
-	/**
-	* @return EnderecoEntidade $co_endereco
+    /**
+     * @return EnderecoEntidade $co_endereco
      */
-	public function getCoEndereco()
+    public function getCoEndereco()
     {
         return $this->co_endereco;
     }
 
-	/**
-	* @param $co_endereco
+    /**
+     * @param $co_endereco
      * @return mixed
      */
-	public function setCoEndereco($co_endereco)
+    public function setCoEndereco($co_endereco)
     {
         return $this->co_endereco = $co_endereco;
     }
 
-	/**
-	* @return ImagemEntidade $co_imagem
+    /**
+     * @return ImagemEntidade $co_imagem
      */
-	public function getCoImagem()
+    public function getCoImagem()
     {
         return $this->co_imagem;
     }
 
-	/**
-	* @param $co_imagem
+    /**
+     * @param $co_imagem
      * @return mixed
      */
-	public function setCoImagem($co_imagem)
+    public function setCoImagem($co_imagem)
     {
         return $this->co_imagem = $co_imagem;
     }
 
-	/**
-	* @return ClienteEntidade $co_cliente
+    /**
+     * @return ClienteEntidade $co_cliente
      */
-	public function getCoCliente()
+    public function getCoCliente()
     {
         return $this->co_cliente;
     }
 
-	/**
+    /**
      * @param $co_cliente
      * @return mixed
      */
-	public function setCoCliente($co_cliente)
+    public function setCoCliente($co_cliente)
     {
         return $this->co_cliente = $co_cliente;
     }
 
-	/**
-	* @return ConsumidorEntidade $co_consumidor
+    /**
+     * @return ConsumidorEntidade $co_consumidor
      */
-	public function getCoConsumidor()
+    public function getCoConsumidor()
     {
         return $this->co_consumidor;
     }
 
-	/**
+    /**
      * @param $co_consumidor
      * @return mixed
      */
-	public function setCoConsumidor($co_consumidor)
+    public function setCoConsumidor($co_consumidor)
     {
         return $this->co_consumidor = $co_consumidor;
     }
 
-	/**
-	* @return FornecedorEntidade $co_fornecedor
+    /**
+     * @return FornecedorEntidade $co_fornecedor
      */
-	public function getCoFornecedor()
+    public function getCoFornecedor()
     {
         return $this->co_fornecedor;
     }
 
-	/**
+    /**
      * @param $co_fornecedor
      * @return mixed
      */
-	public function setCoFornecedor($co_fornecedor)
+    public function setCoFornecedor($co_fornecedor)
     {
         return $this->co_fornecedor = $co_fornecedor;
     }
 
-	/**
-	* @return TransportadoraEntidade $co_transportadora
+    /**
+     * @return TransportadoraEntidade $co_transportadora
      */
-	public function getCoTransportadora()
+    public function getCoTransportadora()
     {
         return $this->co_transportadora;
     }
 
-	/**
+    /**
      * @param $co_transportadora
      * @return mixed
      */
-	public function setCoTransportadora($co_transportadora)
+    public function setCoTransportadora($co_transportadora)
     {
         return $this->co_transportadora = $co_transportadora;
     }
