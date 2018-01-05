@@ -49,7 +49,7 @@ function servidor_inicial()
     // PASTA DE ARMAZENAMENTO DE UPLOADS
     define('PASTAUPLOADS', 'uploads/');
     // TABELA PARA ARMAZENAR OS DADOS PARA AUDITORIA
-    define('TABELA_AUDITORIA', '');
+    define('TABELA_AUDITORIA', AuditoriaEntidade::TABELA);
 
     //////////////////////////////////////////////
     // ******* CONFIGURAÇÕES DE EMAIL ********** //
