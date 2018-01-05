@@ -164,5 +164,18 @@ class FuncoesSistema
         return $op;
     }
 
+    public static function StatusAcesso($st){
+
+        switch ($st) {
+            case "A":
+                $op = '<span class="label label-success">ATIVO</span>';
+                break;
+            case "F":
+                $op = '<span class="label label-primary">FINALIZADO</span>';
+                break;
+        }
+
+        return $op;
+    }
 
 }
