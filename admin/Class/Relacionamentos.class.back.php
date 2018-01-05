@@ -5,10 +5,11 @@
  * @copyright (c) 2018, Leo Bessa
  */
 
-class Relacionamentos
+class RelacionamentosBack
 {
 
-    public static function getRelacionamentos(){
+    public static function getRelacionamentos()
+    {
         return array(
             (AcessoEntidade::TABELA) => Array(
                 (CO_USUARIO) => Array(
@@ -81,6 +82,31 @@ class Relacionamentos
                 (CO_USUARIO_PERFIL) => Array(
                     ('Campo') => CO_USUARIO,
                     ('Entidade') => 'UsuarioPerfilEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_CHAT) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
+                    ('Entidade') => 'ChatEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_LEMBRETE) => Array(
+                    ('Campo') => CO_USUARIO_ORIGEM,
+                    ('Entidade') => 'LembreteEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_CHAT) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
+                    ('Entidade') => 'ChatEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_GRUPO_LEMBRETE_USUARIO) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
+                    ('Entidade') => 'GrupoLembreteUsuarioEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_LEMBRETE) => Array(
+                    ('Campo') => CO_USUARIO_DESTINO,
+                    ('Entidade') => 'LembreteEntidade',
                     ('Tipo') => '2',
                 ),
             ),
@@ -201,6 +227,16 @@ class Relacionamentos
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '2',
                 ),
+                (CO_CONSUMIDOR_DEPENDENCIA) => Array(
+                    ('Campo') => CO_CONSUMIDOR_FILIAL,
+                    ('Entidade') => 'ConsumidorDependenciaEntidade',
+                    ('Tipo') => '2',
+                ),
+                (CO_CONSUMIDOR_DEPENDENCIA) => Array(
+                    ('Campo') => CO_CONSUMIDOR_MATRIZ,
+                    ('Entidade') => 'ConsumidorDependenciaEntidade',
+                    ('Tipo') => '2',
+                ),
             ),
             (CaixaEntidade::TABELA) => Array(
                 (CO_USUARIO) => Array(
@@ -248,35 +284,6 @@ class Relacionamentos
                     ('Campo') => CO_USUARIO_DESTINO,
                     ('Entidade') => 'UsuarioEntidade',
                     ('Tipo') => '1',
-                ),
-            ),
-            (UsuarioEntidade::TABELA) => Array(
-                (CO_CHAT) => Array(
-                    ('Campo') => CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'ChatEntidade',
-                    ('Tipo') => '2',
-                ),
-                (CO_LEMBRETE) => Array(
-                    ('Campo') => CO_USUARIO_ORIGEM,
-                    ('Entidade') => 'LembreteEntidade',
-                    ('Tipo') => '2',
-                ),
-            ),
-            (UsuarioEntidade::TABELA) => Array(
-                (CO_CHAT) => Array(
-                    ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'ChatEntidade',
-                    ('Tipo') => '2',
-                ),
-                (CO_GRUPO_LEMBRETE_USUARIO) => Array(
-                    ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'GrupoLembreteUsuarioEntidade',
-                    ('Tipo') => '2',
-                ),
-                (CO_LEMBRETE) => Array(
-                    ('Campo') => CO_USUARIO_DESTINO,
-                    ('Entidade') => 'LembreteEntidade',
-                    ('Tipo') => '2',
                 ),
             ),
             (ClienteEntidade::TABELA) => Array(
@@ -486,20 +493,6 @@ class Relacionamentos
                     ('Campo') => CO_CONSUMIDOR_FILIAL,
                     ('Entidade') => 'ConsumidorFilialEntidade',
                     ('Tipo') => '1',
-                ),
-            ),
-            (ConsumidorEntidade::TABELA) => Array(
-                (CO_CONSUMIDOR_DEPENDENCIA) => Array(
-                    ('Campo') => CO_CONSUMIDOR_MATRIZ,
-                    ('Entidade') => 'ConsumidorDependenciaEntidade',
-                    ('Tipo') => '2',
-                ),
-            ),
-            (ConsumidorEntidade::TABELA) => Array(
-                (CO_CONSUMIDOR_DEPENDENCIA) => Array(
-                    ('Campo') => CO_CONSUMIDOR_FILIAL,
-                    ('Entidade') => 'ConsumidorDependenciaEntidade',
-                    ('Tipo') => '2',
                 ),
             ),
             (ContatoEntidade::TABELA) => Array(
