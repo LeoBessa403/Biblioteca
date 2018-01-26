@@ -31,8 +31,15 @@
                     </div>
                     <div class="panel-body">
                         <?php
+                        $grid = new Grid();
+                        echo $grid->PesquisaAvancada('Pesquisar Acessos');
+                        ?>
+                        <h2>
+                            <small>Acessos Cadastradas</small>
+                        </h2>
+                        <?php
                         Modal::load();
-                        $arrColunas = array('Usuário','CPF', 'Status', 'Início','Fim', 'Navegador', 'S.O.', 'Dispositivo');
+                        $arrColunas = array('Usuário', 'CPF', 'Status', 'Início', 'Fim', 'Navegador', 'S.O.', 'Dispositivo');
                         $grid = new Grid();
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
@@ -43,7 +50,7 @@
                             $grid->setColunas(Valida::MascaraCpf($res->getCoUsuario()->getCoPessoa()->getNuCpf()));
                             $grid->setColunas(FuncoesSistema::StatusAcesso($res->getTpSituacao()));
                             $grid->setColunas(Valida::DataShow($res->getDtInicioAcesso(), 'd/m/Y H:i:s'));
-                            $grid->setColunas(Valida::DataShow($res->getDtFimAcesso(),'d/m/Y H:i:s'));
+                            $grid->setColunas(Valida::DataShow($res->getDtFimAcesso(), 'd/m/Y H:i:s'));
                             $grid->setColunas($res->getDsNavegador());
                             $grid->setColunas($res->getDsSistemaOperacional());
                             $grid->setColunas($res->getDsDispositivo());

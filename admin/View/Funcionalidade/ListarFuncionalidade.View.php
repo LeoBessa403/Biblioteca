@@ -34,7 +34,7 @@
                         Modal::load();
                         Modal::deletaRegistro("Funcionalidade");
                         Modal::confirmacao("confirma_Funcionalidade");
-                        $arrColunas = array('Nome', 'Rota', 'Ações');
+                        $arrColunas = array('Nome', 'Ações');
                         $grid = new Grid();
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
@@ -57,7 +57,6 @@
                                     <i class="fa fa-trash-o"></i>
                                 </a>';
                                 $grid->setColunas($res->getNoFuncionalidade());
-                                $grid->setColunas($res->getDsRota());
                                 $grid->setColunas($acao, 3);
                                 $grid->criaLinha($res->getCoFuncionalidade());
                             endif;

@@ -50,7 +50,7 @@
                             $grid->setColunas(FuncoesSistema::OperacaoAuditoria($res->getNoOperacao()));
                             $grid->setColunas(strtoupper($tabela));
                             $grid->setColunas(Valida::DataShow($res->getDtRealizado(), "d/m/Y - H:i:s"));
-                            $grid->setColunas(($res->getCoUsuario()
+                            $grid->setColunas(($res->getCoUsuario() 
                                 ? $res->getCoUsuario()->getCoPessoa()->getNoPessoa()
                                 : 'Via Site'));
                             $grid->setColunas($acao, 1);

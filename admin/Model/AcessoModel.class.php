@@ -49,6 +49,7 @@ class  AcessoModel extends AbstractModel
             $where = $where . " and ace.".DT_FIM_ACESSO." <= '".
                 Valida::DataDBDate($Condicoes[DT_FIM_ACESSO])." 23:59:59'" ;
         }
+        $where = $where . ' ORDER BY '.AcessoEntidade::CHAVE. ' DESC';
         $pesquisa->Pesquisar($tabela, $where, null, $campos);
         $acessos = [];
         /** @var AcessoEntidade $acesso */

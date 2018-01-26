@@ -31,25 +31,31 @@
                     </div>
                     <div class="panel-body">
                         <?php
+                        $grid = new Grid();
+                        echo $grid->PesquisaAvancada('Pesquisar Usuários');
+                        ?>
+                        <h2><small>Usuários Cadastrados</small></h2>
+                        <?php
                         Modal::load();
-                        Modal::deletaRegistro("Usuario");
+                        Modal::deletaRegistro(UrlAmigavel::$controller);
                         Modal::confirmacao("confirma_Usuario");
 
                         $arrColunas = array('Nome', 'CPF', 'Perfil', 'Situação', 'Ações');
-                        $grid = new Grid();
                         $grid->setColunasIndeces($arrColunas);
                         $grid->criaGrid();
                         /** @var UsuarioEntidade $res */
                         foreach ($result as $res):
-                            if (Valida::ValPerfil('CadastroUsuario')) {
+                            if (Valida::ValPerfil(PermissaoAcessoEnum::CADASTRO_USUARIO)) {
                                 $acao = '<a href="' . PASTAADMIN . 'Usuario/CadastroUsuario/'
-                                    . Valida::GeraParametro("usu/" . $res->getCoUsuario()) . '" class="btn btn-primary tooltips" 
+                                    . Valida::GeraParametro("usu/" . $res->getCoUsuario()) . '" 
+class="btn btn-primary tooltips" 
                                 data-original-title="Visualizar Registro" data-placement="top">
                                 <i class="fa fa-clipboard"></i>
                                 </a>
-                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" id="'
-                                    . $res->getCoUsuario() . '" 
-                                   href="#Usuario" data-original-title="Excluir Registro" data-placement="top">
+                                <a data-toggle="modal" role="button" class="btn btn-bricky tooltips deleta" 
+                                id="'. $res->getCoUsuario() . '" 
+                                   href="#'.UrlAmigavel::$controller.'" data-original-title="Excluir Registro" 
+                                   data-placement="top">
                                     <i class="fa fa-trash-o"></i>
                                 </a>';
                             } else {

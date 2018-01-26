@@ -31,31 +31,19 @@
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/perfect-scrollbar/src/perfect-scrollbar.css">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/theme_navy.css" type="text/css" id="skin_color">
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/css3-animation/animations.css">
-    <link rel="stylesheet" href="<?= PASTAADMIN; ?>css/print.css" type="text/css" media="print"/>
     <!--[if IE 7]>
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/font-awesome/css/font-awesome-ie7.min.css">
     <![endif]-->
     <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
 
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR FULLCALENDARIO -->
-    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/fullcalendar/fullcalendar/fullcalendar.css">
-    <!-- start: CSS REQUIRED FOR DATAPICKER -->
-    <link rel="stylesheet" href="<?= INCLUDES; ?>Jcalendar.css">
     <!-- start: CSS REQUIRED FOR SELECT -->
     <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/select2/select2.css">
-    <!-- start: CSS REQUIRED FOR UPLOAD -->
-    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/bootstrap-fileupload/bootstrap-fileupload.min.css">
     <!-- start: CSS REQUIRED FOR CHECK -->
     <link rel="stylesheet"
           href="<?= PASTAADMIN; ?>plugins/bootstrap-switch/static/stylesheets/bootstrap-switch.css">
-    <!-- start: CSS REQUIRED FOR CHECK -->
-    <link rel="stylesheet" href="<?= PASTAADMIN; ?>plugins/DataTables/media/css/DT_bootstrap.css">
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
     <![endif]-->
     <!-- end: MAIN CSS -->
-    <!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
-    <!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
 </head>
 <!-- end: HEAD -->
 <!-- start: BODY -->
@@ -165,7 +153,7 @@
         endif;
         ?>
         $('.close').click(function () {
-            $(this).parents('#sumir').fadeOut('fast');
+           $(this).parents('#sumir').fadeOut('fast');
         });
     });
 </script>

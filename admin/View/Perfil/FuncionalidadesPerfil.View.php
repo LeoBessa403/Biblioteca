@@ -49,24 +49,24 @@
                     /** @var FuncionalidadeEntidade $func */
                     foreach ($funcionalidades as $func):
 //                        if (!in_array($func->getCoFuncionalidade(), $bloqueados)):
-                        $checked = "";
-                        /** @var PerfilFuncionalidadeEntidade $value */
-                        foreach ($perfil->getCoPerfilFuncionalidade() as $value) {
-                            if ($func->getCoFuncionalidade() == $value->getCoFuncionalidade()->getCoFuncionalidade()):
-                                $checked = "checked";
-                            endif;
-                        }
-                        ?>
-                        <div class="col-sm-3">
-                            <label>
-                                <input id='fun-<?php echo $func->getCoFuncionalidade(); ?>' name='funcionalidades[]'
-                                       value='<?php echo $func->getCoFuncionalidade(); ?>' type='checkbox'
-                                       class="funcionalidade" <?php echo $checked; ?> />
-                                <?php echo $func->getNoFuncionalidade(); ?>
-                            </label><br>
-                            <hr>
-                        </div>
-                        <?php
+                            $checked = "";
+                            /** @var PerfilFuncionalidadeEntidade $value */
+                            foreach ($perfil->getCoPerfilFuncionalidade() as $value) {
+                                if ($func->getCoFuncionalidade() == $value->getCoFuncionalidade()->getCoFuncionalidade()):
+                                    $checked = "checked";
+                                endif;
+                            }
+                            ?>
+                            <div class="col-sm-3">
+                                <label>
+                                    <input id='fun-<?php echo $func->getCoFuncionalidade(); ?>' name='funcionalidades[]'
+                                           value='<?php echo $func->getCoFuncionalidade(); ?>' type='checkbox'
+                                           class="funcionalidade" <?php echo $checked; ?> />
+                                    <?php echo $func->getNoFuncionalidade(); ?>
+                                </label><br>
+                                <hr>
+                            </div>
+                            <?php
 //                        endif;
                     endforeach;
                     ?>

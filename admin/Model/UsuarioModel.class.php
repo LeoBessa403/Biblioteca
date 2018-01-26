@@ -2,7 +2,7 @@
 
 /**
  * UsuarioModel.class [ MODEL ]
- * @copyright (c) 2018, Leo Bessa
+ * @copyright (c) 2017, Leo Bessa
  */
 class  UsuarioModel extends AbstractModel
 {
@@ -14,9 +14,9 @@ class  UsuarioModel extends AbstractModel
 
     public function PesquisaAvancada($Condicoes)
     {
-        $tabela = UsuarioEntidade::TABELA." usu" .
-            " inner join ".PessoaEntidade::TABELA." pes" .
-            " on usu.".PessoaEntidade::CHAVE." = pes.".PessoaEntidade::CHAVE;
+        $tabela = UsuarioEntidade::TABELA . " usu" .
+            " inner join " . PessoaEntidade::TABELA . " pes" .
+            " on usu." . PessoaEntidade::CHAVE . " = pes." . PessoaEntidade::CHAVE;
 
         $campos = "usu.*";
         $pesquisa = new Pesquisa();
@@ -24,11 +24,34 @@ class  UsuarioModel extends AbstractModel
         $pesquisa->Pesquisar($tabela, $where, null, $campos);
         $usuarios = [];
         /** @var UsuarioEntidade $usuario */
-        foreach ($pesquisa->getResult() as $usuario){
+        foreach ($pesquisa->getResult() as $usuario) {
             $usu[0] = $usuario;
             $usuarios[] = $this->getUmObjeto(UsuarioEntidade::ENTIDADE, $usu);
         }
         return $usuarios;
+    }
+
+    public function Deleta($coUsuario)
+    {
+        /** @var UsuarioEntidade $usuario */
+        $usuario = $this->PesquisaUmRegistro($coUsuario);
+        $this->Deleta($coUsuario);
+
+        /** @var PessoaModel $PessoaModel */
+        $PessoaModel = new PessoaModel();
+        $PessoaModel->Deleta($usuario->getCoPessoa()->getCoPessoa());
+
+        /** @var EnderecoModel $EnderecoModel */
+        $EnderecoModel = new EnderecoModel();
+        $EnderecoModel->Deleta($usuario->getCoPessoa()->getCoEndereco()->getCoEndereco());
+
+        /** @var ContatoModel $ContatoModel */
+        $ContatoModel = new ContatoModel();
+        $ContatoModel->Deleta($usuario->getCoPessoa()->getCoContato()->getCoContato());
+
+        /** @var ImagemModel $ImagemModel */
+        $ImagemModel = new ImagemModel();
+        return $ImagemModel->Deleta($usuario->getCoImagem()->getCoImagem());
     }
 
 }

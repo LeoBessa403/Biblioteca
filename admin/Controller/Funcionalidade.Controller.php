@@ -23,7 +23,6 @@ class Funcionalidade extends AbstractController
             unset($dados[$id]);
 
             $funcionalidade['no_funcionalidade'] = trim($_POST['no_funcionalidade']);
-            $funcionalidade['ds_rota'] = trim($_POST['ds_rota']);
 
             if (!empty($_POST['co_funcionalidade'])):
                 $coFuncionalidade = $funcionalidadeModel->Salva($funcionalidade, $_POST['co_funcionalidade']);
@@ -46,33 +45,23 @@ class Funcionalidade extends AbstractController
             /** @var FuncionalidadeEntidade $func */
             $func = $funcionalidadeModel->PesquisaUmRegistro($co_funcionalidade);
             $res['no_funcionalidade'] = $func->getNoFuncionalidade();
-            $res['ds_rota'] = $func->getDsRota();
         endif;
 
         $formulario = new Form($id, "admin/Funcionalidade/CadastroFuncionalidade");
         $formulario->setValor($res);
 
         $formulario
-            ->setId("no_funcionalidade")
+            ->setId(NO_FUNCIONALIDADE)
             ->setClasses("ob")
             ->setLabel("Funcionalidade")
             ->CriaInpunt();
 
-        $formulario
-            ->setId("ds_rota")
-            ->setClasses("ob")
-            ->setLabel("Rota")
-            ->CriaInpunt();
-
-
         if ($co_funcionalidade):
-
             $formulario
                 ->setType("hidden")
-                ->setId("co_funcionalidade")
+                ->setId(CO_FUNCIONALIDADE)
                 ->setValues($co_funcionalidade)
                 ->CriaInpunt();
-
         endif;
 
 

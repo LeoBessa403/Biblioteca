@@ -47,13 +47,14 @@
                 $bloqueados = array(1, 2, 3);
                 /** @var PerfilEntidade $perf */
                 foreach ($perfis as $perf):
-//                        if (!in_array($perf->getCoPerfil(), $bloqueados)):
                     $checked = "";
                     /** @var PerfilFuncionalidadeEntidade $value */
-                    foreach ($funcionalidade->getCoPerfilFuncionalidade() as $value) {
-                        if ($perf->getCoPerfil() == $value->getCoPerfil()->getCoPerfil()):
-                            $checked = "checked";
-                        endif;
+                    if($funcionalidade->getCoPerfilFuncionalidade()){
+                        foreach ($funcionalidade->getCoPerfilFuncionalidade() as $value) {
+                            if ($perf->getCoPerfil() == $value->getCoPerfil()->getCoPerfil()):
+                                $checked = "checked";
+                            endif;
+                        }
                     }
                     ?>
                     <div class="col-sm-3">
@@ -66,7 +67,6 @@
                         <hr>
                     </div>
                     <?php
-//                        endif;
                 endforeach;
                 ?>
                 <div class="col-sm-12">
