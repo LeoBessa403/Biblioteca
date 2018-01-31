@@ -19,6 +19,7 @@ function servidor_inicial()
     define('USER', $config['USER']);
     define('PASS', $config['PASS']);
     define('DBSA', $config['DBSA']);
+    define('DESENVOLVEDOR', true);
 
 
     //////////////////////////////////////////////
